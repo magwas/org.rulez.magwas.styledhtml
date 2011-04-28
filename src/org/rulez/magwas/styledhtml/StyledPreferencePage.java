@@ -6,8 +6,20 @@
  *******************************************************************************/
 package org.rulez.magwas.styledhtml;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Enumeration;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
@@ -37,6 +49,11 @@ import uk.ac.bolton.archimate.editor.preferences.Preferences;
  */
 public class StyledPreferencePage extends PreferencePage
 implements IWorkbenchPreferencePage, IPreferenceConstants {
+	private int BUFSIZE = 4096; //I love arbitrary constants
+	
+	private static StyledPreferencePage self = null;
+	private static Shell myshell;
+
     public static String HELPID = "org.rulez.magwas.styledhtml.StyledEditor"; //$NON-NLS-1$
     
     private Button fStyleDirButton;
@@ -54,6 +71,15 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
 	public StyledPreferencePage() {
 		setPreferenceStore(Preferences.STORE);
+		myshell = Display.getCurrent().getActiveShell();
+		self = this;
+	}
+	
+	public static StyledPreferencePage getTools() {
+		if(null == self) {
+			self = new StyledPreferencePage();
+		}
+		return self;
 	}
 	
     @Override
@@ -84,7 +110,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fStyleDirButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	styleDir = askTemplateDir();
+            	styleDir = askTemplateDir(styleDir);
             	if(null != styleDir) {
             		fStyleDirPathLabel.setText(styleDir.getAbsolutePath());
             	}
@@ -118,7 +144,24 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
             }
         });
             
+        Group templateGroup = new Group(client, SWT.NULL);
+        templateGroup.setText("Template install");
+        templateGroup.setLayout(new GridLayout(2, false));
+        templateGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         setValues();
+        Button installButton = new Button(templateGroup,SWT.PUSH);
+        installButton.setText("Install provided styles");
+        installButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+            	File tdir = askSaveFile();
+            	if(null != tdir) {
+            		bringPackagedStyles(tdir);
+            	}
+            }
+        });
+        
+        
         
         return client;
     }
@@ -138,7 +181,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     @Override
     public boolean performOk() {
-    	Shell myshell = Display.getCurrent().getActiveShell();
     	if ((null != styleDir) && (null != checkStyleSheet(myshell,styleDir))) {
     		getPreferenceStore().setValue(STYLE_PATH, styleDir.getAbsolutePath());
     	}
@@ -162,27 +204,44 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     public void init(IWorkbench workbench) {
     }
 
-    /**
-     * Ask user for template directory to use
-     */
-    private File askTemplateDir() {
-    	//actually we look at style.xslt
-    	Shell myshell = Display.getCurrent().getActiveShell();
-        FileDialog dialog = new FileDialog(myshell, SWT.OPEN);
-        if(null != styleDir) {
-        	String opath = styleDir.getAbsolutePath();
-            dialog.setFileName(opath);
+    private void bringPackagedStyles(File targetdir) {
+    	System.out.println("targetdir="+ targetdir.getAbsolutePath());
+    	@SuppressWarnings("unchecked")
+		Enumeration<URL> e = Platform.getBundle("org.rulez.magwas.styledhtml").findEntries("/styles/", "*", true);
+    	for (; e.hasMoreElements() ;) {
+    		Boolean isdir = false;
+    		URL p = e.nextElement();
+            String[] ss = p.getFile().split("/",-1);
+            File now = targetdir;
+            for(int i=2;i<ss.length;i++) {
+            	if(!now.isDirectory()) {
+            		now.mkdir();
+            	}
+                isdir = (0 == ss[i].compareTo(""));
+            	now = new File(now,ss[i]);
+            }
+    		try {
+    			if (!isdir) {
+    				copy(p,now);
+    			}
+			} catch (IOException ex) {
+				tellProblem("Could not extract contents",ex.toString());
+				ex.printStackTrace();
+			}
         }
-        dialog.setText("Template Directory");
-        String path = dialog.open();
-        
-        if(path == null) {
-            return null;
-        }    
-        
-        File file = new File(path);
-        return checkStyleSheet(myshell, file);
 
+    }
+    
+    private void copy(URL from, File to) throws IOException {
+        BufferedInputStream urlin = new BufferedInputStream(from.openConnection().getInputStream());
+        BufferedOutputStream fout = new BufferedOutputStream(new FileOutputStream(to));
+        int read = -1;
+        byte[] buf = new byte[BUFSIZE];
+        while ((read = urlin.read(buf, 0, BUFSIZE)) >= 0) {
+            fout.write(buf, 0, read);
+        }
+        fout.flush();
+        fout.close();
     }
     
     private File checkStyleSheet(Shell myshell, File file) {
@@ -197,7 +256,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
      * Ask user for file name to save to
      */
     static public File askSaveFile() {
-    	Shell myshell = Display.getCurrent().getActiveShell();
         FileDialog dialog = new FileDialog(myshell, SWT.SAVE);
         dialog.setText("Export Model");
         dialog.setFilterExtensions(new String[] { "*.*" } );
@@ -221,4 +279,32 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         return file;
     }
     
+    /**
+     * Ask user for template directory to use
+     */
+    public File askTemplateDir(File styleDir) {
+    	//actually we look at style.xslt
+        FileDialog dialog = new FileDialog(myshell, SWT.OPEN);
+        if(null != styleDir) {
+        	String opath = styleDir.getAbsolutePath();
+            dialog.setFileName(opath);
+        }
+        dialog.setText("Template Directory");
+        String path = dialog.open();
+        
+        if(path == null) {
+            return null;
+        }    
+        
+        File file = new File(path);
+        return checkStyleSheet(myshell, file);
+    }
+    
+    public void tellProblem(String title,String message) {
+    	MessageDialog.openInformation(myshell, title,message);
+    }
+
+
 }
+
+

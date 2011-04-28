@@ -21,9 +21,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 
-
-
-
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
@@ -38,11 +35,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
-
-
 
 import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
 import uk.ac.bolton.archimate.editor.model.IModelExporter;
@@ -53,6 +46,7 @@ import uk.ac.bolton.archimate.model.util.ArchimateResource;
 import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
 import uk.ac.bolton.archimate.editor.utils.HTMLUtils;
 
+import org.rulez.magwas.styledhtml.IPreferenceConstants;
 
 /**
  * Styled HTML Exporter of Archimate model
@@ -74,8 +68,9 @@ import uk.ac.bolton.archimate.editor.utils.HTMLUtils;
  */
 public class StyledHtml implements IModelExporter {
 	
-	private Shell myshell;
 	private Transformer transformer;
+	private StyledPreferencePage widgets;
+	
 	public class NoConfig extends RuntimeException {
 		private static final long serialVersionUID = -1109045666264335290L;
 		public NoConfig() {
@@ -88,6 +83,7 @@ public class StyledHtml implements IModelExporter {
     }
 
     public StyledHtml() {
+    	widgets = StyledPreferencePage.getTools();
     }
 
     @Override
@@ -149,7 +145,7 @@ public class StyledHtml implements IModelExporter {
             File output = new File(targetdir,"index.html");
             doTransformation(file, output);
         } catch(Exception e) {
-        	MessageDialog.openInformation(myshell, "Problem Exporting Model",e.toString());
+        	widgets.tellProblem("Problem Exporting Model", e.toString());
         	e.printStackTrace();
         }
     }
