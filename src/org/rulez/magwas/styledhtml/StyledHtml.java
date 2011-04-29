@@ -69,7 +69,6 @@ import org.rulez.magwas.styledhtml.IPreferenceConstants;
 public class StyledHtml implements IModelExporter {
 	
 	private Transformer transformer;
-	private StyledPreferencePage widgets;
 	
 	public class NoConfig extends RuntimeException {
 		private static final long serialVersionUID = -1109045666264335290L;
@@ -83,7 +82,7 @@ public class StyledHtml implements IModelExporter {
     }
 
     public StyledHtml() {
-    	widgets = StyledPreferencePage.getTools();
+    	
     }
 
     @Override
@@ -98,7 +97,8 @@ public class StyledHtml implements IModelExporter {
         	Boolean ask = Preferences.STORE.getBoolean(IPreferenceConstants.OUT_ASK);
         	String opath = Preferences.STORE.getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
-        	if(ask | (opath == null)) {
+        	System.out.println("ask="+ask+" opath="+opath);
+        	if((!ask) || (opath == null)) {
         		targetdir = StyledPreferencePage.askSaveFile();
         	} else {
         		targetdir = new File(opath);
@@ -145,7 +145,7 @@ public class StyledHtml implements IModelExporter {
             File output = new File(targetdir,"index.html");
             doTransformation(file, output);
         } catch(Exception e) {
-        	widgets.tellProblem("Problem Exporting Model", e.toString());
+        	StyledPreferencePage.tellProblem("Problem Exporting Model", e.toString());
         	e.printStackTrace();
         }
     }

@@ -52,8 +52,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
 	private int BUFSIZE = 4096; //I love arbitrary constants
 	
 	private static StyledPreferencePage self = null;
-	private static Shell myshell;
-
+	
     public static String HELPID = "org.rulez.magwas.styledhtml.StyledEditor"; //$NON-NLS-1$
     
     private Button fStyleDirButton;
@@ -71,7 +70,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
 	public StyledPreferencePage() {
 		setPreferenceStore(Preferences.STORE);
-		myshell = Display.getCurrent().getActiveShell();
+		
 		self = this;
 	}
 	
@@ -84,7 +83,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
 	
     @Override
     protected Control createContents(Composite parent) {
-    	getPreferenceStore().setDefault(OUT_ASK, true);
         // Help
         PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELPID);
 
@@ -122,7 +120,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         outGroup.setLayout(new GridLayout(2, false));
         outGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         fOutDirCBLabel = new Label(outGroup, SWT.NULL);
-        fOutDirCBLabel.setText("Always ask for location");
+        fOutDirCBLabel.setText("Don't ask for location");
         fOutDirCheckBox = new Button(outGroup,SWT.CHECK);
         fOutDirLabel = new Label(outGroup, SWT.NULL);
         fOutDirLabel.setText("Use this location:");
@@ -181,6 +179,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     @Override
     public boolean performOk() {
+    	Shell myshell = Display.getCurrent().getActiveShell();
     	if ((null != styleDir) && (null != checkStyleSheet(myshell,styleDir))) {
     		getPreferenceStore().setValue(STYLE_PATH, styleDir.getAbsolutePath());
     	}
@@ -256,6 +255,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
      * Ask user for file name to save to
      */
     static public File askSaveFile() {
+    	Shell myshell = Display.getCurrent().getActiveShell();
         FileDialog dialog = new FileDialog(myshell, SWT.SAVE);
         dialog.setText("Export Model");
         dialog.setFilterExtensions(new String[] { "*.*" } );
@@ -283,6 +283,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
      * Ask user for template directory to use
      */
     public File askTemplateDir(File styleDir) {
+    	Shell myshell = Display.getCurrent().getActiveShell();
     	//actually we look at style.xslt
         FileDialog dialog = new FileDialog(myshell, SWT.OPEN);
         if(null != styleDir) {
@@ -300,7 +301,8 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         return checkStyleSheet(myshell, file);
     }
     
-    public void tellProblem(String title,String message) {
+    public static void tellProblem(String title,String message) {
+    	Shell myshell = Display.getCurrent().getActiveShell();
     	MessageDialog.openInformation(myshell, title,message);
     }
 

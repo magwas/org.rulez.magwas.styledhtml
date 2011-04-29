@@ -16,7 +16,7 @@ Configuration:
 Go to Edit/Preferences/Styled Export
 You can deploy the shipped styles by clicking "Install provided styles" and choosing the target directory.
 You can modify the stylesheet location by browsing the file style.xslt belonging to it. The stylesheet is checked for syntax both when choosing it and when you press Apply.
-You can choose whether you want to be asked for the output directory (default is true).
+You can choose whether you want to be asked for the output directory (default is to be asked).
 You can choose a default output directory for the case when you don't want to be asked every time.
 
 Usage:
