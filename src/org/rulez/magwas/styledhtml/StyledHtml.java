@@ -123,6 +123,11 @@ public class StyledHtml implements IModelExporter {
         		Element n = (Element) nl.item(i);
         		parseCharsAndLinks(n);
         	}
+        	NodeList pl = xml.getElementsByTagName("purpose");
+        	for(int j=0;j<pl.getLength();j++) {
+        		Element k = (Element) pl.item(j);
+        		parseCharsAndLinks(k);
+        	}
         	//save the xml
         	DOMConfiguration docConfig = xml.getDomConfig();
         	docConfig.setParameter("well-formed", true);
