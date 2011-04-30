@@ -13,7 +13,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <table width="100%" border="0">
         <tr>
         <td valign="top">Purpose</td>
-        <td valign="top"><xsl:value-of select="/archimate:model/purpose"/></td>
+        <td valign="top"><xsl:copy-of select="/archimate:model/purpose"/></td>
         </tr>
        <xsl:for-each select="/archimate:model/property">
         <tr><td>
