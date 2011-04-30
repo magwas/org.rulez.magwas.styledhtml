@@ -30,10 +30,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
 
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Shell;
 
 import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
 import uk.ac.bolton.archimate.editor.model.IModelExporter;
@@ -205,6 +209,7 @@ public class StyledHtml implements IModelExporter {
         int lastend=0;
         while(matcher.find(lastend)) {
             String group = matcher.group();
+        	group = group.replaceAll("&amp;", "&");
             String text = s.substring(lastend,matcher.start());
 
             Node txt = d.createTextNode(text);
@@ -249,7 +254,20 @@ public class StyledHtml implements IModelExporter {
     private void saveDiagrams(IArchimateModel model,File targetdir) {
     	List<IDiagramModel> dias = model.getDiagramModels();
     	for (IDiagramModel dia : dias) {
-    		Image image = DiagramUtils.createImage(dia);
+            Shell shell = new Shell();
+            shell.setLayout(new FillLayout());
+            
+            GraphicalViewer viewer = DiagramUtils.createViewer(dia, shell);
+            Rectangle rec = DiagramUtils.getDiagramExtents(viewer);
+            int scale;
+            if (rec.width > 1024 ) {
+            	scale = 1;
+            } else {
+            	scale = 1024/rec.width + 1;
+            }
+            Image image = DiagramUtils.createScaledImage(viewer, scale);
+            shell.dispose();
+    		
     		String diagramID = dia.getId();
     		File file = new File(targetdir,diagramID+".png");
             try {
