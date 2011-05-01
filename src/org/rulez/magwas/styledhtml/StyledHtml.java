@@ -158,10 +158,6 @@ public class StyledHtml implements IModelExporter {
     	Document d = n.getOwnerDocument();
     	String s = n.getTextContent();
     	n.setTextContent("");
-    	s = s.replaceAll("&", "&amp;");
-        s = s.replaceAll("<", "&lt;");
-        s = s.replaceAll(">", "&gt;");
-        s = s.replaceAll("\"", "&quot;");
         
         String[] ss = s.split("(\r\n|\r|\n)");
         
@@ -205,7 +201,6 @@ public class StyledHtml implements IModelExporter {
         int lastend=0;
         while(matcher.find(lastend)) {
             String group = matcher.group();
-        	group = group.replaceAll("&amp;", "&");
             String text = s.substring(lastend,matcher.start());
 
             Node txt = d.createTextNode(text);
