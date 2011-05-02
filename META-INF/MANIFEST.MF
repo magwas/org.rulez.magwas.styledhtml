@@ -7,8 +7,7 @@ Bundle-Vendor: Árpád Magosányi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
  org.eclipse.core.runtime;bundle-version="3.5.0",
- uk.ac.bolton.archimate.editor,
- org.python.pydev.jython;bundle-version="2.0.0";visibility:=reexport
+ uk.ac.bolton.archimate.editor
 Bundle-ActivationPolicy: lazy
 Export-Package: org.rulez.magwas.styledhtml;
   uses:="org.eclipse.jface.preference,
@@ -17,5 +16,5 @@ Export-Package: org.rulez.magwas.styledhtml;
    uk.ac.bolton.archimate.model,
    uk.ac.bolton.archimate.editor.model,
    org.eclipse.swt.widgets"
-Bundle-ClassPath: org.python.pydev.jython_2.0.0.2011040403/,
- .
+Bundle-ClassPath: bin/,
+ org.python.pydev.jython_2.0.0.2011040403/jython.jar
