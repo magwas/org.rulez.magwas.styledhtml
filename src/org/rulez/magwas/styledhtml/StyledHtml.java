@@ -35,6 +35,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 
+import org.python.core.PyInteger;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
+
 import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
 import uk.ac.bolton.archimate.editor.model.IModelExporter;
 import uk.ac.bolton.archimate.editor.preferences.Preferences;
@@ -54,28 +58,35 @@ import org.rulez.magwas.styledhtml.IPreferenceConstants;
  * 		<li>any other files needed for the presentation of resulting html</li></ul>
  * 
  * <p>
- * In the future (If I still think it is a good idea), the style directory may contain a file containing the name of scripts to be run on model.archirich and index.html.
+ * In the future (If I still think it is a good idea), the style directory may contain a file containing the name of scripts to be run on archirich.xml and index.html.
  * <p>
  * Output is the report directory, containing:<ul>
  * 		<li>copy of contents of the style directory</li>
- * 		<li>model.archirich : it is the model file, but each document tags are enriched with HTMLReportExporter's paqrseCharsAndLinks.</li>
+ * 		<li>archirich.xml : it is the model file, but each document tags are enriched with HTMLReportExporter's paqrseCharsAndLinks.</li>
  * 		<li>diagrams in png: all diagrams are saved to ID.png, where ID is the id of the diagram</li>
- * 		<li>index.html: the result of applying syle.xslt to model.archirich</li>
+ * 		<li>index.html: the result of applying style.xslt to archirich.xml</li>
  * 
  * @author Árpád Magosányi
  */
 public class StyledHtml implements IModelExporter {
 	
-	private Transformer transformer;
-	
-	public class NoConfig extends RuntimeException {
+	public class NoConfigException extends RuntimeException {
 		private static final long serialVersionUID = -1109045666264335290L;
-		public NoConfig() {
-            super("You should set the stylesheet location in edit/preferences first.");
+		public NoConfigException() {
+            super("Bad stylesheet or you should set the stylesheet location in edit/preferences first.");
+        }
+		public NoConfigException(String s) {
+            super(s);
         }
         @Override
         public String toString() {
         	return getMessage();
+        }
+    }
+	public class BadPreprocessorException extends NoConfigException {
+		private static final long serialVersionUID = -1109045666264335290L;
+		public BadPreprocessorException() {
+            super("preprocessor.xslt have some problems");
         }
     }
 
@@ -85,14 +96,30 @@ public class StyledHtml implements IModelExporter {
 
     @Override
     public void export(IArchimateModel model){
+    		callPython();
         try {
         	String path = Preferences.STORE.getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
-        	transformer = mkTransformer(stylesheet);
+        	System.out.println("1");
+        	Transformer transformer = mkTransformer(stylesheet);
+        	System.out.println("stylesheet=" + stylesheet.getAbsolutePath());
         	if((!stylesheet.exists())|(transformer == null)) {
-        		throw new NoConfig();
+        		throw new NoConfigException();
         	}
-        	Boolean ask = Preferences.STORE.getBoolean(IPreferenceConstants.OUT_ASK);
+        	System.out.println("3");
+           	File dir = new File(stylesheet.getParent());
+           	File preprocessor = new File(dir,"preprocess.xslt");
+        	System.out.println("preprocessor="+ preprocessor.getAbsolutePath());
+        	Transformer tf = null;
+        	if(preprocessor.exists()) {
+            	System.out.println("5");
+        		tf = mkTransformer(preprocessor);
+            	System.out.println("6.1");
+        		if(tf == null) {
+        			throw new BadPreprocessorException();
+        		}
+        	}
+          	Boolean ask = Preferences.STORE.getBoolean(IPreferenceConstants.OUT_ASK);
         	String opath = Preferences.STORE.getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
         	System.out.println("ask="+ask+" opath="+opath);
@@ -104,10 +131,9 @@ public class StyledHtml implements IModelExporter {
         	if(targetdir == null) {
         		return;
         	}
-        	File dir = new File(stylesheet.getParent());
         	createOutputDir(dir, targetdir);
         
-        	File file = new File(targetdir,"model.archirich");
+        	File file = new File(targetdir,"archirich.xml");
         
         	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(file);
         	resource.getContents().add(model);
@@ -145,14 +171,36 @@ public class StyledHtml implements IModelExporter {
             OutputStreamWriter fw = new OutputStreamWriter(os,cs);
             fw.write(str);
             fw.close();
+        	if(tf != null) {
+        		File ofile = new File(targetdir,"model.xml");
+        		doTransformation(file,tf,ofile);
+        		file = ofile;
+        	}
             File output = new File(targetdir,"index.html");
-            doTransformation(file, output);
+            doTransformation(file, transformer, output);
         } catch(Exception e) {
         	StyledPreferencePage.tellProblem("Problem Exporting Model", e.toString());
         	e.printStackTrace();
         }
     }
     
+private void callPython() {
+    	PythonInterpreter interp =
+    	    new PythonInterpreter();
+
+    	System.out.println("Hello, brave new world");
+    	interp.exec("import sys");
+    	interp.exec("print sys");
+
+    	interp.set("a", new PyInteger(42));
+    	interp.exec("print a");
+    	interp.exec("x = 2+2");
+    	PyObject x = interp.get("x");
+
+    	System.out.println("x: "+x);
+    	System.out.println("Goodbye, cruel world");
+    }
+
     private void parseCharsAndLinks(Element n) {
         // Escape chars
     	Document d = n.getOwnerDocument();
@@ -171,24 +219,25 @@ public class StyledHtml implements IModelExporter {
     public static Transformer mkTransformer(File style) {
      	// do we use the example code as is? :)
     	// 1. Instantiate a TransformerFactory.
+    	System.out.println("7");
     	TransformerFactory tFactory = 
     	                  javax.xml.transform.TransformerFactory.newInstance();
 
     	// 2. Use the TransformerFactory to process the stylesheet Source and
     	//    	    generate a Transformer.
+    	System.out.println("style=" + style.getAbsolutePath());
     		try {
 				return tFactory.newTransformer
 				            (new javax.xml.transform.stream.StreamSource(style));
 			} catch (TransformerConfigurationException e) {
 				return null;
-			}
- 	
+			}		
     }
-    private void doTransformation(File source, File output) throws Exception {
+    private void doTransformation(File source, Transformer tf, File output) throws Exception {
    
     	// 3. Use the Transformer to transform an XML Source and send the
     	//    	    output to a Result object.
-    	transformer.transform
+    	tf.transform
     	    (new javax.xml.transform.stream.StreamSource(source), 
     	     new javax.xml.transform.stream.StreamResult( new
     	                                  java.io.FileOutputStream(output)));
