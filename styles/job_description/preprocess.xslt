@@ -3,7 +3,7 @@
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template match="/">
         <employees>
-        <xsl:for-each select="//element[@xsi:type='archimate:BusinessActor' and (( property/@key='objectClass' and  property/@value='employee') or substring(property/@key,1,9) = 'employee:' ) ]">
+        <xsl:for-each select="archimate:BusinessActor and (( property/@key='objectClass' and  property/@value='employee') or substring(property/@key,1,9) = 'employee:' ) ]">
             <employee id="{./@id}" name="{./@name}">
             <documentation>
                 <xsl:copy-of select="./documentation"/>
@@ -30,7 +30,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
 
     <xsl:template name="getroles">
         <xsl:param name="id" />
-            <xsl:for-each select="//element[@xsi:type='archimate:AssignmentRelationship' and @source=$id]">
+            <xsl:for-each select="//archimate:AssignmentRelationship and @source=$id]">
                 <through-assignment><xsl:value-of select="./@target"/></through-assignment>
                 <xsl:call-template name="gettarget">
                     <xsl:with-param name="id"><xsl:value-of select="./@target"/></xsl:with-param>
@@ -39,8 +39,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
     </xsl:template>
     <xsl:template name="gettarget">
         <xsl:param name="id" />
-        <through-role><xsl:copy-of select="//element[(@xsi:type='archimate:BusinessRole' or @xsi:type='archimate:BusinessCollaboration') and @id=$id]"/></through-role>
-        <xsl:for-each select="//element[(@xsi:type='archimate:BusinessRole' or @xsi:type='archimate:BusinessCollaboration') and @id=$id]">
+        <through-role><xsl:copy-of select="(archimate:BusinessRole or archimate:BusinessCollaboration) and @id=$id]"/></through-role>
+        <xsl:for-each select="//(archimate:BusinessRole or archimate:BusinessCollaboration) and @id=$id]">
         </xsl:for-each>
     </xsl:template>
 

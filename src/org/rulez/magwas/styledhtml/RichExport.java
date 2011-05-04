@@ -11,6 +11,8 @@ import java.io.FileOutputStream;
 
 import java.io.OutputStream;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.nio.charset.Charset;
 import java.io.OutputStreamWriter;
@@ -64,10 +66,15 @@ public class RichExport implements IModelExporter {
 
     @Override
     public void export(IArchimateModel model){
-        try {
-        	File target = Widgets.askSaveFile();
-        
-        	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
+        	File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH, new String[] { "*.xml" } );
+        	if(null == target) {
+        		return;
+        	}
+        	export(model,target);
+    }
+    public static void export(IArchimateModel model, File target) {
+            try {
+          	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
         	resource.getContents().add(model);
         	// we get it in xml
         	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);
@@ -83,15 +90,8 @@ public class RichExport implements IModelExporter {
         		Element k = (Element) pl.item(j);
         		parseCharsAndLinks(k);
         	}
-        	/*
-        	NodeList el = xml.getElementsByTagName("element");
-        	for(int l=0;l<el.getLength();l++) {
-        		Element m = (Element) el.item(l);
-        		System.out.println(m);
-        		Element n = cloneAsType(xml,m);
-        		m.getParentNode().replaceChild(n, m);
-        	}
-        	*/
+        	enrichXML(xml,xml);
+        	
         	//save the xml
         	DOMConfiguration docConfig = xml.getDomConfig();
         	docConfig.setParameter("well-formed", true);
@@ -115,34 +115,91 @@ public class RichExport implements IModelExporter {
         }
     }
 
-/*    private Element cloneAsType(Document xml,Element m){
-    	// copies element node to an identical node which have nodename of the xsi:type attribute
-    	System.out.println("type="+m.getAttribute("xsi:type"));
-    	Element e = xml.createElement(m.getAttribute("xsi:type"));
-    	NamedNodeMap atts = m.getAttributes();
-    	int l = atts.getLength();
-    	for(int i=0; i<l;i++){
-    		Attr n = (Attr) atts.item(i);
-    		System.out.println("n="+n);
-    		if ((null != n) && ("xsi:type" != n.getNodeName())) {
-    			m.removeAttributeNode(n);
-    			e.setAttributeNode(n);
-    		}    		
+    private static void enrichXML(Document doc, Node n) {
+    	NodeList nl = n.getChildNodes();
+    	int ll=nl.getLength();
+    	for(int i=0;i<ll;i++) {
+    		Node m = nl.item(i);
+           	if (Node.ELEMENT_NODE == m.getNodeType()) {
+           		Element e = (Element)m;
+           	    enrichXML(doc, e);
+           	    System.out.println("node="+e+e.getAttribute("name"));
+        		enrichElement(doc,(Element) e);    		
+           	}
     	}
-    	NodeList cnl = m.getChildNodes();
-    	System.out.println("nodelist="+cnl);
-    	int ll = cnl.getLength();
-    	for(int j=0;j<ll;j++){
-    		Node c=cnl.item(j);
-    		if(null != c) {
-        		m.removeChild(c);
-            	e.appendChild(c);
+    }
+    
+    private static void enrichElement(Document xml,Element m){
+    	// copies element node to an identical node which have nodename of the xsi:type attribute
+    	String typename = m.getAttribute("xsi:type");
+    	if("" != typename ) {
+    		xml.renameNode(m, namespaceForType(typename), typename);
+    		m.removeAttribute("xsi:type");
+    	}
+    	
+    	List<Element> props = getChildElementsByTagName(m,"property");
+    	System.out.println("property children="+ props);
+    	int l = props.size();
+    	for(int i=0;i<l;i++) {
+    		Element p = (Element) props.get(i);
+    		if ( m != p.getParentNode()) {
+    			continue;
+    		}
+    		String key = p.getAttribute("key");
+    		String value = p.getAttribute("value");
+    		if(key == "objectClass") {
+    			getOrCreateElement(xml, m,value);
+    		}
+    		if(key.contains(":")) {
+    			String[] k = key.split(":",2);
+    			createSubElement(xml, m,k[0],k[1], value);
     		}
     	}
-    	return e;
     }
-*/
-    private void parseCharsAndLinks(Element n) {
+
+    private static List<Element> getChildElementsByTagName(Element e, String name) {
+    	NodeList nl = e.getChildNodes();
+    	int l = nl.getLength();
+    	List<Element> out = new ArrayList<Element>();
+    	for(int i=0;i>l;i++) {
+    		Node c = nl.item(i);
+           	if (Node.ELEMENT_NODE == c.getNodeType()) {
+           		System.out.println("childnode="+c);
+           		if(c.getNodeName().equals(name)) {
+           			out.add((Element) c);
+           		}
+           	}    		
+    	}
+    	return out;
+    }
+    private static void createSubElement(Document doc, Element m, String el, String propname, String value) {
+    	Element obj = getOrCreateElement(doc,m,el);
+    	Element prop = getOrCreateElement(doc,obj,propname);
+    	prop.setTextContent(value);
+    }
+    private static Element getOrCreateElement(Document doc, Element m, String value) {
+    	List<Element> nl = getChildElementsByTagName(m,value);
+    	
+    	if(0 == nl.size()) {
+    		Element e = doc.createElement(value);
+    		m.appendChild(e);
+    		return e;
+    	}
+    	if(1 == nl.size()) {
+    		return nl.get(0);
+        }
+    	Widgets.tellProblem("property problem", "objectClass name '"+value+"' is reserved");
+    	return null;
+    }
+    
+    private static String namespaceForType(String tname) {
+    	String xmlns = tname.split(":")[0];
+    	if(xmlns.equals("archimate")) {
+    		return "http://www.bolton.ac.uk/archimate";
+    	}
+    	return "http://namespaces.local/"+xmlns;
+    }
+    private static void parseCharsAndLinks(Element n) {
         // Escape chars
     	Document d = n.getOwnerDocument();
     	String s = n.getTextContent();
@@ -157,7 +214,7 @@ public class RichExport implements IModelExporter {
         
     }
     
-    private void parseLinks(String s, Node parent) {
+    private static void parseLinks(String s, Node parent) {
        	Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(s);
     	Document d = parent.getOwnerDocument();
     	

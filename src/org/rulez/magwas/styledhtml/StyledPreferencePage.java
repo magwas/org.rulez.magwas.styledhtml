@@ -131,7 +131,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fOutDirButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	outDir = Widgets.askSaveFile();
+            	outDir = Widgets.askSaveFile(IPreferenceConstants.OUT_PATH,null);
             	if(null != outDir) {
             		fOutDirPathLabel.setText(outDir.getAbsolutePath());
             	}
@@ -148,7 +148,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         installButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	File tdir = Widgets.askSaveFile();
+            	File tdir = Widgets.askSaveFile(IPreferenceConstants.STYLE_PATH,null);
             	if(null != tdir) {
             		bringPackagedStyles(tdir);
             	}

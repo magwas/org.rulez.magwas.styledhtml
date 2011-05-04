@@ -7,34 +7,19 @@
 package org.rulez.magwas.styledhtml;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.nio.charset.Charset;
-import java.io.OutputStreamWriter;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 
-import org.w3c.dom.DOMConfiguration;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.bootstrap.DOMImplementationRegistry;
-import org.w3c.dom.Document;
-import org.w3c.dom.ls.DOMImplementationLS;
-import org.w3c.dom.ls.LSSerializer;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
-
 
 import org.python.util.PythonInterpreter;
 
@@ -43,9 +28,6 @@ import uk.ac.bolton.archimate.editor.model.IModelExporter;
 import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IDiagramModel;
-import uk.ac.bolton.archimate.model.util.ArchimateResource;
-import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
-import uk.ac.bolton.archimate.editor.utils.HTMLUtils;
 
 import org.rulez.magwas.styledhtml.Widgets;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
@@ -118,7 +100,11 @@ public class StyledHtml implements IModelExporter {
         	String opath = Preferences.STORE.getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
         	if((!ask) || (opath == null)) {
-        		targetdir = Widgets.askSaveFile();
+        		String lastpath = Preferences.STORE.getString(IPreferenceConstants.LAST_STYLED_PATH);
+        		if (null == lastpath) {
+        			Preferences.STORE.setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
+        		}
+        		targetdir = Widgets.askSaveFile(IPreferenceConstants.LAST_STYLED_PATH,null);
         	} else {
         		targetdir = new File(opath);
         	}
@@ -128,42 +114,10 @@ public class StyledHtml implements IModelExporter {
         	createOutputDir(dir, targetdir);
         
         	File file = new File(targetdir,"archirich.xml");
-        
-        	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(file);
-        	resource.getContents().add(model);
+        	RichExport.export(model,file);
         	//save pictures
         	saveDiagrams(model,targetdir);
         	// we get it in xml
-        	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);
-        	resource.getContents().remove(model);
-        	//enrich the xml
-        	NodeList nl = xml.getElementsByTagName("documentation");
-        	for(int i=0;i<nl.getLength();i++) {
-        		Element n = (Element) nl.item(i);
-        		parseCharsAndLinks(n);
-        	}
-        	NodeList pl = xml.getElementsByTagName("purpose");
-        	for(int j=0;j<pl.getLength();j++) {
-        		Element k = (Element) pl.item(j);
-        		parseCharsAndLinks(k);
-        	}
-        	//save the xml
-        	DOMConfiguration docConfig = xml.getDomConfig();
-        	docConfig.setParameter("well-formed", true);
-        	xml.normalizeDocument();
-            DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
-            DOMImplementationLS impl = (DOMImplementationLS)registry.getDOMImplementation("LS");
-            LSSerializer writer = impl.createLSSerializer();
-            String str = writer.writeToString(xml);
-            String enc = xml.getXmlEncoding();
-            if (enc == null) {
-            	enc="utf-16";
-            }
-            Charset cs = Charset.forName(enc);
-            OutputStream os = new FileOutputStream(file);
-            OutputStreamWriter fw = new OutputStreamWriter(os,cs);
-            fw.write(str);
-            fw.close();
     		File ofile = new File(targetdir,"model.xml");
             if(pypreprocessor.exists()){
                	callPython(pypreprocessor,file,ofile);
@@ -191,21 +145,6 @@ private void callPython(File script, File in, File out) {
     	interp.execfile(script.getAbsolutePath());
     	System.out.println("Goodbye, cruel world");
     }
-
-    private void parseCharsAndLinks(Element n) {
-        // Escape chars
-    	Document d = n.getOwnerDocument();
-    	String s = n.getTextContent();
-    	n.setTextContent("");
-        
-        String[] ss = s.split("(\r\n|\r|\n)");
-        
-        for(String sss : ss) {
-        	parseLinks(sss,n);
-        	n.appendChild(d.createElement("br"));
-        }
-        
-    }
     
     public static Transformer mkTransformer(File style) {
      	// do we use the example code as is? :)
@@ -232,31 +171,6 @@ private void callPython(File script, File in, File out) {
     	     new javax.xml.transform.stream.StreamResult( new
     	                                  java.io.FileOutputStream(output)));
     }
-    
-    private void parseLinks(String s, Node parent) {
-       	Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(s);
-    	Document d = parent.getOwnerDocument();
-    	
-        int lastend=0;
-        while(matcher.find(lastend)) {
-            String group = matcher.group();
-            String text = s.substring(lastend,matcher.start());
-
-            Node txt = d.createTextNode(text);
-            lastend=matcher.end();
-            parent.appendChild(txt);
-            Element a = d.createElement("a");
-            a.setAttribute("href", group);
-            Node sub = d.createTextNode(group);
-            a.appendChild(sub);
-            parent.appendChild(a);
-        }
-        if(lastend < s.length()){
-        	Node txt = d.createTextNode(s.substring(lastend));
-        	parent.appendChild(txt);
-        }
-    }
-
     
     private void createOutputDir(File dir, File targetdir) throws IOException {
     	targetdir.mkdir();

@@ -27,158 +27,158 @@ e.innerHTML=Date()
         </tr>
         <tr>
         <td valign="top">Purpose</td>
-        <td valign="top"><xsl:value-of select="/archimate:model/purpose"/></td>
+        <td valign="top"><xsl:copy-of select="/archimate:model/purpose"/></td>
         </tr>
         </table>
         <br/>
 
         <h2>Business Actors</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessActor']">
+        <xsl:apply-templates select="//archimate:BusinessActor">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Actor</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessRole']">
+        <xsl:apply-templates select="//archimate:BusinessRole">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Role</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessInterface']">
+        <xsl:apply-templates select="//archimate:BusinessInterface">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Interface</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessCollaboration']">
+        <xsl:apply-templates select="//archimate:BusinessCollaboration">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Collaboration</xsl:with-param>
         </xsl:apply-templates>
         <h2>Business Functions</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessFunction']">
+        <xsl:apply-templates select="//archimate:BusinessFunction">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Function</xsl:with-param>
         </xsl:apply-templates>
         <h2>Business Information</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessObject']">
+        <xsl:apply-templates select="//archimate:BusinessObject">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Object</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Representation']">
+        <xsl:apply-templates select="//archimate:Representation">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Representation</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Meaning']">
+        <xsl:apply-templates select="//archimate:Meaning">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Meaning</xsl:with-param>
         </xsl:apply-templates>
         <h2>Business Processes</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessActivity']">
+        <xsl:apply-templates select="//archimate:BusinessActivity">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Activity</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessEvent']">
+        <xsl:apply-templates select="//archimate:BusinessEvent">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Event</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessInteraction']">
+        <xsl:apply-templates select="//archimate:BusinessInteraction">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Interaction</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessProcess']">
+        <xsl:apply-templates select="//archimate:BusinessProcess">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Process</xsl:with-param>
         </xsl:apply-templates>
         <h2>Business Products</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Contract']">
+        <xsl:apply-templates select="//archimate:Contract">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Contract</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Product']">
+        <xsl:apply-templates select="//archimate:Product">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Product</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:BusinessService']">
+        <xsl:apply-templates select="//archimate:BusinessService">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Business Service</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Value']">
+        <xsl:apply-templates select="//archimate:Value">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
              <xsl:with-param name="type">Value</xsl:with-param>
         </xsl:apply-templates>
         <h2>Applications</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationCollaboration']">
+        <xsl:apply-templates select="//archimate:ApplicationCollaboration">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Collaboration</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationComponent']">
+        <xsl:apply-templates select="//archimate:ApplicationComponent">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Component</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationFunction']">
+        <xsl:apply-templates select="//archimate:ApplicationFunction">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Function</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationInteraction']">
+        <xsl:apply-templates select="//archimate:ApplicationInteraction">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Interaction</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationInterface']">
+        <xsl:apply-templates select="//archimate:ApplicationInterface">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Interface</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:ApplicationService']">
+        <xsl:apply-templates select="//archimate:ApplicationService">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">Application Service</xsl:with-param>
         </xsl:apply-templates>
         <h2>Application Data</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:DataObject']">
+        <xsl:apply-templates select="//archimate:DataObject">
              <xsl:with-param name="color">#b5ffff</xsl:with-param>
              <xsl:with-param name="type">DataObject</xsl:with-param>
         </xsl:apply-templates>
         <h2>Infrastructures</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Artifact']">
+        <xsl:apply-templates select="//archimate:Artifact">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Artifact</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:CommunicationPath']">
+        <xsl:apply-templates select="//archimate:CommunicationPath">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Communication Path</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Device']">
+        <xsl:apply-templates select="//archimate:Device">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Device</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Node']">
+        <xsl:apply-templates select="//archimate:Node">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Node</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:InfrastructureInterface']">
+        <xsl:apply-templates select="//archimate:InfrastructureInterface">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Infrastructure Interface</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Network']">
+        <xsl:apply-templates select="//archimate:Network">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Network</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:InfrastructureService']">
+        <xsl:apply-templates select="//archimate:InfrastructureService">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">Infrastructure Service</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:SystemSoftware']">
+        <xsl:apply-templates select="//archimate:SystemSoftware">
              <xsl:with-param name="color">#c9e7b7</xsl:with-param>
              <xsl:with-param name="type">System Software</xsl:with-param>
         </xsl:apply-templates>
         <h2>Connectors</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:Junction']">
+        <xsl:apply-templates select="//archimate:Junction">
              <xsl:with-param name="color">#dcebeb</xsl:with-param>
              <xsl:with-param name="type">Junction</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:AndJunction']">
+        <xsl:apply-templates select="//archimate:AndJunction">
              <xsl:with-param name="color">#dcebeb</xsl:with-param>
              <xsl:with-param name="type">And Junction</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:OrJunction']">
+        <xsl:apply-templates select="//archimate:OrJunction">
              <xsl:with-param name="color">#dcebeb</xsl:with-param>
              <xsl:with-param name="type">Or Junction</xsl:with-param>
         </xsl:apply-templates>
         <h2>Views</h2>
-        <xsl:apply-templates select="//element[@xsi:type='archimate:DiagramModel']">
+        <xsl:apply-templates select="//archimate:DiagramModel">
              <xsl:with-param name="color">#e0e4e6</xsl:with-param>
              <xsl:with-param name="type">Or Junction</xsl:with-param>
         </xsl:apply-templates>
@@ -186,7 +186,7 @@ e.innerHTML=Date()
         </html>
     </xsl:template>
     
-    <xsl:template match="element[@xsi:type='archimate:DiagramModel']">
+    <xsl:template match="archimate:DiagramModel">
         <xsl:param name="color" />
         <xsl:param name="type" />
         <table width="100%" border="0">
@@ -209,7 +209,7 @@ e.innerHTML=Date()
         <img src="{./@id}.png" />
         <br/><br/><br/><br/>
     </xsl:template>
-    <xsl:template match="element">
+    <xsl:template match="archimate:*">
         <xsl:param name="color" />
         <xsl:param name="type" />
         <table width="100%" border="0">

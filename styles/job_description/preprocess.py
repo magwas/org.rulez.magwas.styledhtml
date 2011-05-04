@@ -8,7 +8,7 @@ print sys.argv
 print sys.version_info
 print __name__
 
-dom = parse(sys.argv[1])
+#dom = parse(sys.argv[1])
 
-elements = dom.getElementsByTagName("element")
+#elements = dom.getElementsByTagName("element")
 

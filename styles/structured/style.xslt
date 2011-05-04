@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template match="/">
         <html>
         <head>
@@ -109,10 +109,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </td></tr>
        </xsl:for-each>
         </table>
-        <xsl:apply-templates select="element[@xsi:type='archimate:DiagramModel']">
+        <xsl:apply-templates select="archimate:DiagramModel">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="element[@xsi:type!='archimate:DiagramModel']">
+        <xsl:apply-templates select="set:difference(archimate:*,archimate:DiagramModel)">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
         <xsl:apply-templates select="folder">
@@ -123,7 +123,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="element[@xsi:type='archimate:DiagramModel']">
+    <xsl:template match="archimate:DiagramModel">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
         <table width="100%" border="0">
         <tr>
@@ -145,11 +145,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="element[@xsi:type!='archimate:DiagramModel']">
+    <xsl:template match="archimate:*">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
         <table width="100%" border="0">
         <tr class="{substring-after(./@xsi:type,':')}">
-        <td width="20%" valign="top"><xsl:value-of select="./@name" /><br/>(<xsl:value-of select="substring-after(./@xsi:type,':')" />)</td>
+        <td width="20%" valign="top"><xsl:value-of select="./@name" /><br/>(<xsl:value-of select="substring-after(name(.),'archimate:')" />)</td>
         <td valign="top"><xsl:copy-of select="./documentation" /></td>
         </tr>
        <xsl:for-each select="property">
