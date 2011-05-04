@@ -35,8 +35,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 
-import org.python.core.PyInteger;
-import org.python.core.PyObject;
+
 import org.python.util.PythonInterpreter;
 
 import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
@@ -48,6 +47,7 @@ import uk.ac.bolton.archimate.model.util.ArchimateResource;
 import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
 import uk.ac.bolton.archimate.editor.utils.HTMLUtils;
 
+import org.rulez.magwas.styledhtml.Widgets;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 
 /**
@@ -96,25 +96,20 @@ public class StyledHtml implements IModelExporter {
 
     @Override
     public void export(IArchimateModel model){
-    		callPython();
         try {
         	String path = Preferences.STORE.getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
-        	System.out.println("1");
         	Transformer transformer = mkTransformer(stylesheet);
         	System.out.println("stylesheet=" + stylesheet.getAbsolutePath());
         	if((!stylesheet.exists())|(transformer == null)) {
         		throw new NoConfigException();
         	}
-        	System.out.println("3");
            	File dir = new File(stylesheet.getParent());
            	File preprocessor = new File(dir,"preprocess.xslt");
-        	System.out.println("preprocessor="+ preprocessor.getAbsolutePath());
-        	Transformer tf = null;
-        	if(preprocessor.exists()) {
-            	System.out.println("5");
+           	File pypreprocessor = new File(dir,"preprocess.py");
+           	Transformer tf = null;           	
+           	if((!pypreprocessor.exists()) && preprocessor.exists()) {
         		tf = mkTransformer(preprocessor);
-            	System.out.println("6.1");
         		if(tf == null) {
         			throw new BadPreprocessorException();
         		}
@@ -122,9 +117,8 @@ public class StyledHtml implements IModelExporter {
           	Boolean ask = Preferences.STORE.getBoolean(IPreferenceConstants.OUT_ASK);
         	String opath = Preferences.STORE.getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
-        	System.out.println("ask="+ask+" opath="+opath);
         	if((!ask) || (opath == null)) {
-        		targetdir = StyledPreferencePage.askSaveFile();
+        		targetdir = Widgets.askSaveFile();
         	} else {
         		targetdir = new File(opath);
         	}
@@ -142,7 +136,6 @@ public class StyledHtml implements IModelExporter {
         	// we get it in xml
         	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);
         	resource.getContents().remove(model);
-        	//work around
         	//enrich the xml
         	NodeList nl = xml.getElementsByTagName("documentation");
         	for(int i=0;i<nl.getLength();i++) {
@@ -171,33 +164,31 @@ public class StyledHtml implements IModelExporter {
             OutputStreamWriter fw = new OutputStreamWriter(os,cs);
             fw.write(str);
             fw.close();
-        	if(tf != null) {
-        		File ofile = new File(targetdir,"model.xml");
+    		File ofile = new File(targetdir,"model.xml");
+            if(pypreprocessor.exists()){
+               	callPython(pypreprocessor,file,ofile);
+               	file = ofile;
+            } else if(tf != null) {
         		doTransformation(file,tf,ofile);
         		file = ofile;
         	}
             File output = new File(targetdir,"index.html");
             doTransformation(file, transformer, output);
         } catch(Exception e) {
-        	StyledPreferencePage.tellProblem("Problem Exporting Model", e.toString());
+        	Widgets.tellProblem("Problem Exporting Model", e.toString());
         	e.printStackTrace();
         }
     }
     
-private void callPython() {
-    	PythonInterpreter interp =
-    	    new PythonInterpreter();
+private void callPython(File script, File in, File out) {
+    	PythonInterpreter interp =  new PythonInterpreter();
 
     	System.out.println("Hello, brave new world");
+    	File pylib = new File(script.getParentFile().getParentFile(),"pylib");
     	interp.exec("import sys");
-    	interp.exec("print sys");
-
-    	interp.set("a", new PyInteger(42));
-    	interp.exec("print a");
-    	interp.exec("x = 2+2");
-    	PyObject x = interp.get("x");
-
-    	System.out.println("x: "+x);
+    	interp.exec("sys.argv=['"+script.getAbsolutePath()+"','"+in.getAbsolutePath()+"','"+out.getAbsolutePath()+"']");
+    	interp.exec("sys.path=['"+pylib.getAbsolutePath()+"']");
+    	interp.execfile(script.getAbsolutePath());
     	System.out.println("Goodbye, cruel world");
     }
 
@@ -225,7 +216,6 @@ private void callPython() {
 
     	// 2. Use the TransformerFactory to process the stylesheet Source and
     	//    	    generate a Transformer.
-    	System.out.println("style=" + style.getAbsolutePath());
     		try {
 				return tFactory.newTransformer
 				            (new javax.xml.transform.stream.StreamSource(style));
@@ -297,14 +287,9 @@ private void callPython() {
     		Image image = DiagramUtils.createImage(dia);
     		String diagramID = dia.getId();
     		File file = new File(targetdir,diagramID+".png");
-            try {
-                ImageLoader loader = new ImageLoader();
-                loader.data = new ImageData[] { image.getImageData() };
-                loader.save(file.getAbsolutePath(), SWT.IMAGE_PNG);
-            }
-            finally {
-                image.dispose();
-            }
+            ImageLoader loader = new ImageLoader();
+            loader.data = new ImageData[] { image.getImageData() };
+            loader.save(file.getAbsolutePath(), SWT.IMAGE_PNG);
     	}
     }
 }

@@ -17,4 +17,4 @@ Export-Package: org.rulez.magwas.styledhtml;
    uk.ac.bolton.archimate.editor.model,
    org.eclipse.swt.widgets"
 Bundle-ClassPath: bin/,
- org.python.pydev.jython_2.0.0.2011040403/jython.jar
+ lib/jython.jar

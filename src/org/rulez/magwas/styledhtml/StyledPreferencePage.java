@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.styledhtml.Widgets;
 
 import uk.ac.bolton.archimate.editor.preferences.Preferences;
 
@@ -130,7 +131,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fOutDirButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	outDir = askSaveFile();
+            	outDir = Widgets.askSaveFile();
             	if(null != outDir) {
             		fOutDirPathLabel.setText(outDir.getAbsolutePath());
             	}
@@ -147,7 +148,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         installButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	File tdir = askSaveFile();
+            	File tdir = Widgets.askSaveFile();
             	if(null != tdir) {
             		bringPackagedStyles(tdir);
             	}
@@ -219,7 +220,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     				copy(p,now);
     			}
 			} catch (IOException ex) {
-				tellProblem("Could not extract contents",ex.toString());
+				Widgets.tellProblem("Could not extract contents",ex.toString());
 				ex.printStackTrace();
 			}
         }
@@ -246,33 +247,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     	return file;
     	
     }
-    /**
-     * Ask user for file name to save to
-     */
-    static public File askSaveFile() {
-    	Shell myshell = Display.getCurrent().getActiveShell();
-        FileDialog dialog = new FileDialog(myshell, SWT.SAVE);
-        dialog.setText("Export Model");
-        dialog.setFilterExtensions(new String[] { "*.*" } );
-        String path = dialog.open();
-        if(path == null) {
-            return null;
-        }
-                
-        File file = new File(path);
-        
-        // Make sure the file does not already exist
-        if(file.exists()) {
-            boolean result = MessageDialog.openQuestion(myshell, "Export Model",
-                    "'" + file +
-                    "' already exists. Are you sure you want to overwrite it?");
-            if(!result) {
-                return null;
-            }
-        }
-        
-        return file;
-    }
     
     /**
      * Ask user for template directory to use
@@ -296,10 +270,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         return checkStyleSheet(myshell, file);
     }
     
-    public static void tellProblem(String title,String message) {
-    	Shell myshell = Display.getCurrent().getActiveShell();
-    	MessageDialog.openInformation(myshell, title,message);
-    }
 
 
 }
