@@ -147,6 +147,7 @@ public class RichExport implements IModelExporter {
     		}
     		String key = p.getAttribute("key");
     		String value = p.getAttribute("value");
+    		System.out.println("property("+key+")="+value);
     		if(key == "objectClass") {
     			getOrCreateElement(xml, m,value);
     		}
@@ -161,7 +162,7 @@ public class RichExport implements IModelExporter {
     	NodeList nl = e.getChildNodes();
     	int l = nl.getLength();
     	List<Element> out = new ArrayList<Element>();
-    	for(int i=0;i>l;i++) {
+    	for(int i=0;i<l;i++) {
     		Node c = nl.item(i);
            	if (Node.ELEMENT_NODE == c.getNodeType()) {
            		System.out.println("childnode="+c);

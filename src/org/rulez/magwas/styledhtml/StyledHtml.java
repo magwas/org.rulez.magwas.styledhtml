@@ -7,9 +7,13 @@
 package org.rulez.magwas.styledhtml;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.xml.transform.Transformer;
@@ -25,7 +29,6 @@ import org.python.util.PythonInterpreter;
 
 import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
 import uk.ac.bolton.archimate.editor.model.IModelExporter;
-import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 
@@ -79,7 +82,7 @@ public class StyledHtml implements IModelExporter {
     @Override
     public void export(IArchimateModel model){
         try {
-        	String path = Preferences.STORE.getString(IPreferenceConstants.STYLE_PATH);
+        	String path = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
         	Transformer transformer = mkTransformer(stylesheet);
         	System.out.println("stylesheet=" + stylesheet.getAbsolutePath());
@@ -96,13 +99,13 @@ public class StyledHtml implements IModelExporter {
         			throw new BadPreprocessorException();
         		}
         	}
-          	Boolean ask = Preferences.STORE.getBoolean(IPreferenceConstants.OUT_ASK);
-        	String opath = Preferences.STORE.getString(IPreferenceConstants.OUT_PATH);
+          	Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getBoolean(IPreferenceConstants.OUT_ASK);
+        	String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
         	if((!ask) || (opath == null)) {
-        		String lastpath = Preferences.STORE.getString(IPreferenceConstants.LAST_STYLED_PATH);
+        		String lastpath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.LAST_STYLED_PATH);
         		if (null == lastpath) {
-        			Preferences.STORE.setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
+        			StyledHtmlPlugin.INSTANCE.getPreferenceStore().setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
         		}
         		targetdir = Widgets.askSaveFile(IPreferenceConstants.LAST_STYLED_PATH,null);
         	} else {
@@ -181,19 +184,30 @@ private void callPython(File script, File in, File out) {
         		createOutputDir(f,td);
         	} else {
         		File outputFile = new File(targetdir,f.getName());
-        		FileReader in = new FileReader(f);
-        		FileWriter out = new FileWriter(outputFile);
-        		int c;
-        		
-        		while ((c = in.read()) != -1)
-        			out.write(c);
-        		
-        		in.close();
-        		out.close();
+        		copyFile(f,outputFile);
         	}
         }
     }
+    private static void copyFile(File f1, File f2) throws IOException{
 
+        InputStream in = new FileInputStream(f1);
+        
+        //For Append the file.
+//        OutputStream out = new FileOutputStream(f2,true);
+
+        //For Overwrite the file.
+        OutputStream out = new FileOutputStream(f2);
+
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0){
+          out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
+        System.out.println("File copied.");
+
+      }
 
     private void saveDiagrams(IArchimateModel model,File targetdir) {
     	List<IDiagramModel> dias = model.getDiagramModels();

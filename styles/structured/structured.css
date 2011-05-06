@@ -1,5 +1,39 @@
 .foldertable {width:100%; border-style:none;}
+.folderdoctable {width:100%; border-style:none;}
 .emptytd {width:4px;background:#eeeeee;}
+.diagramtable {width:100%; border-width: 1px;  border-color: gray;}
+
+.propertytr td {
+    border-width: 1px;
+    border-style: outset;
+    border-color: gray;
+    border-collapse: collapse;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+.doctable {
+    border-width: 1px;
+    border-spacing: 2px;
+    border-style: outset;
+    border-color: gray;
+    border-collapse: separate;
+    background-color: white;
+}
+.doctable th {
+    border-width: 1px;
+    padding: 1px;
+    border-style: inset;
+    border-color: gray;
+    background-color: white;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+.doctable td {
+    border-width: 1px;
+    padding: 1px;
+    border-style: inset;
+    border-color: gray;
+    background-color: white;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
 
 .BusinessActor {background:#ffffb5;}
 .BusinessRole {background:#ffffb5;}

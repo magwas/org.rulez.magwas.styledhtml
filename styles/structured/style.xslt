@@ -10,11 +10,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <body style="font-family:Verdana; font-size:10pt;" width="100%">
         <h1><xsl:value-of select="archimate:model/@name"/></h1>
         <br/>
-        <table width="100%" border="0">
-        <tr>
-        <td valign="top">Purpose</td>
-        <td valign="top"><xsl:copy-of select="/archimate:model/purpose"/></td>
-        </tr>
+        <h1>Purpose</h1>
+        <p><xsl:copy-of select="/archimate:model/purpose"/></p>
+        <xsl:if test="/archimate:model/property">
+        <table>
        <xsl:for-each select="/archimate:model/property">
         <tr><td>
         <xsl:value-of select="./@key" />
@@ -23,6 +22,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </td></tr>
        </xsl:for-each>
         </table>
+        </xsl:if>
         <br/>
         <h1>Table of contents</h1>
         <ol>
@@ -98,11 +98,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
                 <xsl:with-param name="str"><xsl:value-of select="./@name"/></xsl:with-param>
         </xsl:call-template>
         </a>
-        <table width="100%"><tr><td colspan="2">
+        <table class="folderdoctable"><tr><td colspan="2">
         <xsl:copy-of select="./documentation"/>
         </td></tr>
        <xsl:for-each select="property">
-        <tr><td>
+        <tr class="propertytr"><td>
         <xsl:value-of select="./@key" />
         </td><td>
         <xsl:value-of select="./@value" />
@@ -125,11 +125,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
 
     <xsl:template match="archimate:DiagramModel">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
-        <table width="100%" border="0">
+        <table class="diagramtable">
         <tr>
         <td colspan = "2" valign="top"><div align="center"><xsl:value-of select="./@name" /></div></td>
         </tr>
-        <tr> <td colspan = "2" > <img src="{./@id}.png" align="center"/></td></tr>
+        <tr> <td colspan = "2" ><div align="center"> <img src="{./@id}.png"/></div></td></tr>
         <tr>
         <td colspan = "2" valign="top"><xsl:copy-of select="./documentation" /></td>
         </tr>
@@ -147,7 +147,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
 
     <xsl:template match="archimate:*">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
-        <table width="100%" border="0">
+        <table class="doctable">
         <tr class="{substring-after(./@xsi:type,':')}">
         <td width="20%" valign="top"><xsl:value-of select="./@name" /><br/>(<xsl:value-of select="substring-after(name(.),'archimate:')" />)</td>
         <td valign="top"><xsl:copy-of select="./documentation" /></td>

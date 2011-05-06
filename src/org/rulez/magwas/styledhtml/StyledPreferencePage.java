@@ -36,8 +36,6 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.styledhtml.Widgets;
 
-import uk.ac.bolton.archimate.editor.preferences.Preferences;
-
 /**
  * General Preferences Page
  * 
@@ -65,7 +63,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     
 	public StyledPreferencePage() {
-		setPreferenceStore(Preferences.STORE);
+		setPreferenceStore(StyledHtmlPlugin.INSTANCE.getPreferenceStore());
 		
 		self = this;
 	}

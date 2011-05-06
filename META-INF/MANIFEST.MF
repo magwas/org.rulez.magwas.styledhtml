@@ -16,5 +16,7 @@ Export-Package: org.rulez.magwas.styledhtml;
    uk.ac.bolton.archimate.model,
    uk.ac.bolton.archimate.editor.model,
    org.eclipse.swt.widgets"
-Bundle-ClassPath: bin/,
+Bundle-ClassPath: bin,
+ org.rulez.magwas.styledhtml.jar,
  lib/jython.jar
+Bundle-Activator: org.rulez.magwas.styledhtml.StyledHtmlPlugin

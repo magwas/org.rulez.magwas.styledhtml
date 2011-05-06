@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
-import uk.ac.bolton.archimate.editor.preferences.Preferences;
 
 public class Widgets {
 
@@ -19,7 +18,7 @@ public class Widgets {
     	Shell myshell = Display.getCurrent().getActiveShell();
         FileDialog dialog = new FileDialog(myshell, SWT.SAVE);
         dialog.setText("Export Model");
-    	String lastpath = Preferences.STORE.getString(prefname);
+    	String lastpath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(prefname);
     	dialog.setFileName(lastpath);
     	if(null != extensions) {
             dialog.setFilterExtensions(extensions);
@@ -28,7 +27,7 @@ public class Widgets {
         if(path == null) {
             return null;
         }
-        Preferences.STORE.setValue(prefname, path);        
+        StyledHtmlPlugin.INSTANCE.getPreferenceStore().setValue(prefname, path);        
         File file = new File(path);
         
         // Make sure the file does not already exist
