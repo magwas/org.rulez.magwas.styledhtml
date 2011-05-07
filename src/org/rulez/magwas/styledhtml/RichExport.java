@@ -148,8 +148,11 @@ public class RichExport implements IModelExporter {
     		String key = p.getAttribute("key");
     		String value = p.getAttribute("value");
     		System.out.println("property("+key+")="+value);
-    		if(key == "objectClass") {
-    			getOrCreateElement(xml, m,value);
+    		if(key.equals("objectClass")) {
+    			System.out.println("creating "+value);
+    			Element e = getOrCreateElement(xml, m,value);
+    			e.setAttribute("parentid", m.getAttribute("id"));
+    			
     		}
     		if(key.contains(":")) {
     			String[] k = key.split(":",2);
@@ -175,18 +178,21 @@ public class RichExport implements IModelExporter {
     }
     private static void createSubElement(Document doc, Element m, String el, String propname, String value) {
     	Element obj = getOrCreateElement(doc,m,el);
+    	obj.setAttribute("parentid", m.getAttribute("id"));
     	Element prop = getOrCreateElement(doc,obj,propname);
     	prop.setTextContent(value);
     }
     private static Element getOrCreateElement(Document doc, Element m, String value) {
     	List<Element> nl = getChildElementsByTagName(m,value);
-    	
+    	System.out.println("found "+nl.size()+" "+value+" children");
     	if(0 == nl.size()) {
+        	System.out.println("creating it");
     		Element e = doc.createElement(value);
     		m.appendChild(e);
     		return e;
     	}
     	if(1 == nl.size()) {
+        	System.out.println("getting it");
     		return nl.get(0);
         }
     	Widgets.tellProblem("property problem", "objectClass name '"+value+"' is reserved");
