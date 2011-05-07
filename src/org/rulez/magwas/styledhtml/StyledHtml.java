@@ -9,8 +9,6 @@ package org.rulez.magwas.styledhtml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -92,6 +90,7 @@ public class StyledHtml implements IModelExporter {
            	File dir = new File(stylesheet.getParent());
            	File preprocessor = new File(dir,"preprocess.xslt");
            	File pypreprocessor = new File(dir,"preprocess.py");
+           	File policyfile = new File(dir,"policyfile.xml");
            	Transformer tf = null;           	
            	if((!pypreprocessor.exists()) && preprocessor.exists()) {
         		tf = mkTransformer(preprocessor);
