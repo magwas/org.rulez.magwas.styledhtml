@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archimate enhancements" id="7037984b" version="1.4.0">
+  <folder name="Business" id="cb7f204c" type="business">
+    <folder name="Stakeholders" id="f878d39f">
+      <documentation>We can see the players of the game here
+</documentation>
+    </folder>
+    <folder name="Use Cases" id="5fe95bf2"/>
+    <folder name="Document Control" id="be0e739f">
+      <documentation>This part is serves as a </documentation>
+    </folder>
+  </folder>
+  <folder name="Application" id="4bd8be88" type="application">
+    <folder name="Application overview" id="f26c5f63">
+      <element xsi:type="archimate:DiagramModel" id="40b121a8" name="Application overview">
+        <child xsi:type="archimate:DiagramObject" id="ac93f087" archimateElement="4173c76a">
+          <bounds x="312" y="84" width="193" height="169"/>
+          <child xsi:type="archimate:DiagramObject" id="9cc39d7c" archimateElement="72b003ce">
+            <bounds x="26" y="80"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="12661ad2" archimateElement="bd2e073d">
+          <bounds x="516" y="84"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="579e89b0" archimateElement="d7177a48">
+          <bounds x="60" y="84" width="229" height="277"/>
+          <child xsi:type="archimate:DiagramObject" id="7589db91" archimateElement="d3bfc49d">
+            <bounds x="24" y="60"/>
+          </child>
+        </child>
+      </element>
+      <element xsi:type="archimate:ApplicationComponent" id="4173c76a" name="Archi"/>
+      <element xsi:type="archimate:ApplicationComponent" id="d7177a48" name="Styledhtml module"/>
+      <element xsi:type="archimate:ApplicationComponent" id="bd2e073d" name="Enterprise repository"/>
+    </folder>
+    <folder name="report styles" id="280cc4bd">
+      <documentation>The report styles shipped with the styledhtml module
+</documentation>
+      <element xsi:type="archimate:DiagramModel" id="2f63a7d9" name="overview of styles">
+        <child xsi:type="archimate:DiagramObject" id="b216e0ba" archimateElement="d3bfc49d">
+          <bounds x="48" y="72" width="593" height="213"/>
+          <child xsi:type="archimate:DiagramObject" id="e1936bca" archimateElement="17ba5f53">
+            <bounds x="24" y="72"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="a1b04f10" archimateElement="ceee856a">
+            <bounds x="192" y="72"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="a0f8322f" archimateElement="a1656467">
+            <bounds x="360" y="72"/>
+          </child>
+        </child>
+      </element>
+      <element xsi:type="archimate:ApplicationComponent" id="17ba5f53" name="default style">
+        <documentation>The default style gives us the same result as the built-in File/Report/HTML... menu in Archi.
+It is a flat enumeration of elements by architecture level and element type, followed by the diagrams
+</documentation>
+      </element>
+      <element xsi:type="archimate:ApplicationComponent" id="ceee856a" name="structured style">
+        <documentation>The report contains the objects and diagrams in the same structure as they are in the model, with a table of contents.
+
+For each folder it displays
+- any diagram in the folder
+- any element in the folder
+- the contents of the contained folders recursively
+
+If you do not want an item (folder/element) to be displayed (e.g. no important information in the relations), you can add the report:hide attribute with a calue which evaluates to true (1 okay) to the folder. warning: in the future this might be changed to be report:part=hide.
+
+The output might not be nice, but at least easy to overview.
+Cosmetic fixups are welcome, I am not good at visual design.
+
+This is also an example of how one can use xslt to generate a html, and css to give a look to it.
+
+</documentation>
+      </element>
+      <element xsi:type="archimate:ApplicationComponent" id="a1656467" name="sketchtotable style">
+        <documentation>This report style is to present the result of a brainstorming session using Nominal Group Technique (NGT).
+
+See http://en.wikipedia.org/wiki/Nominal_group_technique for NGT.
+
+How to use Archi during the session:
+
+ - Create a Sketch. Assign a property to it with the key 'objectClass', and value 'NGTresult'.
+
+ - In the &quot;sharing ideas&quot; step record each idea on a sticky.
+
+ - In the &quot;group discussion&quot; step organize stickies hierarchically. If idea A is considered to be a subset/instance of idea B, then place A within B. If A and B are in the same group, place them inside the same (possibly newly created) sticky. 
+
+ - In the &quot;voting and ranking&quot; step place an element (we have only actor right now, it is okay) on the sketch. Each vote is represented by a connection between the element and a &quot;main&quot; sticky (which is not inside another one0.
+
+Do not use connections for other purposes.
+
+
+Presentation:
+
+For each sketch having the NGTresult objectClass, a table is written.
+Rows represent a &quot;main&quot; sticky. The first cell contains the ranking (number of connections associated with) the idea.
+In the second cell you can find the content of the sticky. If there are more stickies inside the main one, they are presented hierarchically in a list.
+
+
+possible enhancements (notify me if you want them, and I may implement it)
+
+- We might have a label for a sticky. E.g. if there is a &quot;::&quot; in the contents, then everything before it is the label. it could be displayed in a column.
+- We might allow connections between elements, by designating one connection type to votes (so the others could be used for other purposes.
+- (It needs additional code in Archi) The stickies in the sketch could be automatically turned into archimate elements. By using properties cleverly, even a mapping from sticky color to folder and element type could be done. Note that Phil seems to work on it.
+
+</documentation>
+      </element>
+      <element xsi:type="archimate:ApplicationComponent" id="d3bfc49d" name="Shipped styles"/>
+    </folder>
+    <folder name="Enhancement requests against Archi" id="ac7a16c8">
+      <element xsi:type="archimate:DiagramModel" id="76d1a6e9" name="Archi feature requests">
+        <child xsi:type="archimate:Group" id="f42d7194" name="Supported functionality">
+          <bounds x="60" y="36" width="397" height="140"/>
+          <child xsi:type="archimate:DiagramObject" id="361bb42f" targetConnections="f90771ef" archimateElement="ceee856a">
+            <bounds x="37" y="31"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="14226c06" targetConnections="d98b0bf1" archimateElement="bd2e073d">
+            <bounds x="204" y="31"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="19c936f4" archimateElement="72b003ce">
+          <bounds x="61" y="252" width="396" height="143"/>
+          <child xsi:type="archimate:DiagramObject" id="e7118199" archimateElement="6ac7925c">
+            <bounds x="216" y="36"/>
+            <sourceConnection xsi:type="archimate:Connection" id="d98b0bf1" source="e7118199" target="14226c06" relationship="c24f7f2a"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="4ef82143" archimateElement="b253e41d">
+            <bounds x="36" y="36"/>
+            <sourceConnection xsi:type="archimate:Connection" id="f90771ef" source="4ef82143" target="361bb42f" relationship="fecb10e6"/>
+          </child>
+        </child>
+      </element>
+      <element xsi:type="archimate:ApplicationFunction" id="b253e41d" name="Move around">
+        <documentation>The ability to move objects freely in the model's hierarchy.
+This supports the structured display of views and objects belonging to that view.
+It is used by not just the structured style, which is a base for the majority of report styles used in real life.
+A patch is already submitted
+</documentation>
+      </element>
+      <element xsi:type="archimate:ApplicationFunction" id="6ac7925c" name="Enterprise repository">
+        <documentation>The idea is to have a tag in xml, like &lt;modellibrary
+ref=&quot;https://archimate.myenterprise/modellib.archimate&quot; />
+This tag would reference an archimate xml. When my model is loading, and
+a modellibrary tag is encountered, the referenced model would be loaded,
+and marked as a modellibrary. One could use and copy the entities
+defined there in the local model, but the library would only be
+referenced in report and when the model is saved.
+The access to the model repository would be simple and REST based: a
+load would be GET, a save would be a POST and &quot;save as&quot; would try POST
+first, and PUT if it doesn't succeed. The underlying http library would
+be choosen such that it handles whatever authentication is necessary,
+and access control of the models would be handled on server side so it
+is SEP.
+
+See also:
+http://groups.google.com/group/archi-dev/browse_thread/thread/3eb2d0e315127a3e
+Feature request issued at:
+https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976&amp;atid=1241930</documentation>
+      </element>
+      <element xsi:type="archimate:ApplicationFunction" id="72b003ce" name="Features to be added"/>
+    </folder>
+    <folder name="styledhtml anatomy" id="5ac09ca0">
+      <folder name="Java classes" id="cc9b4c13">
+        <documentation>In a real-world scenario, this low level is often designed in</documentation>
+        <element xsi:type="archimate:ApplicationComponent" id="64c094c8" name="Enricher"/>
+        <element xsi:type="archimate:ApplicationInterface" id="83915b05" name="IPreferenceConstants"/>
+        <element xsi:type="archimate:ApplicationComponent" id="ac4cbac6" name="NSResolver"/>
+        <element xsi:type="archimate:ApplicationComponent" id="c5bb1d0f" name="RichExport"/>
+        <element xsi:type="archimate:ApplicationComponent" id="afebcbc3" name="StyledHtml"/>
+        <element xsi:type="archimate:ApplicationComponent" id="589cf609" name="StyledHtmlPlugin"/>
+        <element xsi:type="archimate:ApplicationComponent" id="0787a1e1" name="StyledPreferencePage"/>
+        <element xsi:type="archimate:ApplicationComponent" id="6a651a1c" name="VarResolver"/>
+        <element xsi:type="archimate:ApplicationComponent" id="4e5276d5" name="Widgets"/>
+      </folder>
+      <element xsi:type="archimate:DiagramModel" id="1bd96a69" name="styledhtml anatomy">
+        <child xsi:type="archimate:DiagramObject" id="c60e80d1" archimateElement="d7177a48">
+          <bounds x="123" y="77" width="682" height="332"/>
+          <sourceConnection xsi:type="archimate:Connection" id="89c0894f" source="c60e80d1" target="3f0eb57c" relationship="a9c981e1"/>
+          <child xsi:type="archimate:DiagramObject" id="3f0eb57c" targetConnections="89c0894f" archimateElement="d3bfc49d">
+            <bounds x="24" y="144"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="dcb53f6a" archimateElement="b882dd33">
+            <bounds x="216" y="52"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="69fddc87" archimateElement="aee68911">
+            <bounds x="492" y="52"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="e41b0906" archimateElement="549b978f">
+            <bounds x="54" y="55"/>
+          </child>
+        </child>
+      </element>
+      <element xsi:type="archimate:ApplicationInterface" id="b882dd33" name="styled html export"/>
+      <element xsi:type="archimate:ApplicationInterface" id="aee68911" name="rich format export"/>
+      <element xsi:type="archimate:ApplicationInterface" id="549b978f" name="Styled preference page"/>
+    </folder>
+  </folder>
+  <folder name="Technology" id="cb60e879" type="technology"/>
+  <folder name="Connectors" id="5dd8c9be" type="connectors"/>
+  <folder name="Relations" id="c790ddf0" type="relations">
+    <element xsi:type="archimate:CompositionRelationship" id="702922fa" name="Composition relation" source="d3bfc49d" target="17ba5f53"/>
+    <element xsi:type="archimate:CompositionRelationship" id="94e189ed" name="Composition relation" source="d3bfc49d" target="ceee856a"/>
+    <element xsi:type="archimate:CompositionRelationship" id="8aab1343" name="Composition relation" source="d3bfc49d" target="a1656467"/>
+    <element xsi:type="archimate:CompositionRelationship" id="a9c981e1" name="Composition relation" source="d7177a48" target="d3bfc49d"/>
+    <element xsi:type="archimate:UsedByRelationship" id="fecb10e6" name="Used By relation" source="b253e41d" target="ceee856a"/>
+    <element xsi:type="archimate:UsedByRelationship" id="c24f7f2a" name="Used By relation" source="6ac7925c" target="bd2e073d"/>
+    <element xsi:type="archimate:CompositionRelationship" id="b90ab107" name="Composition relation" source="72b003ce" target="6ac7925c"/>
+    <element xsi:type="archimate:CompositionRelationship" id="9fe00125" name="Composition relation" source="72b003ce" target="b253e41d"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="31d07f81" name="Assignment relation" source="4173c76a" target="72b003ce"/>
+    <element xsi:type="archimate:CompositionRelationship" id="bea6a05d" name="Composition relation" source="d7177a48" target="b882dd33"/>
+    <element xsi:type="archimate:CompositionRelationship" id="43ed1d38" name="Composition relation" source="d7177a48" target="aee68911"/>
+    <element xsi:type="archimate:CompositionRelationship" id="fb5e5288" name="Composition relation" source="d7177a48" target="549b978f"/>
+  </folder>
+  <folder name="Views" id="931a97bb" type="diagrams"/>
+  <purpose>This model trys to fulfill multiple purposes:
+- Show how Archimate can be used in the goovernance of IT
+- Document the styledhtml Archi module
+- Serve as an example for both of the above
+
+</purpose>
+</archimate:model>

@@ -83,14 +83,13 @@ public class StyledHtml implements IModelExporter {
         	String path = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
         	Transformer transformer = mkTransformer(stylesheet);
-        	System.out.println("stylesheet=" + stylesheet.getAbsolutePath());
         	if((!stylesheet.exists())|(transformer == null)) {
         		throw new NoConfigException();
         	}
            	File dir = new File(stylesheet.getParent());
            	File preprocessor = new File(dir,"preprocess.xslt");
            	File pypreprocessor = new File(dir,"preprocess.py");
-           	File policyfile = new File(dir,"policyfile.xml");
+           	File policyfile = new File(dir,"policy.xml");
            	Transformer tf = null;           	
            	if((!pypreprocessor.exists()) && preprocessor.exists()) {
         		tf = mkTransformer(preprocessor);
@@ -116,7 +115,7 @@ public class StyledHtml implements IModelExporter {
         	createOutputDir(dir, targetdir);
         
         	File file = new File(targetdir,"archirich.xml");
-        	RichExport.export(model,file);
+        	RichExport.export(model,file,policyfile);
         	//save pictures
         	saveDiagrams(model,targetdir);
         	// we get it in xml
@@ -151,7 +150,6 @@ private void callPython(File script, File in, File out) {
     public static Transformer mkTransformer(File style) {
      	// do we use the example code as is? :)
     	// 1. Instantiate a TransformerFactory.
-    	System.out.println("7");
     	TransformerFactory tFactory = 
     	                  javax.xml.transform.TransformerFactory.newInstance();
 
@@ -204,7 +202,6 @@ private void callPython(File script, File in, File out) {
         }
         in.close();
         out.close();
-        System.out.println("File copied.");
 
       }
 

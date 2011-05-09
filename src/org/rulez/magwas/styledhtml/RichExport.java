@@ -16,7 +16,6 @@ import java.nio.charset.Charset;
 import java.io.OutputStreamWriter;
 
 
-
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.Document;
