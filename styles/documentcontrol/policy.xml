@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy name="Sample policy">
+    <description>
+        This is a sample policy, to be used for document control.
+    </description>
+
+    <objectClass name="ArchimateObjectClass">
+        <ancestor class="archimate:DataObject"/>
+        <description>A objectclass</description>
+        <property name="name">
+            <description>The name of the objectClass</description>
+            <default order="0" select="../@name">
+                <description>The name of the parent node</description>
+            </default>
+        </property>
+    </objectClass>
+
+    <objectClass name="objectClass">
+        <ancestor class="archimate:DataObject"/>
+        <description>A objectclass</description>
+        <property name="name">
+            <description>The name of the objectClass</description>
+            <default order="0" select="../@name">
+                <description>The name of the parent node</description>
+            </default>
+        </property>
+        <property name="parent">
+            <description>The ancestor</description>
+<!--
+            <default order="0" select="//*[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name" multi="true">
+-->
+            <default order="0" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name" multi="true">
+                <description>A specialisation relationship points here from the ancestor</description>
+            </default>
+        </property>
+        <property name="attrib">
+            <description>An attribute belonging to the objectClass</description>
+            <default order="0" select="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid" multi="true">
+                <description>A composition relationship points from here to the attribute</description>
+            </default>
+        </property>
+        <property name="description">
+            <description>Documentation for the objectClass</description>
+            <default order="0" select="../documentation" multi="true">
+                <description>The documentation of the parent node</description>
+            </default>
+        </property>
+    </objectClass>
+
+    <objectClass name="attribute">
+        <ancestor class="archimate:DataObject"/>
+        <description>An attribute of an objectclass</description>
+        <property name="def">
+            <description>a default belonging to a attribute</description>
+            <default order="0" select="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid" multi="true">
+                <description>A composition relationship points from here to the attribute</description>
+            </default>
+        </property>
+    </objectClass>
+
+    <objectClass name="report">
+        <ancestor class="folder"/>
+        <description>folder properties for structured report</description>
+        <property name="part" minOccurs="0">
+            <description>The name of the report part for which this folder should be displayed</description>
+        </property>
+    </objectClass>
+
+    <objectClass name="DocumentVersion">
+        <ancestor class="archimate:Product" implicit="no"/>
+        <description>
+            A document version.
+        </description>
+        <property name="releasedate" type="xs:DateTime" minOccurs="0">
+            <description>The issue date of the version</description>
+        </property>
+        <property name="versionnumber" type="xs:string" minOccurs="0">
+            <description>the version number</description>
+            <default order="0" select="../@name">
+                <description>The name of the parent node</description>
+            </default>
+        </property>
+        <property name="authorid" type="xs:string" minOccurs="0">
+            <description>The (id of) the author of the document</description>
+            <default order="0" select="//*[@parentid=//archimate:UsedByRelationship[@target='c400f4ad']/@source]/@parentid">
+                <description>A used by relation should point from the author to the document version</description>
+            </default>
+        </property>
+    </objectClass>
+
+    <objectClass name="OrganisationalUnit">
+        <ancestor class="archimate:BusinessCollaboration"/>
+        <description>
+            Organisational unit
+        </description>
+        <property name="name">
+            <description>The name of the unit</description>
+            <default order="0" select="../@name">
+                <description>The name of the parent node</description>
+            </default>
+        </property>
+    </objectClass>
+
+    <objectClass name="OrganisationalPerson">
+        <ancestor class="archimate:BusinessActor" implicit="no"/>
+        <description>A person belonging to some organisational unit.</description>
+        <property name="name" type="xs:string">
+            <description>The name of the person. </description>
+            <default order="0" select="../@name">
+                <description>The name of the parent element.</description>
+            </default>
+        </property>
+        <property name="organisation" type="xs:string" maxOccurs="1">
+            <description>Which organisational unit the person belongs to (primarily).</description>
+            <default order="0" select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name">
+                <description>More organisational unit contains (Composition) the person, and one of the relations have a property with "primary" property.</description>
+            </default>
+            <default order="1" select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name" multi="true">
+                <description>One organisational unit contains (Composition) the person.</description>
+            </default>
+        </property>
+        <property name="memberOf" auto="true" type="xs:string">
+            <description>Which organisational units (FIXME notimplemented: Business Collaborations, roles) the person belongs to</description>
+            <default order="0" select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name" multi="true">
+                <description>A organisational unit contains (Composition) the person.</description>
+            </default>
+            <default order="1" select="./organisation">
+                <description>The organisation of the person.</description>
+            </default>
+        </property>
+        <property name="position" type="xs:string">
+            <description>position of the person. FIXME: should be computed by the composition relation with the organisation (property or line text).</description>
+        </property>
+    </objectClass>
+
+    <objectClass name="GovernanceStep">
+        <ancestor class="archimate:BusinessEvent"/>
+        <ancestor class="archimate:BusinessProcess"/>
+        <description>
+            A step in a governance process. It is related to some OrganisationalPerson.
+        </description>
+        <property name="actor" type="xs:string" minOccurs="0">
+            <description>The ID of the actor related to the event</description>
+            <default order="0" select="//archimate:UsedByRelationship[@target=$id]/@source" multi="true">
+                <description>An Used By relation points to the process step from the actor</description>
+            </default>
+        </property>
+        <property name="name">
+            <description>The name of the step</description>
+            <default order="0" select="../@name">
+                <description>The name of the parent node</description>
+            </default>
+        </property>
+        <property name="state">
+            <description>The state of the step</description>
+            <default order="0" select="'pending'">
+                <description>The default state is 'pending'</description>
+            </default>
+        </property>
+    </objectClass>
+
+</policy>
