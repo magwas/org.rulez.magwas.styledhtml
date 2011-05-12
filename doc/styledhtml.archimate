@@ -24,9 +24,13 @@
       </element>
       <element xsi:type="archimate:BusinessCollaboration" id="62870b91" name="Archi community"/>
       <element xsi:type="archimate:BusinessCollaboration" id="fbe5dc11" name="Archi users">
+        <documentation>The users of Archi. All and any of them.
+</documentation>
         <property key="objectClass" value="OrganisationalUnit"/>
       </element>
       <element xsi:type="archimate:BusinessCollaboration" id="0ec67e85" name="Archi developers">
+        <documentation>Everyone who develops archi or one of the modules belonging to it.
+</documentation>
         <property key="objectClass" value="OrganisationalUnit"/>
       </element>
       <element xsi:type="archimate:BusinessActor" id="16abaafb" name="Phil Beauvoir">
@@ -43,31 +47,48 @@
           <documentation>A legendary Cardassian architect</documentation>
           <property key="OrganisationalPerson:position" value="Architect"/>
         </element>
-        <element xsi:type="archimate:BusinessCollaboration" id="19fcbcca" name="IT Architecture dept."/>
+        <element xsi:type="archimate:BusinessCollaboration" id="19fcbcca" name="IT Architecture dept.">
+          <documentation>Where you look for an architect.
+</documentation>
+        </element>
         <element xsi:type="archimate:BusinessActor" id="151d0d88" name="Odo">
           <documentation>Chief security officer at Deep Space 9</documentation>
           <property key="OrganisationalPerson:position" value="Chief of Security"/>
         </element>
-        <element xsi:type="archimate:BusinessCollaboration" id="460239bb" name="IT Security dept."/>
+        <element xsi:type="archimate:BusinessCollaboration" id="460239bb" name="IT Security dept.">
+          <documentation>Paranoid geeks.
+</documentation>
+        </element>
         <element xsi:type="archimate:BusinessActor" id="e3bb92f4" name="Benjamin Sisko">
           <documentation>Commanding officer of Deep Space 9</documentation>
           <property key="OrganisationalPerson:position" value="Commanding Officer"/>
         </element>
         <element xsi:type="archimate:BusinessActor" id="8484165f" name="Quark">
+          <documentation>The bar owner</documentation>
           <property key="OrganisationalPerson:position" value="Bar Owner"/>
         </element>
-        <element xsi:type="archimate:BusinessCollaboration" id="bc8e44f0" name="Quark's"/>
-        <element xsi:type="archimate:BusinessCollaboration" id="c3347f07" name="DS9"/>
+        <element xsi:type="archimate:BusinessCollaboration" id="bc8e44f0" name="Quark's">
+          <documentation>The bar at Deep Space 9.
+</documentation>
+        </element>
+        <element xsi:type="archimate:BusinessCollaboration" id="c3347f07" name="DS9">
+          <documentation>The staff of Deep Space 9.
+</documentation>
+        </element>
       </folder>
       <folder name="document governance steps" id="dd60d413">
-        <element xsi:type="archimate:BusinessEvent" id="b2ad7581" name="Business Specification Acceptance"/>
-        <element xsi:type="archimate:BusinessEvent" id="f1864e14" name="Business Specification Overview">
+        <element xsi:type="archimate:BusinessEvent" id="b2ad7581" name="3. Business Specification Acceptance">
+          <documentation>The act of accepting the business specification.</documentation>
+        </element>
+        <element xsi:type="archimate:BusinessEvent" id="f1864e14" name="2. Business Specification Overview">
           <documentation>Overview of the business specification.
 
 </documentation>
           <property key="GovernanceStep:state" value="ongoing"/>
         </element>
-        <element xsi:type="archimate:BusinessProcess" id="f9623e86" name="Creating business specification">
+        <element xsi:type="archimate:BusinessProcess" id="f9623e86" name="1. Creating business specification">
+          <documentation>The process in which the business specification is created.
+</documentation>
           <property key="GovernanceStep:state" value="done"/>
         </element>
       </folder>
@@ -282,10 +303,12 @@ possible enhancements (notify me if you want them, and I may implement it)
       </element>
       <element xsi:type="archimate:ApplicationComponent" id="d3bfc49d" name="Shipped styles"/>
       <element xsi:type="archimate:ApplicationComponent" id="e60c5446" name="documentcontrol style">
-        <documentation>An example style mplementing the usual document control functionality.
+        <documentation>An example style mplementing the usual document control functionality, and the objectclasses.
 
 Lists the versions sorted by version number, then the actors used for two named process steps.
-</documentation>
+
+This example contains a postprocessor written in python.
+It generates a policy file called &quot;newpolicy.xml&quot;.</documentation>
       </element>
     </folder>
     <folder name="Enhancement requests against Archi" id="ac7a16c8">
@@ -424,6 +447,7 @@ FIXME: check for this is not implemented yet.
               <documentation>The id of an attribute belonging to the objectClass</documentation>
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:structural" value="true"/>
+              <property key="attribute:minOccurs" value="0"/>
             </element>
             <element xsi:type="archimate:DataObject" id="d07f34b8" name="A composition relationship points from here to the attribute">
               <property key="default:order" value="0"/>
@@ -483,6 +507,19 @@ The property is represented by the attribute with the same name in the policy fi
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
               <property key="attribute:maxOccurs" value="1"/>
+            </element>
+            <element xsi:type="archimate:DataObject" id="972588ae" name="def">
+              <documentation>The id of a default related to the attribute.
+
+The property is represented by a tag named 'type' in the policy file.
+</documentation>
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
+            </element>
+            <element xsi:type="archimate:DataObject" id="1c076398" name="A composition relation points to the default from the attribute">
+              <property key="default:order" value="0"/>
+              <property key="default:select" value="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"/>
+              <property key="default:multi" value="true"/>
             </element>
           </folder>
           <folder name="default" id="eb7e06ad">
@@ -548,6 +585,15 @@ FIXME: there should be a &quot;type&quot; attribute instead, defaulting to strin
 string: default functionality
 multi: multi=&quot;true&quot;
 structured: works like xsl:copy-of
+</documentation>
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
+              <property key="attribute:maxOccurs" value="1"/>
+            </element>
+            <element xsi:type="archimate:DataObject" id="34b7b9da" name="always">
+              <documentation>Whether to try to always apply the default, even when there is already such a property.
+
+The property is represented by the attribute with the same name in the policy file.
 </documentation>
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
@@ -624,8 +670,8 @@ The name is represented by an attribute named 'name' of the objectClass in the p
             <child xsi:type="archimate:DiagramObject" id="ae4a4670" archimateElement="38feb060">
               <bounds x="504" y="-96" width="192" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a5baa3c4" source="ae4a4670" target="21dbb488" relationship="6f7dcc7d"/>
-              <sourceConnection xsi:type="archimate:Connection" id="b7dd2d4c" source="ae4a4670" target="bab22404" relationship="b89a91cf"/>
               <sourceConnection xsi:type="archimate:Connection" id="6ac9eb0f" source="ae4a4670" target="344b7382" relationship="d5e804a1"/>
+              <sourceConnection xsi:type="archimate:Connection" id="0b79db88" source="ae4a4670" target="bab22404" relationship="c2859fb2"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="300f9d18" targetConnections="25e2ec4f" archimateElement="6ab69c29">
               <bounds x="504" y="96"/>
@@ -633,6 +679,7 @@ The name is represented by an attribute named 'name' of the objectClass in the p
               <sourceConnection xsi:type="archimate:Connection" id="113b041b" source="300f9d18" target="b580e858" relationship="92ab92fc"/>
               <sourceConnection xsi:type="archimate:Connection" id="5a4f68fc" source="300f9d18" target="d8945421" relationship="31d92b7f"/>
               <sourceConnection xsi:type="archimate:Connection" id="53c9e528" source="300f9d18" target="b09e7f83" relationship="30bd4a8c"/>
+              <sourceConnection xsi:type="archimate:Connection" id="4f6f5df0" source="300f9d18" target="a3f90e42" relationship="ed258b49"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="21dbb488" targetConnections="a5baa3c4" archimateElement="7aba69d1">
               <bounds x="912" y="96"/>
@@ -669,7 +716,7 @@ The name is represented by an attribute named 'name' of the objectClass in the p
             <child xsi:type="archimate:DiagramObject" id="9f443352" targetConnections="2041003c" archimateElement="547c517e">
               <bounds x="1020" y="300"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="bab22404" targetConnections="b7dd2d4c" archimateElement="07ee5607">
+            <child xsi:type="archimate:DiagramObject" id="bab22404" targetConnections="0b79db88" archimateElement="07ee5607">
               <bounds x="672" y="96" width="181" height="55"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="344b7382" targetConnections="6ac9eb0f" archimateElement="d2886808">
@@ -688,6 +735,13 @@ The name is represented by an attribute named 'name' of the objectClass in the p
             </child>
             <child xsi:type="archimate:DiagramObject" id="a02470df" targetConnections="351df2e3" archimateElement="d07f34b8">
               <bounds x="99" y="504" width="120" height="97"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="a3f90e42" targetConnections="4f6f5df0" archimateElement="972588ae">
+              <bounds x="448" y="302"/>
+              <sourceConnection xsi:type="archimate:Connection" id="471849e6" source="a3f90e42" target="b27f7e56" relationship="4d9f244b"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="b27f7e56" targetConnections="471849e6" archimateElement="1c076398">
+              <bounds x="589" y="452" width="120" height="102"/>
             </child>
           </element>
         </folder>
@@ -713,7 +767,7 @@ The name is represented by an attribute named 'name' of the objectClass in the p
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
             </element>
-            <element xsi:type="archimate:DataObject" id="ed7baa8b" name="version number">
+            <element xsi:type="archimate:DataObject" id="ed7baa8b" name="versionnumber">
               <documentation>The version number of the document version
 </documentation>
               <property key="attribute:type" value="xs:string"/>
@@ -743,10 +797,20 @@ It is used to describe the related actors by the documentcontrol style.
               <documentation>The state of the step
 
 </documentation>
+              <property key="attribute:type" value="xs:string"/>
             </element>
             <element xsi:type="archimate:DataObject" id="94d50d97" name="the default state is 'not started'">
               <property key="default:order" value="0"/>
               <property key="default:select" value="'not started'"/>
+            </element>
+            <element xsi:type="archimate:DataObject" id="3352c46b" name="actor">
+              <documentation>An actor involved in the step.</documentation>
+              <property key="attribute:type" value="xs:string"/>
+            </element>
+            <element xsi:type="archimate:DataObject" id="4b847644" name="A used by relationship points from the author to the process step">
+              <property key="default:order" value="0"/>
+              <property key="default:select" value="//archimate:UsedByRelationship[@target=$id]/@source"/>
+              <property key="default:multi" value="true"/>
             </element>
           </folder>
           <element xsi:type="archimate:DiagramModel" id="cd90109a" name="Document Control related classes">
@@ -787,6 +851,7 @@ It is used to describe the related actors by the documentcontrol style.
             <child xsi:type="archimate:DiagramObject" id="b594547d" targetConnections="318799e3 7bf878ca a9a78013" archimateElement="dfaa4387">
               <bounds x="624" y="192" width="173" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="64e5a4a9" source="b594547d" target="1f503010" relationship="d0737f98"/>
+              <sourceConnection xsi:type="archimate:Connection" id="a0fa8935" source="b594547d" target="8367a667" relationship="4bb9c8c8"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="382f346b" archimateElement="26cbd61e">
               <bounds x="432" y="28" width="193" height="55"/>
@@ -801,11 +866,18 @@ It is used to describe the related actors by the documentcontrol style.
               <sourceConnection xsi:type="archimate:Connection" id="0dcd1d22" source="1f503010" target="bdf9a804" relationship="cac1f033"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="bdf9a804" targetConnections="0dcd1d22" archimateElement="94d50d97">
-              <bounds x="798" y="406"/>
+              <bounds x="798" y="406" width="120" height="72"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="567e2177" archimateElement="d2886808">
               <bounds x="876" y="28" width="157" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a9a78013" source="567e2177" target="b594547d" relationship="34a38d41"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="8367a667" targetConnections="a0fa8935" archimateElement="3352c46b">
+              <bounds x="653" y="306"/>
+              <sourceConnection xsi:type="archimate:Connection" id="06080331" source="8367a667" target="c9c67f66" relationship="48a220fd"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="c9c67f66" targetConnections="06080331" archimateElement="4b847644">
+              <bounds x="655" y="401" width="120" height="92"/>
             </child>
           </element>
         </folder>
@@ -863,24 +935,26 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
               <documentation>All the organisational units which contain the person.
 
 </documentation>
-              <property key="default:order" value="1"/>
+              <property key="default:order" value="0"/>
               <property key="default:select" value="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"/>
               <property key="default:multi" value="true"/>
             </element>
           </folder>
           <element xsi:type="archimate:DiagramModel" id="0a510e6e" name="Organisation related classes">
-            <child xsi:type="archimate:DiagramObject" id="c90e8f1f" targetConnections="a13cb047 f0407fad" archimateElement="229a7d9f">
+            <child xsi:type="archimate:DiagramObject" id="c90e8f1f" targetConnections="a13cb047" archimateElement="229a7d9f">
               <bounds x="62" y="96" width="187" height="55"/>
+              <sourceConnection xsi:type="archimate:Connection" id="a4853be9" source="c90e8f1f" target="72739109" relationship="a72fd6f2"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="728fcd30" archimateElement="61091710">
               <bounds x="35" y="-12" width="241" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a13cb047" source="728fcd30" target="c90e8f1f" relationship="ce822551"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="862e85a4" targetConnections="30bce67b 0d128f36" archimateElement="e7aa271c">
+            <child xsi:type="archimate:DiagramObject" id="862e85a4" targetConnections="30bce67b" archimateElement="e7aa271c">
               <bounds x="552" y="72" width="190" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="437dd552" source="862e85a4" target="b2ba3e47" relationship="978a73fc"/>
               <sourceConnection xsi:type="archimate:Connection" id="ac45a3b4" source="862e85a4" target="1e9eee9a" relationship="60e12cc0"/>
               <sourceConnection xsi:type="archimate:Connection" id="026605a7" source="862e85a4" target="c28f1fab" relationship="28a022b8"/>
+              <sourceConnection xsi:type="archimate:Connection" id="f46e29b1" source="862e85a4" target="cf141026" relationship="9b7f8ab9"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="4db6b25d" archimateElement="87ea8b49">
               <bounds x="538" y="-12" width="217" height="55"/>
@@ -909,20 +983,46 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
             </child>
             <child xsi:type="archimate:DiagramObject" id="5a88e75d" archimateElement="d2886808">
               <bounds x="336" y="-12" width="157" height="55"/>
-              <sourceConnection xsi:type="archimate:Connection" id="f0407fad" source="5a88e75d" target="c90e8f1f" relationship="ad00dcac"/>
-              <sourceConnection xsi:type="archimate:Connection" id="0d128f36" source="5a88e75d" target="862e85a4" relationship="b2e26ea6"/>
+              <sourceConnection xsi:type="archimate:Connection" id="23d7ab55" source="5a88e75d" target="72739109" relationship="397fbc46"/>
+              <sourceConnection xsi:type="archimate:Connection" id="74feb846" source="5a88e75d" target="cf141026" relationship="b3ed2271"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="72739109" targetConnections="23d7ab55 a4853be9" archimateElement="a99529e2">
+              <bounds x="162" y="215"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="cf141026" targetConnections="74feb846 f46e29b1" archimateElement="9bdf194e">
+              <bounds x="264" y="288"/>
             </child>
           </element>
         </folder>
       </folder>
       <folder name="builtin object classes" id="1362d86c">
-        <element xsi:type="archimate:DataObject" id="61091710" name="archimate:BusinessCollaboration"/>
-        <element xsi:type="archimate:DataObject" id="2a8bae66" name="folder"/>
-        <element xsi:type="archimate:DataObject" id="38feb060" name="archimate:DataObject"/>
-        <element xsi:type="archimate:DataObject" id="87ea8b49" name="archimate:BusinessActor"/>
-        <element xsi:type="archimate:DataObject" id="14a5901d" name="archimate:Product"/>
-        <element xsi:type="archimate:DataObject" id="26cbd61e" name="archimate:BusinessEvent"/>
-        <element xsi:type="archimate:DataObject" id="093d55e2" name="archimate:BusinessProcess"/>
+        <element xsi:type="archimate:DataObject" id="61091710" name="archimate:BusinessCollaboration">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="2a8bae66" name="folder">
+          <documentation>A folder containing some elements of a model.
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="38feb060" name="archimate:DataObject">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="87ea8b49" name="archimate:BusinessActor">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="14a5901d" name="archimate:Product">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="26cbd61e" name="archimate:BusinessEvent">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="093d55e2" name="archimate:BusinessProcess">
+          <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
+</documentation>
+        </element>
       </folder>
       <documentation>There is a sample policy associated with some shipped report styles.
 
@@ -940,12 +1040,6 @@ We describe the objectclasses used in them here.
             <bounds x="336" y="18"/>
             <sourceConnection xsi:type="archimate:Connection" id="f92af5d6" source="bd769e36" target="d9660965" relationship="c017ee74"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="5c2b9a19" archimateElement="38feb060">
-            <bounds x="492" y="18" width="181" height="55"/>
-            <sourceConnection xsi:type="archimate:Connection" id="403c85ec" source="5c2b9a19" target="7cecfbb0" relationship="6f7dcc7d"/>
-            <sourceConnection xsi:type="archimate:Connection" id="13186789" source="5c2b9a19" target="3b871c5f" relationship="b89a91cf"/>
-            <sourceConnection xsi:type="archimate:Connection" id="99b39495" source="5c2b9a19" target="666cfad1" relationship="d5e804a1"/>
-          </child>
           <child xsi:type="archimate:DiagramObject" id="5f1d88c4" archimateElement="87ea8b49">
             <bounds x="732" y="18" width="199" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="a2284fef" source="5f1d88c4" target="9ff7c3fc" relationship="55aa4f44"/>
@@ -962,11 +1056,17 @@ We describe the objectclasses used in them here.
             <bounds x="613" y="114" width="204" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="71de9159" source="7f913a9f" target="ba26c61e" relationship="47fcaa26"/>
           </child>
+          <child xsi:type="archimate:DiagramObject" id="4f54584a" archimateElement="38feb060">
+            <bounds x="504" y="30" width="177" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="392d659c" source="4f54584a" target="7cecfbb0" relationship="6f7dcc7d"/>
+            <sourceConnection xsi:type="archimate:Connection" id="2efe5c60" source="4f54584a" target="666cfad1" relationship="d5e804a1"/>
+            <sourceConnection xsi:type="archimate:Connection" id="3b116cbc" source="4f54584a" target="3b871c5f" relationship="c2859fb2"/>
+          </child>
           <property key="associatedObjectClass" value="ArchimateObjectClass"/>
         </child>
         <child xsi:type="archimate:Group" id="149b4421" name="objectClasses">
           <bounds x="78" y="336" width="985" height="337"/>
-          <child xsi:type="archimate:DiagramObject" id="cb46bef4" targetConnections="5841f4ae 9930af65" archimateElement="229a7d9f">
+          <child xsi:type="archimate:DiagramObject" id="cb46bef4" targetConnections="5841f4ae" archimateElement="229a7d9f">
             <bounds x="72" y="222" width="181" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="d9660965" targetConnections="f92af5d6" archimateElement="c73e22bc">
@@ -978,10 +1078,10 @@ We describe the objectclasses used in them here.
           <child xsi:type="archimate:DiagramObject" id="a43ffc05" targetConnections="41388900" archimateElement="6ab69c29">
             <bounds x="539" y="222"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="7cecfbb0" targetConnections="403c85ec" archimateElement="7aba69d1">
+          <child xsi:type="archimate:DiagramObject" id="7cecfbb0" targetConnections="392d659c" archimateElement="7aba69d1">
             <bounds x="576" y="42"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="9ff7c3fc" targetConnections="a2284fef 567119ea" archimateElement="e7aa271c">
+          <child xsi:type="archimate:DiagramObject" id="9ff7c3fc" targetConnections="a2284fef" archimateElement="e7aa271c">
             <bounds x="744" y="222" width="181" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="107dacf0" targetConnections="01f81c39" archimateElement="e2ac9f22">
@@ -990,16 +1090,15 @@ We describe the objectclasses used in them here.
           <child xsi:type="archimate:DiagramObject" id="ba26c61e" targetConnections="9cdc88db 71de9159 5321aa75" archimateElement="dfaa4387">
             <bounds x="660" y="129" width="169" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="3b871c5f" targetConnections="13186789" archimateElement="07ee5607">
-            <bounds x="744" y="42" width="169" height="55"/>
+          <child xsi:type="archimate:DiagramObject" id="3b871c5f" targetConnections="2882656c 3b116cbc" archimateElement="07ee5607">
+            <bounds x="324" y="150" width="169" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="666cfad1" targetConnections="99b39495" archimateElement="d2886808">
+          <child xsi:type="archimate:DiagramObject" id="666cfad1" targetConnections="2efe5c60" archimateElement="d2886808">
             <bounds x="384" y="42" width="133" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="63251318" source="666cfad1" target="07c1aaa9" relationship="b2a96cda"/>
             <sourceConnection xsi:type="archimate:Connection" id="41388900" source="666cfad1" target="a43ffc05" relationship="176f0c4a"/>
             <sourceConnection xsi:type="archimate:Connection" id="5321aa75" source="666cfad1" target="ba26c61e" relationship="34a38d41"/>
-            <sourceConnection xsi:type="archimate:Connection" id="9930af65" source="666cfad1" target="cb46bef4" relationship="ad00dcac"/>
-            <sourceConnection xsi:type="archimate:Connection" id="567119ea" source="666cfad1" target="9ff7c3fc" relationship="b2e26ea6"/>
+            <sourceConnection xsi:type="archimate:Connection" id="2882656c" source="666cfad1" target="3b871c5f" relationship="a86d70fb"/>
           </child>
           <property key="associatedObjectClass" value="objectClass"/>
         </child>
@@ -1079,18 +1178,23 @@ We describe the objectclasses used in them here.
     <element xsi:type="archimate:SpecialisationRelationship" id="47fcaa26" name="Specialisation relation" source="093d55e2" target="dfaa4387"/>
     <element xsi:type="archimate:CompositionRelationship" id="d0737f98" name="Composition relation" source="dfaa4387" target="e314799d"/>
     <element xsi:type="archimate:CompositionRelationship" id="cac1f033" name="Composition relation" source="e314799d" target="94d50d97"/>
-    <element xsi:type="archimate:SpecialisationRelationship" id="b89a91cf" name="Specialisation relation" source="38feb060" target="07ee5607"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="d5e804a1" name="Specialisation relation" source="38feb060" target="d2886808"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="b2a96cda" name="Specialisation relation" source="d2886808" target="5834034d"/>
     <element xsi:type="archimate:CompositionRelationship" id="397fbc46" name="Composition relation" source="d2886808" target="a99529e2"/>
     <element xsi:type="archimate:CompositionRelationship" id="b3ed2271" name="Composition relation" source="d2886808" target="9bdf194e"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="176f0c4a" name="Specialisation relation" source="d2886808" target="6ab69c29"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="34a38d41" name="Specialisation relation" source="d2886808" target="dfaa4387"/>
-    <element xsi:type="archimate:SpecialisationRelationship" id="ad00dcac" name="Specialisation relation" source="d2886808" target="229a7d9f"/>
-    <element xsi:type="archimate:SpecialisationRelationship" id="b2e26ea6" name="Specialisation relation" source="d2886808" target="e7aa271c"/>
     <element xsi:type="archimate:CompositionRelationship" id="a2dc9886" name="Composition relation" source="5834034d" target="c496f50f"/>
     <element xsi:type="archimate:CompositionRelationship" id="75ac11df" name="Composition relation" source="5834034d" target="80c1003b"/>
     <element xsi:type="archimate:CompositionRelationship" id="25eb7eb0" name="Composition relation" source="80c1003b" target="d07f34b8"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="a86d70fb" name="Specialisation relation" source="d2886808" target="07ee5607"/>
+    <element xsi:type="archimate:CompositionRelationship" id="a72fd6f2" name="Composition relation" source="229a7d9f" target="a99529e2"/>
+    <element xsi:type="archimate:CompositionRelationship" id="ed258b49" name="Composition relation" source="6ab69c29" target="972588ae"/>
+    <element xsi:type="archimate:CompositionRelationship" id="4d9f244b" name="Composition relation" source="972588ae" target="1c076398"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="c2859fb2" name="Specialisation relation" source="38feb060" target="07ee5607"/>
+    <element xsi:type="archimate:CompositionRelationship" id="9b7f8ab9" name="Composition relation" source="e7aa271c" target="9bdf194e"/>
+    <element xsi:type="archimate:CompositionRelationship" id="4bb9c8c8" name="Composition relation" source="dfaa4387" target="3352c46b"/>
+    <element xsi:type="archimate:CompositionRelationship" id="48a220fd" name="Composition relation" source="3352c46b" target="4b847644"/>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="hide"/>

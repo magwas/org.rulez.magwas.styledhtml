@@ -2,27 +2,31 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template match="/">
-        <html>
+        <xhtml>
         <head>
         <title><xsl:value-of select="archimate:model/@name"/></title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         </head>
         <body style="font-family:Verdana; font-size:10pt;" width="100%">
         <h1><xsl:value-of select="archimate:model/@name"/></h1>
-        <h2>Document Versions</h2>
+        <h2>Document Control</h2>
+        <h3>Versions</h3>
         <xsl:call-template name="documentversions"/>
-        <h2>Overviewers</h2>
+        <h3>Participants</h3>
+        <xsl:for-each select="//GovernanceStep">
+            <xsl:sort select="./name"/>
+         <h4><xsl:value-of select="./name"/></h4>
         <xsl:call-template name="documentcontrolusers">
-                <xsl:with-param name="step">Business Specification Overview</xsl:with-param>
+                <xsl:with-param name="step">
+                    <xsl:value-of select="./name"/>
+                </xsl:with-param>
         </xsl:call-template>
-        <h2>Acceptance</h2>
-        <xsl:call-template name="documentcontrolusers">
-                <xsl:with-param name="step">Business Specification Acceptance</xsl:with-param>
-        </xsl:call-template>
+        </xsl:for-each>
+        <h2>ObjectClass Documentation</h2>
         <xsl:call-template name="objectClassDoc"/>
         <xsl:call-template name="objectClassXml"/>
         </body>
-        </html>
+        </xhtml>
     </xsl:template>
     
     <xsl:template name="objectClassXml">
@@ -215,6 +219,7 @@ It could be handled by the policy as well: the actor property of GovernanceStep 
     <xsl:template name="documentcontrolusers">
         <xsl:param name="step" />
         <div class="statelabel">State:</div><div class="state"><xsl:value-of select="//GovernanceStep[name=$step]/state"/></div><br/>
+        Participants:
         <table class="documentcontrolusers">
             <tr><th>
                 Name

@@ -72,6 +72,13 @@ public class StyledHtml implements IModelExporter {
             super("preprocessor.xslt have some problems");
         }
     }
+	public class BadPostprocessorException extends NoConfigException {
+		private static final long serialVersionUID = -1109045666264335290L;
+		public BadPostprocessorException() {
+            super("postprocessor.xslt have some problems");
+        }
+    }
+
 
     public StyledHtml() {
     	
@@ -90,10 +97,19 @@ public class StyledHtml implements IModelExporter {
            	File preprocessor = new File(dir,"preprocess.xslt");
            	File pypreprocessor = new File(dir,"preprocess.py");
            	File policyfile = new File(dir,"policy.xml");
-           	Transformer tf = null;           	
+           	File postprocessor = new File(dir,"postrocess.xslt");
+           	File pypostprocessor = new File(dir,"postprocess.py");
+           	Transformer pretf = null;           	
+           	Transformer posttf = null;           	
            	if((!pypreprocessor.exists()) && preprocessor.exists()) {
-        		tf = mkTransformer(preprocessor);
-        		if(tf == null) {
+        		pretf = mkTransformer(preprocessor);
+        		if(pretf == null) {
+        			throw new BadPreprocessorException();
+        		}
+        	}
+           	if((!pypostprocessor.exists()) && postprocessor.exists()) {
+        		posttf = mkTransformer(postprocessor);
+        		if(posttf == null) {
         			throw new BadPreprocessorException();
         		}
         	}
@@ -123,12 +139,23 @@ public class StyledHtml implements IModelExporter {
             if(pypreprocessor.exists()){
                	callPython(pypreprocessor,file,ofile);
                	file = ofile;
-            } else if(tf != null) {
-        		doTransformation(file,tf,ofile);
+            } else if(pretf != null) {
+        		doTransformation(file,pretf,ofile);
         		file = ofile;
         	}
             File output = new File(targetdir,"index.html");
-            doTransformation(file, transformer, output);
+            File stage;
+            if(pypostprocessor.exists()||(posttf != null)) {
+                stage = new File(targetdir,"stage.html");
+            } else {
+                stage = output;
+            }
+            doTransformation(file, transformer, stage);
+            if(pypostprocessor.exists()){
+               	callPython(pypostprocessor,stage,output);
+            } else if(posttf != null) {
+        		doTransformation(stage,posttf,output);
+        	}
         } catch(Exception e) {
         	Widgets.tellProblem("Problem Exporting Model", e.toString());
         	e.printStackTrace();
@@ -138,13 +165,11 @@ public class StyledHtml implements IModelExporter {
 private void callPython(File script, File in, File out) {
     	PythonInterpreter interp =  new PythonInterpreter();
 
-    	System.out.println("Hello, brave new world");
     	File pylib = new File(script.getParentFile().getParentFile(),"pylib");
     	interp.exec("import sys");
     	interp.exec("sys.argv=['"+script.getAbsolutePath()+"','"+in.getAbsolutePath()+"','"+out.getAbsolutePath()+"']");
     	interp.exec("sys.path=['"+pylib.getAbsolutePath()+"']");
     	interp.execfile(script.getAbsolutePath());
-    	System.out.println("Goodbye, cruel world");
     }
     
     public static Transformer mkTransformer(File style) {

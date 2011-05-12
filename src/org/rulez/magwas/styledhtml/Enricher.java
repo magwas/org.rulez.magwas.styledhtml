@@ -193,7 +193,7 @@ public class Enricher{
     	for(int i=0;i<l;i++) {
     		Element property = (Element) pl.item(i);
     		String propname = property.getAttribute("name");
-    		//System.out.println("looking at "+propname);
+    		//System.out.println(" looking at "+propname);
 			addPropertyToElement(node,property,propname,ancestor);
     	}
     }
@@ -214,7 +214,7 @@ public class Enricher{
     		/*
     		 * try to copy ../[ancestor]/[propname] here
     		 */
-    		//System.out.println("copying "+propname+" from "+ancestor);
+    		//System.out.println("  copying "+propname+" from "+ancestor);
     		String path="../"+ancestor+"/"+propname;
     		NodeList defaults;
 			try {
@@ -224,15 +224,15 @@ public class Enricher{
 				throw new RuntimeException("bad path"+path);
 			}
 			int k=defaults.getLength();
-			//System.out.println("path='"+path+"' items:"+k);
+			//System.out.println("  path='"+path+"' items:"+k);
 			for(int j=0;j<k;j++) {
-				String v = ((Element)defaults.item(0)).getTextContent();
-				//System.out.println("inserting to "+node.getNodeName()+"."+node.getAttribute("parentid")+"("+propname+") from "+ancestor+":"+v);
+				String v = ((Element)defaults.item(j)).getTextContent();
+				//System.out.println("  inserting to "+node.getNodeName()+"."+node.getAttribute("parentid")+"("+propname+") from "+ancestor+":"+v);
 				Element e = xml.createElement(propname);
 				e.setTextContent(v);
 				node.appendChild(e);
 			}
-			return;
+			//return;
     	}
     	NodeList pl = property.getElementsByTagName("default");
     	int i = 0;
@@ -241,6 +241,7 @@ public class Enricher{
     		defitem = defaultItem(pl,i);
     		//System.out.println(" defitem=" + defitem);
     		if(null != defitem) {
+    			//System.out.println("trying it out");
     			tryDefaultForProperty(node,propname,defitem);
     		}
     		i++;
@@ -293,7 +294,7 @@ public class Enricher{
     }
 
     private void issueWarning(Element node, String text, String detail) {
-    	issue("WARNING",node,text,detail);
+    	issue("WARNING",node,text,"");
     }    
     private void issueError(Element node, String text, String detail) {
     	issue("ERROR",node,text,detail);
@@ -301,6 +302,7 @@ public class Enricher{
     private boolean tryDefaultForProperty(Element node, String propname, Element defitem) {
     	int definedproperties = node.getElementsByTagName(propname).getLength();
     	if((definedproperties>0) && (!"true".equals(defitem.getAttribute("always")))) {
+    		//System.out.println("already have this");
     		return true;
     	}
     	String path = defitem.getAttribute("select");
@@ -310,7 +312,7 @@ public class Enricher{
     	}
 		vars.put("id", node.getAttribute("parentid"));
 		
-		//System.out.println("vars="+vars);
+		//System.out.println("propname="+propname);
 		//System.out.println("id="+vars.get("id"));
 		//System.out.println("select="+path+", multi="+multi);
 		try {
@@ -338,6 +340,7 @@ public class Enricher{
 				return true;				
 			} else {
 				String result = (String) xpath.evaluate(path, node, XPathConstants.STRING);
+				//System.out.println("result="+result);
 				if("".equals(result)) {
 					return false;
 				}
