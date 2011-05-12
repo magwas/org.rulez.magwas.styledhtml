@@ -57,7 +57,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
     <xsl:template name="objectClassDoc">
         <xsl:for-each select="//objectClass">
             <h2>objectClass <xsl:value-of select="./name"/></h2>
-            <p><xsl:copy-of select="../description"/></p>
+            <p><xsl:copy-of select="../documentation"/></p>
             Ancestors:
             <ul>
             <xsl:for-each select="./parent">

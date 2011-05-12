@@ -59,10 +59,6 @@
           <documentation>Paranoid geeks.
 </documentation>
         </element>
-        <element xsi:type="archimate:BusinessActor" id="e3bb92f4" name="Benjamin Sisko">
-          <documentation>Commanding officer of Deep Space 9</documentation>
-          <property key="OrganisationalPerson:position" value="Commanding Officer"/>
-        </element>
         <element xsi:type="archimate:BusinessActor" id="8484165f" name="Quark">
           <documentation>The bar owner</documentation>
           <property key="OrganisationalPerson:position" value="Bar Owner"/>
@@ -78,7 +74,10 @@
       </folder>
       <folder name="document governance steps" id="dd60d413">
         <element xsi:type="archimate:BusinessEvent" id="b2ad7581" name="3. Business Specification Acceptance">
-          <documentation>The act of accepting the business specification.</documentation>
+          <documentation>The act of accepting the business specification.
+
+The actor(s) related to this process step is deliberately missing, so you can have an error in the policy check output as an example.
+</documentation>
         </element>
         <element xsi:type="archimate:BusinessEvent" id="f1864e14" name="2. Business Specification Overview">
           <documentation>Overview of the business specification.
@@ -115,7 +114,7 @@ To show the normal overlap between business process stakeholders and governance 
             <bounds x="30" y="114"/>
             <sourceConnection xsi:type="archimate:Connection" id="1df94d14" source="1899faf7" target="302ac1d7" relationship="aa3f5ff4"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="302ac1d7" targetConnections="1df94d14 2f59d225" archimateElement="b2ad7581">
+          <child xsi:type="archimate:DiagramObject" id="302ac1d7" targetConnections="1df94d14" archimateElement="b2ad7581">
             <bounds x="30" y="198"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="7bb47f2d" targetConnections="96d32efc" archimateElement="f9623e86">
@@ -136,10 +135,6 @@ To show the normal overlap between business process stakeholders and governance 
           <bounds x="408" y="324"/>
           <sourceConnection xsi:type="archimate:Connection" id="36bece3d" source="935fe8f6" target="1899faf7" relationship="b5a28f21"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="68827a55" targetConnections="d8bbb01f" archimateElement="e3bb92f4">
-          <bounds x="408" y="408"/>
-          <sourceConnection xsi:type="archimate:Connection" id="2f59d225" source="68827a55" target="302ac1d7" relationship="ccbafaa7"/>
-        </child>
         <child xsi:type="archimate:Group" id="5d3ad7bd" name="Organisational units">
           <bounds x="588" y="36" width="253" height="409"/>
           <child xsi:type="archimate:DiagramObject" id="2ff31a7e" archimateElement="c3347f07">
@@ -151,7 +146,6 @@ To show the normal overlap between business process stakeholders and governance 
             <child xsi:type="archimate:DiagramObject" id="b733c2ac" archimateElement="460239bb">
               <bounds x="24" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="a5da2e3a" source="b733c2ac" target="935fe8f6" relationship="376585bc"/>
-              <sourceConnection xsi:type="archimate:Connection" id="d8bbb01f" source="b733c2ac" target="68827a55" relationship="8cf6acd2"/>
             </child>
           </child>
           <child xsi:type="archimate:DiagramObject" id="1a066504" archimateElement="bc8e44f0">
@@ -249,6 +243,8 @@ The person writing a version is used by the version.
       <element xsi:type="archimate:ApplicationComponent" id="17ba5f53" name="default style">
         <documentation>The default style gives us the same result as the built-in File/Report/HTML... menu in Archi.
 It is a flat enumeration of elements by architecture level and element type, followed by the diagrams
+
+The example report made from this example model can be found at http://archistyledhtml.sourceforge.net/default.html
 </documentation>
       </element>
       <element xsi:type="archimate:ApplicationComponent" id="ceee856a" name="structured style">
@@ -266,6 +262,7 @@ Cosmetic fixups are welcome, I am not good at visual design.
 
 This is also an example of how one can use xslt to generate a html, and css to give a look to it.
 
+You can find an example report output at http://archistyledhtml.sourceforge.net/
 </documentation>
       </element>
       <element xsi:type="archimate:ApplicationComponent" id="a1656467" name="sketchtotable style">
@@ -308,7 +305,10 @@ possible enhancements (notify me if you want them, and I may implement it)
 Lists the versions sorted by version number, then the actors used for two named process steps.
 
 This example contains a postprocessor written in python.
-It generates a policy file called &quot;newpolicy.xml&quot;.</documentation>
+It generates a policy file called &quot;newpolicy.xml&quot;.
+
+See http://archistyledhtml.sourceforge.net/documentcontrol.html for an example.
+</documentation>
       </element>
     </folder>
     <folder name="Enhancement requests against Archi" id="ac7a16c8">
@@ -1129,7 +1129,6 @@ We describe the objectclasses used in them here.
     <element xsi:type="archimate:CompositionRelationship" id="376585bc" name="Composition relation" source="460239bb" target="151d0d88"/>
     <element xsi:type="archimate:UsedByRelationship" id="c4b5224c" name="Used By relation" source="cc2694e8" target="f1864e14"/>
     <element xsi:type="archimate:UsedByRelationship" id="b5a28f21" name="Used By relation" source="151d0d88" target="f1864e14"/>
-    <element xsi:type="archimate:UsedByRelationship" id="ccbafaa7" name="Used By relation" source="e3bb92f4" target="b2ad7581"/>
     <element xsi:type="archimate:UsedByRelationship" id="b213cb5d" name="Used By relation" source="8484165f" target="f1864e14"/>
     <element xsi:type="archimate:CompositionRelationship" id="f60e442d" name="Composition relation" source="bc8e44f0" target="8484165f"/>
     <element xsi:type="archimate:CompositionRelationship" id="dded41f5" name="Composition relation" source="c3347f07" target="19fcbcca"/>
@@ -1141,7 +1140,6 @@ We describe the objectclasses used in them here.
     <element xsi:type="archimate:UsedByRelationship" id="62dcaf3e" name="Used By relation" source="91d6a6a9" target="c400f4ad"/>
     <element xsi:type="archimate:UsedByRelationship" id="92da88e8" name="Used By relation" source="91d6a6a9" target="baf3b224"/>
     <element xsi:type="archimate:UsedByRelationship" id="247b6982" name="Used By relation" source="fbe5dc11" target="f1864e14"/>
-    <element xsi:type="archimate:CompositionRelationship" id="8cf6acd2" name="Composition relation" source="460239bb" target="e3bb92f4"/>
     <element xsi:type="archimate:UsedByRelationship" id="635619ab" name="Used By relation" source="91d6a6a9" target="f9623e86"/>
     <element xsi:type="archimate:CompositionRelationship" id="d3bab346" name="Composition relation" source="d3bfc49d" target="e60c5446"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="ce822551" name="Specialisation relation" source="61091710" target="229a7d9f"/>
