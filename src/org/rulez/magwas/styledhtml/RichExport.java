@@ -63,19 +63,20 @@ public class RichExport implements IModelExporter {
         	if(null == target) {
         		return;
         	}
-        	export(model,target);
+        	EventLog log = new EventLog("Rich export");
+        	export(model,target, log);
     }
-    public static void export(IArchimateModel model, File target) {
-    	export(model,target,null);
+    public static void export(IArchimateModel model, File target, EventLog log) {
+    	export(model,target,null, log);
     }
-    public static void export(IArchimateModel model, File target, File policyfile) {
+    public static void export(IArchimateModel model, File target, File policyfile, EventLog log) {
             try {
           	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
         	resource.getContents().add(model);
         	// we get it in xml
         	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);
         	resource.getContents().remove(model);
-        	Enricher.enrichXML(xml,policyfile);
+        	Enricher.enrichXML(xml,policyfile,log);
         	
         	
         	//save the xml
@@ -97,7 +98,7 @@ public class RichExport implements IModelExporter {
             fw.close();
         } catch(Exception e) {
         	Widgets.tellProblem("Problem Exporting Model", e.toString());
-        	e.printStackTrace();
+        	log.printStackTrace(e);
         }
     }
 }

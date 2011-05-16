@@ -79,6 +79,7 @@ public class StyledHtml implements IModelExporter {
         }
     }
 
+	private EventLog log;
 
     public StyledHtml() {
     	
@@ -86,7 +87,8 @@ public class StyledHtml implements IModelExporter {
 
     @Override
     public void export(IArchimateModel model){
-        try {
+    	log = new EventLog("Styled export");
+    	try {
         	String path = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
         	Transformer transformer = mkTransformer(stylesheet);
@@ -131,7 +133,7 @@ public class StyledHtml implements IModelExporter {
         	createOutputDir(dir, targetdir);
         
         	File file = new File(targetdir,"archirich.xml");
-        	RichExport.export(model,file,policyfile);
+        	RichExport.export(model,file,policyfile,log);
         	//save pictures
         	saveDiagrams(model,targetdir);
         	// we get it in xml
@@ -158,11 +160,12 @@ public class StyledHtml implements IModelExporter {
         	}
         } catch(Exception e) {
         	Widgets.tellProblem("Problem Exporting Model", e.toString());
-        	e.printStackTrace();
+        	log.printStackTrace(e);
         }
+        log.show();
     }
     
-private void callPython(File script, File in, File out) {
+    private void callPython(File script, File in, File out) {
     	PythonInterpreter interp =  new PythonInterpreter();
 
     	File pylib = new File(script.getParentFile().getParentFile(),"pylib");

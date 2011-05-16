@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archimate enhancements" id="7037984b" version="1.4.0">
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archi StyledHtml module" id="7037984b" version="1.4.0">
   <folder name="Business" id="cb7f204c" type="business">
-    <folder name="Stakeholders" id="f878d39f">
+    <folder name="2. Stakeholders" id="f878d39f">
       <documentation>We can see the players of the game here
 </documentation>
       <element xsi:type="archimate:DiagramModel" id="f54a171e" name="Stakeholders">
@@ -40,8 +40,8 @@
         <property key="OrganisationalPerson:position" value="Styled export module developer"/>
       </element>
     </folder>
-    <folder name="Use Cases" id="5fe95bf2"/>
-    <folder name="Document Control" id="be0e739f">
+    <folder name="3. Use Cases" id="5fe95bf2"/>
+    <folder name="4. Document Control" id="be0e739f">
       <folder name="governance stakeholders" id="28a949a8">
         <element xsi:type="archimate:BusinessActor" id="cc2694e8" name="Legate Nesall">
           <documentation>A legendary Cardassian architect</documentation>
@@ -196,6 +196,7 @@ The person writing a version is used by the version.
 </documentation>
       </element>
     </folder>
+    <element xsi:type="archimate:Folder" name="1. Introduction" id="0c1fd16c"/>
   </folder>
   <folder name="Application" id="4bd8be88" type="application">
     <folder name="Application overview" id="f26c5f63">
@@ -1197,10 +1198,25 @@ We describe the objectclasses used in them here.
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="hide"/>
   </folder>
-  <purpose>This model trys to fulfill multiple purposes:
+  <purpose>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.
+You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.
+You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.
+You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.
+
+If any of the above happens, this module and the underlying concepts are developed for you.
+
+This module revolutionizes architecture governance by making possible to 
+- define and document enterprise architecture policies
+- check architecture models against those policies
+- define documentation styles for various stakeholders, and generate those documentations from the model
+- generate configuration and code directly from the model
+
+This model tries to fulfill multiple purposes:
 - Show how Archimate can be used in the goovernance of IT
 - Document the styledhtml Archi module
 - Serve as an example for both of the above
+- The webpage of the styledhtml module is generated from it. See http://archistyledhtml.sourceforge.net/
+
 
 </purpose>
 </archimate:model>

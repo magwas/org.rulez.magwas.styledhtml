@@ -198,7 +198,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     }
 
     private void bringPackagedStyles(File targetdir) {
-    	System.out.println("targetdir="+ targetdir.getAbsolutePath());
+    	//System.out.println("targetdir="+ targetdir.getAbsolutePath());
     	@SuppressWarnings("unchecked")
 		Enumeration<URL> e = Platform.getBundle("org.rulez.magwas.styledhtml").findEntries("/styles/", "*", true);
     	for (; e.hasMoreElements() ;) {

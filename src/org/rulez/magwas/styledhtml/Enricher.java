@@ -29,8 +29,11 @@ public class Enricher{
 	private VarResolver vars;
 	private NSResolver nss;
 	private HashMap<Element,String> associations = new HashMap<Element, String>();
+	private EventLog log;
 	
-	private Enricher(Document infile, File policyfile) {
+	
+	private Enricher(Document infile, File policyfile, EventLog elog) {
+		log = elog;
 		xml=infile;
 		xpath = XPathFactory.newInstance().newXPath(); 
 		vars = new VarResolver();
@@ -47,13 +50,13 @@ public class Enricher{
 				policy = db.parse(policyfile);
 			} catch (Exception e) {
 				Widgets.tellProblem("Problem loading policy file", e.toString());
-	        	e.printStackTrace();
+	        	log.printStackTrace(e);
 			}
 		}
 	}
 	
-	public static void enrichXML(Document infile, File policyfile) {
-		Enricher er = new Enricher(infile,policyfile);
+	public static void enrichXML(Document infile, File policyfile, EventLog log) {
+		Enricher er = new Enricher(infile,policyfile,log);
 		er.enrichDocs();
 		er.enrichXML(infile);
 		er.associateObjects();
@@ -135,7 +138,7 @@ public class Enricher{
     	try {
 			nl=(NodeList) xpath.evaluate(ocpath, group, XPathConstants.NODESET);
 		} catch (XPathExpressionException e) {
-			e.printStackTrace();
+			log.printStackTrace(e);
 			throw new RuntimeException("problem in association");
 		}
 		int l = nl.getLength();
@@ -220,7 +223,7 @@ public class Enricher{
 			try {
 				defaults = (NodeList) xpath.evaluate(path,node,XPathConstants.NODESET);
 			} catch (XPathExpressionException e) {
-				e.printStackTrace();
+				log.printStackTrace(e);
 				throw new RuntimeException("bad path"+path);
 			}
 			int k=defaults.getLength();
@@ -255,15 +258,15 @@ public class Enricher{
     		minOccurs = Integer.parseInt(mo);
     	}
     	if(len<minOccurs) {
-        	issueError((Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
+        	log.issueError((Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
     	} else if (len == 0) {
-        	issueWarning((Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
+        	log.issueWarning((Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
     	}
     	String Mo = property.getAttribute("maxOccurs");
     	if(!"".equals(Mo)) {
         	int maxOccurs = Integer.parseInt(Mo);
         	if(maxOccurs<len) {
-            	issueError((Element) node.getParentNode(),"Too much ("+len+">"+maxOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));        		
+            	log.issueError((Element) node.getParentNode(),"Too much ("+len+">"+maxOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));        		
         	}
     	}
     }
@@ -279,27 +282,12 @@ public class Enricher{
 			}
 			return propdesc;
 		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.printStackTrace(e);
+			throw new RuntimeException("problem with xpath");
 		}
-		return null;
     }
-    private void issue(String qualifier,Element node, String text, String detail) {
-    	//TODO console should be within Archi
-    	System.out.println(qualifier+":"+text+" at "+node.getAttribute("name")+"(id="+node.getAttribute("id")+")");
-    	if (null != detail) {
-    		System.out.println("  "+ detail);
-    	}
-    	
-    }
-
-    private void issueWarning(Element node, String text, String detail) {
-    	issue("WARNING",node,text,"");
-    }    
-    private void issueError(Element node, String text, String detail) {
-    	issue("ERROR",node,text,detail);
-    }
-    private boolean tryDefaultForProperty(Element node, String propname, Element defitem) {
+    
+     private boolean tryDefaultForProperty(Element node, String propname, Element defitem) {
     	int definedproperties = node.getElementsByTagName(propname).getLength();
     	if((definedproperties>0) && (!"true".equals(defitem.getAttribute("always")))) {
     		//System.out.println("already have this");
@@ -318,7 +306,6 @@ public class Enricher{
 		try {
 			if(multi) {
 				NodeList result = (NodeList) xpath.evaluate(path, node, XPathConstants.NODESET);
-				// TODO minOccurs and maxOccurs
 				int l=result.getLength();
 				if(l==0) {
 					//System.out.println("empty nodelist");
@@ -351,17 +338,16 @@ public class Enricher{
 			}
 		} catch (XPathExpressionException e) {
 			// issue warning, with error message compiled from policy
-			e.printStackTrace();
+			log.printStackTrace(e);
 		}
 		return false;
     }
     
     private void addDefaultSubelements () {
-    	//TODO dependencies
     	/*
     	 * This is how we add default sub elements
     	 * 
-    	 * for all objectclasses in policy //TODO a hierarchical walk would be necessary by ancestry
+    	 * for all objectclasses in policy 
     	 *  - for all nodes belonging to that objectclass
     	 *    applyPolicyForElement(node,objectclass)
     	 *    - for all ancestors for the objectclass
@@ -384,7 +370,7 @@ public class Enricher{
     	 */
     	
 		if(null == policy) {
-			Widgets.tellProblem("policy problem","no policy");
+			log.issueWarning(null,"no policy",null);
 			return;
 		}
     	NodeList ol = policy.getElementsByTagName("objectClass");
@@ -419,8 +405,8 @@ public class Enricher{
     		 * check in the policy whether the element type of m is accepted as ancestor of ocname
     		 */
     		String elementtype=m.getNodeName();
-    		if (!checkAncestry(ocname,elementtype)) {
-            	issueError(m,"objectClass "+ocname+" should not be related to "+elementtype,"No such ancestor defined in policy for the objectClass");
+    		if ((!checkAncestry(ocname,elementtype)) && (null != policy)) {
+            	log.issueError(m,"objectClass "+ocname+" should not be related to "+elementtype,"No such ancestor defined in policy for the objectClass");
     		}
     	}
 		return e;
@@ -428,12 +414,14 @@ public class Enricher{
 
     private Element getPolicyFor(String classname) {
 		NodeList nl;
+		if (null == policy) {
+			return null;
+		}
 		try {
 			nl = (NodeList) xpath.evaluate("//objectClass", policy, XPathConstants.NODESET);
 		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
+			log.printStackTrace(e);
+			throw new RuntimeException("problem evaluating xpath");
 		}
 
     	int l = nl.getLength();
