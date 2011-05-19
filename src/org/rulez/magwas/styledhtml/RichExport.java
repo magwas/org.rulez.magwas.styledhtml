@@ -76,7 +76,7 @@ public class RichExport implements IModelExporter {
         	// we get it in xml
         	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);
         	resource.getContents().remove(model);
-        	Enricher.enrichXML(xml,policyfile,log);
+        	Enricher.enrichXML(model,xml,policyfile,log);
         	
         	
         	//save the xml

@@ -13,6 +13,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.browser.LocationEvent;
 import org.eclipse.swt.browser.LocationListener;
@@ -25,7 +27,13 @@ import org.w3c.dom.Node;
 
 import uk.ac.bolton.archimate.editor.browser.BrowserEditorInput;
 import uk.ac.bolton.archimate.editor.browser.IBrowserEditor;
+import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
 import uk.ac.bolton.archimate.editor.ui.services.EditorManager;
+import uk.ac.bolton.archimate.editor.ui.services.UIRequestManager;
+import uk.ac.bolton.archimate.editor.views.tree.TreeSelectionRequest;
+import uk.ac.bolton.archimate.model.IArchimateModel;
+
+import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
 
 public class EventLog {
 
@@ -67,7 +75,13 @@ public class EventLog {
    			 browser.addLocationListener(new LocationListener() {
    				 public void changing(LocationEvent event) {
    					 String loc = event.location;//FIXME highlight this entity in tree and properties view
-   					 System.out.println("trying to open location "+loc);
+   					 //System.out.println("trying to open location "+loc);
+   					 if(loc.startsWith("archimate://")){
+   						 String[] ids = loc.split("//")[1].split("/");
+   						 //System.out.println("modelid="+ids[0]);
+   						 //System.out.println("elementid="+ids[1]);
+   						 focusElement(ids[0],ids[1]);
+   					 }
    					 event.doit = false;
    				 }
    				 public void changed(LocationEvent event) {
@@ -77,11 +91,23 @@ public class EventLog {
    	    		}   
    		 });    	
   	}
-	   private void issue(String qualifier,Element node, String text, String detail) {
-	 
+	
+	private void focusElement(String modelid, String elemid) {
+        for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
+        	String thismodelid = model.getId();
+        	System.out.println("this="+thismodelid);
+        	if(thismodelid.equals(modelid)) {
+                EObject theElementToSelect =  ArchimateModelUtils.getObjectByID(model, elemid);
+                UIRequestManager.INSTANCE.fireRequest(new TreeSelectionRequest(this, new StructuredSelection(theElementToSelect), true));
+                return;
+         	}
+        }
+	}
+
+	   private void issue(String qualifier,IArchimateModel model, Element node, String text, String detail) {
 	    	Node location = messages.createElement("a");
-	    	if(null != node) {
-	    		((Element)location).setAttribute("href","archimate://"+node.getAttribute("id"));
+	    	if((null != node) && (null != model)) {
+	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+node.getAttribute("id"));
 	    		location.setTextContent(" at "+node.getAttribute("name"));
 	    	} else {
 	    		location.setTextContent("");
@@ -108,18 +134,18 @@ public class EventLog {
 	    	browser.setText(repr);
 	   }
 	   
-	    public void issueWarning(Element node, String text, String detail) {
-	    	issue("WARNING",node,text,"");
+	    public void issueWarning(IArchimateModel model,Element node, String text, String detail) {
+	    	issue("WARNING",model,node,text,detail);
 	    }    
-	    public void issueError(Element node, String text, String detail) {
-	    	issue("ERROR",node,text,detail);
+	    public void issueError(IArchimateModel model,Element node, String text, String detail) {
+	    	issue("ERROR",model,node,text,detail);
 	    }
 	    
 	    public void printStackTrace(Exception e) {
 	    	StringWriter sw = new StringWriter();
 	    	PrintWriter pw = new PrintWriter(sw);
 	    	e.printStackTrace(pw);
-	    	issue("ERROR",null,e.getMessage(),sw.toString());
+	    	issue("ERROR",null,null,e.getMessage(),sw.toString());
 	    	show();
 	    }
         

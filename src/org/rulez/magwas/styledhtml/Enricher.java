@@ -20,6 +20,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import uk.ac.bolton.archimate.editor.utils.HTMLUtils;
+import uk.ac.bolton.archimate.model.IArchimateModel;
 
 public class Enricher{
 
@@ -30,9 +31,11 @@ public class Enricher{
 	private NSResolver nss;
 	private HashMap<Element,String> associations = new HashMap<Element, String>();
 	private EventLog log;
+	private IArchimateModel model;
 	
 	
-	private Enricher(Document infile, File policyfile, EventLog elog) {
+	private Enricher(IArchimateModel themodel, Document infile, File policyfile, EventLog elog) {
+		model = themodel;
 		log = elog;
 		xml=infile;
 		xpath = XPathFactory.newInstance().newXPath(); 
@@ -55,8 +58,8 @@ public class Enricher{
 		}
 	}
 	
-	public static void enrichXML(Document infile, File policyfile, EventLog log) {
-		Enricher er = new Enricher(infile,policyfile,log);
+	public static void enrichXML(IArchimateModel model, Document infile, File policyfile, EventLog log) {
+		Enricher er = new Enricher(model,infile,policyfile,log);
 		er.enrichDocs();
 		er.enrichXML(infile);
 		er.associateObjects();
@@ -258,15 +261,15 @@ public class Enricher{
     		minOccurs = Integer.parseInt(mo);
     	}
     	if(len<minOccurs) {
-        	log.issueError((Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
+        	log.issueError(model,(Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
     	} else if (len == 0) {
-        	log.issueWarning((Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
+        	log.issueWarning(model,(Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
     	}
     	String Mo = property.getAttribute("maxOccurs");
     	if(!"".equals(Mo)) {
         	int maxOccurs = Integer.parseInt(Mo);
         	if(maxOccurs<len) {
-            	log.issueError((Element) node.getParentNode(),"Too much ("+len+">"+maxOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));        		
+            	log.issueError(model,(Element) node.getParentNode(),"Too much ("+len+">"+maxOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));        		
         	}
     	}
     }
@@ -370,7 +373,7 @@ public class Enricher{
     	 */
     	
 		if(null == policy) {
-			log.issueWarning(null,"no policy",null);
+			log.issueWarning(null,null,"no policy",null);
 			return;
 		}
     	NodeList ol = policy.getElementsByTagName("objectClass");
@@ -406,7 +409,7 @@ public class Enricher{
     		 */
     		String elementtype=m.getNodeName();
     		if ((!checkAncestry(ocname,elementtype)) && (null != policy)) {
-            	log.issueError(m,"objectClass "+ocname+" should not be related to "+elementtype,"No such ancestor defined in policy for the objectClass");
+            	log.issueError(model,m,"objectClass "+ocname+" should not be related to "+elementtype,"No such ancestor defined in policy for the objectClass");
     		}
     	}
 		return e;
