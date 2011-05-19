@@ -88,6 +88,7 @@ public class StyledHtml implements IModelExporter {
     @Override
     public void export(IArchimateModel model){
     	log = new EventLog("Styled export");
+    	log.issueWarning(null, null, "starting styled export", "now...");
     	try {
         	String path = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
@@ -159,10 +160,10 @@ public class StyledHtml implements IModelExporter {
         		doTransformation(stage,posttf,output);
         	}
         } catch(Exception e) {
-        	Widgets.tellProblem("Problem Exporting Model", e.toString());
+        	Widgets.tellProblem("Problem with Styled export", e.toString());
         	log.printStackTrace(e);
         }
-        log.show();
+        log.show();//FIXME this does not work when the above runs to the catch case.
     }
     
     private void callPython(File script, File in, File out) {

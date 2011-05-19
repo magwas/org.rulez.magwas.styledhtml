@@ -1,5 +1,6 @@
 package org.rulez.magwas.styledhtml;
 
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -105,13 +106,6 @@ public class EventLog {
 	}
 
 	   private void issue(String qualifier,IArchimateModel model, Element node, String text, String detail) {
-	    	Node location = messages.createElement("a");
-	    	if((null != node) && (null != model)) {
-	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+node.getAttribute("id"));
-	    		location.setTextContent(" at "+node.getAttribute("name"));
-	    	} else {
-	    		location.setTextContent("");
-	    	}
 	    	Node tr = messages.createElement("tr");
 	    	msg.appendChild(tr);
 	    	Node qtd = messages.createElement("td");
@@ -121,7 +115,14 @@ public class EventLog {
 	    	ttd.setTextContent(text);
 	    	tr.appendChild(ttd);
 	    	Node ltd = messages.createElement("td");
-	    	ltd.appendChild(location);
+	    	if((null != node) && (null != model)) {
+		    	Node location = messages.createElement("a");
+	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+node.getAttribute("id"));
+	    		location.setTextContent(" at "+node.getAttribute("name"));
+		    	ltd.appendChild(location);
+	    	} else {
+	    		((Element)ltd).setAttribute("colspan", "2");
+	    	}
 	    	tr.appendChild(ltd);
 	    	Node dtd = messages.createElement("td");
 	    	dtd.setTextContent(detail);
@@ -131,6 +132,7 @@ public class EventLog {
 
 	   public void show() {
 	    	String repr = xmlToString(messages);
+	    	
 	    	browser.setText(repr);
 	   }
 	   
@@ -144,9 +146,12 @@ public class EventLog {
 	    public void printStackTrace(Exception e) {
 	    	StringWriter sw = new StringWriter();
 	    	PrintWriter pw = new PrintWriter(sw);
-	    	e.printStackTrace(pw);
-	    	issue("ERROR",null,null,e.getMessage(),sw.toString());
-	    	show();
+	    	e.printStackTrace(pw);    	
+	    	e.printStackTrace();
+	    	String msg = e.getMessage();
+	    	String trace = sw.toString();
+	    	//FIXME: browser.setText does not work if an exception is thrown...
+//	    	issueError(null,null,"message here","trace would come here");
 	    }
         
 	    private String xmlToString(Document doc) {

@@ -37,6 +37,7 @@ public class Enricher{
 	private Enricher(IArchimateModel themodel, Document infile, File policyfile, EventLog elog) {
 		model = themodel;
 		log = elog;
+		log.issueWarning(null, null, "starting enricher", "starting enricher");
 		xml=infile;
 		xpath = XPathFactory.newInstance().newXPath(); 
 		vars = new VarResolver();
