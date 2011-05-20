@@ -87,9 +87,12 @@ public class StyledHtml implements IModelExporter {
 
     @Override
     public void export(IArchimateModel model){
+    	System.out.println("styled export");
     	log = new EventLog("Styled export");
+    	System.out.println("eventlog");
     	log.issueWarning(null, null, "starting styled export", "now...");
     	try {
+        	System.out.println("trying");
         	String path = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylesheet = new File(path);
         	Transformer transformer = mkTransformer(stylesheet);
@@ -104,6 +107,7 @@ public class StyledHtml implements IModelExporter {
            	File pypostprocessor = new File(dir,"postprocess.py");
            	Transformer pretf = null;           	
            	Transformer posttf = null;           	
+        	System.out.println("files");
            	if((!pypreprocessor.exists()) && preprocessor.exists()) {
         		pretf = mkTransformer(preprocessor);
         		if(pretf == null) {
@@ -119,6 +123,7 @@ public class StyledHtml implements IModelExporter {
           	Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getBoolean(IPreferenceConstants.OUT_ASK);
         	String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.OUT_PATH);
         	File targetdir;
+        	System.out.println("targetdir");
         	if((!ask) || (opath == null)) {
         		String lastpath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.LAST_STYLED_PATH);
         		if (null == lastpath) {
@@ -131,11 +136,14 @@ public class StyledHtml implements IModelExporter {
         	if(targetdir == null) {
         		return;
         	}
+        	System.out.println("outputdir");
         	createOutputDir(dir, targetdir);
         
         	File file = new File(targetdir,"archirich.xml");
+        	System.out.println("exporting");
         	RichExport.export(model,file,policyfile,log);
         	//save pictures
+        	System.out.println("savedias");
         	saveDiagrams(model,targetdir);
         	// we get it in xml
     		File ofile = new File(targetdir,"model.xml");
@@ -146,6 +154,7 @@ public class StyledHtml implements IModelExporter {
         		doTransformation(file,pretf,ofile);
         		file = ofile;
         	}
+        	System.out.println("prep");
             File output = new File(targetdir,"index.html");
             File stage;
             if(pypostprocessor.exists()||(posttf != null)) {
@@ -153,12 +162,14 @@ public class StyledHtml implements IModelExporter {
             } else {
                 stage = output;
             }
+        	System.out.println("traf");
             doTransformation(file, transformer, stage);
             if(pypostprocessor.exists()){
                	callPython(pypostprocessor,stage,output);
             } else if(posttf != null) {
         		doTransformation(stage,posttf,output);
         	}
+        	System.out.println("post");
         } catch(Exception e) {
         	Widgets.tellProblem("Problem with Styled export", e.toString());
         	log.printStackTrace(e);

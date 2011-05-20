@@ -22,16 +22,18 @@ import org.eclipse.swt.browser.LocationListener;
 import org.eclipse.swt.browser.ProgressEvent;
 import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.widgets.Display;
+import org.rulez.magwas.archimate.editor.browser.BrowserEditorInput;
+import org.rulez.magwas.archimate.editor.browser.IBrowserEditor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import uk.ac.bolton.archimate.editor.browser.BrowserEditorInput;
-import uk.ac.bolton.archimate.editor.browser.IBrowserEditor;
+
 import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
 import uk.ac.bolton.archimate.editor.ui.services.EditorManager;
 import uk.ac.bolton.archimate.editor.ui.services.UIRequestManager;
 import uk.ac.bolton.archimate.editor.views.tree.TreeSelectionRequest;
+
 import uk.ac.bolton.archimate.model.IArchimateModel;
 
 import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
@@ -45,6 +47,7 @@ public class EventLog {
 	
 	
 	public EventLog(String title) {
+    	System.out.println("EventLog");
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
 		try {
@@ -106,7 +109,7 @@ public class EventLog {
 	}
 
 	   private void issue(String qualifier,IArchimateModel model, Element node, String text, String detail) {
-	    	Node tr = messages.createElement("tr");
+		    Node tr = messages.createElement("tr");
 	    	msg.appendChild(tr);
 	    	Node qtd = messages.createElement("td");
 	    	qtd.setTextContent(qualifier);
@@ -150,8 +153,7 @@ public class EventLog {
 	    	e.printStackTrace();
 	    	String msg = e.getMessage();
 	    	String trace = sw.toString();
-	    	//FIXME: browser.setText does not work if an exception is thrown...
-//	    	issueError(null,null,"message here","trace would come here");
+	    	issueError(null,null,msg,trace);
 	    }
         
 	    private String xmlToString(Document doc) {
