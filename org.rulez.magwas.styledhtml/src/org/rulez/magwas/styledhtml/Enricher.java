@@ -37,7 +37,7 @@ public class Enricher{
 	private Enricher(IArchimateModel themodel, Document infile, File policyfile, EventLog elog) {
 		model = themodel;
 		log = elog;
-		log.issueWarning(null, null, "starting enricher", "starting enricher");
+		log.issueInfo(null, null, "starting enricher", EventLog.now());
 		xml=infile;
 		xpath = XPathFactory.newInstance().newXPath(); 
 		vars = new VarResolver();
@@ -57,6 +57,7 @@ public class Enricher{
 	        	log.printStackTrace(e);
 			}
 		}
+		log.issueInfo(null, null, "enricher done", EventLog.now());
 	}
 	
 	public static void enrichXML(IArchimateModel model, Document infile, File policyfile, EventLog log) {
@@ -103,7 +104,13 @@ public class Enricher{
     private void enrichElement(Element m){
     	// copies element node to an identical node which have nodename of the xsi:type attribute
     	String typename = m.getAttribute("xsi:type");
+    	if(m.getNodeName() == "folder") {
+			//Backward compability
+    		typename = "archimate:Folder";
+    		log.issueInfo(model, m, "old folder renamed", "This model have been saved with an older version of Archi.");
+		}
     	if("" != typename ) {
+    		
     		xml.renameNode(m, namespaceForType(typename), typename);
     		m.removeAttribute("xsi:type");
     	}
@@ -171,7 +178,7 @@ public class Enricher{
     
     
     
-    private void applyPolicyForElement(Element node, Element objectclass,String ancestor) {
+    private void applyPolicyForElement(Element node, Element objectclass, String ancestor) {
     	/*
     	 *    applyPolicyForElement(node,objectclass)
     	 *    - for all ancestors for the objectclass
@@ -185,14 +192,18 @@ public class Enricher{
     	 *       if no defaults have given back anything and minOccurs != 0
     	 *         issue a warning
     	 */
-    	//System.out.println("applyPolicyForElement("+node.getAttribute("parentid")+","+objectclass.getAttribute("name")+","+ancestor+")");
+     	//System.out.println("applyPolicyForElement("+node.getAttribute("parentid")+","+objectclass.getAttribute("name")+","+ancestor+")");
     	NodeList ancestors = objectclass.getElementsByTagName("ancestor");
     	int k = ancestors.getLength();
     	for(int j=0;j<k;j++) {
     		String ancestorname=((Element)ancestors.item(j)).getAttribute("class");
-    		if(!(ancestorname.startsWith("archimate:")||ancestorname.equals("folder"))) {
+    		if(!ancestorname.startsWith("archimate:")) {
         		Element occ=getPolicyFor(ancestorname);
-        		applyPolicyForElement(node, occ,ancestorname);
+        		if(null == occ) {
+        			log.issueError(null, null, "no policy for ancestor "+ancestorname,"for objectClass"+objectclass.getAttribute("name"));
+        			return;
+        		}
+    			applyPolicyForElement(node, occ,ancestorname);
     		}
     	}
     	NodeList pl = objectclass.getElementsByTagName("property");
@@ -264,7 +275,7 @@ public class Enricher{
     	if(len<minOccurs) {
         	log.issueError(model,(Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
     	} else if (len == 0) {
-        	log.issueWarning(model,(Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
+        	log.issueInfo(model,(Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
     	}
     	String Mo = property.getAttribute("maxOccurs");
     	if(!"".equals(Mo)) {

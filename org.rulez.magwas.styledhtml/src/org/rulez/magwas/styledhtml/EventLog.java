@@ -3,6 +3,8 @@ package org.rulez.magwas.styledhtml;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -44,10 +46,17 @@ public class EventLog {
 	private final Browser browser;
 	private Document messages;
 	private Node msg;
-	
-	
+	public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
+
+	  public static String now() {
+	    Calendar cal = Calendar.getInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+	    return sdf.format(cal.getTime());
+
+	  }
+
 	public EventLog(String title) {
-    	System.out.println("EventLog");
+    	//System.out.println("EventLog");
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
 		try {
@@ -69,7 +78,7 @@ public class EventLog {
    			 browser.addProgressListener(new ProgressListener() {
    	    			@Override
    	    			public void completed(ProgressEvent event) {
-   	    				System.out.println(editor.getBrowser().getUrl());
+   	    				//System.out.println(editor.getBrowser().getUrl());
    	    				}
    	    			@Override
    	    			public void changed(ProgressEvent event) {
@@ -95,11 +104,11 @@ public class EventLog {
    	    		}   
    		 });    	
   	}
-	
+
 	private void focusElement(String modelid, String elemid) {
         for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
         	String thismodelid = model.getId();
-        	System.out.println("this="+thismodelid);
+        	//System.out.println("this="+thismodelid);
         	if(thismodelid.equals(modelid)) {
                 EObject theElementToSelect =  ArchimateModelUtils.getObjectByID(model, elemid);
                 UIRequestManager.INSTANCE.fireRequest(new TreeSelectionRequest(this, new StructuredSelection(theElementToSelect), true));
@@ -109,6 +118,7 @@ public class EventLog {
 	}
 
 	   private void issue(String qualifier,IArchimateModel model, Element node, String text, String detail) {
+		   System.out.println(qualifier+":"+ text+"\n"+detail);
 		    Node tr = messages.createElement("tr");
 	    	msg.appendChild(tr);
 	    	Node qtd = messages.createElement("td");
@@ -123,13 +133,14 @@ public class EventLog {
 	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+node.getAttribute("id"));
 	    		location.setTextContent(" at "+node.getAttribute("name"));
 		    	ltd.appendChild(location);
+		    	tr.appendChild(ltd);
+		    	ltd = messages.createElement("td");
 	    	} else {
 	    		((Element)ltd).setAttribute("colspan", "2");
 	    	}
+	    	ltd.setTextContent(detail);
 	    	tr.appendChild(ltd);
-	    	Node dtd = messages.createElement("td");
-	    	dtd.setTextContent(detail);
-	    	tr.appendChild(dtd);
+	    	show();
 	    	//bs.refresh();
 	    }
 
@@ -139,6 +150,9 @@ public class EventLog {
 	    	browser.setText(repr);
 	   }
 	   
+	    public void issueInfo(IArchimateModel model,Element node, String text, String detail) {
+	    	issue("INFO",model,node,text,detail);
+	    }    
 	    public void issueWarning(IArchimateModel model,Element node, String text, String detail) {
 	    	issue("WARNING",model,node,text,detail);
 	    }    

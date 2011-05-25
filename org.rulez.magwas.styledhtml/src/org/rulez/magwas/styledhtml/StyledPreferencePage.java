@@ -15,7 +15,6 @@ import java.net.URL;
 import java.util.Enumeration;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -173,8 +172,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     @Override
     public boolean performOk() {
-    	Shell myshell = Display.getCurrent().getActiveShell();
-    	if ((null != styleDir) && (null != checkStyleSheet(myshell,styleDir))) {
+    	if (null != styleDir ) {
     		getPreferenceStore().setValue(STYLE_PATH, styleDir.getAbsolutePath());
     	}
         getPreferenceStore().setValue(OUT_ASK, fOutDirCheckBox.getSelection());
@@ -236,16 +234,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fout.flush();
         fout.close();
     }
-    
-    private File checkStyleSheet(Shell myshell, File file) {
-    	if (null == StyledHtml.mkTransformer(file)){
-    		MessageDialog.openError(myshell, "Incorrect stylesheet", "This stylesheet is unuseable.");
-    		return null;
-    	}
-    	return file;
-    	
-    }
-    
+        
     /**
      * Ask user for template directory to use
      */
@@ -265,7 +254,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         }    
         
         File file = new File(path);
-        return checkStyleSheet(myshell, file);
+        return file;
     }
     
 

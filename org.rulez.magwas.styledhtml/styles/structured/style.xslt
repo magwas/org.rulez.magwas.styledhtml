@@ -26,13 +26,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <br/>
         <h1>Table of contents</h1>
         <dl>
-        <xsl:for-each select="/archimate:model/folder|/archimate:model/archimate:Folder">
+        <xsl:for-each select="/archimate:model/folder">
             <xsl:call-template name="tocentry">
                 <xsl:with-param name="depth">2</xsl:with-param>
             </xsl:call-template>
         </xsl:for-each>
         </dl>
-        <xsl:for-each select="/archimate:model/folder|/archimate:model/archimate:Folder">
+        <xsl:for-each select="/archimate:model/folder">
             <xsl:call-template name="folderdoc">
                 <xsl:with-param name="depth">2</xsl:with-param>
             </xsl:call-template>
@@ -53,7 +53,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </a>
         </dt>
         <dl>
-        <xsl:for-each select="folder|archimate:Folder">
+        <xsl:for-each select="folder">
             <xsl:sort select="./@name"/>
             <xsl:call-template name="tocentry">
                 <xsl:with-param name="depth"><xsl:value-of select="1 + $depth"/></xsl:with-param>
@@ -111,13 +111,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </td></tr>
        </xsl:for-each>
         </table>
-        <xsl:apply-templates select="archimate:DiagramModel">
+        <xsl:apply-templates select="archimate:DiagramModel|archimate:SketchModel">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="set:difference(archimate:*,archimate:DiagramModel)">
+        <xsl:apply-templates select="set:difference(archimate:*,(archimate:DiagramModel|archimate:SketchModel|folder))">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
-        <xsl:for-each select="folder|archimate:Folder">
+        <xsl:for-each select="folder">
             <xsl:sort select="./@name"/>
             <xsl:call-template name="folderdoc">
                 <xsl:with-param name="depth"><xsl:value-of select="1 + $depth"/></xsl:with-param>
@@ -127,7 +127,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="archimate:DiagramModel">
+    <xsl:template match="archimate:DiagramModel|archimate:SketchModel">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
         <table class="diagramtable">
         <tr>
