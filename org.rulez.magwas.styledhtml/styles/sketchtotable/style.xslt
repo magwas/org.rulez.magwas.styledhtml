@@ -13,6 +13,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
                 <table border="1">
                 <tr><td>Weight</td><td>description</td></tr>
                 <xsl:for-each select="./archimate:SketchModelSticky">
+                        <xsl:sort select="- count(str:tokenize(./@targetConnections, ' ')) - count(./sourceConnection)"/>
                     <tr>
                     <td><xsl:value-of select="count(str:tokenize(./@targetConnections, ' ')) + count(./sourceConnection)"/>
                     </td>

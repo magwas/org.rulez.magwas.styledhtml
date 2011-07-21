@@ -1734,8 +1734,153 @@ See troubleshooting for details.
       <element xsi:type="archimate:ApplicationInterface" id="9d9e8720" name="Output dir"/>
       <element xsi:type="archimate:ApplicationInterface" id="4b027005" name="Template install"/>
     </folder>
+    <folder name="dbexport" id="8b99c89d">
+      <element xsi:type="archimate:DiagramModel" id="fdd2ec44" name="data structure">
+        <child xsi:type="archimate:DiagramObject" id="baab114b" archimateElement="33f4221f">
+          <bounds x="48" y="35" width="781" height="122"/>
+          <child xsi:type="archimate:DiagramObject" id="4b55c485" archimateElement="46a217b3">
+            <bounds x="12" y="36"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="6c511f8a" archimateElement="22516748">
+            <bounds x="180" y="36"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="a48fa53f" archimateElement="359391c5">
+            <bounds x="636" y="35"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="cd03d010" archimateElement="6e87982f">
+            <bounds x="485" y="36"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="34baf1d7" archimateElement="f95d7b28">
+            <bounds x="334" y="35"/>
+          </child>
+        </child>
+      </element>
+      <element xsi:type="archimate:DataObject" id="33f4221f" name="xmlitem">
+        <documentation>An xml item describes a model, entity or attribute.
+</documentation>
+        <property key="objectClass" value="objectClass"/>
+      </element>
+      <element xsi:type="archimate:DataObject" id="46a217b3" name="parent">
+        <documentation>the parent of the item</documentation>
+      </element>
+      <element xsi:type="archimate:DataObject" id="22516748" name="type">
+        <documentation>type of the item
+- model
+- entity
+- attribute
+reference</documentation>
+      </element>
+      <element xsi:type="archimate:DataObject" id="f95d7b28" name="name">
+        <documentation>the name of the item</documentation>
+      </element>
+      <element xsi:type="archimate:DataObject" id="6e87982f" name="value">
+        <documentation>value of the item</documentation>
+      </element>
+      <element xsi:type="archimate:DataObject" id="359391c5" name="label">
+        <documentation>used for access control
+</documentation>
+      </element>
+    </folder>
   </folder>
-  <folder name="Technology" id="cb60e879" type="technology"/>
+  <folder name="Technology" id="cb60e879" type="technology">
+    <element xsi:type="archimate:DiagramModel" id="1be43c52" name="enklávék">
+      <child xsi:type="archimate:Group" id="9fbc0162" name="Domain">
+        <bounds x="24" y="-12" width="181" height="541"/>
+        <child xsi:type="archimate:DiagramObject" id="24e35bbf" targetConnections="91878e17" archimateElement="ee0803c3">
+          <bounds x="12" y="450"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="cb882ed8" targetConnections="ea4a5558" archimateElement="4549d730">
+        <bounds x="29" y="18"/>
+        <sourceConnection xsi:type="archimate:Connection" id="aa670ae3" source="cb882ed8" target="cd0a8149" relationship="0c7c2989"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="cd0a8149" targetConnections="aa670ae3" archimateElement="c5d5dd93">
+        <bounds x="30" y="99"/>
+        <sourceConnection xsi:type="archimate:Connection" id="ba608eef" source="cd0a8149" target="5dd51117" relationship="a3571aa0"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="5dd51117" targetConnections="ba608eef 5e6aa7b0" archimateElement="ab813fad">
+        <bounds x="480" y="187" width="109" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="8868f287" source="5dd51117" target="ec7db8b6" relationship="4a8371f6"/>
+        <sourceConnection xsi:type="archimate:Connection" id="6c8e6480" source="5dd51117" target="16105ace" relationship="ff96f5ff"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="ec7db8b6" targetConnections="8868f287" archimateElement="167953b1">
+        <bounds x="42" y="267"/>
+        <sourceConnection xsi:type="archimate:Connection" id="96eac892" source="ec7db8b6" target="9ac543b1" relationship="7785ed65"/>
+        <sourceConnection xsi:type="archimate:Connection" id="91878e17" source="ec7db8b6" target="24e35bbf" relationship="86d021f5"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="9ac543b1" targetConnections="96eac892" archimateElement="d5495247">
+        <bounds x="480" y="348" width="97" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="fc551106" source="9ac543b1" target="16105ace" relationship="40813629"/>
+      </child>
+      <child xsi:type="archimate:Group" id="0419867e" name="Internet domain">
+        <bounds x="268" y="-12" width="205" height="181"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="a01712c8" targetConnections="e782b174" archimateElement="81f41e1b">
+        <bounds x="311" y="16"/>
+        <sourceConnection xsi:type="archimate:Connection" id="35b5385b" source="a01712c8" target="21bbf1b2" relationship="6c9a0cb6"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="21bbf1b2" targetConnections="35b5385b" archimateElement="352ac584">
+        <bounds x="312" y="103"/>
+        <sourceConnection xsi:type="archimate:Connection" id="5e6aa7b0" source="21bbf1b2" target="5dd51117" relationship="77339e58"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="07338cf4" archimateElement="428e6b47">
+        <bounds x="276" y="-72" width="301" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="e782b174" source="07338cf4" target="a01712c8" relationship="43219cd1"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="070b7929" archimateElement="20860932">
+        <bounds x="12" y="-72" width="217" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="ea4a5558" source="070b7929" target="cb882ed8" relationship="2577d201"/>
+        <sourceConnection xsi:type="archimate:Connection" id="de5c9d9a" source="070b7929" target="8c43b9d7" relationship="ebc76ef4"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="16105ace" targetConnections="fc551106 6c8e6480" archimateElement="70fcc23d">
+        <bounds x="600" y="432"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="80e79c99" targetConnections="23c7ae48" archimateElement="4c84af42">
+        <bounds x="624" y="267" width="169" height="106"/>
+        <child xsi:type="archimate:DiagramObject" id="89e25601" archimateElement="7d68f1e4">
+          <bounds x="12" y="48"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="8c43b9d7" targetConnections="de5c9d9a" archimateElement="04b3a02e">
+        <bounds x="600" y="45" width="181" height="143"/>
+        <sourceConnection xsi:type="archimate:Connection" id="23c7ae48" source="8c43b9d7" target="80e79c99" relationship="168cd2ba"/>
+        <child xsi:type="archimate:DiagramObject" id="63003d28" archimateElement="aef151da">
+          <bounds x="12" y="60"/>
+        </child>
+      </child>
+    </element>
+    <element xsi:type="archimate:Network" id="4549d730" name="web server (intra)"/>
+    <element xsi:type="archimate:Network" id="c5d5dd93" name="app frontend (intra)"/>
+    <element xsi:type="archimate:Network" id="ab813fad" name="frontend integráció"/>
+    <element xsi:type="archimate:Network" id="167953b1" name="app backend"/>
+    <element xsi:type="archimate:Network" id="d5495247" name="backend integráció"/>
+    <element xsi:type="archimate:Network" id="ee0803c3" name="perzisztencia"/>
+    <element xsi:type="archimate:Network" id="81f41e1b" name="web szerver (internet)"/>
+    <element xsi:type="archimate:Network" id="352ac584" name="app frontend (internet)"/>
+    <element xsi:type="archimate:Network" id="428e6b47" name="internet"/>
+    <element xsi:type="archimate:Network" id="20860932" name="intranet"/>
+    <element xsi:type="archimate:Network" id="70fcc23d" name="integráció perzisztencia"/>
+    <element xsi:type="archimate:Network" id="4c84af42" name="resource management backend">
+      <documentation>legato, ovo, nagios, ilo
+</documentation>
+    </element>
+    <element xsi:type="archimate:Network" id="04b3a02e" name="res. mgmt frontend">
+      <documentation>jumphostok
+felület nagios, tivoli, ...
+</documentation>
+    </element>
+    <element xsi:type="archimate:CommunicationPath" id="aef151da" name="management protocols">
+      <documentation>ssh
+https</documentation>
+    </element>
+    <element xsi:type="archimate:CommunicationPath" id="7d68f1e4" name="mgmt prots">
+      <documentation>ssh https
+FIXME legato
+FIXME nagios
+FIXME ovo
+FIXME stb</documentation>
+    </element>
+  </folder>
   <folder name="Connectors" id="5dd8c9be" type="connectors">
     <property key="report:part" value="structured:hide"/>
     <element xsi:type="archimate:OrJunction" id="f780d28c" name="is there anything you can add?"/>
@@ -1894,6 +2039,95 @@ See troubleshooting for details.
     <element xsi:type="archimate:RealisationRelationship" id="d39e4f02" name="Realisation relation" source="91d6a6a9" target="baf3b224"/>
     <element xsi:type="archimate:UsedByRelationship" id="1d4f117f" name="Used By relation" source="61cdef08" target="b764bde9"/>
     <element xsi:type="archimate:UsedByRelationship" id="909597d0" name="Used By relation" source="61cdef08" target="a2276966"/>
+    <element xsi:type="archimate:CompositionRelationship" id="bd6b9455" name="Composition relation" source="33f4221f" target="46a217b3"/>
+    <element xsi:type="archimate:CompositionRelationship" id="05315aca" name="Composition relation" source="33f4221f" target="22516748"/>
+    <element xsi:type="archimate:CompositionRelationship" id="9e2644eb" name="Composition relation" source="33f4221f" target="359391c5"/>
+    <element xsi:type="archimate:CompositionRelationship" id="cadb0f11" name="Composition relation" source="33f4221f" target="6e87982f"/>
+    <element xsi:type="archimate:CompositionRelationship" id="843013a4" name="Composition relation" source="33f4221f" target="f95d7b28"/>
+    <element xsi:type="archimate:AssociationRelationship" id="2577d201" name="Association relation" source="20860932" target="4549d730">
+      <documentation>intra - > ws
+ https
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="0c7c2989" name="Association relation" source="4549d730" target="c5d5dd93">
+      <documentation>ws -> fe
+http
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="43219cd1" name="Association relation" source="428e6b47" target="81f41e1b">
+      <documentation>inter -> ws
+https
+http (csak statikus tartalomra)</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="6c9a0cb6" name="Association relation" source="81f41e1b" target="352ac584">
+      <documentation>ws ->fe
+http
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="a3571aa0" name="Association relation" source="c5d5dd93" target="ab813fad">
+      <documentation>fe -> fe int
+https null cipher, kliens cert auth
+     fölötte soap, alkalmazás specifiku msg, a soabp felé CDM
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="77339e58" name="Association relation" source="352ac584" target="ab813fad">
+      <documentation>fe -> fe int
+ https, null cipher, kliens cert auth
+   fölötte soap, alkalmazás specifiku msg, a soabp felé CDM
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="4a8371f6" name="Association relation" source="ab813fad" target="167953b1">
+      <documentation>fe int -> be
+ https, null cipher, kliens cert auth
+     fölötte soap, alkalmazás specifiku msg, a soabp től CDM
+
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="7785ed65" name="Association relation" source="167953b1" target="d5495247">
+      <documentation>be int -> be
+ 1. tibco ADB (natív sqlnet) tibco felől
+ 2. tibco JDBC tibco felől
+   2.a natív postgres
+   2.b natív mysql
+ 3.. MQ/SSL MQ felől
+
+be -> be in
+ 1. WS (https zero cypher, kliens cert auth, soap, alkalmazás msg format)
+
+
+
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="86d021f5" name="Association relation" source="167953b1" target="ee0803c3">
+      <documentation>natív db forgalmak authentikáció minden perzisztenciánál
+app backend -> perzisztencia
+ 1. natív sqlnet
+ 2. natív postgres
+ 3. natív mysql
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="40813629" name="Association relation" source="d5495247" target="70fcc23d">
+      <documentation>be in -> int. perz
+ natív sqlnet
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="ff96f5ff" name="Association relation" source="ab813fad" target="70fcc23d">
+      <documentation>fe int -> int. perz
+ natív sqlnet
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="ebc76ef4" name="Association relation" source="20860932" target="04b3a02e">
+      <documentation>authentikált ssh, rdp
+authentikált https
+</documentation>
+    </element>
+    <element xsi:type="archimate:AssociationRelationship" id="168cd2ba" name="Association relation" source="04b3a02e" target="4c84af42">
+      <documentation>fe->be
+ssh
+https
+FIxme
+</documentation>
+    </element>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>

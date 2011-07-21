@@ -6,7 +6,7 @@
         <tr>
         <td colspan = "2" valign="top"><div align="center"><xsl:value-of select="./@name" /></div></td>
         </tr>
-        <tr> <td colspan = "2" ><div align="center"> <img src="{./@id}.png"/></div></td></tr>
+        <tr> <td colspan = "2" ><div align="center"> <img src="{./@id}.png" width="100%"/></div></td></tr>
         <tr>
         <td colspan = "2" valign="top"><xsl:copy-of select="./documentation" /></td>
         </tr>
