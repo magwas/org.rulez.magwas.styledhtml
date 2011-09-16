@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.rulez.magwas.styledhtml.EventLog;
 import org.rulez.magwas.styledhtml.RichExport;
 import org.w3c.dom.Element;
 
@@ -21,7 +22,8 @@ public class Export extends Step {
 		String keep=arg0.getAttribute("keep");
 		File policyfile = getFileFor(arg0,"policy",null,factory.styledir,current);
 		File tfile = getFileFor(arg0,"target",null,factory.targetdir,current);
-		if(null == tfile) return;
+		factory.log.issueInfo(null, null, "target="+tfile.getAbsolutePath(), EventLog.now());
+
 
 		if("".equals(style)||"rich".equals(style)) {
         	RichExport.export(factory.model,tfile,policyfile,factory.log);

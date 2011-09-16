@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archi StyledHtml module" id="7037984b" version="1.4.0">
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archi StyledHtml module" id="7037984b" version="2.0.0">
   <folder name="Business" id="cb7f204c" type="business">
     <folder name="3. Stakeholders" id="f878d39f">
       <documentation>We can see the players of the game here
 </documentation>
-      <element xsi:type="archimate:DiagramModel" id="f54a171e" name="Stakeholders">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="f54a171e" name="Stakeholders">
         <child xsi:type="archimate:DiagramObject" id="0c331c71" archimateElement="62870b91">
           <bounds x="225" y="60" width="448" height="265"/>
           <child xsi:type="archimate:DiagramObject" id="02cbf7e0" archimateElement="fbe5dc11">
@@ -42,7 +42,7 @@
     </folder>
     <folder name="2 Use Cases" id="5fe95bf2">
       <folder name="0. Installation" id="1befebae">
-        <element xsi:type="archimate:DiagramModel" id="39b45e09" name="installation">
+        <element xsi:type="archimate:ArchimateDiagramModel" id="39b45e09" name="installation">
           <child xsi:type="archimate:DiagramObject" id="312100eb" archimateElement="135eefa1">
             <bounds x="12" y="24" width="781" height="301"/>
             <sourceConnection xsi:type="archimate:Connection" id="4b0de5ed" source="312100eb" target="6335a3d2" relationship="ee8b72e8"/>
@@ -148,7 +148,7 @@ http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</documentation
         </element>
       </folder>
       <folder name="1. Configuration" id="7b1f1711">
-        <element xsi:type="archimate:DiagramModel" id="82da47db" name="Configuration">
+        <element xsi:type="archimate:ArchimateDiagramModel" id="82da47db" name="Configuration">
           <child xsi:type="archimate:DiagramObject" id="65a82167" archimateElement="e18c6fa0">
             <bounds y="120" width="169" height="232"/>
             <sourceConnection xsi:type="archimate:Connection" id="e2b75ab9" source="65a82167" target="8da558b0" relationship="7b21adad"/>
@@ -234,7 +234,7 @@ You can use one of the provided styles as a starting point.
         </element>
       </folder>
       <folder name="2. Create a report" id="16d81164">
-        <element xsi:type="archimate:DiagramModel" id="3f087392" name="Create a report">
+        <element xsi:type="archimate:ArchimateDiagramModel" id="3f087392" name="Create a report">
           <child xsi:type="archimate:DiagramObject" id="da905d6c" targetConnections="9bcfcd63 67f2c7ad 0bcda955" archimateElement="9f9acbbf">
             <bounds x="180" y="84"/>
             <sourceConnection xsi:type="archimate:Connection" id="8dc7a739" source="da905d6c" target="289d1181" relationship="ea1a904a"/>
@@ -310,7 +310,7 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
         </element>
       </folder>
       <folder name="3. Troubleshooting" id="8666b00c">
-        <element xsi:type="archimate:DiagramModel" id="12cc0a0a" name="Troubleshooting">
+        <element xsi:type="archimate:ArchimateDiagramModel" id="12cc0a0a" name="Troubleshooting">
           <child xsi:type="archimate:DiagramObject" id="567edf05" targetConnections="93a6c213" archimateElement="e4b300fb">
             <bounds x="48" y="112"/>
             <sourceConnection xsi:type="archimate:Connection" id="1debd499" source="567edf05" target="ae046620" relationship="5c74e971"/>
@@ -509,7 +509,7 @@ Note that as the application itself is about document control in a way, sometime
 To show the normal overlap between business process stakeholders and governance actors (the business itself) we use real persons.
 
 </documentation>
-      <element xsi:type="archimate:DiagramModel" id="951f29b8" name="Document control process">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="951f29b8" name="Document control process">
         <child xsi:type="archimate:Group" id="b0afc80b" name="Document governance events">
           <bounds x="80" y="20" width="230" height="409"/>
           <child xsi:type="archimate:DiagramObject" id="1899faf7" targetConnections="7262eb22 83d7bc44 36bece3d e2938063 e03fb957" archimateElement="f1864e14">
@@ -573,7 +573,7 @@ Note that in a bigger enterprise the governance actors would be defined in anoth
 
 </documentation>
       </element>
-      <element xsi:type="archimate:DiagramModel" id="88bba172" name="Version control">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="88bba172" name="Version control">
         <child xsi:type="archimate:DiagramObject" id="5611c6f5" archimateElement="91d6a6a9">
           <bounds x="60" y="97"/>
           <sourceConnection xsi:type="archimate:Connection" id="bd86b974" source="5611c6f5" target="0056a758" relationship="28e4c025"/>
@@ -764,7 +764,7 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
   </folder>
   <folder name="Application" id="4bd8be88" type="application">
     <folder name="Application overview" id="f26c5f63">
-      <element xsi:type="archimate:DiagramModel" id="40b121a8" name="Application overview">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="40b121a8" name="Application overview">
         <child xsi:type="archimate:DiagramObject" id="ac93f087" archimateElement="4173c76a">
           <bounds x="312" y="84" width="193" height="169"/>
           <child xsi:type="archimate:DiagramObject" id="9cc39d7c" archimateElement="72b003ce">
@@ -796,7 +796,7 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
     <folder name="report styles" id="280cc4bd">
       <documentation>The report styles shipped with the styledhtml module
 </documentation>
-      <element xsi:type="archimate:DiagramModel" id="2f63a7d9" name="overview of styles">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="2f63a7d9" name="overview of styles">
         <child xsi:type="archimate:DiagramObject" id="b216e0ba" archimateElement="d3bfc49d">
           <bounds x="48" y="72" width="661" height="213"/>
           <child xsi:type="archimate:DiagramObject" id="e1936bca" archimateElement="17ba5f53">
@@ -885,7 +885,7 @@ See http://archistyledhtml.sourceforge.net/documentcontrol.html for an example.
       </element>
     </folder>
     <folder name="Enhancement requests against Archi" id="ac7a16c8">
-      <element xsi:type="archimate:DiagramModel" id="76d1a6e9" name="Archi feature requests">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="76d1a6e9" name="Archi feature requests">
         <child xsi:type="archimate:Group" id="f42d7194" name="Supported functionality">
           <bounds x="60" y="36" width="397" height="140"/>
           <child xsi:type="archimate:DiagramObject" id="361bb42f" targetConnections="f90771ef" archimateElement="ceee856a">
@@ -949,7 +949,7 @@ https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976
         <element xsi:type="archimate:ApplicationComponent" id="6a651a1c" name="VarResolver"/>
         <element xsi:type="archimate:ApplicationComponent" id="4e5276d5" name="Widgets"/>
       </folder>
-      <element xsi:type="archimate:DiagramModel" id="1bd96a69" name="styledhtml anatomy">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="1bd96a69" name="styledhtml anatomy">
         <child xsi:type="archimate:DiagramObject" id="c60e80d1" archimateElement="d7177a48">
           <bounds x="123" y="77" width="682" height="332"/>
           <sourceConnection xsi:type="archimate:Connection" id="89c0894f" source="c60e80d1" target="3f0eb57c" relationship="a9c981e1"/>
@@ -1212,7 +1212,7 @@ The name is represented by an attribute named 'name' of the objectClass in the p
               <property key="default:select" value="../@name"/>
             </element>
           </folder>
-          <element xsi:type="archimate:DiagramModel" id="36318202" name="Policy related objectClasses">
+          <element xsi:type="archimate:ArchimateDiagramModel" id="36318202" name="Policy related objectClasses">
             <child xsi:type="archimate:DiagramObject" id="99034da2" targetConnections="e0bbdac0" archimateElement="9bdf194e">
               <bounds x="264" y="300"/>
               <sourceConnection xsi:type="archimate:Connection" id="2a86e800" source="99034da2" target="dbc90353" relationship="44d03440"/>
@@ -1386,7 +1386,7 @@ It is used to describe the related actors by the documentcontrol style.
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <element xsi:type="archimate:DiagramModel" id="cd90109a" name="Document Control related classes">
+          <element xsi:type="archimate:ArchimateDiagramModel" id="cd90109a" name="Document Control related classes">
             <child xsi:type="archimate:DiagramObject" id="038fc57e" targetConnections="731d170f" archimateElement="c73e22bc">
               <bounds x="76" y="192"/>
             </child>
@@ -1513,7 +1513,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <element xsi:type="archimate:DiagramModel" id="0a510e6e" name="Organisation related classes">
+          <element xsi:type="archimate:ArchimateDiagramModel" id="0a510e6e" name="Organisation related classes">
             <child xsi:type="archimate:DiagramObject" id="c90e8f1f" targetConnections="a13cb047" archimateElement="229a7d9f">
               <bounds x="62" y="96" width="187" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a4853be9" source="c90e8f1f" target="72739109" relationship="a72fd6f2"/>
@@ -1602,7 +1602,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
 We describe the objectclasses used in them here.
 
 </documentation>
-      <element xsi:type="archimate:DiagramModel" id="5fafcc8d" name="objectClass hierarchy">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="5fafcc8d" name="objectClass hierarchy">
         <child xsi:type="archimate:Group" id="bafdc27c" name="Builtin elements">
           <bounds x="72" y="36" width="997" height="241"/>
           <child xsi:type="archimate:DiagramObject" id="798de39b" archimateElement="61091710">
@@ -1678,7 +1678,7 @@ We describe the objectclasses used in them here.
       </element>
     </folder>
     <folder name="GUI" id="43255a7d">
-      <element xsi:type="archimate:DiagramModel" id="f179ca7d" name="GUI">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="f179ca7d" name="GUI">
         <child xsi:type="archimate:DiagramObject" id="b882b7a0" archimateElement="e18c6fa0">
           <bounds x="36" y="84" width="181" height="253"/>
           <child xsi:type="archimate:DiagramObject" id="16393a81" targetConnections="8dd2950d" archimateElement="54c46059">
@@ -1735,7 +1735,7 @@ See troubleshooting for details.
       <element xsi:type="archimate:ApplicationInterface" id="4b027005" name="Template install"/>
     </folder>
     <folder name="dbexport" id="8b99c89d">
-      <element xsi:type="archimate:DiagramModel" id="fdd2ec44" name="data structure">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="fdd2ec44" name="data structure">
         <child xsi:type="archimate:DiagramObject" id="baab114b" archimateElement="33f4221f">
           <bounds x="48" y="35" width="781" height="122"/>
           <child xsi:type="archimate:DiagramObject" id="4b55c485" archimateElement="46a217b3">
@@ -1783,7 +1783,7 @@ reference</documentation>
     </folder>
   </folder>
   <folder name="Technology" id="cb60e879" type="technology">
-    <element xsi:type="archimate:DiagramModel" id="1be43c52" name="enklávék">
+    <element xsi:type="archimate:ArchimateDiagramModel" id="1be43c52" name="enklávék">
       <child xsi:type="archimate:Group" id="9fbc0162" name="Domain">
         <bounds x="24" y="-12" width="181" height="541"/>
         <child xsi:type="archimate:DiagramObject" id="24e35bbf" targetConnections="91878e17" archimateElement="ee0803c3">

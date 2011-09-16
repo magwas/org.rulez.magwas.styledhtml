@@ -81,8 +81,13 @@ public class StyledHtml implements IModelExporter {
         		targetdir = new File(opath);
         	}
         	if(targetdir == null) {
+        		log.issueInfo(null, null, "no target directory", EventLog.now());
         		return;
         	}
+        	if(!targetdir.exists()) {
+        		targetdir.mkdirs();
+        	}
+    		log.issueInfo(null, null, "target dir="+targetdir.getAbsolutePath(), EventLog.now());
         	File styledir = new File(stylefile.getParent());
         	StepFactory sf = new StepFactory(log,model,styledir, targetdir);
         	NodeList styles = style.getElementsByTagName("style");
@@ -90,7 +95,8 @@ public class StyledHtml implements IModelExporter {
         		Element s = (Element) styles.item(i);
             	sf.get("style").doit(s,targetdir);        	
         	}
-    		
+          	log.issueInfo(null, null, "done export", EventLog.now());
+              		
     	} catch (Exception e) {
 			log.issueError(null, null, "Export problem", e.getMessage());
 			e.printStackTrace();
