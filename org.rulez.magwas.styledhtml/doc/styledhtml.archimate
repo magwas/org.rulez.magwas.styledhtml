@@ -734,6 +734,7 @@ It also serves as an example for the sketchtotable style.
 </documentation>
       </element>
     </folder>
+    <documentation>business is business</documentation>
     <element xsi:type="archimate:Folder" name="1. Introduction" id="0c1fd16c">
       <folder name="Extended Archimate" id="ec5ff11d">
         <documentation>This is a proposal for an extension to Archimate methodology (dubbed EA for Extended Archimate), adding a metamodel layer in the following way:

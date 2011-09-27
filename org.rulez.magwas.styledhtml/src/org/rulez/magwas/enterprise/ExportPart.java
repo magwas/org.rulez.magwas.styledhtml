@@ -47,27 +47,30 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 	EObject selectedObj;
 
 	
-	private EObject copyEobj(EObject that, IArchimateModel model) {
-		System.out.println("copyEObj("+((INameable)that).getName()+")");
+	private EObject copyEobj(EObject that, IArchimateModel model, boolean withchildren) {
+		//System.out.println("copyEObj("+((INameable)that).getName()+")");
 		EObject newObject = ArchimateModelUtils.getObjectByID(model, ((IIdentifier)that).getId());
 		if(null != newObject) {
 			return newObject;
 		}
         newObject = EcoreUtil.copy(that);
-		if(newObject instanceof IFolderContainer) {
-			((IFolderContainer) newObject).getFolders().clear();
-		}
-		if(newObject instanceof IFolder) {
-			((IFolder) newObject).getElements().clear();
-		}
+        if(!withchildren) {
+    		if(newObject instanceof IFolderContainer) {
+    			((IFolderContainer) newObject).getFolders().clear();
+    		}
+    		if(newObject instanceof IFolder) {
+    			((IFolder) newObject).getElements().clear();
+    		}
+        }
+		System.out.println("created "+((INameable)newObject).getName()+":"+newObject.eClass().getName()+" pclass:"+that.eClass().getName());
         return newObject;
 	}
 	
 	private EObject replaceObjWithCopy(EObject newtreeobj, EObject oldtreeobj,IArchimateModel model) {
-		System.out.println("replaceObjWithCopy("+((INameable)newtreeobj).getName()+","+((INameable)oldtreeobj).getName()+")");
+		//System.out.println("replaceObjWithCopy("+((INameable)newtreeobj).getName()+","+((INameable)oldtreeobj).getName()+")");
 		// replaces an object in the new tree with a copy of an object in the old tree
 		// it is a shallow copy, we remove all folder content
-		EObject copyobj = copyEobj(oldtreeobj, model);
+		EObject copyobj = copyEobj(oldtreeobj, model, false);
 		EObject container = newtreeobj.eContainer();
 		if (newtreeobj instanceof IFolder ) { //did I say I hate java?
 			((IFolderContainer)container).getFolders().remove(newtreeobj);
@@ -76,16 +79,16 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 			((IFolder)container).getElements().remove(newtreeobj);
 			((IFolder)container).getElements().add(copyobj);
 		}
-		System.out.println("replaceObjWithCopy => "+((INameable)copyobj).getName());
+		//System.out.println("replaceObjWithCopy => "+((INameable)copyobj).getName());
 		return copyobj;
 	}
 	
 	private EObject addwithparents(EObject newob, EObject oldob, IArchimateModel model){
 		if (null == newob ) {
 			// we are above the originally inserted element. The new object is a copy of oldob
-			newob = copyEobj(oldob, model);
+			newob = copyEobj(oldob, model, false);
 		}
-		System.out.println("addwithparents("+((INameable)newob).getName()+","+((INameable)oldob).getName()+")");
+		//System.out.println("addwithparents("+((INameable)newob).getName()+","+((INameable)oldob).getName()+")");
 		IFolder oldcontainer = (IFolder) oldob.eContainer();
 
 		if (oldcontainer.eContainer() instanceof ArchimateModel) {
@@ -93,13 +96,17 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 			// replace the corresponding top level folder of model with a copy of the container of oldob
 			// and return it
 			// FIXME: make sure we cannot export the top level folder or above
-			System.out.println("oldcontainer=" + ((INameable)oldcontainer).getName());
+			//System.out.println("oldcontainer=" + ((INameable)oldcontainer).getName());
 			EList<IFolder> fl = model.getFolders();
 			for (IFolder folder : fl) {
 				if ((folder.getType().equals(oldcontainer.getType())) &&
 						(folder.getName().equals(oldcontainer.getName()))	 ){
 					//IFolder newfolder = (IFolder) replaceObjWithCopy(folder, oldcontainer);
-					folder.getElements().add(newob);
+					if(newob instanceof IFolder) {
+						folder.getFolders().add((IFolder) newob);
+					}else {
+						folder.getElements().add(newob);
+					}
 					return newob;
 				}
 			}
@@ -111,7 +118,11 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 		System.out.println("newcontainer=" + ((INameable)newcontainer).getName());
 		System.out.println("newobj="+((INameable)newob).getName()+")");
 		
-		((IFolder)newcontainer).getElements().add(newob);
+		if(newob instanceof IFolder) {
+			((IFolder)newcontainer).getFolders().add((IFolder) newob);
+		}else {
+			((IFolder)newcontainer).getElements().add(newob);
+		}
 		return newob;
 	}
 
@@ -119,38 +130,38 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 		//should walk the children of selectedObj, create the copy of all of the dependencies mentioned,
 		//and bind the copy on newobj instead of a reference to the old one
 		// then copy dependencies for the copy as well
-		System.out.println("copyDependecies("+newob+")");
+		//System.out.println("copyDependecies("+newob+")");
 		for (EContentsEList.FeatureIterator<EObject> featureIterator = 
 		        (EContentsEList.FeatureIterator<EObject>)newob.eCrossReferences().iterator();
 		       featureIterator.hasNext(); )
 		{
 		    EObject refd = featureIterator.next();
 		    EReference eReference = (EReference)featureIterator.feature();
-			System.out.println(" refd="+((INameable)refd).getName());
-			System.out.println(" ereference="+eReference);
+			//System.out.println(" refd="+((INameable)refd).getName());
+			//System.out.println(" ereference="+eReference);
 			EObject modelobj = ArchimateModelUtils.getObjectByID(model, ((IIdentifier)refd).getId());
 			if (null == modelobj ) {
-				modelobj = copyEobj(refd,model);
+				modelobj = copyEobj(refd,model, false);
 				addwithparents(modelobj,refd,model);
 				copyDependencies(modelobj,model);
 			}
 			if(eReference.isChangeable()) {
-				System.out.println(" Modelobj="+ modelobj);
-				System.out.println(" Ereference="+eReference);
+				//System.out.println(" Modelobj="+ modelobj);
+				//System.out.println(" Ereference="+eReference);
 				Object c = newob.eGet(eReference);
 				if (c instanceof Collection) {
 					@SuppressWarnings("unchecked")
 					Collection<EObject> coll = (Collection<EObject>) c;
-					System.out.println(" Refd="+ refd);
-					System.out.println(" collection="+coll);
+					//System.out.println(" Refd="+ refd);
+					//System.out.println(" collection="+coll);
 					coll.remove(refd);
 					coll.add(modelobj);
-					System.out.println(" Collection="+coll);
+					//System.out.println(" Collection="+coll);
 				} else {
 					newob.eSet(eReference, modelobj);
 				}
 			} else {
-				System.out.println("didn't set");
+				//System.out.println("didn't set");
 			}
 		}
 		EList<EObject> contents = newob.eContents();
@@ -158,14 +169,15 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 			copyDependencies(obj, model);
 		}
 	}
-
+	
 	public void run(IAction action) {
 		File target = new File("/tmp/out.archimate");//FIXME
       	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
         IArchimateModel model = IArchimateFactory.eINSTANCE.createArchimateModel();
         model.setName("(new model)");//FIXME
         model.setDefaults();
-        EObject newob = copyEobj(selectedObj,model);
+        EObject newob = copyEobj(selectedObj,model, true);
+       
         addwithparents(newob,selectedObj,model);
         copyDependencies(newob,model);
     	resource.getContents().add(model);
@@ -184,7 +196,7 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("savethis "+ selectedObj);
+		//System.out.println("savethis "+ selectedObj);
 	}
 
 	
