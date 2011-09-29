@@ -36,7 +36,7 @@
          <action
                class="org.rulez.magwas.enterprise.ExportPart"
                id="org.rulez.magwas.enterprise.SaveThis"
-               label="Move This To..."
+               label="Save This To..."
                menubarPath="additions">
          </action>
       </viewerContribution>

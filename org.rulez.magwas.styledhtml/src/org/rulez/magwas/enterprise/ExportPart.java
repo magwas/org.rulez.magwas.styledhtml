@@ -24,9 +24,13 @@ import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
+import org.rulez.magwas.styledhtml.IPreferenceConstants;
+import org.rulez.magwas.styledhtml.Widgets;
 
+import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimateModel;
+import uk.ac.bolton.archimate.model.IArchimateModelElement;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 import uk.ac.bolton.archimate.model.IFolder;
 import uk.ac.bolton.archimate.model.IFolderContainer;
@@ -170,13 +174,17 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 		}
 	}
 	
+
 	public void run(IAction action) {
-		File target = new File("/tmp/out.archimate");//FIXME
+		File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH, new String[] { "*.archimate" } );
+    	if(null == target) {
+    		return;
+    	}
       	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
         IArchimateModel model = IArchimateFactory.eINSTANCE.createArchimateModel();
-        model.setName("(new model)");//FIXME
         model.setDefaults();
         EObject newob = copyEobj(selectedObj,model, true);
+        model.setName(((INameable)selectedObj).getName()+" from "+ ((IArchimateModelElement)selectedObj).getArchimateModel().getName());
        
         addwithparents(newob,selectedObj,model);
         copyDependencies(newob,model);
