@@ -212,8 +212,9 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 	public void selectionChanged(IAction action, ISelection selection) {
 		IStructuredSelection selected = (IStructuredSelection) selection;
 		selectedObj = (EObject) selected.getFirstElement();
-		if((selectedObj instanceof IFolder) ||
-				(selectedObj instanceof IDiagramModel)
+		if(((selectedObj instanceof IFolder) ||
+				(selectedObj instanceof IDiagramModel))&&
+				(!(selectedObj.eContainer() instanceof IArchimateModel))
 		 ){
 			action.setEnabled(true);
 		} else {
