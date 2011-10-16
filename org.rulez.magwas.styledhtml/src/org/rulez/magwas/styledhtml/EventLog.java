@@ -37,6 +37,8 @@ import uk.ac.bolton.archimate.editor.ui.services.UIRequestManager;
 import uk.ac.bolton.archimate.editor.views.tree.TreeSelectionRequest;
 
 import uk.ac.bolton.archimate.model.IArchimateModel;
+import uk.ac.bolton.archimate.model.IIdentifier;
+import uk.ac.bolton.archimate.model.INameable;
 
 import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
 
@@ -116,8 +118,7 @@ public class EventLog {
          	}
         }
 	}
-
-	   private void issue(String qualifier,IArchimateModel model, Element node, String text, String detail) {
+	   private void issue(String qualifier,IArchimateModel model, Object node, String text, String detail) {
 		   System.out.println(qualifier+":"+ text+"\n"+detail);
 		    Node tr = messages.createElement("tr");
 	    	msg.appendChild(tr);
@@ -129,9 +130,21 @@ public class EventLog {
 	    	tr.appendChild(ttd);
 	    	Node ltd = messages.createElement("td");
 	    	if((null != node) && (null != model)) {
+	    		String id=null;
+	    		String name=null;
+	    		if (node instanceof IIdentifier ){
+	    			id = ((IIdentifier) node).getId();
+	    		} 
+	    		if (node instanceof INameable ){
+	    			name = ((INameable) node).getName();
+	    		}
+	    		if(node instanceof Element) {
+	    			id = ((Element) node).getAttribute("id");
+	    			name = ((Element) node).getAttribute("name");
+	    		} 
 		    	Node location = messages.createElement("a");
-	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+node.getAttribute("id"));
-	    		location.setTextContent(" at "+node.getAttribute("name"));
+	    		((Element)location).setAttribute("href","archimate://"+model.getId()+"/"+id);
+	    		location.setTextContent(" at "+name+"("+node.getClass()+")");
 		    	ltd.appendChild(location);
 		    	tr.appendChild(ltd);
 		    	ltd = messages.createElement("td");
@@ -149,17 +162,27 @@ public class EventLog {
 	    	
 	    	browser.setText(repr);
 	   }
+	    public void issueInfo(String text, String detail) {
+	    	issue("INFO",null,null,text,detail);
+	    }    
+	    public void issueWarning(String text, String detail) {
+
+	    	issue("WARNING",null,null,text,detail);
+	    }    
+	    public void issueError(String text, String detail) {
+
+	    	issue("ERROR",null,null,text,detail);
+	    }
 	   
-	    public void issueInfo(IArchimateModel model,Element node, String text, String detail) {
+	    public void issueInfo(IArchimateModel model,Object node, String text, String detail) {
 	    	issue("INFO",model,node,text,detail);
 	    }    
-	    public void issueWarning(IArchimateModel model,Element node, String text, String detail) {
+	    public void issueWarning(IArchimateModel model,Object node, String text, String detail) {
 	    	issue("WARNING",model,node,text,detail);
 	    }    
-	    public void issueError(IArchimateModel model,Element node, String text, String detail) {
+	    public void issueError(IArchimateModel model,Object node, String text, String detail) {
 	    	issue("ERROR",model,node,text,detail);
-	    }
-	    
+	    }    
 	    public void printStackTrace(Exception e) {
 	    	StringWriter sw = new StringWriter();
 	    	PrintWriter pw = new PrintWriter(sw);
@@ -167,7 +190,7 @@ public class EventLog {
 	    	e.printStackTrace();
 	    	String msg = e.getMessage();
 	    	String trace = sw.toString();
-	    	issueError(null,null,msg,trace);
+	    	issue("Stack trace",null,null,msg,trace);
 	    }
         
 	    private String xmlToString(Document doc) {

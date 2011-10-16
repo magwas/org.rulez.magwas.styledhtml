@@ -37,7 +37,7 @@ public class Enricher{
 	private Enricher(IArchimateModel themodel, Document infile, File policyfile, EventLog elog) {
 		model = themodel;
 		log = elog;
-		log.issueInfo(null, null, "starting enricher", EventLog.now());
+		log.issueInfo("starting enricher", EventLog.now());
 		xml=infile;
 		xpath = XPathFactory.newInstance().newXPath(); 
 		vars = new VarResolver();
@@ -57,7 +57,7 @@ public class Enricher{
 	        	log.printStackTrace(e);
 			}
 		}
-		log.issueInfo(null, null, "enricher done", EventLog.now());
+		log.issueInfo("enricher done", EventLog.now());
 	}
 	
 	public static void enrichXML(IArchimateModel model, Document infile, File policyfile, EventLog log) {
@@ -200,7 +200,7 @@ public class Enricher{
     		if(!ancestorname.startsWith("archimate:")) {
         		Element occ=getPolicyFor(ancestorname);
         		if(null == occ) {
-        			log.issueError(null, null, "no policy for ancestor "+ancestorname,"for objectClass"+objectclass.getAttribute("name"));
+        			log.issueError("no policy for ancestor "+ancestorname,"for objectClass"+objectclass.getAttribute("name"));
         			return;
         		}
     			applyPolicyForElement(node, occ,ancestorname);
@@ -385,7 +385,7 @@ public class Enricher{
     	 */
     	
 		if(null == policy) {
-			log.issueWarning(null,null,"no policy",null);
+			log.issueWarning("no policy",null);
 			return;
 		}
     	NodeList ol = policy.getElementsByTagName("objectClass");

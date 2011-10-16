@@ -10,8 +10,6 @@ import java.io.OutputStream;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList;
@@ -19,7 +17,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
@@ -27,7 +24,6 @@ import org.eclipse.ui.IViewPart;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 import org.rulez.magwas.styledhtml.Widgets;
 
-import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimateModelElement;
@@ -46,7 +42,6 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 
 
 
-	private Shell shell;
 	private IViewPart view;
 	EObject selectedObj;
 
@@ -68,23 +63,6 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
         }
 		System.out.println("created "+((INameable)newObject).getName()+":"+newObject.eClass().getName()+" pclass:"+that.eClass().getName());
         return newObject;
-	}
-	
-	private EObject replaceObjWithCopy(EObject newtreeobj, EObject oldtreeobj,IArchimateModel model) {
-		//System.out.println("replaceObjWithCopy("+((INameable)newtreeobj).getName()+","+((INameable)oldtreeobj).getName()+")");
-		// replaces an object in the new tree with a copy of an object in the old tree
-		// it is a shallow copy, we remove all folder content
-		EObject copyobj = copyEobj(oldtreeobj, model, false);
-		EObject container = newtreeobj.eContainer();
-		if (newtreeobj instanceof IFolder ) { //did I say I hate java?
-			((IFolderContainer)container).getFolders().remove(newtreeobj);
-			((IFolderContainer)container).getFolders().add((IFolder)copyobj);
-		} else {
-			((IFolder)container).getElements().remove(newtreeobj);
-			((IFolder)container).getElements().add(copyobj);
-		}
-		//System.out.println("replaceObjWithCopy => "+((INameable)copyobj).getName());
-		return copyobj;
 	}
 	
 	private EObject addwithparents(EObject newob, EObject oldob, IArchimateModel model){
@@ -224,13 +202,14 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 
 	@Override
 	public void setActiveEditor(IAction action, IEditorPart targetEditor) {
-		shell = targetEditor.getSite().getShell();
+
 	}
 
 
 	@Override
 	public void init(IViewPart viewpart) {
 		view = viewpart;
+		System.out.println("initialising with viewpart "+ view);
 	}
 
 }

@@ -22,7 +22,7 @@ public class Export extends Step {
 		String keep=arg0.getAttribute("keep");
 		File policyfile = getFileFor(arg0,"policy",null,factory.styledir,current);
 		File tfile = getFileFor(arg0,"target",null,factory.targetdir,current);
-		factory.log.issueInfo(null, null, "target="+tfile.getAbsolutePath(), EventLog.now());
+		factory.log.issueInfo("target="+tfile.getAbsolutePath(), EventLog.now());
 
 
 		if("".equals(style)||"rich".equals(style)) {
@@ -33,13 +33,13 @@ public class Export extends Step {
 	        try {
 				resource.save(null);
 			} catch (IOException e) {
-				factory.log.issueError(null, null, "cannot export model to", tfile.getAbsolutePath());
+				factory.log.issueError("cannot export model to", tfile.getAbsolutePath());
 				factory.log.printStackTrace(e);
 				return;
 			}
 	        resource.getContents().remove(factory.model);
 		} else {
-			factory.log.issueError(null, null, "Unknown export style", style);
+			factory.log.issueError("Unknown export style", style);
 		}
 		if("false".equals(keep)) {
 			factory.dontkeep.add(tfile);

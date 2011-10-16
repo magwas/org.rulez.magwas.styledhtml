@@ -32,7 +32,7 @@ public class Copy extends Step {
 				copyFile(sfile,tfile);
 			}
 		} catch (IOException e) {
-			factory.log.issueError(null,null, "<copy> failed", "source="+sfile.getAbsolutePath()+"\ntarget="+tfile.getAbsolutePath());
+			factory.log.issueError("<copy> failed", "source="+sfile.getAbsolutePath()+"\ntarget="+tfile.getAbsolutePath());
 			e.printStackTrace();
 		}
 		doSubSteps(arg0, tfile);

@@ -40,7 +40,7 @@ public class Transform extends Step {
 		} else if ("python".equals(language)) {
 			callPython(sfile,current,tfile);
 		} else {
-			factory.log.issueError(null, null, "Invalid language for <transform>", language);
+			factory.log.issueError("Invalid language for <transform>", language);
 		}
 		doSubSteps(arg0, tfile);
 
@@ -63,7 +63,7 @@ public class Transform extends Step {
 				return tFactory.newTransformer
 				            (new javax.xml.transform.stream.StreamSource(style));
 			} catch (TransformerConfigurationException e) {
-    			factory.log.issueError(null, null, "cannot compile "+ style.getAbsolutePath(),e.getMessageAndLocation());
+    			factory.log.issueError("cannot compile "+ style.getAbsolutePath(),e.getMessageAndLocation());
     			e.printStackTrace();
     			return null;
 			}		
@@ -78,9 +78,9 @@ public class Transform extends Step {
     		System.out.println("tf="+tf);    		
 			tf.transform(ss, sr);
 		} catch (FileNotFoundException e) {
-			factory.log.issueError(null, null, "file not found for <transform>", source.getAbsolutePath());
+			factory.log.issueError("file not found for <transform>", source.getAbsolutePath());
 		} catch (TransformerException e) {
-			factory.log.issueError(null, null, "xslt problem <transform>", e.getMessageAndLocation());
+			factory.log.issueError("xslt problem <transform>", e.getMessageAndLocation());
 		}
     }
     
