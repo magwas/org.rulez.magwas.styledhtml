@@ -87,7 +87,6 @@ public class MoveAround {
 	}
 	private void diffProperties(EObject e, EObject targetobj) {
 		// TODO Auto-generated method stub
-		
 	}
 	private void diffName(EObject e, EObject targetobj) {
 		// TODO Auto-generated method stub

@@ -28,23 +28,4 @@
             label="Model to rich format">
       </exportHandler>
    </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <viewerContribution
-            id="org.rulez.magwas.enterprise.SaveThis"
-            targetID="uk.ac.bolton.archimate.editor.treeModelView">
-         <action
-               class="org.rulez.magwas.enterprise.ExportPart"
-               id="org.rulez.magwas.enterprise.SaveThis"
-               label="Save This To..."
-               menubarPath="additions">
-         </action>
-         <action
-               class="org.rulez.magwas.enterprise.ImportPart"
-               id="org.rulez.magwas.enterprise.ImportPart"
-               label="Import There..."
-               menubarPath="additions">
-         </action>
-      </viewerContribution>
-   </extension>
 </plugin>
