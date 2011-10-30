@@ -4,28 +4,38 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
 
 <xsl:template name="propertysql">
     <property>
-        <parent><xsl:value-of select="../@id"/></parent>
+        <type>property</type>
+        <xsl:choose>
+            <xsl:when test="../@type">
+             <parent><xsl:value-of select="../@type"/></parent>
+            </xsl:when>
+            <xsl:otherwise>
+             <parent><xsl:value-of select="../@id"/></parent>
+            </xsl:otherwise>
+        </xsl:choose>
         <key><xsl:value-of select="./@key"/></key>
         <value><xsl:value-of select="./@value"/></value>
     </property>
 </xsl:template>
 <xsl:template name="bendpointsql">
-    <bendpoint>
+    <property>
+        <type>bendpoint</type>
         <parent><xsl:value-of select="../@id"/></parent>
-        <startx><xsl:value-of select="./@startx"/></startx>
-        <endx><xsl:value-of select="./@endx"/></endx>
-        <starty><xsl:value-of select="./@starty"/></starty>
-        <endy><xsl:value-of select="./@endy"/></endy>
-    </bendpoint>
+        <x1><xsl:value-of select="./@startX"/></x1>
+        <y1><xsl:value-of select="./@startY"/></y1>
+        <x2><xsl:value-of select="./@endX"/></x2>
+        <y2><xsl:value-of select="./@endY"/></y2>
+    </property>
 </xsl:template>
 <xsl:template name="boundsql">
-    <bounds>
+    <property>
+        <type>bounds</type>
         <parent><xsl:value-of select="../@id"/></parent>
-        <x><xsl:value-of select="./@x"/></x>
-        <y><xsl:value-of select="./@y"/></y>
-        <width><xsl:value-of select="./@width"/></width>
-        <height><xsl:value-of select="./@height"/></height>
-    </bounds>
+        <x1><xsl:value-of select="./@x"/></x1>
+        <y1><xsl:value-of select="./@y"/></y1>
+        <x2><xsl:value-of select="./@width"/></x2>
+        <y2><xsl:value-of select="./@height"/></y2>
+    </property>
 </xsl:template>
 <xsl:template name="childsql">
     <object>
@@ -34,7 +44,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <name><xsl:value-of select="./@name"/></name>
         <documentation><xsl:value-of select="./content"/></documentation>
         <type><xsl:value-of select="./@xsi:type"/></type>
-        <element><xsl:value-of select="../@fillColor"/></element>
+        <element><xsl:value-of select="./@archimateElement"/></element>
+        <font><xsl:value-of select="./@font"/></font>
+        <fontColor><xsl:value-of select="./@fontColor"/></fontColor>
+        <textAlignment><xsl:value-of select="./@textAlignment"/></textAlignment>
+        <fillColor><xsl:value-of select="./@fillColor"/></fillColor>
     </object>
         <xsl:for-each select="property">
             <xsl:call-template name="propertysql"/>
@@ -46,18 +60,36 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
             <xsl:call-template name="boundsql"/>
         </xsl:for-each>
         <xsl:for-each select="sourceConnection">
-            <xsl:call-template name="elementsql"/>
+            <xsl:call-template name="elementsql">
+            <xsl:with-param name="type">sourceConnection</xsl:with-param>
+            </xsl:call-template>
         </xsl:for-each>
 </xsl:template>
 <xsl:template name="elementsql">
+    <xsl:param name="type"/>
     <object>
         <id><xsl:value-of select="./@id"/></id>
         <name><xsl:value-of select="./@name"/></name>
         <documentation><xsl:value-of select="./documentation"/></documentation>
-        <type><xsl:value-of select="./@xsi:type"/></type>
-        <parent><xsl:value-of select="../@id"/></parent>
+        <xsl:choose>
+            <xsl:when test="$type">
+             <type><xsl:value-of select="$type"/></type>
+            </xsl:when>
+            <xsl:otherwise>
+             <type><xsl:value-of select="./@xsi:type"/></type>
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:choose>
+            <xsl:when test="../@type">
+             <parent><xsl:value-of select="../@type"/></parent>
+            </xsl:when>
+            <xsl:otherwise>
+             <parent><xsl:value-of select="../@id"/></parent>
+            </xsl:otherwise>
+        </xsl:choose>
         <source><xsl:value-of select="./@source"/></source>
         <target><xsl:value-of select="./@target"/></target>
+        <element><xsl:value-of select="./@relationship"/></element>
     </object>
         <xsl:for-each select="property">
             <xsl:call-template name="propertysql"/>
@@ -71,11 +103,25 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
 </xsl:template>
 <xsl:template name="foldersql">
     <object>
-        <id><xsl:value-of select="./@id"/></id>
+        <xsl:choose>
+            <xsl:when test="./@type">
+             <id><xsl:value-of select="./@type"/></id>
+            </xsl:when>
+            <xsl:otherwise>
+             <id><xsl:value-of select="./@id"/></id>
+            </xsl:otherwise>
+        </xsl:choose>
         <name><xsl:value-of select="./@name"/></name>
         <documentation><xsl:value-of select="./documentation"/></documentation>
         <type>folder</type>
-        <parent><xsl:value-of select="../@id"/></parent>
+        <xsl:choose>
+            <xsl:when test="../@type">
+             <parent><xsl:value-of select="../@type"/></parent>
+            </xsl:when>
+            <xsl:otherwise>
+             <parent><xsl:value-of select="../@id"/></parent>
+            </xsl:otherwise>
+        </xsl:choose>
     </object>
         <xsl:for-each select="property">
             <xsl:call-template name="propertysql"/>
