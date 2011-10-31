@@ -18,6 +18,18 @@
                label="Import There..."
                menubarPath="additions">
          </action>
+         <action
+               class="org.rulez.magwas.enterprise.Merge"
+               id="org.rulez.magwas.enterprise.Merge"
+               label="Merge"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.rulez.magwas.enterprise.ChangeType"
+               id="org.rulez.magwas.enterprise.ChangeType"
+               label="Change type..."
+               menubarPath="additions">
+         </action>
       </viewerContribution>
    </extension>
 </plugin>

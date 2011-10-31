@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.rulez.magwas.styledhtml</name>
+	<name>org.rulez.magwas.enterprise</name>
 	<comment></comment>
 	<projects>
 		<project>uk.ac.bolton.archimate.editor</project>

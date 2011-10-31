@@ -512,55 +512,57 @@ To show the normal overlap between business process stakeholders and governance 
       <element xsi:type="archimate:ArchimateDiagramModel" id="951f29b8" name="Document control process">
         <child xsi:type="archimate:Group" id="b0afc80b" name="Document governance events">
           <bounds x="80" y="20" width="230" height="409"/>
-          <child xsi:type="archimate:DiagramObject" id="1899faf7" targetConnections="7262eb22 83d7bc44 36bece3d e2938063 e03fb957" archimateElement="f1864e14">
+          <child xsi:type="archimate:DiagramObject" id="1899faf7" textAlignment="2" targetConnections="7262eb22 83d7bc44 36bece3d e2938063 e03fb957" archimateElement="f1864e14">
             <bounds x="30" y="114"/>
             <sourceConnection xsi:type="archimate:Connection" id="1df94d14" source="1899faf7" target="302ac1d7" relationship="aa3f5ff4"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="302ac1d7" targetConnections="1df94d14" archimateElement="b2ad7581">
+          <child xsi:type="archimate:DiagramObject" id="302ac1d7" textAlignment="2" targetConnections="1df94d14" archimateElement="b2ad7581">
             <bounds x="30" y="198"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="7bb47f2d" targetConnections="96d32efc" archimateElement="f9623e86">
+          <child xsi:type="archimate:DiagramObject" id="7bb47f2d" textAlignment="2" targetConnections="96d32efc" archimateElement="f9623e86">
             <bounds x="25" y="21"/>
             <sourceConnection xsi:type="archimate:Connection" id="7262eb22" source="7bb47f2d" target="1899faf7" relationship="45ae11e4"/>
           </child>
+          <documentation>documentation here?
+</documentation>
           <property key="associatedObjectClass" value="GovernanceStep"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="ba462769" targetConnections="0eb0098f" archimateElement="8484165f">
+        <child xsi:type="archimate:DiagramObject" id="ba462769" textAlignment="2" targetConnections="0eb0098f" archimateElement="8484165f">
           <bounds x="408" y="168"/>
           <sourceConnection xsi:type="archimate:Connection" id="e2938063" source="ba462769" target="1899faf7" relationship="b213cb5d"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="037fe756" targetConnections="d5d396f4" archimateElement="cc2694e8">
+        <child xsi:type="archimate:DiagramObject" id="037fe756" textAlignment="2" targetConnections="d5d396f4" archimateElement="cc2694e8">
           <bounds x="408" y="240"/>
           <sourceConnection xsi:type="archimate:Connection" id="83d7bc44" source="037fe756" target="1899faf7" relationship="c4b5224c"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="935fe8f6" targetConnections="a5da2e3a" archimateElement="151d0d88">
+        <child xsi:type="archimate:DiagramObject" id="935fe8f6" textAlignment="2" targetConnections="a5da2e3a" archimateElement="151d0d88">
           <bounds x="408" y="324"/>
           <sourceConnection xsi:type="archimate:Connection" id="36bece3d" source="935fe8f6" target="1899faf7" relationship="b5a28f21"/>
         </child>
         <child xsi:type="archimate:Group" id="5d3ad7bd" name="Organisational units">
           <bounds x="588" y="36" width="253" height="409"/>
-          <child xsi:type="archimate:DiagramObject" id="2ff31a7e" archimateElement="c3347f07">
+          <child xsi:type="archimate:DiagramObject" id="2ff31a7e" textAlignment="2" archimateElement="c3347f07">
             <bounds x="36" y="114" width="169" height="217"/>
-            <child xsi:type="archimate:DiagramObject" id="4a292d5a" archimateElement="19fcbcca">
+            <child xsi:type="archimate:DiagramObject" id="4a292d5a" textAlignment="2" archimateElement="19fcbcca">
               <bounds x="24" y="36"/>
               <sourceConnection xsi:type="archimate:Connection" id="d5d396f4" source="4a292d5a" target="037fe756" relationship="e9e45a36"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="b733c2ac" archimateElement="460239bb">
+            <child xsi:type="archimate:DiagramObject" id="b733c2ac" textAlignment="2" archimateElement="460239bb">
               <bounds x="24" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="a5da2e3a" source="b733c2ac" target="935fe8f6" relationship="376585bc"/>
             </child>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="1a066504" archimateElement="bc8e44f0">
+          <child xsi:type="archimate:DiagramObject" id="1a066504" textAlignment="2" archimateElement="bc8e44f0">
             <bounds x="48" y="30"/>
             <sourceConnection xsi:type="archimate:Connection" id="0eb0098f" source="1a066504" target="ba462769" relationship="f60e442d"/>
           </child>
           <property key="associatedObjectClass" value="OrganisationalUnit"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="c97b8f2f" archimateElement="fbe5dc11">
+        <child xsi:type="archimate:DiagramObject" id="c97b8f2f" textAlignment="2" archimateElement="fbe5dc11">
           <bounds x="396" y="96"/>
           <sourceConnection xsi:type="archimate:Connection" id="e03fb957" source="c97b8f2f" target="1899faf7" relationship="247b6982"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="a9c98d04" archimateElement="91d6a6a9">
+        <child xsi:type="archimate:DiagramObject" id="a9c98d04" textAlignment="2" archimateElement="91d6a6a9">
           <bounds x="396" y="24"/>
           <sourceConnection xsi:type="archimate:Connection" id="96d32efc" source="a9c98d04" target="7bb47f2d" relationship="635619ab"/>
         </child>
@@ -606,35 +608,35 @@ The person writing a version is used by the version.
       <element xsi:type="archimate:SketchModel" id="ff808e71" name="Possible enhancements">
         <child xsi:type="archimate:Group" id="17e60e7e" name="Generation of code/config">
           <bounds x="504" y="252" width="457" height="337"/>
-          <child xsi:type="archimate:SketchModelSticky" id="cccda2ca" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="cccda2ca" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="288" y="6" width="109" height="109"/>
             <content>Generate IDM role hierarchy from role hierarchy in the model (or the other way around)</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="050c3abe" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="050c3abe" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="264" y="126"/>
             <content>Generate access control rules based on business processes</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="688c890b" name="Sticky" targetConnections="741d6e5f d79314ba" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="688c890b" name="Sticky" textAlignment="1" targetConnections="741d6e5f d79314ba" fillColor="#ffffb5">
             <bounds x="156" y="18" width="85" height="85"/>
             <content>Use it for firewall config generation</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="31d9312f" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="31d9312f" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="258" y="240" width="97" height="73"/>
             <content>Generate BPEL from business processes</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="aa623a71" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="aa623a71" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="12" y="258" width="157" height="55"/>
             <content>generate xsd/sql based on data objects</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="1ceae49b" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="1ceae49b" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="12" y="100" width="97" height="121"/>
             <content>Generate WSDL and web user interface code based on app interface and data structure</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="c1f39a5c" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="c1f39a5c" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="106" y="126" width="121" height="97"/>
             <content>Automatically create test case objects for some structural relations in the model</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="e256e9bc" name="Sticky" targetConnections="2be34735" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="e256e9bc" name="Sticky" textAlignment="1" targetConnections="2be34735" fillColor="#ffffb5">
             <bounds x="12" y="18" width="145" height="73"/>
             <content>Synchronise with sourceforge tickets.
 </content>
@@ -642,46 +644,49 @@ The person writing a version is used by the version.
         </child>
         <child xsi:type="archimate:Group" id="82eab626" name="Functional enhancements">
           <bounds y="9" width="457" height="484"/>
-          <child xsi:type="archimate:SketchModelSticky" id="9357a318" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="9357a318" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds y="18" width="265" height="229"/>
-            <child xsi:type="archimate:SketchModelSticky" id="bbdf0cff" name="Sticky" fillColor="#ffffb5">
+            <child xsi:type="archimate:SketchModelSticky" id="bbdf0cff" name="Sticky" textAlignment="1" fillColor="#ffffb5">
               <bounds y="132" width="145" height="61"/>
               <content>builtin styles could be automagically checked out.</content>
             </child>
-            <child xsi:type="archimate:SketchModelSticky" id="75dd57cd" name="Sticky" fillColor="#ffffb5">
+            <child xsi:type="archimate:SketchModelSticky" id="75dd57cd" name="Sticky" textAlignment="1" fillColor="#ffffb5">
               <bounds y="36" width="133" height="73"/>
               <content>the documentation should be put into the docs dir in Archi intall dir.
 </content>
             </child>
-            <child xsi:type="archimate:SketchModelSticky" id="cbd33ef2" name="Sticky" fillColor="#ffffb5">
+            <child xsi:type="archimate:SketchModelSticky" id="cbd33ef2" name="Sticky" font="1|Bitstream Charter|10.0|1|GTK|1|" fontColor="#ff0000" textAlignment="2" fillColor="#ffffb5">
               <bounds x="132" y="48" width="135" height="100"/>
               <content>If no configuration found, style and output directory could be automagically set to some default.</content>
+              <property key="hello" value="world"/>
+              <property key="hello"/>
             </child>
             <content>Automagic checkout and setup of some components
 </content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="a2654860" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="a2654860" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="132" y="252" width="109" height="73"/>
             <content>stdout/stderr of xslt/python processing to the eventlog</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="75b2eb51" name="Sticky" targetConnections="b17234c6" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="75b2eb51" name="Sticky" textAlignment="1" targetConnections="b17234c6" fillColor="#ffffb5">
             <bounds x="252" y="270" width="169" height="61"/>
             <content>restructure the xslts to have an xslt library and example styles building on them.
 </content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="933c2950" name="Sticky" targetConnections="1ea246de 6d392abe d92483ba" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="933c2950" name="Sticky" font="1|Andika Basic|8.0|1|GTK|1|" fontColor="#a020f0" textAlignment="2" targetConnections="1ea246de 6d392abe d92483ba" fillColor="#00ff00">
             <bounds x="240" y="342" width="145" height="49"/>
-            <content>Implementing EA using dynamic EMF
+            <content>Implementing ER using SQL
+
 </content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="7892b2f6" name="Sticky" targetConnections="f808072f" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="7892b2f6" name="Sticky" textAlignment="1" targetConnections="f808072f" fillColor="#ffffb5">
             <bounds x="276" y="90" width="157" height="169"/>
             <content>restructure the reporting to be driven by an xml describing processing steps and policies used for them.
 This way various reports could be generated in one step, and even the policies could be generated from the ontology on the fly.
 
 </content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="76a108de" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="76a108de" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="36" y="330" width="85" height="97"/>
             <content>Put the python procesing into a different module.
 </content>
@@ -689,28 +694,28 @@ This way various reports could be generated in one step, and even the policies c
         </child>
         <child xsi:type="archimate:Group" id="f4381eec" name="Simple style enhancements">
           <bounds x="468" y="9" width="493" height="232"/>
-          <child xsi:type="archimate:SketchModelSticky" id="603f06d4" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="603f06d4" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="24" y="18" width="181" height="37"/>
             <content>Finish Job description style</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="50a16dfa" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="50a16dfa" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="24" y="66" width="133" height="49"/>
             <sourceConnection id="2be34735" name="Connection" source="50a16dfa" target="e256e9bc" type="1"/>
             <content>FIXME and TODO objectclasses</content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="755379a4" name="Sticky" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="755379a4" name="Sticky" textAlignment="1" fillColor="#ffffb5">
             <bounds x="24" y="138" width="109" height="61"/>
             <content>a style for RACI
 </content>
           </child>
-          <child xsi:type="archimate:SketchModelSticky" id="ebcda6ea" name="Sticky" targetConnections="001b0a11" fillColor="#ffffb5">
+          <child xsi:type="archimate:SketchModelSticky" id="ebcda6ea" name="Sticky" textAlignment="1" targetConnections="001b0a11" fillColor="#ffffb5">
             <bounds x="216" y="12" width="241" height="187"/>
-            <child xsi:type="archimate:SketchModelSticky" id="224eb06e" name="Sticky" fillColor="#ffffb5">
+            <child xsi:type="archimate:SketchModelSticky" id="224eb06e" name="Sticky" textAlignment="1" fillColor="#ffffb5">
               <bounds x="12" y="84" width="109" height="85"/>
               <content>Describe the things found at analysis along with the elements.
 </content>
             </child>
-            <child xsi:type="archimate:SketchModelSticky" id="fc9d7cbf" name="Sticky" fillColor="#ffffb5">
+            <child xsi:type="archimate:SketchModelSticky" id="fc9d7cbf" name="Sticky" textAlignment="1" fillColor="#ffffb5">
               <bounds x="120" y="60" width="109" height="121"/>
               <content>Popup for graph elements showing documentation and offering jump to their documentation or other graphs containing it.
 </content>
@@ -1783,105 +1788,7 @@ reference</documentation>
       </element>
     </folder>
   </folder>
-  <folder name="Technology" id="cb60e879" type="technology">
-    <element xsi:type="archimate:ArchimateDiagramModel" id="1be43c52" name="enklávék">
-      <child xsi:type="archimate:Group" id="9fbc0162" name="Domain">
-        <bounds x="24" y="-12" width="181" height="541"/>
-        <child xsi:type="archimate:DiagramObject" id="24e35bbf" targetConnections="91878e17" archimateElement="ee0803c3">
-          <bounds x="12" y="450"/>
-        </child>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="cb882ed8" targetConnections="ea4a5558" archimateElement="4549d730">
-        <bounds x="29" y="18"/>
-        <sourceConnection xsi:type="archimate:Connection" id="aa670ae3" source="cb882ed8" target="cd0a8149" relationship="0c7c2989"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="cd0a8149" targetConnections="aa670ae3" archimateElement="c5d5dd93">
-        <bounds x="30" y="99"/>
-        <sourceConnection xsi:type="archimate:Connection" id="ba608eef" source="cd0a8149" target="5dd51117" relationship="a3571aa0"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="5dd51117" targetConnections="ba608eef 5e6aa7b0" archimateElement="ab813fad">
-        <bounds x="480" y="187" width="109" height="55"/>
-        <sourceConnection xsi:type="archimate:Connection" id="8868f287" source="5dd51117" target="ec7db8b6" relationship="4a8371f6"/>
-        <sourceConnection xsi:type="archimate:Connection" id="6c8e6480" source="5dd51117" target="16105ace" relationship="ff96f5ff"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="ec7db8b6" targetConnections="8868f287" archimateElement="167953b1">
-        <bounds x="42" y="267"/>
-        <sourceConnection xsi:type="archimate:Connection" id="96eac892" source="ec7db8b6" target="9ac543b1" relationship="7785ed65"/>
-        <sourceConnection xsi:type="archimate:Connection" id="91878e17" source="ec7db8b6" target="24e35bbf" relationship="86d021f5"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="9ac543b1" targetConnections="96eac892" archimateElement="d5495247">
-        <bounds x="480" y="348" width="97" height="55"/>
-        <sourceConnection xsi:type="archimate:Connection" id="fc551106" source="9ac543b1" target="16105ace" relationship="40813629"/>
-      </child>
-      <child xsi:type="archimate:Group" id="0419867e" name="Internet domain">
-        <bounds x="268" y="-12" width="205" height="181"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="a01712c8" targetConnections="e782b174" archimateElement="81f41e1b">
-        <bounds x="311" y="16"/>
-        <sourceConnection xsi:type="archimate:Connection" id="35b5385b" source="a01712c8" target="21bbf1b2" relationship="6c9a0cb6"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="21bbf1b2" targetConnections="35b5385b" archimateElement="352ac584">
-        <bounds x="312" y="103"/>
-        <sourceConnection xsi:type="archimate:Connection" id="5e6aa7b0" source="21bbf1b2" target="5dd51117" relationship="77339e58"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="07338cf4" archimateElement="428e6b47">
-        <bounds x="276" y="-72" width="301" height="55"/>
-        <sourceConnection xsi:type="archimate:Connection" id="e782b174" source="07338cf4" target="a01712c8" relationship="43219cd1"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="070b7929" archimateElement="20860932">
-        <bounds x="12" y="-72" width="217" height="55"/>
-        <sourceConnection xsi:type="archimate:Connection" id="ea4a5558" source="070b7929" target="cb882ed8" relationship="2577d201"/>
-        <sourceConnection xsi:type="archimate:Connection" id="de5c9d9a" source="070b7929" target="8c43b9d7" relationship="ebc76ef4"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="16105ace" targetConnections="fc551106 6c8e6480" archimateElement="70fcc23d">
-        <bounds x="600" y="432"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="80e79c99" targetConnections="23c7ae48" archimateElement="4c84af42">
-        <bounds x="624" y="267" width="169" height="106"/>
-        <child xsi:type="archimate:DiagramObject" id="89e25601" archimateElement="7d68f1e4">
-          <bounds x="12" y="48"/>
-        </child>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="8c43b9d7" targetConnections="de5c9d9a" archimateElement="04b3a02e">
-        <bounds x="600" y="45" width="181" height="143"/>
-        <sourceConnection xsi:type="archimate:Connection" id="23c7ae48" source="8c43b9d7" target="80e79c99" relationship="168cd2ba"/>
-        <child xsi:type="archimate:DiagramObject" id="63003d28" archimateElement="aef151da">
-          <bounds x="12" y="60"/>
-        </child>
-      </child>
-    </element>
-    <element xsi:type="archimate:Network" id="4549d730" name="web server (intra)"/>
-    <element xsi:type="archimate:Network" id="c5d5dd93" name="app frontend (intra)"/>
-    <element xsi:type="archimate:Network" id="ab813fad" name="frontend integráció"/>
-    <element xsi:type="archimate:Network" id="167953b1" name="app backend"/>
-    <element xsi:type="archimate:Network" id="d5495247" name="backend integráció"/>
-    <element xsi:type="archimate:Network" id="ee0803c3" name="perzisztencia"/>
-    <element xsi:type="archimate:Network" id="81f41e1b" name="web szerver (internet)"/>
-    <element xsi:type="archimate:Network" id="352ac584" name="app frontend (internet)"/>
-    <element xsi:type="archimate:Network" id="428e6b47" name="internet"/>
-    <element xsi:type="archimate:Network" id="20860932" name="intranet"/>
-    <element xsi:type="archimate:Network" id="70fcc23d" name="integráció perzisztencia"/>
-    <element xsi:type="archimate:Network" id="4c84af42" name="resource management backend">
-      <documentation>legato, ovo, nagios, ilo
-</documentation>
-    </element>
-    <element xsi:type="archimate:Network" id="04b3a02e" name="res. mgmt frontend">
-      <documentation>jumphostok
-felület nagios, tivoli, ...
-</documentation>
-    </element>
-    <element xsi:type="archimate:CommunicationPath" id="aef151da" name="management protocols">
-      <documentation>ssh
-https</documentation>
-    </element>
-    <element xsi:type="archimate:CommunicationPath" id="7d68f1e4" name="mgmt prots">
-      <documentation>ssh https
-FIXME legato
-FIXME nagios
-FIXME ovo
-FIXME stb</documentation>
-    </element>
-  </folder>
+  <folder name="Technology" id="cb60e879" type="technology"/>
   <folder name="Connectors" id="5dd8c9be" type="connectors">
     <property key="report:part" value="structured:hide"/>
     <element xsi:type="archimate:OrJunction" id="f780d28c" name="is there anything you can add?"/>
@@ -2045,90 +1952,6 @@ FIXME stb</documentation>
     <element xsi:type="archimate:CompositionRelationship" id="9e2644eb" name="Composition relation" source="33f4221f" target="359391c5"/>
     <element xsi:type="archimate:CompositionRelationship" id="cadb0f11" name="Composition relation" source="33f4221f" target="6e87982f"/>
     <element xsi:type="archimate:CompositionRelationship" id="843013a4" name="Composition relation" source="33f4221f" target="f95d7b28"/>
-    <element xsi:type="archimate:AssociationRelationship" id="2577d201" name="Association relation" source="20860932" target="4549d730">
-      <documentation>intra - > ws
- https
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="0c7c2989" name="Association relation" source="4549d730" target="c5d5dd93">
-      <documentation>ws -> fe
-http
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="43219cd1" name="Association relation" source="428e6b47" target="81f41e1b">
-      <documentation>inter -> ws
-https
-http (csak statikus tartalomra)</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="6c9a0cb6" name="Association relation" source="81f41e1b" target="352ac584">
-      <documentation>ws ->fe
-http
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="a3571aa0" name="Association relation" source="c5d5dd93" target="ab813fad">
-      <documentation>fe -> fe int
-https null cipher, kliens cert auth
-     fölötte soap, alkalmazás specifiku msg, a soabp felé CDM
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="77339e58" name="Association relation" source="352ac584" target="ab813fad">
-      <documentation>fe -> fe int
- https, null cipher, kliens cert auth
-   fölötte soap, alkalmazás specifiku msg, a soabp felé CDM
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="4a8371f6" name="Association relation" source="ab813fad" target="167953b1">
-      <documentation>fe int -> be
- https, null cipher, kliens cert auth
-     fölötte soap, alkalmazás specifiku msg, a soabp től CDM
-
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="7785ed65" name="Association relation" source="167953b1" target="d5495247">
-      <documentation>be int -> be
- 1. tibco ADB (natív sqlnet) tibco felől
- 2. tibco JDBC tibco felől
-   2.a natív postgres
-   2.b natív mysql
- 3.. MQ/SSL MQ felől
-
-be -> be in
- 1. WS (https zero cypher, kliens cert auth, soap, alkalmazás msg format)
-
-
-
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="86d021f5" name="Association relation" source="167953b1" target="ee0803c3">
-      <documentation>natív db forgalmak authentikáció minden perzisztenciánál
-app backend -> perzisztencia
- 1. natív sqlnet
- 2. natív postgres
- 3. natív mysql
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="40813629" name="Association relation" source="d5495247" target="70fcc23d">
-      <documentation>be in -> int. perz
- natív sqlnet
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="ff96f5ff" name="Association relation" source="ab813fad" target="70fcc23d">
-      <documentation>fe int -> int. perz
- natív sqlnet
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="ebc76ef4" name="Association relation" source="20860932" target="04b3a02e">
-      <documentation>authentikált ssh, rdp
-authentikált https
-</documentation>
-    </element>
-    <element xsi:type="archimate:AssociationRelationship" id="168cd2ba" name="Association relation" source="04b3a02e" target="4c84af42">
-      <documentation>fe->be
-ssh
-https
-FIxme
-</documentation>
-    </element>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>

@@ -9,11 +9,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
                 <table border="1">
                 <tr><td>Weight</td><td>description</td></tr>
                 <xsl:for-each select="./archimate:SketchModelSticky">
+                    <xsl:sort order="descending" select="count(str:tokenize(./@targetConnections, ' ')) + count(./sourceConnection)"/>
                     <tr>
                     <td><xsl:value-of select="count(str:tokenize(./@targetConnections, ' ')) + count(./sourceConnection)"/>
                     </td>
                     <td><xsl:value-of select="./content" />
-                    <xsl:call-template name="substicky"/>
+                    <xsl:if test="./archimate:SketchModelSticky">
+                        <ul>
+                        <xsl:for-each select="./archimate:SketchModelSticky">
+                            <xsl:call-template name="substicky"/>
+                        </xsl:for-each>
+                        </ul>
+                    </xsl:if>
                     </td>
                     </tr>
                 </xsl:for-each>
@@ -21,5 +28,30 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
             </xsl:if>
     </xsl:template>
 
+    <xsl:template name="substicky">
+    <li> <xsl:value-of select="./content"/></li>
+    <xsl:if test="./archimate:SketchModelSticky">
+        <ul>
+        <xsl:for-each select="./archimate:SketchModelSticky">
+            <xsl:call-template name="substicky"/>
+        </xsl:for-each>
+        </ul>
+    </xsl:if>
+    </xsl:template>
+
+
+<xsl:template match="/">
+        <html>
+        <head>
+        <title><xsl:value-of select="archimate:model/@name"/> NGT results</title>
+        <link rel="stylesheet" type="text/css" href="structured.css" />
+        </head>
+        <body>
+        <xsl:for-each select="//archimate:SketchModel">
+            <xsl:call-template name="sketchtotable"/>
+        </xsl:for-each>
+        </body>
+        </html>
+</xsl:template>
 
 </xsl:stylesheet>
