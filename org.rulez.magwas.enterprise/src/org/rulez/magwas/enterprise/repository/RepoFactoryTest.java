@@ -22,6 +22,12 @@ public class RepoFactoryTest extends RepoFactory {
 		System.setProperty("javax.net.ssl.trustStorePassword", password);
 		System.out.println("keystore path="+System.getProperty("javax.net.ssl.trustStore"));
 		System.out.println("keystore pwd="+System.getProperty("javax.net.ssl.trustStorePassword"));
+		System.setProperty(CertAuthFactory.CONFIG_KEYSTORE_PATH,keystorepath.getAbsolutePath());
+		System.setProperty(CertAuthFactory.CONFIG_TRUSTSTORE_PATH,keystorepath.getAbsolutePath());
+		System.setProperty(CertAuthFactory.CONFIG_KEYSTORE_PWD,password);
+		System.setProperty(CertAuthFactory.CONFIG_TRUSTSTORE_PWD,password);
+		
+		
 		
         Session session = getSessionFactory().getCurrentSession();
         System.out.println("session="+session);
