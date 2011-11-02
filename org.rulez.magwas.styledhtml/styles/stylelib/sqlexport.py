@@ -271,8 +271,8 @@ if len(sys.argv) < 3:
 version = sys.argv[1]
 role = sys.argv[2]
 dom = parse(sys.stdin)
-passw = getpass.getpass("db password:")
-con = psycopg2.connect("host=localhost port=5433 dbname=archi user=mag password=%s"%passw)
+#passw = getpass.getpass("db password:")
+con = psycopg2.connect("service=archi")
 cur=con.cursor()
 
 cur.execute("set role %s",(role,))

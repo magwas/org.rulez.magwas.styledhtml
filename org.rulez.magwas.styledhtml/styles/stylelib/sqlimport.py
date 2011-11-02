@@ -119,7 +119,7 @@ class modelcreator:
 
     def __init__(self,version,role,passw):
         self.version=version
-        self.con = psycopg2.connect("host=localhost port=5433 dbname=archi user=mag password=%s"%passw)
+        self.con = psycopg2.connect("service=archi")
         self.cur=self.con.cursor(cursor_factory=psycopg2.extras.DictCursor)
         self.execute("set role %s",(role,))
         self.execute("select id from object_view where version=%s and parent is null",(self.version,))
@@ -151,6 +151,7 @@ passw=""
 """
 version = sys.argv[1]
 role = sys.argv[2]
-passw = getpass.getpass("db password:")
+passw=""
+#passw = getpass.getpass("db password:")
 mc = modelcreator(version,role,passw)
 

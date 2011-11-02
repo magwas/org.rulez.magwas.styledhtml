@@ -17,10 +17,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
+import org.rulez.magwas.enterprise.repository.RepoFactory;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 import org.rulez.magwas.styledhtml.Widgets;
 
@@ -154,6 +156,8 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 	
 
 	public void run(IAction action) {
+		Shell shell = view.getSite().getShell();
+		
 		File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH, new String[] { "*.archimate" } );
     	if(null == target) {
     		return;

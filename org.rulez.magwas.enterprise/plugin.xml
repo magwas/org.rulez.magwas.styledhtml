@@ -12,12 +12,6 @@
                label="Save This To..."
                menubarPath="additions">
          </action>
-         <action
-               class="org.rulez.magwas.enterprise.ImportPart"
-               id="org.rulez.magwas.enterprise.ImportPart"
-               label="Import There..."
-               menubarPath="additions">
-         </action>
       </viewerContribution>
    </extension>
 </plugin>

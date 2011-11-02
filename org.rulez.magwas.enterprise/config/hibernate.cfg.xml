@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="RepositorySessionFactory">
+  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/archi?sslmode=required&amp;ssl=true&amp;</property>
+  <property name="hibernate.connection.username">mag</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+  <property name="current_session_context_class">thread</property>
+  <mapping class="org.rulez.magwas.enterprise.repository.RepositoryObject"/>
+  <mapping class="org.rulez.magwas.enterprise.repository.RepositoryProperty"/>
+  <mapping class="org.rulez.magwas.enterprise.repository.RepositoryVersion"/>
+ </session-factory>
+</hibernate-configuration>
