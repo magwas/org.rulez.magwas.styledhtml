@@ -137,6 +137,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <xml>
         <object>
         <id><xsl:value-of select="archimate:model/@id"/></id>
+        <parent>0</parent>
         <name><xsl:value-of select="archimate:model/@name"/></name>
         <documentation><xsl:value-of select="archimate:model/purpose"/></documentation>
         <type>model</type>

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xe
 ./sqlexport.py DDL |
- psql -h localhost -p 5433 -U mag archi
+ psql service=archi
 xsltproc sql.xslt ../../doc/styledhtml.archimate|./sqlexport.py 13 root
 ./sqlimport.py 13 root >/tmp/output1.archimate
 psql "service=archi"<<EOF
@@ -15,13 +15,16 @@ EOF
 psql "service=archi"<<EOF
 set role root;
 alter group archi_submitter add user mag;
+alter group archi_viewer add user mag;
 EOF
 xsltproc sql.xslt ../../doc/styledhtml.archimate|./sqlexport.py 13 archi_submitter
 ./sqlimport.py 13 archi_submitter >/tmp/output2.archimate
 psql service=archi<<EOF
 set role root;
 drop view property_view; drop view object_view; drop view repository;
-drop table object cascade; drop table property;drop table version cascade; drop table version_hierarchy; drop table object_role cascade;
+drop table object_data cascade; drop table property;drop table version cascade; drop table version_hierarchy; drop table acl cascade;
+drop table aclentry;
+drop view object;
 drop role archi_owner; drop role archi_submitter; drop role archi_viewer; drop role archi_addperm;
 
 \d
