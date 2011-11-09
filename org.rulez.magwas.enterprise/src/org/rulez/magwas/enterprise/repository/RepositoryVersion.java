@@ -1,22 +1,23 @@
 package org.rulez.magwas.enterprise.repository;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.Entity;
 
-@Entity
+@Entity()
+@Table(name = "version")
 public class RepositoryVersion {
 @Id
 String id;
 String description;
 Date createtime;
-ArrayList<RepositoryVersion> bases;
-
 
 public RepositoryVersion() {
+	createtime=new Date();
 }
 
 /**
@@ -54,18 +55,6 @@ public Date getCreatetime() {
  */
 public void setCreatetime(Date createtime) {
 	this.createtime = createtime;
-}
-/**
- * @return the bases
- */
-public ArrayList<RepositoryVersion> getBases() {
-	return bases;
-}
-/**
- * @param bases the bases to set
- */
-public void setBases(ArrayList<RepositoryVersion> bases) {
-	this.bases = bases;
 }
 
 }

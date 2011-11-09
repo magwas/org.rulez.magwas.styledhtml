@@ -1,9 +1,10 @@
 package org.rulez.magwas.enterprise.repository;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
-
+@Entity
 public class RepositoryProperty {
-//	@Id
+	@Id
 	String RepositoryObjectPK;
 	String type;
 	String key;

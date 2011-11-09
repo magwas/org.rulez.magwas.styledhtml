@@ -1,48 +1,21 @@
 package org.rulez.magwas.enterprise.repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-//@Embeddable
-class RepositoryObjectPK {
-//	@ManyToOne
-	RepositoryVersion version;
-	String id;
-	/**
-	 * @return the version
-	 */
-	public RepositoryVersion getVersion() {
-		return version;
-	}
-	/**
-	 * @param version the version to set
-	 */
-	public void setVersion(RepositoryVersion version) {
-		this.version = version;
-	}
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-}
 
-//@Entity
+@Entity
+@Table(name = "object")
 public class RepositoryObject {
-//	@Id
-	RepositoryObjectPK pk=new RepositoryObjectPK();
+	@Id
+	String id;
+	String version;	
 	String parent;
 	String name;
 	String documentation;
@@ -54,25 +27,34 @@ public class RepositoryObject {
 	String fontcolor;
 	String textalignment;
 	String fillcolor;
-	ArrayList<RepositoryProperty> properties;
 	
 	public RepositoryObject() {
 
 	}
 
-	/**
-	 * @return the pk
-	 */
-	public RepositoryObjectPK getPk() {
-		return pk;
+	public String getId() {
+		return id;
 	}
 
-	/**
-	 * @param pk the pk to set
-	 */
-	public void setPk(RepositoryObjectPK pk) {
-		this.pk = pk;
+
+
+	public void setId(String id) {
+		this.id = id;
 	}
+
+
+
+	public String getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+
 
 	/**
 	 * @return the parent
@@ -80,6 +62,7 @@ public class RepositoryObject {
 	public String getParent() {
 		return parent;
 	}
+
 
 	/**
 	 * @param parent the parent to set
@@ -228,18 +211,5 @@ public class RepositoryObject {
 		this.fillcolor = fillcolor;
 	}
 
-	/**
-	 * @return the properties
-	 */
-	public ArrayList<RepositoryProperty> getProperties() {
-		return properties;
-	}
-
-	/**
-	 * @param properties the properties to set
-	 */
-	public void setProperties(ArrayList<RepositoryProperty> properties) {
-		this.properties = properties;
-	}
 
 }
