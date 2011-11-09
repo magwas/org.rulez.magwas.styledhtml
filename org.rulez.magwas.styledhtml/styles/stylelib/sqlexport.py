@@ -53,7 +53,7 @@ CREATE INDEX aclentry_rolename ON aclentry  (rolename);
 
 create table version (
     id serial primary key,
-    name varchar(30),
+    name varchar(30) unique,
     description text,
     createtime timestamp default now(),
     acl int not null references acl(id)
@@ -134,7 +134,7 @@ create index i_property_key_type on property(key,type);
 
 --- views for checkin and checkout
 
-create view version_view as select distinct o.* from version o , aclentry ae where o.acl=ae.id and ae.rolename = current_user and ae.access = 'checkin' or ae.access='checkout';
+create view version_view as select distinct o.* from version o , aclentry ae where o.acl=ae.id and ae.rolename = current_user and ( ae.access = 'checkin' or ae.access='checkout');
 comment on view version_view is 'the view for insert and select versions';
 create or replace rule dummy_version_insert as ON INSERT TO version_view DO INSTEAD NOTHING;
 create or replace rule
@@ -154,7 +154,7 @@ create or replace rule
    WHERE 
         new.parent in (select v.id from version v, aclentry ae where ae.rolename = current_user and ae.access='checkin')
   DO ALSO
-    INSERT INTO version_hierarchy select new.*;
+    INSERT INTO version_hierarchy (parent, child, distance)  SELECT new.parent, new.child, coalesce(new.distance,1);
 
 create view object_view as select distinct o.* from object o, aclentry ae, version v where v.acl=ae.id and o.version = v.id and ae.rolename = current_user and ae.access = 'checkout';
 comment on view object_view is 'the view for insert and select objects';
@@ -245,7 +245,7 @@ con = psycopg2.connect("service=%s"%service)
 cur=con.cursor()
 
 def execute(fmt,vals):
-    print fmt,vals
+    #print fmt,vals
     return cur.execute(fmt,vals)
 execute("set role %s",(role,))
 execute("insert into version_view (name,acl) values (%s,0)",[version]) #FIXME default acl for now

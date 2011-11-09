@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import sys
 import xml.dom.minidom
-import getpass
 import psycopg2
 import psycopg2.extras
 
@@ -41,7 +40,7 @@ class modelcreator:
         doc=row['documentation']
         self.newNode(node,"content",doc)
         self._forEachChild(row,node,"select * from property_view where version=%s and parent=%s","createprop")
-        self._forEachChild(row,node,"select * from object_view where version=%s and parent=%s","create")
+        self._forEachChild(row,node,"select * from object_view where version=%s and parent=%s and id != parent","create")
 
     def create_element(self,row,node):
         #if row['type'] in ("archimate:DiagramObject","archimate:SketchModelSticky"):
@@ -107,7 +106,7 @@ class modelcreator:
     def docPropertyAndChildren(self,row,node):
         self.addDoc(row,node)
         self._forEachChild(row,node,"select * from property_view where version=%s and parent=%s","createprop")
-        self._forEachChild(row,node,"select * from object_view where version=%s and parent=%s","create")
+        self._forEachChild(row,node,"select * from object_view where version=%s and parent=%s and id != parent","create")
 
     def create_model(self,row,node):
         node.setAttributeNS("http://www.w3.org/2001/XMLSchema-instance","xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance")
@@ -117,17 +116,18 @@ class modelcreator:
             node.setAttribute(i,row[i])
         self.docPropertyAndChildren(row,node)
 
-    def __init__(self,version,role,passw):
-        self.version=version
-        self.con = psycopg2.connect("service=archi")
+    def __init__(self,version,role,service):
+        self.con = psycopg2.connect("service=%s"%service)
         self.cur=self.con.cursor(cursor_factory=psycopg2.extras.DictCursor)
         self.execute("set role %s",(role,))
-        self.execute("select id from object_view where version=%s and parent is null",(self.version,))
+        self.execute("select id from version_view where name=%s",[version])
+        self.version=self.cur.fetchone()[0]
+        self.execute("select id from object_view where version=%s and parent=id",(self.version,))
         row  = self.cur.fetchone()
         self.rootid = row['id']
         impl = xml.dom.minidom.getDOMImplementation()
         self.dom = impl.createDocument(xml.dom.minidom.XMLNS_NAMESPACE, "archimate:model", None)
-        self.execute("select * from object_view where version=%s and id=%s",(version,self.rootid))
+        self.execute("select * from object_view where version=%s and id=%s",(self.version,self.rootid))
         row  = self.cur.fetchone()
         self.objects[row["id"]] = row
         self.create_model(row,self.dom.documentElement)
@@ -135,23 +135,18 @@ class modelcreator:
         print self.dom.toxml()
 
     def execute(self,sql,args):
-        #sys.stderr.write("%s;\n"%(sql%args))
+        sys.stderr.write("%s;\n"%(sql%args))
         self.cur.execute(sql,args)
     def __del__(self):
         self.cur.close()
         self.con.close()
 
-if len(sys.argv) < 3:
-    print "usage: sqlimport.py <version name> <role>"
+if len(sys.argv) < 4:
+    print "usage: sqlimport.py <version name> <role> <service>"
     sys.exit(-1)
-"""
-version="4"
-rootid="7037984b"
-passw=""
-"""
 version = sys.argv[1]
 role = sys.argv[2]
+service = sys.argv[3]
 passw=""
-#passw = getpass.getpass("db password:")
-mc = modelcreator(version,role,passw)
+mc = modelcreator(version,role,service)
 
