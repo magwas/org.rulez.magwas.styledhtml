@@ -22,7 +22,6 @@ import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
-import org.rulez.magwas.enterprise.repository.RepoFactory;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 import org.rulez.magwas.styledhtml.Widgets;
 

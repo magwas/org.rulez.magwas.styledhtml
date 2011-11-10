@@ -14,4 +14,12 @@
          </action>
       </viewerContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.rulez.magwas.enterprise.repository.RepositoryPreferencesPage"
+            id="org.rulez.magwas.enterprise.pref1"
+            name="Enterprise">
+      </page>
+   </extension>
 </plugin>
