@@ -12,24 +12,14 @@
                label="Save This To..."
                menubarPath="additions">
          </action>
-         <action
-               class="org.rulez.magwas.enterprise.ImportPart"
-               id="org.rulez.magwas.enterprise.ImportPart"
-               label="Import There..."
-               menubarPath="additions">
-         </action>
-         <action
-               class="org.rulez.magwas.enterprise.Merge"
-               id="org.rulez.magwas.enterprise.Merge"
-               label="Merge"
-               menubarPath="additions">
-         </action>
-         <action
-               class="org.rulez.magwas.enterprise.ChangeType"
-               id="org.rulez.magwas.enterprise.ChangeType"
-               label="Change type..."
-               menubarPath="additions">
-         </action>
       </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.rulez.magwas.enterprise.repository.RepositoryPreferencesPage"
+            id="org.rulez.magwas.enterprise.pref1"
+            name="Enterprise">
+      </page>
    </extension>
 </plugin>

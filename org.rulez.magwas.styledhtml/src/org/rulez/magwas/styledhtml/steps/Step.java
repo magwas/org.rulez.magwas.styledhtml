@@ -34,7 +34,7 @@ public abstract class Step {
 		File retfile;
 		if("".equals(attval)) {
 			if (null != defval) {
-				retfile=new File(defbase.getAbsolutePath()+"/"+defval);
+				retfile=new File(defbase,defval);
 			} else {
 				factory.log.issueError("No attribute " +attname, "at "+e.getNodeName());
 				return null;
