@@ -43,6 +43,11 @@ class ConnPrefDialog extends Dialog {
 	    final Text usernameText = new Text(shell, SWT.SINGLE | SWT.BORDER);
 	    usernameText.setText(cp.getUsername());
 
+	    Label roleLabel = new Label(shell, SWT.NULL);
+	    roleLabel.setText("Role:");
+	    final Text roleText = new Text(shell, SWT.SINGLE | SWT.BORDER);
+	    roleText.setText(cp.getRole());
+
 	    Label askpassLabel = new Label(shell, SWT.NULL);
 	    askpassLabel.setText("Ask for password?");
 	    final Button askpassButton = new Button(shell, SWT.CHECK);
@@ -77,6 +82,7 @@ class ConnPrefDialog extends Dialog {
             	cp.setName(nameText.getText());
             	cp.setUrl(urlText.getText());
             	cp.setUsername(usernameText.getText());
+            	cp.setRole(roleText.getText());
             	cp.setPassword(passwordText.getText());
             	cp.setKeystore(keystoreText.getText());
             	if (!cp.checknames(oldname)) {

@@ -90,7 +90,7 @@ CREATE TABLE object (
     element varchar(30),
     font varchar(42),
     fontcolor varchar(8),
-    textalignment varchar(1),
+    subtype int,
     fillcolor varchar(8),
     primary key (version,id),
     foreign key (version,parent) references object(version,id) on delete cascade
@@ -212,6 +212,7 @@ grant select,insert on property_view to archi_user;
 grant select,insert on version_view to archi_user;
 grant select,insert on version_hierarchy_view to archi_user;
 grant select on aclentry to archi_user;
+grant select on acl to archi_user;
 grant update on version_id_seq to archi_user;
 
 insert into acl (id, name) values (0, 'default acl');

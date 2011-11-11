@@ -5,6 +5,7 @@ import org.rulez.magwas.enterprise.EnterprisePlugin;
 
 class ConnPref {
 	String name;
+	String role;
 	String keystore;
 	String password;
 	String url;
@@ -17,6 +18,7 @@ class ConnPref {
 	ConnPref (ConnContentProvider cp) {
 		ps = EnterprisePlugin.INSTANCE.getPreferenceStore();
 		name = null;
+		role = "";
 		url = "";
 		username ="";
 		keystore = "";
@@ -30,6 +32,7 @@ class ConnPref {
 		name = n;
 		ps = EnterprisePlugin.INSTANCE.getPreferenceStore();
 		url = ps.getString(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".url");
+		role = ps.getString(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".role");
 		username = ps.getString(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".username");
 		keystore = ps.getString(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".keystore");
 		password = ps.getString(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".password");
@@ -40,6 +43,7 @@ class ConnPref {
 	
 	public void unsave() {
 		ps.setToDefault(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".url");
+		ps.setToDefault(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".role");
 		ps.setToDefault(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".username");
 		ps.setToDefault(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".askpass");    		
 		ps.setToDefault(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".postgresssl");    		
@@ -50,6 +54,7 @@ class ConnPref {
 		System.out.println("saving "+ this );
 
 		ps.setValue(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".url",url);
+		ps.setValue(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".role",role);
 		ps.setValue(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".username",username);
 		ps.setValue(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".askpass",askpass);    		
 		ps.setValue(RepositoryPreferencesPage.CONNECTIONS_PREF+"."+name+".postgresssl",postgresssl);    		
@@ -79,6 +84,15 @@ class ConnPref {
 		this.name = name;
 	}
 	
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getUrl() {
 		if(null == url) {
 			return "jdbc::";
