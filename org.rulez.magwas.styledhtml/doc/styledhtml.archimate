@@ -5,18 +5,18 @@
       <documentation>We can see the players of the game here
 </documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="f54a171e" name="Stakeholders">
-        <child xsi:type="archimate:DiagramObject" id="0c331c71" archimateElement="62870b91">
+        <child xsi:type="archimate:DiagramObject" id="0c331c71" textAlignment="2" archimateElement="62870b91">
           <bounds x="225" y="60" width="448" height="265"/>
-          <child xsi:type="archimate:DiagramObject" id="02cbf7e0" archimateElement="fbe5dc11">
+          <child xsi:type="archimate:DiagramObject" id="02cbf7e0" textAlignment="2" archimateElement="fbe5dc11">
             <bounds x="31" y="49"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="6ed38775" archimateElement="0ec67e85">
+          <child xsi:type="archimate:DiagramObject" id="6ed38775" textAlignment="2" archimateElement="0ec67e85">
             <bounds x="180" y="49" width="241" height="192"/>
             <sourceConnection xsi:type="archimate:Connection" id="0ef0c949" source="6ed38775" target="e83ccd71" relationship="a2731bcd"/>
-            <child xsi:type="archimate:DiagramObject" id="4c021515" archimateElement="91d6a6a9">
+            <child xsi:type="archimate:DiagramObject" id="4c021515" textAlignment="2" archimateElement="91d6a6a9">
               <bounds x="35" y="126"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="e83ccd71" targetConnections="0ef0c949" archimateElement="16abaafb">
+            <child xsi:type="archimate:DiagramObject" id="e83ccd71" textAlignment="2" targetConnections="0ef0c949" archimateElement="16abaafb">
               <bounds x="48" y="36"/>
             </child>
           </child>
@@ -543,7 +543,7 @@ To show the normal overlap between business process stakeholders and governance 
           <bounds x="588" y="36" width="253" height="409"/>
           <child xsi:type="archimate:DiagramObject" id="2ff31a7e" textAlignment="2" archimateElement="c3347f07">
             <bounds x="36" y="114" width="169" height="217"/>
-            <child xsi:type="archimate:DiagramObject" id="4a292d5a" textAlignment="2" archimateElement="19fcbcca">
+            <child xsi:type="archimate:DiagramObject" id="4a292d5a" textAlignment="2" targetConnections="8417a3d9" archimateElement="19fcbcca">
               <bounds x="24" y="36"/>
               <sourceConnection xsi:type="archimate:Connection" id="d5d396f4" source="4a292d5a" target="037fe756" relationship="e9e45a36"/>
             </child>
@@ -558,13 +558,21 @@ To show the normal overlap between business process stakeholders and governance 
           </child>
           <property key="associatedObjectClass" value="OrganisationalUnit"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="c97b8f2f" textAlignment="2" archimateElement="fbe5dc11">
+        <child xsi:type="archimate:DiagramObject" id="c97b8f2f" font="1|Arial|9.0|2|GTK|1|" fontColor="#770c0c" textAlignment="1" archimateElement="fbe5dc11">
           <bounds x="396" y="96"/>
-          <sourceConnection xsi:type="archimate:Connection" id="e03fb957" source="c97b8f2f" target="1899faf7" relationship="247b6982"/>
+          <sourceConnection xsi:type="archimate:Connection" id="e03fb957" font="1|Arial|7.0|0|GTK|1|" fontColor="#1a0a0a" text="through feature requests" textPosition="0" source="c97b8f2f" target="1899faf7" lineWidth="2" lineColor="#710e0e" relationship="247b6982"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="a9c98d04" textAlignment="2" archimateElement="91d6a6a9">
           <bounds x="396" y="24"/>
           <sourceConnection xsi:type="archimate:Connection" id="96d32efc" source="a9c98d04" target="7bb47f2d" relationship="635619ab"/>
+        </child>
+        <child xsi:type="archimate:Note" id="f5bba493" name="Note" font="1|Arial|9.0|2|GTK|1|" fontColor="#550d0d" textAlignment="2" fillColor="#e7c6c6">
+          <bounds x="349" y="455"/>
+          <sourceConnection id="8417a3d9" name="Connection" text="foo" textPosition="2" source="f5bba493" target="4a292d5a" lineWidth="2" type="2">
+            <bendpoint startX="133" startY="-8" endX="-134" endY="256"/>
+            <bendpoint startX="99" startY="-180" endX="-168" endY="84"/>
+          </sourceConnection>
+          <content>this is a note</content>
         </child>
         <documentation>The document control process and its stakeholders.
 
@@ -1823,7 +1831,9 @@ reference</documentation>
     <element xsi:type="archimate:CompositionRelationship" id="3a861c29" name="Composition relation" source="62870b91" target="0ec67e85"/>
     <element xsi:type="archimate:CompositionRelationship" id="a2731bcd" name="Composition relation" source="0ec67e85" target="16abaafb"/>
     <element xsi:type="archimate:CompositionRelationship" id="a6b2842a" name="Composition relation" source="0ec67e85" target="91d6a6a9"/>
-    <element xsi:type="archimate:UsedByRelationship" id="247b6982" name="Used By relation" source="fbe5dc11" target="f1864e14"/>
+    <element xsi:type="archimate:UsedByRelationship" id="247b6982" name="Used By relation" source="fbe5dc11" target="f1864e14">
+      <documentation>test text</documentation>
+    </element>
     <element xsi:type="archimate:UsedByRelationship" id="635619ab" name="Used By relation" source="91d6a6a9" target="f9623e86"/>
     <element xsi:type="archimate:CompositionRelationship" id="d3bab346" name="Composition relation" source="d3bfc49d" target="e60c5446"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="ce822551" name="Specialisation relation" source="61091710" target="229a7d9f"/>
