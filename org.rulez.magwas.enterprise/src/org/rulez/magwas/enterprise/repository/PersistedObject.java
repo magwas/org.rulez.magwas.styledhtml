@@ -39,13 +39,14 @@ public class PersistedObject {
 
 	private String id=null;
 	private String name=null;
-	private String documentation=null;
+	private String documentation=null, linetext = null;
 	private String type=null;
 	private Integer subtype=null;
 	private String source=null,target=null, element=null; //these are references to other objects
 	private String font=null, fontcolor=null,fillcolor=null; //graphical properties
 	private Integer x1=null, x2=null, y1=null, y2=null;
 	private String key=null, value=null;
+	private float weight;
 
 	private Connection con;
 	private Integer versionid;
@@ -56,7 +57,7 @@ public class PersistedObject {
 	private List<String> dependents = new ArrayList<String>();//List of ids of objects depending on this
 	private Boolean persisted=false;
 	static HashMap<String, PersistedObject> objdir = null;
-	static List<PersistedObject> properties = new ArrayList<PersistedObject>();
+	private List<PersistedObject> properties = new ArrayList<PersistedObject>();
 	
 	public PersistedObject(Connection connection, Integer version, EObject node, PersistedObject parent) throws SQLException {
 		super();
@@ -66,10 +67,21 @@ public class PersistedObject {
 		ovrvars = new ArrayList<String>();
 		con=connection;
 		versionid=version;
+		if (null == parent) {
+			parent = this;
+		}
 		this.parent=parent;
 		parseNode(node);
 	}
 	
+	public PersistedObject addNode(EObject node, PersistedObject parent) throws SQLException {
+		if (node instanceof IIdentifier) {
+			if (objdir.containsKey(((IIdentifier) node).getId())) {
+				return objdir.get(((IIdentifier) node).getId());
+			}			
+		}
+		return new PersistedObject(con, versionid, node,parent);
+	}
 	
 	private void setInt(PreparedStatement stmt, int index, Integer value) throws SQLException {
 		if(null == value) {
@@ -81,8 +93,13 @@ public class PersistedObject {
 
 	public void persist() throws SQLException {
 		if (persisted) {
+			System.out.println("already persisted "+this);
 			return;
 		}
+		if(this != parent) {
+			parent.persist();
+		}
+		System.out.println("persisting "+this);
 		persistSQL();
 		persisted = true;
 		for(PersistedObject prop : properties) {
@@ -98,8 +115,8 @@ public class PersistedObject {
 		if (null != id) {
 			PreparedStatement psInsertObject = con.prepareStatement(
 					"insert into object_view " +
-					"(version, id, parent, name, documentation, type, source, target, element, font, fontcolor, subtype, fillcolor)" +
-					"values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					"(version, id, parent, name, documentation, type, source, target, element, font, fontcolor, subtype, fillcolor, linetext)" +
+					"values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			psInsertObject.setInt(1, versionid);
 			psInsertObject.setString(2, id);
 			psInsertObject.setString(3, parent.getId());
@@ -113,6 +130,7 @@ public class PersistedObject {
 			psInsertObject.setString(11, fontcolor);
 			setInt(psInsertObject,12,subtype);
 			psInsertObject.setString(13, fillcolor);
+			psInsertObject.setString(14, linetext);
 			System.out.println("executing "+psInsertObject);
 			psInsertObject.execute();
 			psInsertObject.close();
@@ -120,8 +138,8 @@ public class PersistedObject {
 			//property
 			PreparedStatement psInsertObject = con.prepareStatement(
 					"insert into property_view " +
-					"(version, parent, type, key, value, x1, y1, x2, y2)" +
-					"values (?,?,?,?,?,?,?,?,?)");
+					"(version, parent, type, key, value, x1, y1, x2, y2, weight)" +
+					"values (?,?,?,?,?,?,?,?,?,?)");
 			psInsertObject.setInt(1, versionid);
 			psInsertObject.setString(2, parent.getId());
 			psInsertObject.setString(3, type);
@@ -131,19 +149,17 @@ public class PersistedObject {
 			setInt(psInsertObject,7,y1);
 			setInt(psInsertObject,8,x2);
 			setInt(psInsertObject,9,y2);
+			psInsertObject.setFloat(10,weight);
 			System.out.println("executing "+psInsertObject);
 			psInsertObject.execute();
 			psInsertObject.close();
 		}
-		con.commit();
 	}
 
 	public void ready() {
-		if (null == parent) {
-			assert(null != id);			
-			parent = this;
-		}
+		System.out.println("readying"+this);
 		if (null == id){
+			assert(parent != this);
 			parent.addToProperties(this);
 		} else {
 			parent.setDependent(id);
@@ -203,7 +219,7 @@ public class PersistedObject {
 		}
 
 		if(node instanceof IDiagramModel) {
-			setSubtype(((IDiagramModel) node).getConnectionRouterType());
+			//FIXME clash on subtype setSubtype(((IDiagramModel) node).getConnectionRouterType());
 		}
 
 		if(node instanceof IDiagramModelArchimateConnection) {
@@ -216,7 +232,7 @@ public class PersistedObject {
 		}
 		
 		if(node instanceof IDiagramModelBendpoint) {
-			//FIXME figure it out float weight = ((IDiagramModelBendpoint) node).getWeight();
+			setWeight(((IDiagramModelBendpoint) node).getWeight());
 			setX1(((IDiagramModelBendpoint) node).getStartX());
 			setY1(((IDiagramModelBendpoint) node).getStartY());
 			setX2(((IDiagramModelBendpoint) node).getEndX());
@@ -226,18 +242,18 @@ public class PersistedObject {
 		if(node instanceof IFontAttribute) {
 			setFont(((IFontAttribute) node).getFont());
 			setFontcolor(((IFontAttribute) node).getFontColor());
-			setSubtype(((IFontAttribute) node).getTextAlignment());			
+			// FIXME clash on subtype setSubtype(((IFontAttribute) node).getTextAlignment());			
 		}
 		
 		if(node instanceof IDiagramModelObject) {
 			//FIXME IBounds bounds = ((IDiagramModelObject) node).getBounds();
 			EList<IDiagramModelConnection> scs = ((IDiagramModelObject) node).getSourceConnections();
 			for (IDiagramModelConnection sc: scs) {
-				//addNode(sc,id);
+				addNode( sc, this);
 			}
 			EList<IDiagramModelConnection> tcs = ((IDiagramModelObject) node).getTargetConnections();
 			for (IDiagramModelConnection tc : tcs) {
-				//FIXME addNode(tc,id);		
+				addNode( tc, this);
 			}
 			setFillcolor(((IDiagramModelObject) node).getFillColor());
 		}
@@ -258,42 +274,44 @@ public class PersistedObject {
 		 *          here comes the multiple-value stuff
 		 */
 		if(node instanceof IDiagramModelConnection) {
-			setDocumentation(((IDiagramModelConnection) node).getText());
+			setLinetext(((IDiagramModelConnection) node).getText());
 			//FIXME int textpos = ((IDiagramModelConnection) node).getTextPosition();
 			setSource(((IDiagramModelConnection) node).getSource().getId());
 			setTarget(((IDiagramModelConnection) node).getTarget().getId());
 			EList<IDiagramModelBendpoint> bendpoints = ((IDiagramModelConnection) node).getBendpoints();
 			for (IDiagramModelBendpoint bp: bendpoints) {
-				//addNode(bp,id);
+				addNode( bp, this);
 			}
 			// FIXME int linewith = ((IDiagramModelConnection) node).getLineWidth();
 			// FIXME String linecolor = ((IDiagramModelConnection) node).getLineColor()
-			setType(((IDiagramModelConnection) node).getType());
+			String t = ((IDiagramModelConnection) node).getType();
+			assert(t == null);
+			//setType(t);
 		}
 		
 		if(node instanceof IProperties) {
 			EList<IProperty> pl = ((IProperties) node).getProperties();
 			for (IProperty prop : pl) {
-				//addNode(prop,id);
+				addNode( prop, this);
 			}
 		}
 		if(node instanceof IDiagramModelContainer) {
 			EList<IDiagramModelObject> children = ((IDiagramModelContainer) node).getChildren();
 			for (IDiagramModelObject child : children) {
-				new PersistedObject(con, versionid, child, this);
+				addNode( child, this);
 			}
 		}
 	
 		if(node instanceof IFolderContainer) {
 			EList<IFolder> fl = ((IFolderContainer) node).getFolders();
 			for (IFolder folder : fl) {
-				new PersistedObject(con, versionid, folder, this);
+				addNode( folder, this);
 			}
 		}
 		if(node instanceof IFolder) {
 			EList<EObject> fl = ((IFolder) node).getElements();
 			for (EObject kid : fl) {
-				new PersistedObject(con, versionid, kid, this);
+				addNode( kid, this);
 			}
 			System.out.println("foldertype name="+ ((IFolder) node).getType().getName());
 			System.out.println("foldertype literal="+ ((IFolder) node).getType().getLiteral());
@@ -323,10 +341,15 @@ public class PersistedObject {
 		q("this.documentation");
 		this.documentation = documentation;
 	}
+	public void setLinetext(String documentation) {
+		q("this.linetext");
+		this.linetext = documentation;
+	}
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
+		System.out.println("type="+type);
 		q("this.type");
 		this.type = type;
 	}
@@ -421,14 +444,39 @@ public class PersistedObject {
 		q("this.value");
 		this.value = value;
 	}
+	public void setWeight(Float value) {
+		q("this.weight");
+		this.weight = value;
+	}
 	/*
 	 * trace the usage of overloaded variables. This is a debug tool
 	 */
 
 	private void q(String name) {
+		Throwable t = new Throwable();
+		StackTraceElement[] elements = t.getStackTrace();
+
+		int callerline = elements[2].getLineNumber();
+		System.out.println(name+":"+callerline);
+
+		System.out.println(); 
 		if (ovrvars.contains(name)) {
 			throw new Error("multiple override for "+ name+":"+ovrvars);
 		}
+		ovrvars.add(name);
+	}
+
+
+	@Override
+	public String toString() {
+		String props = "( ";
+		for (PersistedObject p : properties) {
+			props = props + p.getType()+":"+p.getKey() + " ";
+		}
+		props = props + ")";
+		return "PersistedObject [id=" + id + ", name=" + name +", key="+key+ ", type="
+				+ type + ", subtype=" + subtype + ", parent=" + parent.getId()
+				+ ", dependents=" + dependents + ", properties="+ props + "]";
 	}
 	
 }

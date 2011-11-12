@@ -143,9 +143,9 @@ public class Repository {
 	}
 	
 	private int getVersionByName(String name) throws SQLException {
-		PreparedStatement psGetAclByName = con.prepareStatement("select id from version_view where name = ?");
-		psGetAclByName.setString(1, name);
-		ResultSet rs = psGetAclByName.executeQuery();
+		PreparedStatement psGetVersionByame = con.prepareStatement("select id from version_view where name = ?");
+		psGetVersionByame.setString(1, name);
+		ResultSet rs = psGetVersionByame.executeQuery();
 		boolean havenext = rs.next();
 		assert(havenext != false);
 		int r = rs.getInt("id");
@@ -156,9 +156,9 @@ public class Repository {
 
 	
 	public void checkin(IArchimateModel model) throws SQLException {
-		String version = getModelVersion(model);
+		String version = getModelVersion(model); //FIXME sensible error message/dialog
 		String name = model.getName();
-		String aclname = getModelProperty(model,"modelAcl");
+		String aclname = getModelProperty(model,"modelAcl");//FIXME sensible error message/dialog
 		basevers = getBaseVersions(model);
 		versionid = addVersion(version, name,aclname);
 		addBaseVersions(versionid,basevers);

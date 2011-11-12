@@ -1956,6 +1956,9 @@ reference</documentation>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>
   </folder>
+  <property key="modelVersion" value="1.0"/>
+  <property key="baseVersion" value="dummy"/>
+  <property key="modelAcl" value="default acl"/>
   <purpose>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.
 You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.
 You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.
