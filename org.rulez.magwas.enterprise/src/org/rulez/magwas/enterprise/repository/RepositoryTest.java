@@ -19,6 +19,8 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
+import junit.framework.Assert;
+
 public class RepositoryTest extends Repository {
 
 	@After
@@ -35,7 +37,7 @@ public class RepositoryTest extends Repository {
 		assertNotNull(con);
 	}
 
-	IArchimateModel model;
+	static IArchimateModel model;
 	
 	//BeforeClass
 	public static void buildconfig() {
@@ -57,9 +59,9 @@ public class RepositoryTest extends Repository {
 		pref = cp.getPref("test");
 		assertNotNull(pref);		
 	}
-	@Before
-	public void loadmodel() {
-		File file = new File("/build/mag/org.rulez.magwas.styledhtml/org.rulez.magwas.styledhtml/doc/styledhtml.archimate");
+	@BeforeClass
+	public static void loadmodel() {
+		File file = new File("/tmp/test.archimate");
 		System.out.println("file="+file);
 		assertNotNull(file);
 		model = IEditorModelManager.INSTANCE.openModel(file);
@@ -99,18 +101,15 @@ public class RepositoryTest extends Repository {
 	@Test
 	public void testgetBaseVersions() {
 		List<String> a = getBaseVersions(model);
-		System.out.println("base versions ="+a);
-		assertNotNull(a);
+		System.out.println("base versions:"+a);
+		assertEquals(a.size(),1);
 	}
 
 	//@Test //moved to testCheckin
 	public void testaddVersion() throws SQLException {
 		List<String> a = getBaseVersions(model);
 		int v1 = addVersion(a.get(0), "this is test","default acl");
-		int v2 = addVersion(a.get(1), "this is test", "default acl");
 		assertNotSame(0, v1);
-		assertNotSame(0, v2);
-		assertNotSame(v1, v2);
 	}
 	
 	@Test
@@ -120,7 +119,6 @@ public class RepositoryTest extends Repository {
 			checkin(model);
 			con.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}
