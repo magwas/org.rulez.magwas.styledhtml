@@ -2,6 +2,7 @@ package org.rulez.magwas.enterprise.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -58,9 +59,12 @@ public class PersistedObject {
 	private Boolean persisted=false;
 	static HashMap<String, PersistedObject> objdir = null;
 	private List<PersistedObject> properties = new ArrayList<PersistedObject>();
+	private EObject node;
 	
 	public PersistedObject(Connection connection, Integer version, EObject node, PersistedObject parent) throws SQLException {
+		// This constructor is to persist the node to SQL
 		super();
+		this.node=node;
 		if (null == objdir) {
 			objdir = new HashMap<String, PersistedObject>();
 		}
@@ -74,6 +78,71 @@ public class PersistedObject {
 		parseNode(node);
 	}
 	
+	public PersistedObject(Connection connection, Integer version, String nodeid, PersistedObject parent) throws SQLException {
+		// This constructor is to load an object from persistence
+		super();
+		if (null == objdir) {
+			objdir = new HashMap<String, PersistedObject>();
+		}
+		ovrvars = new ArrayList<String>();
+		con=connection;
+		versionid=version;
+		if (null == parent) {
+			parent = this;
+		}
+		this.parent=parent;
+		load(nodeid);
+	}
+
+	
+
+	private String loadObjectSQL(String nodeid) throws SQLException {
+		PreparedStatement psSelectObject = con.prepareStatement(
+				"select " +
+				"(parent, name, documentation, type, source, target, element, font, fontcolor," +
+				"subtype, fillcolor, linetext, alignment, textposition, linewidth)" +
+				"from object_view where id = ? and version = ?");		
+		psSelectObject.setString(1, nodeid);
+		psSelectObject.setInt(2, versionid);
+		ResultSet qr = psSelectObject.executeQuery();
+		
+		assert(true == qr.next());
+		String parentid = qr.getString("parent");
+		source = qr.getString("source");
+		target = qr.getString("target");
+		element = qr.getString("element");
+		name = qr.getString("name");
+		documentation = qr.getString("documentation");
+		type = qr.getString("type");
+		font = qr.getString("font");
+		fontcolor = qr.getString("fontcolor");
+		subtype = qr.getInt("subtype");
+		fillcolor = qr.getString("fillcolor");
+		linetext = qr.getString("linetext");
+		alignment = qr.getInt("alignment");
+		textposition = qr.getInt("textposition");
+		linewidth = qr.getInt("linewidth");
+		return parentid;		
+	}
+
+	private void loadIfNeeded(String id) throws SQLException {
+		if (null != id) {
+			if (!objdir.containsKey(id)) {
+				new PersistedObject(con, versionid,id,this);
+			}
+		}
+	}
+	private void load(String nodeid) throws SQLException {
+		String parentid = loadObjectSQL(nodeid);
+		objdir.put(id, this);
+		loadIfNeeded(parentid);
+		loadIfNeeded(source);
+		loadIfNeeded(target);
+		loadIfNeeded(element);
+		PersistedProperty.loadproperties(nodeid, this);
+	}
+	
+
 	public PersistedObject addNode(EObject node, PersistedObject parent) throws SQLException {
 		if (node instanceof IIdentifier) {
 			if (objdir.containsKey(((IIdentifier) node).getId())) {
@@ -97,7 +166,7 @@ public class PersistedObject {
 			stmt.setFloat(index, value);
 		}
 	}
-
+	
 	public void persist() throws SQLException {
 		if (persisted) {
 			//System.out.println("already persisted "+this);
