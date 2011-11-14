@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class PasswordDialogTest {
 
-	@Test
+	//@Test
 	public void test() {
 		System.out.println("result='"+new PasswordDialog(new Shell()).ask()+"'");
 /*		Shell shell = new Shell();

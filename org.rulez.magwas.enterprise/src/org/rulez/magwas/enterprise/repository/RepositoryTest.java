@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 
 
+import org.eclipse.swt.widgets.Shell;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -17,6 +18,7 @@ import uk.ac.bolton.archimate.model.IProperty;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -25,7 +27,7 @@ public class RepositoryTest extends Repository {
 
 	@After
 	public void rollback() {
-		close();
+		pm.forget();
 	}
 	public RepositoryTest() throws SQLException, ClassNotFoundException, ConfigurationException {
 		super("test");
@@ -33,13 +35,12 @@ public class RepositoryTest extends Repository {
 
 	@Test
 	public void testconnect() {
-		
-		assertNotNull(con);
+		assertNotNull(pm);
 	}
 
 	static IArchimateModel model;
 	
-	//BeforeClass
+	//@BeforeClass
 	public static void buildconfig() {
 		//This is enough to run once in a lifetime if you do not clear the junit workspace/its configuration.
 		//uncomment the BeforeClass, and set your password if needed
@@ -51,7 +52,7 @@ public class RepositoryTest extends Repository {
 		pref.setKeystore("/home/RES/magosanyi1a313/.postgresql/archi_owner.jks");
 		pref.setUrl("jdbc:postgresql://localhost:5433/archi?sslfactory=org.rulez.magwas.enterprise.repository.CertAuthFactory");
 		pref.setUsername("mag");
-		pref.setPassword("changeit");
+		pref.setPassword(new PasswordDialog(new Shell()).ask());
 		cp.add(pref);
 		pref = cp.getPref("test");
 		assertNotNull(pref);		
@@ -59,12 +60,24 @@ public class RepositoryTest extends Repository {
 		pref = cp.getPref("test");
 		assertNotNull(pref);		
 	}
+    static private IArchimateModel getModel(File file) {
+        if(file != null) {
+            for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                if(file.equals(model.getFile())) {
+                    return model;
+                }
+            }
+        }
+		model = IEditorModelManager.INSTANCE.openModel(file);
+        return model;
+    }
+
 	@BeforeClass
 	public static void loadmodel() {
 		File file = new File("/tmp/test.archimate");
 		System.out.println("file="+file);
 		assertNotNull(file);
-		model = IEditorModelManager.INSTANCE.openModel(file);
+		model = getModel(file);
 		assertNotNull(model);
 	}
 	//@Before
@@ -108,8 +121,11 @@ public class RepositoryTest extends Repository {
 	//@Test //moved to testCheckin
 	public void testaddVersion() throws SQLException {
 		List<String> a = getBaseVersions(model);
-		int v1 = addVersion(a.get(0), "this is test","default acl");
+		List<String> empty = new ArrayList<String>();
+		int v1 = pm.addVersion("dummy", empty, "dummy version for test","default acl");
+		int v2 = pm.addVersion("foo", a, "this is test","default acl");
 		assertNotSame(0, v1);
+		assertNotSame(v1, v2);
 	}
 	
 	@Test
@@ -117,7 +133,6 @@ public class RepositoryTest extends Repository {
 		try {
 			testaddVersion();
 			checkin(model);
-			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			fail();
