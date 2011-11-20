@@ -4,7 +4,7 @@
     <folder name="3. Stakeholders" id="f878d39f">
       <documentation>We can see the players of the game here
 </documentation>
-      <element xsi:type="archimate:ArchimateDiagramModel" id="f54a171e" name="Stakeholders">
+      <element xsi:type="archimate:ArchimateDiagramModel" id="f54a171e" name="Stakeholders" viewpoint="15">
         <child xsi:type="archimate:DiagramObject" id="0c331c71" textAlignment="2" archimateElement="62870b91">
           <bounds x="225" y="60" width="448" height="265"/>
           <child xsi:type="archimate:DiagramObject" id="02cbf7e0" textAlignment="2" archimateElement="fbe5dc11">

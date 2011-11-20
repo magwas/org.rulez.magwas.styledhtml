@@ -14,7 +14,7 @@ public class ModelDiff {
 	}
 	List<DiffItem> diffs= new ArrayList<DiffItem>();
 	public boolean diff(EObject node1, EObject node2) {
-		System.out.println("diff");
+		System.out.println("diff"+node1+node2);
 		if(node1.equals(node2)) {
 			System.out.println("equals");
 			return true;
@@ -25,7 +25,7 @@ public class ModelDiff {
 		}
 		EList<EAttribute> atts = node1.eClass().getEAllAttributes();
 		for (EAttribute att : atts) {
-			System.out.println("checking"+att);
+			System.out.println("checking "+att.getName());
 			if(!node1.eGet(att).equals(node2.eGet(att))) {
 				return false;
 			}

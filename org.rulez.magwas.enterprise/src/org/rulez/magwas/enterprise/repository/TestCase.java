@@ -23,6 +23,7 @@ import uk.ac.bolton.archimate.model.IProperty;
 public class TestCase {
 	IArchimateModel model;
 	
+	
 	public void buildmodel() {
 		
 		model = IArchimateFactory.eINSTANCE.createArchimateModel();
@@ -48,6 +49,12 @@ public class TestCase {
 	}
 	
 	@Test
+	public void testsplit() {
+		String value = "hello=";
+		String[] v = value.split("=");
+		System.out.println("v[0]="+v[0]+",len="+v.length);
+	}
+	//@Test
 	public void testeobj() {
 		buildmodel();
 		System.out.println("eclass="+model.eClass());

@@ -8,8 +8,8 @@ set role archi_owner;
 
 drop table acl cascade; drop table aclentry cascade;
 drop table version cascade; drop table version_hierarchy cascade;
-drop table object_attribute; drop table property_attribute;
-drop table object cascade; drop table property cascade;
+drop table object_attribute; 
+drop table object cascade; 
 drop function addtohier() cascade;
 drop function transitive_closure() cascade;
 
@@ -73,6 +73,7 @@ CREATE TABLE object (
     type varchar(42)
 );
 create unique index i_object_pkey on object(version,id);
+create index i_object_parents on object (version) where id=parent;
 create index i_object_type on object(type);
 
 comment on table object is 'elements having an id, no access for mortals';
@@ -80,31 +81,11 @@ comment on table object is 'elements having an id, no access for mortals';
 create table object_attribute (
     version int,
     parent varchar(30),
-    name varchar(30),
+    name varchar(42),
     value text,
     foreign key (version,parent) references object(version,id) on delete cascade
 );
 
-CREATE TABLE property (
-    id int,
-    version int references version(id),
-    parent varchar(30),
-    type varchar(30),
-    foreign key (version,parent) references object(version,id) on delete cascade
-) with oids;
-comment on table property is 'the properties of an object, including bounds and bendpoints, no access for mortals';
-
-create unique index i_property_pkey on property(id,version);
-create index i_property_parent_version on property(parent,version);
-create index i_property_parent on property(parent);
-
-create table property_attribute (
-    version int,
-    parent int,
-    name varchar(30),
-    value text,
-    foreign key (version,parent) references property(version,id) on delete cascade
-);
 --- views for checkin and checkout
 
 create view version_view as select distinct o.* from version o , aclentry ae where o.acl=ae.id and ae.rolename = current_user and ( ae.access = 'checkin' or ae.access='checkout');
@@ -140,8 +121,14 @@ create or replace rule
   DO ALSO
     INSERT INTO object select new.*;
 
+create or replace rule 
+ insert_object_rule AS
+    ON INSERT TO object_view
+    DO ALSO INSERT INTO object select new.*;
+
 create view object_attribute_view as select distinct o.* from object_attribute o, aclentry ae, version v where v.acl=ae.id and o.version = v.id and ae.rolename = current_user and ae.access = 'checkout';
 comment on view object_attribute_view is 'the view for insert and select properties';
+
 create or replace rule dummy_object_attribute_insert as ON INSERT TO object_attribute_view DO INSTEAD NOTHING;
 create or replace rule
  insert_object_attribute_rule AS
@@ -150,28 +137,10 @@ create or replace rule
         new.version in (select v.id from version v, aclentry ae where ae.rolename = current_user and ae.access='checkin')
   DO ALSO
     INSERT INTO object_attribute select new.*;
-
-create view property_view as select distinct o.* from property o, aclentry ae, version v where v.acl=ae.id and o.version = v.id and ae.rolename = current_user and ae.access = 'checkout';
-comment on view property_view is 'the view for insert and select properties';
-create or replace rule dummy_property_insert as ON INSERT TO property_view DO INSTEAD NOTHING;
-create or replace rule
- insert_property_rule AS
-    ON INSERT TO property_view
-   WHERE 
-        new.version in (select v.id from version v, aclentry ae where ae.rolename = current_user and ae.access='checkin')
-  DO ALSO
-    INSERT INTO property select new.*;
-
-create view property_attribute_view as select distinct o.* from property_attribute o, aclentry ae, version v where v.acl=ae.id and o.version = v.id and ae.rolename = current_user and ae.access = 'checkout';
-comment on view property_attribute_view is 'the view for insert and select properties';
-create or replace rule dummy_property_attribute_insert as ON INSERT TO property_attribute_view DO INSTEAD NOTHING;
-create or replace rule
- insert_property_attribute_rule AS
-    ON INSERT TO property_attribute_view
-   WHERE 
-        new.version in (select v.id from version v, aclentry ae where ae.rolename = current_user and ae.access='checkin')
-  DO ALSO
-    INSERT INTO property_attribute select new.*;
+create or replace rule 
+ insert_object_attribute_rule AS
+    ON INSERT TO object_attribute_view
+    DO ALSO INSERT INTO object_attribute select new.*;
 
 --- transitive closure on version
 create or replace function transitive_closure() returns trigger as 
@@ -201,10 +170,6 @@ alter table object owner to archi_owner;
 alter view object_view owner to archi_owner;
 alter table object_attribute owner to archi_owner;
 alter view object_attribute_view owner to archi_owner;
-alter table property owner to archi_owner;
-alter view property_view owner to archi_owner;
-alter table property_attribute owner to archi_owner;
-alter view property_attribute_view owner to archi_owner;
 
 
 grant select on aclentry to archi_user;
@@ -214,11 +179,10 @@ grant select,insert on version_view to archi_user;
 grant select,insert on version_hierarchy_view to archi_user;
 grant select,insert on object_view to archi_user;
 grant select,insert on object_attribute_view to archi_user;
-grant select,insert on property_view to archi_user;
-grant select,insert on property_attribute_view to archi_user;
 
 insert into acl (id, name) values (0, 'default acl');
 insert into aclentry (id, rolename, access) values (0, 'archi_submitter', 'checkin');
+insert into aclentry(id,rolename,access) values (0,'archi_submitter','checkout');
 insert into aclentry (id, rolename, access) values (0, 'archi_viewer', 'checkout');
 -- insert into version (id, name,description,acl) values (0,'grandpa','The father of all versions',0);
 --insert into object (version, id, parent, name, type) values (0,0,0,'root node','root');

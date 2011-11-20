@@ -7,7 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface PersistenceManager {
 
-	void saveObject(EObject node, Integer version);
+	void saveObject(EObject node);
+	public EObject load(String versionname);
 
 	Integer addVersion(String version, List<String> basevers, String name,String aclname);
 	public void close();
