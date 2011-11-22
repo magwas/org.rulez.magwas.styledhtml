@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CDO server for Archi
+Bundle-SymbolicName: org.rulez.magwas.enterprise.cdoserver;singleton:=true
+Bundle-Version: 1.0.6.qualifier
+Bundle-Vendor: Árpád Magosányi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.emf.cdo.server;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.db;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.db.source;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate.id;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate.id.source;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate.source;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate.teneo;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.hibernate.teneo.source;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.server.source;bundle-version="2.0.0",
+ org.eclipse.emf.cdo.source;bundle-version="2.0.0"
+Export-Package: org.rulez.magwas.enterprise.cdoserver;
+  uses:="org.eclipse.jface.preference,
+   javax.xml.transform,
+   org.eclipse.ui,
+   uk.ac.bolton.archimate.model,
+   uk.ac.bolton.archimate.editor.model,
+   org.eclipse.swt.widgets"
+Bundle-ClassPath: bin,
+ lib/postgresql-jdbc3-8.4.jar
+Bundle-Activator: org.rulez.magwas.enterprise.EnterprisePlugin
+Bundle-ActivationPolicy: lazy

@@ -21,3 +21,4 @@ Bundle-ClassPath: bin,
  lib/jython.jar
 Bundle-Activator: org.rulez.magwas.styledhtml.StyledHtmlPlugin
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.emf.cdo

@@ -12,7 +12,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -26,10 +25,6 @@ import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IBounds;
 import uk.ac.bolton.archimate.model.IDiagramModelBendpoint;
-import uk.ac.bolton.archimate.model.IDiagramModelComponent;
-import uk.ac.bolton.archimate.model.IDiagramModelContainer;
-import uk.ac.bolton.archimate.model.IDiagramModelObject;
-import uk.ac.bolton.archimate.model.IFolder;
 import uk.ac.bolton.archimate.model.IIdentifier;
 import uk.ac.bolton.archimate.model.IProperty;
 
@@ -198,7 +193,7 @@ public class SQLManager implements PersistenceManager {
 		return r;
 	}
 
-	private boolean isobject(String attname) {
+	private boolean isobject(String attname) { //FIXME should be a db column instead
 		return attname.equals("archimateModel") ||
 				attname.equals(".folders")||
 				attname.equals(".elements")||
@@ -256,7 +251,7 @@ public class SQLManager implements PersistenceManager {
 			return loadObject(obj,value);
 		}
 		
-		if (attname.equals("viewpoint")||
+		if (attname.equals("viewpoint")||//FIXME type of value should be a field in the db
 				attname.equals("connectionRouterType")||
 				attname.equals("textPosition")||
 				attname.equals("textAlignment")||
@@ -266,7 +261,7 @@ public class SQLManager implements PersistenceManager {
 			) {
 			return new Integer(value);
 		}
-		if (attname.equals(".properties")) {
+		if (attname.equals(".properties")) { //FIXME should be stored as name/value pairs
 			IProperty prop = IArchimateFactory.eINSTANCE.createProperty();
 			String[] fields = value.split("=");
 			System.out.println("value="+value+",fields[0]="+fields[0]+",len="+fields.length);
@@ -447,7 +442,7 @@ public class SQLManager implements PersistenceManager {
 	
 	private void insertObjectAttribute(String id,EStructuralFeature attr,String objtype,Object val) throws SQLException {
 		String attname = attr.getName();
-		if(attr.isMany()) {
+		if(attr.isMany()) {//FIXME should have a column in the db instead
 			attname="."+attname;
 		}
 		String v = serialize(attname, objtype, val);
