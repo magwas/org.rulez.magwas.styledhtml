@@ -16,6 +16,7 @@ import java.nio.charset.Charset;
 import java.io.OutputStreamWriter;
 
 
+import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.Document;
@@ -71,7 +72,7 @@ public class RichExport implements IModelExporter {
     }
     public static void export(IArchimateModel model, File target, File policyfile, EventLog log) {
             try {
-          	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
+          	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.getOrCreateResource(URI.createFileURI(target.getAbsolutePath()));
         	resource.getContents().add(model);
         	// we get it in xml
         	Document xml = resource.save(null,resource.getDefaultSaveOptions(),null);

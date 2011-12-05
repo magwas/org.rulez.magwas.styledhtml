@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList;
@@ -17,14 +18,18 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 import org.rulez.magwas.styledhtml.Widgets;
 
+import uk.ac.bolton.archimate.editor.diagram.dialog.TargetSelectionDialog;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimateModelElement;
@@ -156,12 +161,13 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 
 	public void run(IAction action) {
 		Shell shell = view.getSite().getShell();
-		
-		File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH, new String[] { "*.archimate" } );
-    	if(null == target) {
-    		return;
-    	}
-      	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
+		shell.setActive(); // Get focus on Mac
+       	TargetSelectionDialog dialog = new TargetSelectionDialog(Display.getCurrent().getActiveShell(),SWT.SAVE);
+        URI uri = dialog.open();
+        if(uri == null) {
+            return;
+        } 
+      	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.getOrCreateResource(uri);
         IArchimateModel model = IArchimateFactory.eINSTANCE.createArchimateModel();
         model.setDefaults();
         EObject newob = copyEobj(selectedObj,model, true);
@@ -170,16 +176,8 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
         addwithparents(newob,selectedObj,model);
         copyDependencies(newob,model);
     	resource.getContents().add(model);
-    	OutputStream os;
-		try {
-			os = new FileOutputStream(target);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return;
-		}
     	try {
-			resource.save(os, resource.getDefaultSaveOptions());
+			resource.save(resource.getDefaultSaveOptions());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

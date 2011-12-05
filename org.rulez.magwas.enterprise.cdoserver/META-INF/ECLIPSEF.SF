@@ -1,0 +1,28 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: qBCU1kIcDB19CmdyzdIXdzSdsW8=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: VQ/EyUgwm83qVvKb1f65UwXbYy0=
+
+Name: org/eclipse/emf/cdo/examples/hibernate/server/CDOExampleUUIDHexG
+ enerator.java
+SHA1-Digest: S0iHDtgg50mBbm0mzDUyjgt4HVo=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: log4j.properties
+SHA1-Digest: NVMOR9DKmizm8lJChh67vceriPk=
+
+Name: copyright.txt
+SHA1-Digest: Rtvin2gf3uk1j5ERM8K/3uxbfj0=
+
+Name: CDOHibernateServer.launch
+SHA1-Digest: pvzAV68Jq1WPsKXE+gnnry1V2mM=
+
+Name: about.html
+SHA1-Digest: p77WoW/tpuGpE+dfbaEuLp+bH/o=
+
+Name: org/eclipse/emf/cdo/examples/hibernate/server/CDOExampleEFeature
+ Annotator.java
+SHA1-Digest: qaxTDJoPFKvEdAvnTPaNkofFEz4=
+
