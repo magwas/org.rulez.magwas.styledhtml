@@ -1,0 +1,4 @@
+Bundle-SymbolicName: Log4JProperties;singleton=true
+Fragment-Host: org.apache.log4j
+Bundle-Name: Log4JProperties
+Bundle-Version: 1.0.0.qualifier

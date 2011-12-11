@@ -93,7 +93,7 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 					if(newob instanceof IFolder) {
 						folder.getFolders().add((IFolder) newob);
 					}else {
-						folder.getElements().add(newob);
+						folder.getElements().add((IArchimateModelElement) newob);
 					}
 					return newob;
 				}
@@ -109,7 +109,7 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
 		if(newob instanceof IFolder) {
 			((IFolder)newcontainer).getFolders().add((IFolder) newob);
 		}else {
-			((IFolder)newcontainer).getElements().add(newob);
+			((IFolder)newcontainer).getElements().add((IArchimateModelElement) newob);
 		}
 		return newob;
 	}
