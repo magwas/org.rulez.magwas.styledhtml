@@ -7,7 +7,9 @@ Created-By: 1.6.0_21-b06 (Sun Microsystems Inc.)
 Bundle-Version: 1.0.0
 Bundle-ManifestVersion: 2
 Require-Bundle: org.eclipse.emf.cdo.server,
- org.eclipse.net4j
+ org.eclipse.net4j,
+ org.hibernate;bundle-version="3.6.0",
+ org.postgresql.jdbc3;bundle-version="8.4.701"
 Import-Package: org.eclipse.emf.cdo.server.db,
  org.eclipse.emf.cdo.server.db.mapping;version="4.0.0",
  org.eclipse.emf.cdo.server.net4j;version="4.0.0",

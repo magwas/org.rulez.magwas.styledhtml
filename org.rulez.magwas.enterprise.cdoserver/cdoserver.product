@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Archi CDO Server" application="org.eclipse.emf.cdo.server.app" useFeatures="false" includeLaunchers="false">
+<product name="A CDO Server" uid="CDO server" id="org.rulez.magwas.enterprise.cdoserver.product" application="org.eclipse.emf.cdo.server.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -25,6 +25,10 @@
    </vm>
 
    <plugins>
+      <plugin id="Log4JProperties" fragment="true"/>
+      <plugin id="javax.persistence"/>
+      <plugin id="org.apache.log4j"/>
+      <plugin id="org.dom4j"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.runtime"/>
@@ -51,6 +55,8 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.osgi.util"/>
       <plugin id="org.h2"/>
+      <plugin id="org.hibernate"/>
+      <plugin id="org.postgresql.jdbc3"/>
       <plugin id="org.rulez.magwas.enterprise.cdoserver"/>
    </plugins>
 

@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.cdo.server.app"
+            name="A CDO Server">
+         <property
+               name="appName"
+               value="A CDO Server">
+         </property>
+      </product>
+   </extension>
 </plugin>

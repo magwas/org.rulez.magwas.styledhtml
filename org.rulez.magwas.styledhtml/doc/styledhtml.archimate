@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Archi StyledHtml module" id="7037984b" version="2.0.0">
-  <folder name="Business" id="cb7f204c" type="business">
-    <folder name="3. Stakeholders" id="f878d39f">
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" id="7037984b" name="Archi StyledHtml module" version="2.0.0">
+  <property key="modelVersion" value="1.0"/>
+  <property key="baseVersion" value="dummy"/>
+  <property key="modelAcl" value="default acl"/>
+  <folder id="cb7f204c" name="Business" type="business">
+    <documentation>business is business</documentation>
+    <folder id="f878d39f" name="3. Stakeholders">
       <documentation>We can see the players of the game here
 </documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="f54a171e" name="Stakeholders" viewpoint="15">
@@ -24,14 +28,14 @@
       </element>
       <element xsi:type="archimate:BusinessCollaboration" id="62870b91" name="Archi community"/>
       <element xsi:type="archimate:BusinessCollaboration" id="fbe5dc11" name="Archi users">
+        <property key="objectClass" value="OrganisationalUnit"/>
         <documentation>The users of Archi. All and any of them.
 </documentation>
-        <property key="objectClass" value="OrganisationalUnit"/>
       </element>
       <element xsi:type="archimate:BusinessCollaboration" id="0ec67e85" name="Archi developers">
+        <property key="objectClass" value="OrganisationalUnit"/>
         <documentation>Everyone who develops archi or one of the modules belonging to it.
 </documentation>
-        <property key="objectClass" value="OrganisationalUnit"/>
       </element>
       <element xsi:type="archimate:BusinessActor" id="16abaafb" name="Phil Beauvoir">
         <property key="OrganisationalPerson:position" value="Archi project leader"/>
@@ -40,9 +44,11 @@
         <property key="OrganisationalPerson:position" value="Styled export module developer"/>
       </element>
     </folder>
-    <folder name="2 Use Cases" id="5fe95bf2">
-      <folder name="0. Installation" id="1befebae">
+    <folder id="5fe95bf2" name="2 Use Cases">
+      <folder id="1befebae" name="0. Installation">
         <element xsi:type="archimate:ArchimateDiagramModel" id="39b45e09" name="installation">
+          <documentation>
+</documentation>
           <child xsi:type="archimate:DiagramObject" id="312100eb" archimateElement="135eefa1">
             <bounds x="12" y="24" width="781" height="301"/>
             <sourceConnection xsi:type="archimate:Connection" id="4b0de5ed" source="312100eb" target="6335a3d2" relationship="ee8b72e8"/>
@@ -94,8 +100,6 @@
           <child xsi:type="archimate:DiagramObject" id="6335a3d2" targetConnections="4b0de5ed" archimateElement="dbeb1455">
             <bounds x="852" y="147"/>
           </child>
-          <documentation>
-</documentation>
         </element>
         <element xsi:type="archimate:BusinessProcess" id="813739e2" name="Download Archi">
           <documentation>With any web browser from the Archi download site.
@@ -147,7 +151,7 @@ http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</documentation
 </documentation>
         </element>
       </folder>
-      <folder name="1. Configuration" id="7b1f1711">
+      <folder id="7b1f1711" name="1. Configuration">
         <element xsi:type="archimate:ArchimateDiagramModel" id="82da47db" name="Configuration">
           <child xsi:type="archimate:DiagramObject" id="65a82167" archimateElement="e18c6fa0">
             <bounds y="120" width="169" height="232"/>
@@ -233,7 +237,7 @@ You can use one of the provided styles as a starting point.
 </documentation>
         </element>
       </folder>
-      <folder name="2. Create a report" id="16d81164">
+      <folder id="16d81164" name="2. Create a report">
         <element xsi:type="archimate:ArchimateDiagramModel" id="3f087392" name="Create a report">
           <child xsi:type="archimate:DiagramObject" id="da905d6c" targetConnections="9bcfcd63 67f2c7ad 0bcda955" archimateElement="9f9acbbf">
             <bounds x="180" y="84"/>
@@ -309,7 +313,7 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
 </documentation>
         </element>
       </folder>
-      <folder name="3. Troubleshooting" id="8666b00c">
+      <folder id="8666b00c" name="3. Troubleshooting">
         <element xsi:type="archimate:ArchimateDiagramModel" id="12cc0a0a" name="Troubleshooting">
           <child xsi:type="archimate:DiagramObject" id="567edf05" targetConnections="93a6c213" archimateElement="e4b300fb">
             <bounds x="48" y="112"/>
@@ -433,7 +437,7 @@ If the fix needs something more (it is an unknown bug, or needs a yet unknown fi
 </documentation>
         </element>
       </folder>
-      <folder name="4. Collaboration" id="bf9ab0e1">
+      <folder id="bf9ab0e1" name="4. Collaboration">
         <element xsi:type="archimate:ArchimateDiagramModel" id="20009662" name="Collaboration use case" connectionRouterType="1">
           <child xsi:type="archimate:DiagramObject" id="bb6a69ec" textAlignment="2" archimateElement="580fcd72">
             <bounds x="528" y="276"/>
@@ -487,27 +491,33 @@ If the fix needs something more (it is an unknown bug, or needs a yet unknown fi
         <element xsi:type="archimate:BusinessProcess" id="cae66752" name="Checks in"/>
       </folder>
     </folder>
-    <folder name="4. Document Control" id="be0e739f">
-      <folder name="governance stakeholders" id="28a949a8">
+    <folder id="be0e739f" name="4. Document Control">
+      <documentation>This is metadata about the model. Contains the information which serves as a base for generating the version and review control part of the resulting reports.
+
+Note that as the application itself is about document control in a way, sometimes it is hard to differentiate between business and governance related processes/actors. To make it easier, the strictly governance related elments will be distinct from the business process related ones, using fictional characters and distinct process steps, although sometimes with the same name.
+To show the normal overlap between business process stakeholders and governance actors (the business itself) we use real persons.
+
+</documentation>
+      <folder id="28a949a8" name="governance stakeholders">
         <element xsi:type="archimate:BusinessActor" id="cc2694e8" name="Legate Nesall">
-          <documentation>A legendary Cardassian architect</documentation>
           <property key="OrganisationalPerson:position" value="Architect"/>
+          <documentation>A legendary Cardassian architect</documentation>
         </element>
         <element xsi:type="archimate:BusinessCollaboration" id="19fcbcca" name="IT Architecture dept.">
           <documentation>Where you look for an architect.
 </documentation>
         </element>
         <element xsi:type="archimate:BusinessActor" id="151d0d88" name="Odo">
-          <documentation>Chief security officer at Deep Space 9</documentation>
           <property key="OrganisationalPerson:position" value="Chief of Security"/>
+          <documentation>Chief security officer at Deep Space 9</documentation>
         </element>
         <element xsi:type="archimate:BusinessCollaboration" id="460239bb" name="IT Security dept.">
           <documentation>Paranoid geeks.
 </documentation>
         </element>
         <element xsi:type="archimate:BusinessActor" id="8484165f" name="Quark">
-          <documentation>The bar owner</documentation>
           <property key="OrganisationalPerson:position" value="Bar Owner"/>
+          <documentation>The bar owner</documentation>
         </element>
         <element xsi:type="archimate:BusinessCollaboration" id="bc8e44f0" name="Quark's">
           <documentation>The bar at Deep Space 9.
@@ -520,7 +530,7 @@ If the fix needs something more (it is an unknown bug, or needs a yet unknown fi
         <element xsi:type="archimate:BusinessRole" id="580fcd72" name="Enterprise architect"/>
         <element xsi:type="archimate:BusinessRole" id="12994ac1" name="Solution Architect"/>
       </folder>
-      <folder name="document governance steps" id="dd60d413">
+      <folder id="dd60d413" name="document governance steps">
         <element xsi:type="archimate:BusinessEvent" id="b2ad7581" name="3. Business Specification Acceptance">
           <documentation>The act of accepting the business specification.
 
@@ -528,25 +538,25 @@ The actor(s) related to this process step is deliberately missing, so you can ha
 </documentation>
         </element>
         <element xsi:type="archimate:BusinessEvent" id="f1864e14" name="2. Business Specification Overview">
+          <property key="GovernanceStep:state" value="ongoing"/>
           <documentation>Overview of the business specification.
 
 </documentation>
-          <property key="GovernanceStep:state" value="ongoing"/>
         </element>
         <element xsi:type="archimate:BusinessProcess" id="f9623e86" name="1. Creating business specification">
+          <property key="GovernanceStep:state" value="done"/>
           <documentation>The process in which the business specification is created.
 </documentation>
-          <property key="GovernanceStep:state" value="done"/>
         </element>
       </folder>
-      <folder name="versions" id="0d143f77">
+      <folder id="0d143f77" name="versions">
         <element xsi:type="archimate:Product" id="c400f4ad" name="0.1">
-          <documentation>Initial version</documentation>
           <property key="DocumentVersion:releasedate" value="2011-05-10"/>
+          <documentation>Initial version</documentation>
         </element>
         <element xsi:type="archimate:Product" id="baf3b224" name="0.2">
-          <documentation>Added new version number and specialisation relation to it.</documentation>
           <property key="DocumentVersion:releasedate" value="2011-05-10"/>
+          <documentation>Added new version number and specialisation relation to it.</documentation>
         </element>
         <element xsi:type="archimate:Product" id="81cb1dd3" name="1.0.7">
           <documentation>This module works with Archi 2.0.0.
@@ -558,13 +568,15 @@ The created report is shown in a browser window.
 </documentation>
         </element>
       </folder>
-      <documentation>This is metadata about the model. Contains the information which serves as a base for generating the version and review control part of the resulting reports.
+      <element xsi:type="archimate:ArchimateDiagramModel" id="951f29b8" name="Document control process">
+        <documentation>The document control process and its stakeholders.
 
-Note that as the application itself is about document control in a way, sometimes it is hard to differentiate between business and governance related processes/actors. To make it easier, the strictly governance related elments will be distinct from the business process related ones, using fictional characters and distinct process steps, although sometimes with the same name.
-To show the normal overlap between business process stakeholders and governance actors (the business itself) we use real persons.
+It is preliminary now, I will enhance it as need emerges
+
+The groups are used to set the Objectclass for the containing elements.
+Note that in a bigger enterprise the governance actors would be defined in another model (probably generated from the HR database), and only a referece would be used here, and their organisational units would not even show up in this model.
 
 </documentation>
-      <element xsi:type="archimate:ArchimateDiagramModel" id="951f29b8" name="Document control process">
         <child xsi:type="archimate:Group" id="b0afc80b" name="Document governance events">
           <bounds x="80" y="20" width="230" height="409"/>
           <child xsi:type="archimate:DiagramObject" id="1899faf7" textAlignment="2" targetConnections="7262eb22 83d7bc44 36bece3d e2938063 e03fb957" archimateElement="f1864e14">
@@ -629,16 +641,15 @@ To show the normal overlap between business process stakeholders and governance 
           </sourceConnection>
           <content>this is a note</content>
         </child>
-        <documentation>The document control process and its stakeholders.
-
-It is preliminary now, I will enhance it as need emerges
-
-The groups are used to set the Objectclass for the containing elements.
-Note that in a bigger enterprise the governance actors would be defined in another model (probably generated from the HR database), and only a referece would be used here, and their organisational units would not even show up in this model.
-
-</documentation>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" id="88bba172" name="Version control">
+        <documentation>These items are used to describe the versions of documents.
+
+A version is a product.
+The person writing a version is used by the version.
+
+
+</documentation>
         <child xsi:type="archimate:DiagramObject" id="5611c6f5" archimateElement="91d6a6a9">
           <bounds x="60" y="97"/>
           <sourceConnection xsi:type="archimate:Connection" id="bd86b974" source="5611c6f5" target="0056a758" relationship="28e4c025"/>
@@ -658,17 +669,13 @@ Note that in a bigger enterprise the governance actors would be defined in anoth
           </child>
           <property key="associatedObjectClass" value="DocumentVersion"/>
         </child>
-        <documentation>These items are used to describe the versions of documents.
-
-A version is a product.
-The person writing a version is used by the version.
-
-
-</documentation>
       </element>
     </folder>
-    <folder name="5. possible enhancements" id="34bb3287">
+    <folder id="34bb3287" name="5. possible enhancements">
       <element xsi:type="archimate:SketchModel" id="ff808e71" name="Possible enhancements">
+        <documentation>This sketch describes possible ways to enhance the StyledHtml module.
+It also serves as an example for the sketchtotable style.
+</documentation>
         <child xsi:type="archimate:Group" id="17e60e7e" name="Generation of code/config">
           <bounds x="504" y="252" width="457" height="337"/>
           <child xsi:type="archimate:SketchModelSticky" id="cccda2ca" name="Sticky" textAlignment="1" fillColor="#ffffb5">
@@ -797,14 +804,16 @@ This way various reports could be generated in one step, and even the policies c
           <sourceConnection id="f808072f" name="Connection" source="f337895b" target="7892b2f6"/>
           <sourceConnection id="b17234c6" name="Connection" source="f337895b" target="75b2eb51"/>
         </child>
-        <documentation>This sketch describes possible ways to enhance the StyledHtml module.
-It also serves as an example for the sketchtotable style.
-</documentation>
       </element>
     </folder>
-    <documentation>business is business</documentation>
-    <element xsi:type="archimate:Folder" name="1. Introduction" id="0c1fd16c">
-      <folder name="Extended Archimate" id="ec5ff11d">
+    <element xsi:type="archimate:Folder" id="0c1fd16c" name="1. Introduction">
+      <documentation>This module is mainly about two things.
+One is to create reports from your Archimate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.
+
+The other thing is an enhancement of the Archimate methodology itself, Extended Archimate. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
+
+To see some of the possible avenues it would open, see &quot;Possible enhancements&quot;</documentation>
+      <folder id="ec5ff11d" name="Extended Archimate">
         <documentation>This is a proposal for an extension to Archimate methodology (dubbed EA for Extended Archimate), adding a metamodel layer in the following way:
 - Instances of Archimate objects can have properties. This extension is already implemented in Archi.
 - There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core archimate concepts, and the properties associated with that concept.
@@ -823,16 +832,10 @@ Archimate right now is a closed ontology. It does have a lot of advantages, and 
 This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Archimate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.
 With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </documentation>
       </folder>
-      <documentation>This module is mainly about two things.
-One is to create reports from your Archimate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.
-
-The other thing is an enhancement of the Archimate methodology itself, Extended Archimate. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
-
-To see some of the possible avenues it would open, see &quot;Possible enhancements&quot;</documentation>
     </element>
   </folder>
-  <folder name="Application" id="4bd8be88" type="application">
-    <folder name="Application overview" id="f26c5f63">
+  <folder id="4bd8be88" name="Application" type="application">
+    <folder id="f26c5f63" name="Application overview">
       <element xsi:type="archimate:ArchimateDiagramModel" id="40b121a8" name="Application overview">
         <child xsi:type="archimate:DiagramObject" id="ac93f087" archimateElement="4173c76a">
           <bounds x="312" y="84" width="193" height="169"/>
@@ -862,7 +865,7 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
       <element xsi:type="archimate:ApplicationComponent" id="1be308a1" name="browser module"/>
       <element xsi:type="archimate:ApplicationComponent" id="609f7882" name="StyledHtml distribution"/>
     </folder>
-    <folder name="report styles" id="280cc4bd">
+    <folder id="280cc4bd" name="report styles">
       <documentation>The report styles shipped with the styledhtml module
 </documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="2f63a7d9" name="overview of styles">
@@ -953,7 +956,7 @@ See http://archistyledhtml.sourceforge.net/documentcontrol.html for an example.
 </documentation>
       </element>
     </folder>
-    <folder name="Enhancement requests against Archi" id="ac7a16c8">
+    <folder id="ac7a16c8" name="Enhancement requests against Archi">
       <element xsi:type="archimate:ArchimateDiagramModel" id="76d1a6e9" name="Archi feature requests">
         <child xsi:type="archimate:Group" id="f42d7194" name="Supported functionality">
           <bounds x="60" y="36" width="397" height="140"/>
@@ -1005,8 +1008,8 @@ https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976
       </element>
       <element xsi:type="archimate:ApplicationFunction" id="72b003ce" name="Features to be added"/>
     </folder>
-    <folder name="styledhtml anatomy" id="5ac09ca0">
-      <folder name="Java classes" id="cc9b4c13">
+    <folder id="5ac09ca0" name="styledhtml anatomy">
+      <folder id="cc9b4c13" name="Java classes">
         <documentation>In a real-world scenario, this low level is often designed in</documentation>
         <element xsi:type="archimate:ApplicationComponent" id="64c094c8" name="Enricher"/>
         <element xsi:type="archimate:ApplicationInterface" id="83915b05" name="IPreferenceConstants"/>
@@ -1040,10 +1043,15 @@ https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976
       <element xsi:type="archimate:ApplicationInterface" id="aee68911" name="rich format export"/>
       <element xsi:type="archimate:ApplicationInterface" id="549b978f" name="Styled preference page"/>
     </folder>
-    <folder name="Sample policy" id="10b66e07">
-      <folder name="objectClasses" id="66763c45">
-        <folder name="policy related objectClasses" id="f7ef44a8">
-          <folder name="objectClass" id="c4c7ece3">
+    <folder id="10b66e07" name="Sample policy">
+      <documentation>There is a sample policy associated with some shipped report styles.
+
+We describe the objectclasses used in them here.
+
+</documentation>
+      <folder id="66763c45" name="objectClasses">
+        <folder id="f7ef44a8" name="policy related objectClasses">
+          <folder id="c4c7ece3" name="objectClass">
             <documentation>This objectClass describes an objectClass. Recursion rulez.
 
 </documentation>
@@ -1062,13 +1070,13 @@ One of the examples of this is that the policy for this model can be generated f
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="72b37366" name="parent">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:structural" value="true"/>
               <documentation>The ancestor of the objectClass.
 The objectclass have all the properties of its non-builtin ancestors.
 
 The ancestor is represented by a tag named 'ancestor' having an attribute named 'class' with the value of the ancestor class name in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:structural" value="true"/>
             </element>
             <element xsi:type="archimate:DataObject" id="81c4876a" name="there is a specialisation relationship from the ancestor to the objectClass">
               <property key="default:order" value="0"/>
@@ -1076,20 +1084,20 @@ The ancestor is represented by a tag named 'ancestor' having an attribute named 
               <property key="default:multi" value="true"/>
             </element>
             <element xsi:type="archimate:DataObject" id="c496f50f" name="abstract">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
               <documentation>If &quot;true&quot;, the objectClass is merely used for the purpose of instantiating properties for other objectclasses. It should not be directly instantiated in a model.
 
 The property is represented by the attribute with the same name in the policy file.
 
 FIXME: check for this is not implemented yet.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
             </element>
             <element xsi:type="archimate:DataObject" id="80c1003b" name="attrib">
-              <documentation>The id of an attribute belonging to the objectClass</documentation>
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:structural" value="true"/>
               <property key="attribute:minOccurs" value="0"/>
+              <documentation>The id of an attribute belonging to the objectClass</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="d07f34b8" name="A composition relationship points from here to the attribute">
               <property key="default:order" value="0"/>
@@ -1097,7 +1105,7 @@ FIXME: check for this is not implemented yet.
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <folder name="property" id="5eb97cc7">
+          <folder id="5eb97cc7" name="property">
             <element xsi:type="archimate:DataObject" id="6ab69c29" name="attribute">
               <documentation>The attribute is used to describe a attribute of an objectClass.
 You can define a attribute value either by giving the value to a property named &lt;classname>:&lt;attributename> to an object, or by using a model structure defined by the defaults of the given attribute.
@@ -1105,16 +1113,19 @@ You can define a attribute value either by giving the value to a property named 
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="8d960b3e" name="type">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The type of the property.
 It will be used when an xsd is generated from the policy.
 The xsd in turn will be used to check the values given.
 
 The property is represented by the attribute named 'type' in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="3b4e5bbc" name="minOccurs">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>How much time the property should be occur minimally in the objectClass.
 If no such property, then the value is deemed to be 1.
 It will be used when an xsd is generated from the policy.
@@ -1122,11 +1133,11 @@ The xsd in turn will be used to check the values given.
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
+            </element>
+            <element xsi:type="archimate:DataObject" id="974790c3" name="maxOccurs">
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
               <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="974790c3" name="maxOccurs">
               <documentation>How much time the property should be occur maximally in the objectClass.
 If no such property, then there is no limit.
 It will be used when an xsd is generated from the policy.
@@ -1134,11 +1145,11 @@ The xsd in turn will be used to check the values given.
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
+            </element>
+            <element xsi:type="archimate:DataObject" id="378950dd" name="structural">
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
               <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="378950dd" name="structural">
               <documentation>If the value of this property is &quot;true&quot;, then the property is structural:
 The value will be generated by a default associated to it, and it is an error to enter the value into the model through some properties.
 
@@ -1146,17 +1157,14 @@ FIXME: this check is not implemented yet.
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="972588ae" name="def">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
               <documentation>The id of a default related to the attribute.
 
 The property is represented by a tag named 'type' in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
             </element>
             <element xsi:type="archimate:DataObject" id="1c076398" name="A composition relation points to the default from the attribute">
               <property key="default:order" value="0"/>
@@ -1164,7 +1172,7 @@ The property is represented by a tag named 'type' in the policy file.
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <folder name="default" id="eb7e06ad">
+          <folder id="eb7e06ad" name="default">
             <element xsi:type="archimate:DataObject" id="7aba69d1" name="default">
               <documentation>The default is used to describe how a property will get its default value if we have not given anything.
 It is useful to
@@ -1175,6 +1183,8 @@ This attribute should be entered as a property.
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="0dff4259" name="description">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The description of the default.
 
 Ideally it describes how to give a value to the property through model structure, or what is the default value of the property, and why it is so.
@@ -1182,15 +1192,16 @@ Ideally it describes how to give a value to the property through model structure
 
 The description is represented by the tag named 'description' in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="36fbd768" name="name of the parent node + the documentation of the parent node">
-              <documentation>By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.</documentation>
               <property key="default:order" value="0"/>
               <property key="default:select" value="../@name | ../documentation"/>
+              <documentation>By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="77f11989" name="order">
+              <property key="attribute:type" value="xs:nonnegativeinteger"/>
+              <property key="attribute:minOccurs" value="0"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The order in which the defaults are evaluated.
 The default evaluation goes in the following way:
 1. i:=0
@@ -1204,21 +1215,21 @@ The reason of this behaviour that the sequence of getting the attributes from th
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:nonnegativeinteger"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="cdc8f974" name="select">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The xpath expression to be evaluated to get the value of the property.
 If multi=&quot;true&quot;, then the result should be a nodeset, else a string.
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
+            </element>
+            <element xsi:type="archimate:DataObject" id="547c517e" name="multi">
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
               <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="547c517e" name="multi">
               <documentation>Whether the select will return multiple values.
 If set to &quot;true&quot;, then for each item in the nodelist returned by the select, a different property will be generated.
 
@@ -1228,53 +1239,50 @@ string: default functionality
 multi: multi=&quot;true&quot;
 structured: works like xsl:copy-of
 </documentation>
+            </element>
+            <element xsi:type="archimate:DataObject" id="34b7b9da" name="always">
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
               <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="34b7b9da" name="always">
               <documentation>Whether to try to always apply the default, even when there is already such a property.
 
 The property is represented by the attribute with the same name in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
           </folder>
-          <folder name="archimateObjectClass" id="22be0ed0">
+          <folder id="22be0ed0" name="archimateObjectClass">
             <element xsi:type="archimate:DataObject" id="07ee5607" name="ArchimateObjectClass">
               <documentation>An objectclass predefined by Archi.
 This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
 </documentation>
             </element>
           </folder>
-          <folder name="abstractNamed" id="d8a257cd">
+          <folder id="d8a257cd" name="abstractNamed">
             <element xsi:type="archimate:DataObject" id="d2886808" name="abstractNamed">
+              <property key="objectClass:abstract" value="true"/>
               <documentation>This is an abstract class, so we don't need to define the name and description property for all objectClasses.
 </documentation>
-              <property key="objectClass:abstract" value="true"/>
             </element>
             <element xsi:type="archimate:DataObject" id="a99529e2" name="description">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The description of the objectClass.
 
 The description is represented by the tag named 'description' in the policy file.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="139f9bab" name="documentation of the parent node">
               <property key="default:order" value="0"/>
               <property key="default:select" value="../documentation"/>
             </element>
             <element xsi:type="archimate:DataObject" id="9bdf194e" name="name">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>name of the objectClass
 
 The name is represented by an attribute named 'name' of the objectClass in the policy file.
 
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="47ca6523" name="name of the parent node">
               <property key="default:order" value="0"/>
@@ -1387,67 +1395,67 @@ The name is represented by an attribute named 'name' of the objectClass in the p
             </child>
           </element>
         </folder>
-        <folder name="document control related classes" id="0a9f1efb">
-          <folder name="report" id="cb05f2ef">
+        <folder id="0a9f1efb" name="document control related classes">
+          <folder id="cb05f2ef" name="report">
             <element xsi:type="archimate:DataObject" id="c73e22bc" name="report">
               <documentation>folder properties to parameterize reports</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="5850f515" name="part">
+              <property key="attribute:type" value="xs:string"/>
               <documentation>The name of the report part for which this folder should be displayed
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
             </element>
           </folder>
-          <folder name="DocumentVersion" id="cf0431ff">
+          <folder id="cf0431ff" name="DocumentVersion">
             <element xsi:type="archimate:DataObject" id="e2ac9f22" name="DocumentVersion">
               <documentation>A Document version.
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="6f01bf3a" name="releasedate">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:minOccurs" value="0"/>
               <documentation>The release date of the document version
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
             </element>
             <element xsi:type="archimate:DataObject" id="ed7baa8b" name="versionnumber">
-              <documentation>The version number of the document version
-</documentation>
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
+              <documentation>The version number of the document version
+</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="50b2059e" name="name of the parent node">
               <property key="default:order" value="0"/>
               <property key="default:select" value="../@name"/>
             </element>
             <element xsi:type="archimate:DataObject" id="4ef928e8" name="authorid">
-              <documentation>The id of the author</documentation>
               <property key="attribute:type" value="xs:string"/>
               <property key="attribute:minOccurs" value="0"/>
+              <documentation>The id of the author</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="f6a7fd9f" name="A Realisation relation should point from the author to the document version">
               <property key="default:order" value="0"/>
               <property key="default:select" value="//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid"/>
             </element>
           </folder>
-          <folder name="GovernanceStep" id="74ee99df">
+          <folder id="74ee99df" name="GovernanceStep">
             <element xsi:type="archimate:DataObject" id="dfaa4387" name="GovernanceStep">
               <documentation>A governance process step.
 It is used to describe the related actors by the documentcontrol style.
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="e314799d" name="state">
+              <property key="attribute:type" value="xs:string"/>
               <documentation>The state of the step
 
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
             </element>
             <element xsi:type="archimate:DataObject" id="94d50d97" name="the default state is 'not started'">
               <property key="default:order" value="0"/>
               <property key="default:select" value="'not started'"/>
             </element>
             <element xsi:type="archimate:DataObject" id="3352c46b" name="actor">
-              <documentation>An actor involved in the step.</documentation>
               <property key="attribute:type" value="xs:string"/>
+              <documentation>An actor involved in the step.</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="4b847644" name="A used by relationship points from the author to the process step">
               <property key="default:order" value="0"/>
@@ -1523,63 +1531,63 @@ It is used to describe the related actors by the documentcontrol style.
             </child>
           </element>
         </folder>
-        <folder name="Organisation related classes" id="22ed5aa2">
-          <folder name="Organisational Unit" id="5be107dc">
+        <folder id="22ed5aa2" name="Organisation related classes">
+          <folder id="5be107dc" name="Organisational Unit">
             <element xsi:type="archimate:DataObject" id="229a7d9f" name="OrganisationalUnit">
               <documentation>An organisational unit.
 </documentation>
             </element>
           </folder>
-          <folder name="Organisational Person" id="94bd5d5d">
+          <folder id="94bd5d5d" name="Organisational Person">
             <element xsi:type="archimate:DataObject" id="e7aa271c" name="OrganisationalPerson">
               <documentation>A person belonging to an organisation
 </documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="694b17c2" name="position">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>position of the person
 
 FIXME: should have a default which computes it by the composition relation with the organisation (property or line text), because it should actually change by organisation for the same person.
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="2d7a05b4" name="organisation">
+              <property key="attribute:type" value="xs:string"/>
+              <property key="attribute:maxOccurs" value="1"/>
               <documentation>The (primary) organisation of the person.
 
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
             </element>
             <element xsi:type="archimate:DataObject" id="8c50cc08" name="More organisational units contains (Composition) the person, and one of the relations have a property with &quot;primary&quot; property.">
+              <property key="default:order" value="0"/>
+              <property key="default:select" value="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"/>
               <documentation>When the person belongs to more organisational units, one of them should be the primary one.
 It is designated by a property added to the composition relationship.
 </documentation>
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"/>
             </element>
             <element xsi:type="archimate:DataObject" id="4983c1c8" name="Exactly one organisational unit contains (Composition) the person.">
-              <documentation>When the person belongs to one organisational unit, then this organisational unit is its primary organisation.
-</documentation>
               <property key="default:order" value="1"/>
               <property key="default:select" value="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"/>
               <property key="default:multi" value="true"/>
+              <documentation>When the person belongs to one organisational unit, then this organisational unit is its primary organisation.
+</documentation>
             </element>
             <element xsi:type="archimate:DataObject" id="523d0f25" name="memberOf">
+              <property key="attribute:type" value="xs:string"/>
               <documentation>The organisations of the person.
 
 FIXME: all Business Collaborations and Business Roles should have been listed here
 
 
 </documentation>
-              <property key="attribute:type" value="xs:string"/>
             </element>
             <element xsi:type="archimate:DataObject" id="590f7495" name="Organisational units containing (Composition) the person.">
-              <documentation>All the organisational units which contain the person.
-
-</documentation>
               <property key="default:order" value="0"/>
               <property key="default:select" value="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"/>
               <property key="default:multi" value="true"/>
+              <documentation>All the organisational units which contain the person.
+
+</documentation>
             </element>
           </folder>
           <element xsi:type="archimate:ArchimateDiagramModel" id="0a510e6e" name="Organisation related classes">
@@ -1637,7 +1645,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
           </element>
         </folder>
       </folder>
-      <folder name="builtin object classes" id="1362d86c">
+      <folder id="1362d86c" name="builtin object classes">
         <element xsi:type="archimate:DataObject" id="61091710" name="archimate:BusinessCollaboration">
           <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
 </documentation>
@@ -1666,11 +1674,6 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
 </documentation>
         </element>
       </folder>
-      <documentation>There is a sample policy associated with some shipped report styles.
-
-We describe the objectclasses used in them here.
-
-</documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="5fafcc8d" name="objectClass hierarchy">
         <child xsi:type="archimate:Group" id="bafdc27c" name="Builtin elements">
           <bounds x="72" y="36" width="997" height="241"/>
@@ -1746,7 +1749,7 @@ We describe the objectclasses used in them here.
         </child>
       </element>
     </folder>
-    <folder name="GUI" id="43255a7d">
+    <folder id="43255a7d" name="GUI">
       <element xsi:type="archimate:ArchimateDiagramModel" id="f179ca7d" name="GUI">
         <child xsi:type="archimate:DiagramObject" id="b882b7a0" archimateElement="e18c6fa0">
           <bounds x="36" y="84" width="181" height="253"/>
@@ -1803,7 +1806,7 @@ See troubleshooting for details.
       <element xsi:type="archimate:ApplicationInterface" id="9d9e8720" name="Output dir"/>
       <element xsi:type="archimate:ApplicationInterface" id="4b027005" name="Template install"/>
     </folder>
-    <folder name="dbexport" id="8b99c89d">
+    <folder id="8b99c89d" name="dbexport">
       <element xsi:type="archimate:ArchimateDiagramModel" id="fdd2ec44" name="data structure">
         <child xsi:type="archimate:DiagramObject" id="baab114b" archimateElement="33f4221f">
           <bounds x="48" y="35" width="781" height="122"/>
@@ -1825,9 +1828,9 @@ See troubleshooting for details.
         </child>
       </element>
       <element xsi:type="archimate:DataObject" id="33f4221f" name="xmlitem">
+        <property key="objectClass" value="objectClass"/>
         <documentation>An xml item describes a model, entity or attribute.
 </documentation>
-        <property key="objectClass" value="objectClass"/>
       </element>
       <element xsi:type="archimate:DataObject" id="46a217b3" name="parent">
         <documentation>the parent of the item</documentation>
@@ -1850,10 +1853,11 @@ reference</documentation>
 </documentation>
       </element>
     </folder>
-    <folder name="Enterprise Repository" id="a76d4b4c">
-      <folder name="Persistence in EMF" id="2cf78b0c">
+    <folder id="a76d4b4c" name="Enterprise Repository">
+      <folder id="2cf78b0c" name="Persistence in EMF">
         <element xsi:type="archimate:ApplicationFunction" id="b18c675a" name="Associates"/>
         <element xsi:type="archimate:ArchimateDiagramModel" id="5b946b53" name="EMF persistence" connectionRouterType="1">
+          <documentation>This picture tries to summarize the persistence related classes of EMF/CDO</documentation>
           <child xsi:type="archimate:DiagramObject" id="fdae7101" textAlignment="2" targetConnections="8ec9286f" archimateElement="62fb2b29">
             <bounds x="132" y="212"/>
           </child>
@@ -1911,10 +1915,9 @@ reference</documentation>
             <bounds x="264" y="446" width="174" height="107"/>
             <sourceConnection xsi:type="archimate:Connection" id="5f991579" source="eca6d892" target="cf75dfe6" relationship="33d1edb3"/>
           </child>
-          <documentation>This picture tries to summarize the persistence related classes of EMF/CDO</documentation>
         </element>
         <element xsi:type="archimate:Meaning" id="3f6a1bcc" name="File extension"/>
-        <element xsi:type="archimate:DataObject" id="62fb2b29" name="Model Instances"/>
+        <element xsi:type="archimate:DataObject" id="62fb2b29" name="Model Instance"/>
         <element xsi:type="archimate:Artifact" id="ca963b9d" name="Persisted resource"/>
         <element xsi:type="archimate:Meaning" id="4c43d055" name="Protocol"/>
         <element xsi:type="archimate:ApplicationInterface" id="90ba6918" name="Registry"/>
@@ -1928,7 +1931,7 @@ reference</documentation>
         <element xsi:type="archimate:Value" id="60602605" name="Used to create resources, defining the way the document is persisted"/>
         <element xsi:type="archimate:Value" id="ccccc638" name="Value"/>
       </folder>
-      <folder name="Archi persistence model" id="6e698414">
+      <folder id="6e698414" name="Archi persistence model">
         <element xsi:type="archimate:ArchimateDiagramModel" id="5821a2da" name="Archi persistece model" connectionRouterType="1">
           <child xsi:type="archimate:DiagramObject" id="a3ff3188" textAlignment="2" targetConnections="b8913ba3 8a2088da" archimateElement="61672af1">
             <bounds x="116" y="240" width="485" height="277"/>
@@ -2029,18 +2032,71 @@ reference</documentation>
         <element xsi:type="archimate:ApplicationInterface" id="2a3f38b9" name="initResourceSet"/>
         <element xsi:type="archimate:ApplicationFunction" id="d68b3405" name="openTransaction"/>
         <element xsi:type="archimate:ApplicationFunction" id="952ac7dd" name="getResourceFactoryRegistry(). getExtensionToFactoryMap(). put(&quot;*&quot;, new ArchimateResourceFactory());"/>
+        <element xsi:type="archimate:ArchimateDiagramModel" id="id_348038481" name="Repo implementation" connectionRouterType="1">
+          <child xsi:type="archimate:DiagramObject" id="id_1950855216" targetConnections="id_813466190 id_829274326 id_533686947 id_713450595" archimateElement="id_1622406850">
+            <bounds x="176" y="44"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_1140459609" source="id_1950855216" target="id_523145999" relationship="id_99092062"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_1405428113" source="id_1950855216" target="id_1129425430" relationship="id_1545883417"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_1129425430" targetConnections="id_1405428113" archimateElement="id_124410260">
+            <bounds x="82" y="360" width="207" height="133"/>
+            <child xsi:type="archimate:DiagramObject" id="id_1095338126" targetConnections="id_916386438" archimateElement="d68b3405">
+              <bounds x="21" y="46" width="160" height="55"/>
+            </child>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_523145999" targetConnections="id_1140459609" archimateElement="id_1097499032">
+            <bounds x="324" y="360" width="325" height="133"/>
+            <child xsi:type="archimate:DiagramObject" id="id_1980290200" targetConnections="id_962272194" archimateElement="952ac7dd">
+              <bounds x="48" y="36" width="265" height="61"/>
+            </child>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_1598606683" archimateElement="id_1766588844">
+            <bounds x="368" y="44"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_829274326" source="id_1598606683" target="id_1950855216" relationship="id_246140464"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_367355635" source="id_1598606683" target="id_1514823696" relationship="id_217875110"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_962272194" source="id_1598606683" target="id_1980290200" relationship="id_1268972593"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_916386438" source="id_1598606683" target="id_1095338126" relationship="id_292271761"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_1966208837" archimateElement="id_195302273">
+            <bounds x="368" y="132"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_813466190" source="id_1966208837" target="id_1950855216" relationship="id_322292332"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_496960310" source="id_1966208837" target="id_857400014" relationship="id_525049519"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_1514823696" targetConnections="id_367355635 id_1663642933" archimateElement="49f19790">
+            <bounds x="552" y="44"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_857400014" targetConnections="id_496960310" archimateElement="62fb2b29">
+            <bounds x="557" y="135"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_448354164" archimateElement="id_948552174">
+            <bounds x="368" y="216"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_533686947" source="id_448354164" target="id_1950855216" relationship="id_1992398774"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id_336744523" archimateElement="id_1972321710">
+            <bounds x="371" y="291"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_1663642933" source="id_336744523" target="id_1514823696" relationship="id_1955156240"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id_713450595" source="id_336744523" target="id_1950855216" relationship="id_414538609"/>
+          </child>
+        </element>
+        <element xsi:type="archimate:ApplicationInterface" id="id_1622406850" name="Repository"/>
+        <element xsi:type="archimate:ApplicationInterface" id="id_124410260" name="LocalRepository"/>
+        <element xsi:type="archimate:ApplicationInterface" id="id_1097499032" name="CDORepository"/>
+        <element xsi:type="archimate:ApplicationFunction" id="id_1766588844" name="constructor"/>
+        <element xsi:type="archimate:ApplicationFunction" id="id_195302273" name="addModel"/>
+        <element xsi:type="archimate:ApplicationFunction" id="id_948552174" name="save"/>
+        <element xsi:type="archimate:ApplicationFunction" id="id_1972321710" name="clone"/>
       </folder>
     </folder>
     <element xsi:type="archimate:ApplicationComponent" id="25980f07" name="Local model store (xml files)"/>
   </folder>
-  <folder name="Technology" id="cb60e879" type="technology"/>
-  <folder name="Connectors" id="5dd8c9be" type="connectors">
+  <folder id="cb60e879" name="Technology" type="technology"/>
+  <folder id="5dd8c9be" name="Connectors" type="connectors">
     <property key="report:part" value="structured:hide"/>
     <element xsi:type="archimate:OrJunction" id="f780d28c" name="is there anything you can add?"/>
     <element xsi:type="archimate:OrJunction" id="f82f963f" name="Can you remediate the problem?"/>
     <element xsi:type="archimate:OrJunction" id="ccf9b28a" name="could you identify the problem?"/>
   </folder>
-  <folder name="Relations" id="c790ddf0" type="relations">
+  <folder id="c790ddf0" name="Relations" type="relations">
     <property key="report:part" value="structured:hide"/>
     <element xsi:type="archimate:CompositionRelationship" id="702922fa" name="Composition relation" source="d3bfc49d" target="17ba5f53"/>
     <element xsi:type="archimate:CompositionRelationship" id="94e189ed" name="Composition relation" source="d3bfc49d" target="ceee856a"/>
@@ -2256,33 +2312,19 @@ reference</documentation>
     <element xsi:type="archimate:UsedByRelationship" id="7530b3f2" name="Used By relation" source="9bf48630" target="952ac7dd"/>
     <element xsi:type="archimate:UsedByRelationship" id="c896ccc8" name="Used By relation" source="327f8f7a" target="d68b3405"/>
     <element xsi:type="archimate:AssociationRelationship" id="83525faf" name="Association relation" source="6b223b71" target="327f8f7a"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="id_99092062" name="Specialisation relation" source="id_1622406850" target="id_1097499032"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="id_1545883417" name="Specialisation relation" source="id_1622406850" target="id_124410260"/>
+    <element xsi:type="archimate:UsedByRelationship" id="id_322292332" name="Used By relation" source="id_195302273" target="id_1622406850"/>
+    <element xsi:type="archimate:UsedByRelationship" id="id_246140464" name="Used By relation" source="id_1766588844" target="id_1622406850"/>
+    <element xsi:type="archimate:AccessRelationship" id="id_217875110" name="Access relation" source="id_1766588844" target="49f19790" accessType="1"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="id_1268972593" name="Specialisation relation" source="id_1766588844" target="952ac7dd"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="id_292271761" name="Specialisation relation" source="id_1766588844" target="d68b3405"/>
+    <element xsi:type="archimate:AccessRelationship" id="id_525049519" name="Access relation" source="id_195302273" target="62fb2b29" accessType="1"/>
+    <element xsi:type="archimate:UsedByRelationship" id="id_1992398774" name="Used By relation" source="id_948552174" target="id_1622406850"/>
+    <element xsi:type="archimate:AccessRelationship" id="id_1955156240" name="Access relation" source="id_1972321710" target="49f19790" accessType="1"/>
+    <element xsi:type="archimate:UsedByRelationship" id="id_414538609" name="Used By relation" source="id_1972321710" target="id_1622406850"/>
   </folder>
-  <folder name="Views" id="931a97bb" type="diagrams">
+  <folder id="931a97bb" name="Views" type="diagrams">
     <property key="report:part" value="structured:hide"/>
   </folder>
-  <property key="modelVersion" value="1.0"/>
-  <property key="baseVersion" value="dummy"/>
-  <property key="modelAcl" value="default acl"/>
-  <purpose>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.
-You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.
-You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.
-You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.
-
-If any of the above happens, this module and the underlying concepts are developed for you.
-
-This module revolutionizes architecture governance by making possible to 
-- define and document enterprise architecture policies
-- check architecture models against those policies
-- define documentation styles for various stakeholders, and generate those documentations from the model
-- generate configuration and code directly from the model
-
-This model tries to fulfill multiple purposes:
-- Show how Archimate can be used in the goovernance of IT
-- Document the styledhtml Archi module
-- Serve as an example for both of the above
-- The webpage of the styledhtml module is generated from it. See http://archistyledhtml.sourceforge.net/
-
-You can find user documentation in the Use Cases section.
-
-</purpose>
 </archimate:model>
