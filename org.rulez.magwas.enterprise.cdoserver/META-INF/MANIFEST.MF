@@ -9,7 +9,11 @@ Bundle-ManifestVersion: 2
 Require-Bundle: org.eclipse.emf.cdo.server,
  org.eclipse.net4j,
  org.hibernate;bundle-version="3.6.0",
- org.postgresql.jdbc3;bundle-version="8.4.701"
+ org.postgresql.jdbc3;bundle-version="8.4.701",
+ org.apache.derby;bundle-version="10.5.1",
+ org.eclipse.net4j.db;bundle-version="4.0.0",
+ org.eclipse.net4j.db.derby;bundle-version="4.0.0",
+ org.eclipse.net4j.db.postgresql;bundle-version="4.0.0"
 Import-Package: org.eclipse.emf.cdo.server.db,
  org.eclipse.emf.cdo.server.db.mapping;version="4.0.0",
  org.eclipse.emf.cdo.server.net4j;version="4.0.0",
