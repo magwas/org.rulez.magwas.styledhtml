@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="A CDO Server" uid="CDO server" id="org.rulez.magwas.enterprise.cdoserver.cdoserver" application="org.eclipse.emf.cdo.server.app" useFeatures="false" includeLaunchers="true">
-
+<product name="A CDO Server" uid="CDO server" id="org.rulez.magwas.enterprise.CDOServer" application="org.eclipse.emf.cdo.server.app" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -14,7 +13,6 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -22,10 +20,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="javax.persistence"/>
@@ -62,8 +58,11 @@
       <plugin id="org.h2"/>
       <plugin id="org.hibernate"/>
       <plugin id="org.postgresql.jdbc3"/>
-      <plugin id="org.rulez.magwas.enterprise.cdoserver"/>
    </plugins>
+
+   <features>
+      <feature id="org.rulez.magwas.enterprise.CdoServer" version="1.0.0.qualifier"/>
+   </features>
 
 
 </product>

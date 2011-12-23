@@ -22,4 +22,16 @@
             name="Enterprise">
       </page>
    </extension>
+   <extension
+         id="CDOServer"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.cdo.server.app"
+            name="A CDO Server">
+         <property
+               name="appName"
+               value="A CDO Server">
+         </property>
+      </product>
+   </extension>
 </plugin>
