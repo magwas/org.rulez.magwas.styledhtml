@@ -2039,15 +2039,15 @@ reference</documentation>
             <sourceConnection xsi:type="archimate:Connection" id="id_1405428113" source="id_1950855216" target="id_1129425430" relationship="id_1545883417"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id_1129425430" targetConnections="id_1405428113" archimateElement="id_124410260">
-            <bounds x="82" y="360" width="207" height="133"/>
-            <child xsi:type="archimate:DiagramObject" id="id_1095338126" targetConnections="id_916386438" archimateElement="d68b3405">
-              <bounds x="21" y="46" width="160" height="55"/>
+            <bounds x="82" y="360" width="327" height="133"/>
+            <child xsi:type="archimate:DiagramObject" id="id_1980290200" targetConnections="id_962272194" archimateElement="952ac7dd">
+              <bounds x="24" y="24" width="265" height="61"/>
             </child>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id_523145999" targetConnections="id_1140459609" archimateElement="id_1097499032">
-            <bounds x="324" y="360" width="325" height="133"/>
-            <child xsi:type="archimate:DiagramObject" id="id_1980290200" targetConnections="id_962272194" archimateElement="952ac7dd">
-              <bounds x="48" y="36" width="265" height="61"/>
+            <bounds x="432" y="360" width="325" height="133"/>
+            <child xsi:type="archimate:DiagramObject" id="id_1095338126" targetConnections="id_916386438" archimateElement="d68b3405">
+              <bounds x="84" y="36" width="160" height="55"/>
             </child>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id_1598606683" archimateElement="id_1766588844">

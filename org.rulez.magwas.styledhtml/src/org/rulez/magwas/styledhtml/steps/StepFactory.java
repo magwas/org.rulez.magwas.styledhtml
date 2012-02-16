@@ -14,7 +14,7 @@ public class StepFactory extends Object {
 	IArchimateModel model;
 	File targetdir;
 	File styledir;
-	List<File> dontkeep;
+	List<File> dontkeep = new List<File>();
 	
 	public StepFactory(EventLog l,IArchimateModel m, File s,File t){
 		log = l;
