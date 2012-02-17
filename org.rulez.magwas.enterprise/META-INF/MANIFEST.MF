@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Enterprise support for Archi
 Bundle-SymbolicName: org.rulez.magwas.enterprise;singleton:=true
-Bundle-Version: 1.0.6.qualifier
+Bundle-Version: 2.2.0.qualifier
 Bundle-Vendor: Árpád Magosányi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
