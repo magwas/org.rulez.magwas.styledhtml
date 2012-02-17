@@ -36,7 +36,7 @@ public abstract class Step {
 			if (null != defval) {
 				retfile=new File(defbase,defval);
 			} else {
-				factory.log.issueError("No attribute " +attname, "at "+e.getNodeName());
+				factory.log.issueWarning("No attribute named " +attname, "at "+e.getNodeName());
 				return null;
 			}
 		} else {

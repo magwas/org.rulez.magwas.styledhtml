@@ -105,9 +105,7 @@ public class Enricher{
     	// copies element node to an identical node which have nodename of the xsi:type attribute
     	String typename = m.getAttribute("xsi:type");
     	if(m.getNodeName() == "folder") {
-			//Backward compability
     		typename = "archimate:Folder";
-    		log.issueInfo(model, m, "old folder renamed", "This model have been saved with an older version of Archi.");
 		}
     	if("" != typename ) {
     		

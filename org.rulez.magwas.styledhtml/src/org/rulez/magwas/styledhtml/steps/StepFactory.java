@@ -1,6 +1,7 @@
 package org.rulez.magwas.styledhtml.steps;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class StepFactory extends Object {
 	IArchimateModel model;
 	File targetdir;
 	File styledir;
-	List<File> dontkeep;
+	List<File> dontkeep = new ArrayList<File>();
 	
 	public StepFactory(EventLog l,IArchimateModel m, File s,File t){
 		log = l;
@@ -26,8 +27,15 @@ public class StepFactory extends Object {
 		members.put("copy", new Copy(this));
 		members.put("export", new Export(this));
 		members.put("transform", new Transform(this));
+		members.put("load", new Load(this));
 	}
 	public Step get(String s) {
 		return members.get(s);
+	}
+	public void cleanUp(){
+		for(File f : dontkeep) {
+			log.issueInfo("deleting", f.getAbsolutePath());
+			f.delete();
+		}
 	}
 }

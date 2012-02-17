@@ -95,6 +95,7 @@ public class StyledHtml implements IModelExporter {
         		Element s = (Element) styles.item(i);
             	sf.get("style").doit(s,targetdir);        	
         	}
+        	sf.cleanUp();
           	log.issueInfo("done export", EventLog.now());
               		
     	} catch (Exception e) {

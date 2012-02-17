@@ -13,17 +13,20 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.python.util.PythonInterpreter;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 
 public class Transform extends Step {
-
+	NamedNodeMap atts;
 	public Transform(StepFactory sf) {
 		super(sf);
 	}
 
 	@Override
 	public void doit(Element arg0, File current) {
-		String language=arg0.getAttribute("language");
+		factory.log.issueInfo("transforming", current.getAbsolutePath());
+        String language=arg0.getAttribute("language");
 		String keep=arg0.getAttribute("keep");
+		atts = arg0.getAttributes();
 		File tfile = getFileFor(arg0,"target",null,factory.targetdir, current);
 		if(null == tfile) return;
 		if("false".equals(keep)) {
@@ -52,6 +55,12 @@ public class Transform extends Step {
     	File pylib = new File(script.getParentFile().getParentFile(),"pylib");
     	interp.exec("import sys");
     	interp.exec("sys.argv=['"+script.getAbsolutePath()+"','"+in.getAbsolutePath()+"','"+out.getAbsolutePath()+"']");
+		for(int i = 0;i<atts.getLength();i++) {
+			String name = atts.item(i).getNodeName();
+			String value = atts.item(i).getNodeValue();
+			factory.log.issueInfo("param", name + "=" + value);
+			interp.exec("sys.argv.append('"+name + "=" + value+"')");
+		}
     	interp.exec("sys.path=['"+pylib.getAbsolutePath()+"']");
     	interp.execfile(script.getAbsolutePath());
     }
@@ -76,6 +85,12 @@ public class Transform extends Step {
     		System.out.println("ss="+ss);
     		System.out.println("sr="+sr);
     		System.out.println("tf="+tf);    		
+    		for(int i = 0;i<atts.getLength();i++) {
+    			String name = atts.item(i).getNodeName();
+    			String value = atts.item(i).getNodeValue();
+    			factory.log.issueInfo("param", name + "=" + value);
+        		tf.setParameter(name, value);    			
+    		}
 			tf.transform(ss, sr);
 		} catch (FileNotFoundException e) {
 			factory.log.issueError("file not found for <transform>", source.getAbsolutePath());
