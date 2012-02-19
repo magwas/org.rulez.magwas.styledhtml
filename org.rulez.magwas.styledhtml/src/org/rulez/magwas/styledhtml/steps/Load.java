@@ -32,7 +32,8 @@ public class Load extends Step {
                	   			sf.get(n.getNodeName()).doit((Element) n,current);
            	    		}
            	    	}
-    					IEditorModelManager.INSTANCE.closeModel(model);
+           	   		sf.cleanUp();
+    				IEditorModelManager.INSTANCE.closeModel(model);
     				} catch (IOException e) {
     					factory.log.issueError("closing model", e.getMessage());
     					e.printStackTrace();

@@ -21,6 +21,8 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
      * The constructor.
      */
     public StyledHtmlPlugin() {
+    	 System.setProperty("javax.xml.transform.TransformerFactory",
+    				 "net.sf.saxon.TransformerFactoryImpl");
         INSTANCE = this;
     }
 

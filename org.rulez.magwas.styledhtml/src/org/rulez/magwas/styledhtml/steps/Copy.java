@@ -22,6 +22,7 @@ public class Copy extends Step {
 		if(null == sfile) return;
 		File tfile = getFileFor(arg0,"target",sfile.getName(),factory.targetdir,current); //FIXME: default should be more clewer
 		if(null == tfile) return;
+		factory.log.issueInfo("copying", "from "+sfile.getAbsolutePath()+" to "+ tfile.getAbsolutePath());
 		if("false".equals(keep)) {
 			factory.dontkeep.add(tfile);
 		}
