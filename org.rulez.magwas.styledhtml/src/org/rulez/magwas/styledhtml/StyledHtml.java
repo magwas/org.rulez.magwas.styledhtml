@@ -48,8 +48,26 @@ public class StyledHtml implements IModelExporter {
     public void export(IArchimateModel model) {
     	log = new EventLog("Styled export");
     	log.issueInfo("starting styled export", EventLog.now());
+    	String stylepath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
+        export(model,stylepath, log);
+    }
+    public static void export(IArchimateModel model, String stylepath, EventLog log) {
+    	Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getBoolean(IPreferenceConstants.OUT_ASK);
+    	String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.OUT_PATH);
+    	File targetdir;
+    	if((!ask) || (opath == null)) {
+    		String lastpath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.LAST_STYLED_PATH);
+    		if (null == lastpath) {
+    			StyledHtmlPlugin.INSTANCE.getPreferenceStore().setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
+    		}
+    		targetdir = Widgets.askSaveFile(IPreferenceConstants.LAST_STYLED_PATH,null);
+    	} else {
+    		targetdir = new File(opath);
+    	}
+        export(model, stylepath, log, targetdir);
+    }
+    public static void export(IArchimateModel model, String stylepath, EventLog log, File targetdir) {
     	try {
-        	String stylepath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         	File stylefile = new File(stylepath);
         	Document style;
     		if ((null != stylefile) && stylefile.exists()) {
@@ -68,18 +86,6 @@ public class StyledHtml implements IModelExporter {
     			return;
     		}
 
-        	Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getBoolean(IPreferenceConstants.OUT_ASK);
-        	String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.OUT_PATH);
-        	File targetdir;
-        	if((!ask) || (opath == null)) {
-        		String lastpath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.LAST_STYLED_PATH);
-        		if (null == lastpath) {
-        			StyledHtmlPlugin.INSTANCE.getPreferenceStore().setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
-        		}
-        		targetdir = Widgets.askSaveFile(IPreferenceConstants.LAST_STYLED_PATH,null);
-        	} else {
-        		targetdir = new File(opath);
-        	}
         	if(targetdir == null) {
         		log.issueInfo("no target directory", EventLog.now());
         		return;

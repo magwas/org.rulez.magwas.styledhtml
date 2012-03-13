@@ -61,6 +61,7 @@ public class Transform extends Step {
 			factory.log.issueInfo("param", name + "=" + value);
 			interp.exec("sys.argv.append('"+name + "=" + value+"')");
 		}
+		interp.exec("sys.argv.append('targetdir" + "=" + factory.targetdir.getAbsolutePath() +"')");
     	interp.exec("sys.path=['"+pylib.getAbsolutePath()+"']");
     	interp.execfile(script.getAbsolutePath());
     }
@@ -91,6 +92,8 @@ public class Transform extends Step {
     			factory.log.issueInfo("param", name + "=" + value);
         		tf.setParameter(name, value);    			
     		}
+    		tf.setParameter("targetdir", factory.targetdir.getAbsolutePath());
+    		factory.log.issueInfo("targetdir", factory.targetdir.getAbsolutePath());
 			tf.transform(ss, sr);
 		} catch (FileNotFoundException e) {
 			factory.log.issueError("file not found for <transform>", source.getAbsolutePath());
