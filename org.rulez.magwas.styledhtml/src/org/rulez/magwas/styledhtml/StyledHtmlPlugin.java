@@ -9,6 +9,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
 import uk.ac.bolton.archimate.model.IArchimateModel;
+import uk.ac.bolton.archimate.editor.Logger;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -35,20 +36,19 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
      }
 
     void runcmd() {
-  		 EventLog log = new EventLog("Styled export");
-  		 log.issueInfo("starting", "Styledhtml");
+  		 Logger.logInfo("starting Styledhtml");
          String[] args = Platform.getCommandLineArgs();
       	 IArchimateModel model = null;
        	 File targetdir = null;
        	 int i = 0;
        	 while (i < args.length)
        	 {
-      		 log.issueInfo("next arg:", args[i]);
+      		 Logger.logInfo("next arg:" + args[i]);
            	 if (args[i].equals("-load"))
            	 {
                	 i++;
                	 String modelpath = args[i];
-          		 log.issueInfo("loading model", modelpath);
+               	Logger.logInfo("loading model "+ modelpath);
                	 File file = new File(modelpath);
                	 model = getModel(file);
                	 if (null == model) {
@@ -59,14 +59,15 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
            	 {
                	 i++;
                	 String tpath = args[i];
-          		 log.issueInfo("setting targetpath", tpath);
+               	Logger.logInfo("setting targetpath " + tpath);
                	 targetdir = new File(tpath);
            	 }
            	 if (args[i].equals("-runstyle"))
            	 {
                	 i++;
                	 String stylepath = args[i];
-          		 log.issueInfo("running style", stylepath);
+               	Logger.logInfo("running style "+ stylepath);
+               	EventLog log = new EventLog("Styled export");
                	 if(model != null){
                		 if(targetdir == null) {
                        	 StyledHtml.export(model, stylepath, log);
@@ -74,12 +75,12 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
                        	 StyledHtml.export(model, stylepath, log, targetdir);            			 
                		 }
                	 } else {
-               		 log.issueInfo("cannot run style "+stylepath, "no model");
+               		Logger.logInfo("cannot run style "+stylepath + ": no model");
                	 }
            	 }
            	 if (args[i].equals("-exit"))
            	 {
-          		 log.issueInfo("exiting", "nicely");
+           		Logger.logInfo("exiting nicely");
            		 PlatformUI.getWorkbench().close();
            	 }
            	 i++;

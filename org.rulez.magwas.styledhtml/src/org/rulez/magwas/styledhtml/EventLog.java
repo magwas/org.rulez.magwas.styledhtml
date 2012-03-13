@@ -24,6 +24,7 @@ import org.eclipse.swt.browser.LocationListener;
 import org.eclipse.swt.browser.ProgressEvent;
 import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Widget;
 import org.rulez.magwas.archimate.editor.browser.BrowserEditorInput;
 import org.rulez.magwas.archimate.editor.browser.IBrowserEditor;
 import org.w3c.dom.Document;
@@ -77,6 +78,7 @@ public class EventLog {
    	 Display.getDefault().asyncExec(new Runnable() { // On a thread for when browser has been created
    		 @Override
    		 public void run() {
+   			 if ( ! browser.isDisposed()) {
    			 browser.addProgressListener(new ProgressListener() {
    	    			@Override
    	    			public void completed(ProgressEvent event) {
@@ -97,6 +99,7 @@ public class EventLog {
    						 //System.out.println("elementid="+ids[1]);
    						 focusElement(ids[0],ids[1]);
    					 }
+   				 
    					 event.doit = false;
    				 }
    				 public void changed(LocationEvent event) {
@@ -104,7 +107,7 @@ public class EventLog {
    				 
    			 });
    	    		}   
-   		 });    	
+   		 }});    	
   	}
 
 	private void focusElement(String modelid, String elemid) {
