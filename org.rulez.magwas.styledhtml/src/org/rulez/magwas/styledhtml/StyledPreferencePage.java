@@ -128,7 +128,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fOutDirButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-            	outDir = Widgets.askSaveFile(IPreferenceConstants.OUT_PATH,null);
+            	outDir = Widgets.askSaveDir(IPreferenceConstants.OUT_PATH);
             	if(null != outDir) {
             		fOutDirPathLabel.setText(outDir.getAbsolutePath());
             	}
