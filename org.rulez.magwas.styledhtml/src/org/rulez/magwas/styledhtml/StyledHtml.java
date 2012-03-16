@@ -23,34 +23,39 @@ import org.w3c.dom.NodeList;
 /**
  * Styled HTML Exporter of Archimate model
  * <p>
- * Input is the style directory, containing:<ul>
- * 		<li>a file called style.xslt: the xml stylesheet to be applied to the "rich model file"</li>
- * 		<li>any other files needed for the presentation of resulting html</li></ul>
- * 
- * <p>
- * In the future (If I still think it is a good idea), the style directory may contain a file containing the name of scripts to be run on archirich.xml and index.html.
- * <p>
- * Output is the report directory, containing:<ul>
- * 		<li>copy of contents of the style directory</li>
- * 		<li>archirich.xml : it is the model file, but each document tags are enriched with HTMLReportExporter's paqrseCharsAndLinks.</li>
- * 		<li>diagrams in png: all diagrams are saved to ID.png, where ID is the id of the diagram</li>
- * 		<li>index.html: the result of applying style.xslt to archirich.xml</li>
- * 
+ * Input is the style file, describing the steps of the transformation.
+ * Output is the report directory, where the output file(s) are placed.
  * @author Árpád Magosányi
  */
 public class StyledHtml implements IModelExporter {
 	
+	/** The logger instance. */
 	private EventLog log;
 
+    /**
+     * Instantiates a new styledhtml exporter.
+     */
     public StyledHtml() {
     }
     
+    /* (non-Javadoc)
+     * @see uk.ac.bolton.archimate.editor.model.IModelExporter#export(uk.ac.bolton.archimate.model.IArchimateModel)
+     */
     public void export(IArchimateModel model) {
     	log = new EventLog("Styled export");
     	log.issueInfo("starting styled export", EventLog.now());
     	String stylepath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.STYLE_PATH);
         export(model,stylepath, log);
     }
+    
+    /**
+     * Export a model using the given style.
+     * The target directory is based on the preferences and may be asked (according to the preferences also)
+     *
+     * @param model the model
+     * @param stylepath the path to the style file
+     * @param log the logger instance
+     */
     public static void export(IArchimateModel model, String stylepath, EventLog log) {
     	Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getBoolean(IPreferenceConstants.OUT_ASK);
     	String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.OUT_PATH);
@@ -60,12 +65,21 @@ public class StyledHtml implements IModelExporter {
     		if (null == lastpath) {
     			StyledHtmlPlugin.INSTANCE.getPreferenceStore().setValue(IPreferenceConstants.LAST_STYLED_PATH, opath);
     		}
-    		targetdir = Widgets.askSaveFile(IPreferenceConstants.LAST_STYLED_PATH,null);
+    		targetdir = Widgets.askSaveDir(IPreferenceConstants.LAST_STYLED_PATH);
     	} else {
     		targetdir = new File(opath);
     	}
         export(model, stylepath, log, targetdir);
     }
+    
+    /**
+     * Export the model based on the given style to the given target directory
+     *
+     * @param model the model
+     * @param stylepath path to the style file
+     * @param log the logger instance
+     * @param targetdir the target directory
+     */
     public static void export(IArchimateModel model, String stylepath, EventLog log, File targetdir) {
     	try {
         	File stylefile = new File(stylepath);

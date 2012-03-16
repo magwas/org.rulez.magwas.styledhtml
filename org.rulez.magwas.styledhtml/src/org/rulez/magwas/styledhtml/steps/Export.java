@@ -10,14 +10,25 @@ import org.w3c.dom.Element;
 
 import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
 
+/**
+ * The Exports the model either to archimate or rich format (default is rich).
+ */
 public class Export extends Step {
 
+	/**
+	 * Instantiates a new export.
+	 *
+	 * @param sf the Step Factory
+	 */
 	public Export(StepFactory sf) {
 		super(sf);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.rulez.magwas.styledhtml.steps.Step#doit(org.w3c.dom.Element, java.io.File)
+	 */
 	@Override
-	public void doit(Element arg0, File current) {
+	public boolean doit(Element arg0, File current) {
 		String style=arg0.getAttribute("style");
 		String keep=arg0.getAttribute("keep");
 		File policyfile = getFileFor(arg0,"policy",null,factory.styledir,current);
@@ -35,17 +46,16 @@ public class Export extends Step {
 			} catch (IOException e) {
 				factory.log.issueError("cannot export model to", tfile.getAbsolutePath());
 				factory.log.printStackTrace(e);
-				return;
+				return false;
 			}
 	        resource.getContents().remove(factory.model);
 		} else {
 			factory.log.issueError("Unknown export style", style);
+			return false;
 		}
 		if("false".equals(keep)) {
 			factory.dontkeep.add(tfile);
 		}
-		doSubSteps(arg0, tfile);
-
+		return doSubSteps(arg0, tfile);
 	}
-
 }
