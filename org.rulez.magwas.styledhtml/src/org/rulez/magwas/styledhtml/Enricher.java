@@ -264,7 +264,7 @@ public class Enricher{
     	} while (null != defitem);
     	int len = node.getElementsByTagName(propname).getLength();
     	String mo = property.getAttribute("minOccurs");
-    	int minOccurs;
+       	int minOccurs;
     	if("".equals(mo)) {
     		minOccurs = 1;
     	} else {
@@ -272,8 +272,6 @@ public class Enricher{
     	}
     	if(len<minOccurs) {
         	log.issueError(model,(Element) node.getParentNode(),"Too few ("+len+"<"+minOccurs+") occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));    		
-    	} else if (len == 0) {
-        	log.issueInfo(model,(Element) node.getParentNode(),"No occurence of "+propname+ " in "+node.getTagName(),helpForProperty(property));
     	}
     	String Mo = property.getAttribute("maxOccurs");
     	if(!"".equals(Mo)) {
@@ -396,7 +394,6 @@ public class Enricher{
     		Element objectclass = (Element) ol.item(i);
     		NodeList nl = xml.getElementsByTagName(objectclass.getAttribute("name"));
     		int k = nl.getLength();
-    		//TODO check cardinality (k) by policy
     		for(int j=0;j<k;j++) {
     			Element node = (Element) nl.item(j);
     			applyPolicyForElement(node,objectclass,null);
