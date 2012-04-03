@@ -45,55 +45,55 @@
     <folder name="2 Use Cases" id="5fe95bf2">
       <folder name="0. Installation" id="1befebae">
         <element xsi:type="archimate:ArchimateDiagramModel" id="39b45e09" name="installation">
-          <child xsi:type="archimate:DiagramObject" id="312100eb" archimateElement="135eefa1">
+          <child xsi:type="archimate:DiagramObject" id="312100eb" textAlignment="2" archimateElement="135eefa1">
             <bounds x="12" y="24" width="781" height="301"/>
             <sourceConnection xsi:type="archimate:Connection" id="4b0de5ed" source="312100eb" target="6335a3d2" relationship="ee8b72e8"/>
-            <child xsi:type="archimate:DiagramObject" id="3fbecec1" targetConnections="6548c5aa" archimateElement="91d0932d">
+            <child xsi:type="archimate:DiagramObject" id="3fbecec1" textAlignment="2" targetConnections="6548c5aa" archimateElement="91d0932d">
               <bounds x="204" y="36"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="0303a8a7" targetConnections="ce5c5ef9 81e672f4" archimateElement="c7e00f6d">
+            <child xsi:type="archimate:DiagramObject" id="0303a8a7" textAlignment="2" targetConnections="ce5c5ef9 81e672f4" archimateElement="c7e00f6d">
               <bounds x="348" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="4eb114bc" source="0303a8a7" target="fa0a67d3" relationship="66a02ded"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="4d181e12" targetConnections="3c7e59bc" archimateElement="e9d01fe3">
+            <child xsi:type="archimate:DiagramObject" id="4d181e12" textAlignment="2" targetConnections="3c7e59bc" archimateElement="e9d01fe3">
               <bounds x="120" y="216"/>
               <sourceConnection xsi:type="archimate:Connection" id="81e672f4" source="4d181e12" target="0303a8a7" relationship="3b9b9fbb"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="dc43df4d" targetConnections="e999fc42" archimateElement="4a0fac0e">
+            <child xsi:type="archimate:DiagramObject" id="dc43df4d" textAlignment="2" targetConnections="e999fc42" archimateElement="4a0fac0e">
               <bounds x="204" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="6548c5aa" source="dc43df4d" target="3fbecec1" relationship="e7edc131"/>
               <sourceConnection xsi:type="archimate:Connection" id="ce5c5ef9" source="dc43df4d" target="0303a8a7" relationship="37460964"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="d50000b0" archimateElement="813739e2">
+            <child xsi:type="archimate:DiagramObject" id="d50000b0" textAlignment="2" archimateElement="813739e2">
               <bounds x="36" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="87c53c57" source="d50000b0" target="710a0506" relationship="82625f2c"/>
               <sourceConnection xsi:type="archimate:Connection" id="e999fc42" source="d50000b0" target="dc43df4d" relationship="33993dbf"/>
               <sourceConnection xsi:type="archimate:Connection" id="3c7e59bc" source="d50000b0" target="4d181e12" relationship="ad7abe2a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="710a0506" targetConnections="87c53c57" archimateElement="91fbfb11">
+            <child xsi:type="archimate:DiagramObject" id="710a0506" textAlignment="2" targetConnections="87c53c57" archimateElement="91fbfb11">
               <bounds x="36" y="36"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="52f6b067" targetConnections="83ef44d6 f8f2f0fd c31693ff a7fab4a8" archimateElement="f541b667">
+            <child xsi:type="archimate:DiagramObject" id="52f6b067" textAlignment="2" targetConnections="83ef44d6 f8f2f0fd c31693ff a7fab4a8" archimateElement="f541b667">
               <bounds x="648" y="132"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="fa0a67d3" targetConnections="4eb114bc" archimateElement="885b265c">
+            <child xsi:type="archimate:DiagramObject" id="fa0a67d3" textAlignment="2" targetConnections="4eb114bc" archimateElement="885b265c">
               <bounds x="492" y="132"/>
               <sourceConnection xsi:type="archimate:Connection" id="83ef44d6" source="fa0a67d3" target="52f6b067" relationship="ebd045b5"/>
             </child>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="38a5f342" archimateElement="e18c6fa0">
+          <child xsi:type="archimate:DiagramObject" id="38a5f342" textAlignment="2" archimateElement="e18c6fa0">
             <bounds x="648" y="348"/>
             <sourceConnection xsi:type="archimate:Connection" id="c31693ff" source="38a5f342" target="52f6b067" relationship="49e4e021"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="22d6b491" archimateElement="a458af17">
+          <child xsi:type="archimate:DiagramObject" id="22d6b491" textAlignment="2" archimateElement="a458af17">
             <bounds x="564" y="444"/>
             <sourceConnection xsi:type="archimate:Connection" id="f8f2f0fd" source="22d6b491" target="52f6b067" relationship="fe7a2e6b"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a90a75be" archimateElement="48a2a5b4">
+          <child xsi:type="archimate:DiagramObject" id="a90a75be" textAlignment="2" archimateElement="48a2a5b4">
             <bounds x="696" y="444"/>
             <sourceConnection xsi:type="archimate:Connection" id="a7fab4a8" source="a90a75be" target="52f6b067" relationship="ef4afa5f"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="6335a3d2" targetConnections="4b0de5ed" archimateElement="dbeb1455">
+          <child xsi:type="archimate:DiagramObject" id="6335a3d2" textAlignment="2" targetConnections="4b0de5ed" archimateElement="dbeb1455">
             <bounds x="852" y="147"/>
           </child>
           <documentation>
@@ -151,51 +151,55 @@ http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</documentation
       </folder>
       <folder name="1. Configuration" id="7b1f1711">
         <element xsi:type="archimate:ArchimateDiagramModel" id="82da47db" name="Configuration">
-          <child xsi:type="archimate:DiagramObject" id="65a82167" archimateElement="e18c6fa0">
+          <child xsi:type="archimate:DiagramObject" id="65a82167" textAlignment="2" archimateElement="e18c6fa0">
             <bounds y="120" width="169" height="232"/>
             <sourceConnection xsi:type="archimate:Connection" id="e2b75ab9" source="65a82167" target="8da558b0" relationship="7b21adad"/>
             <sourceConnection xsi:type="archimate:Connection" id="d6438816" source="65a82167" target="468bceb0" relationship="fe936b45"/>
             <sourceConnection xsi:type="archimate:Connection" id="7ff923b7" source="65a82167" target="014377d1" relationship="c281ca63"/>
-            <child xsi:type="archimate:DiagramObject" id="8da558b0" targetConnections="e2b75ab9 321f1adf" archimateElement="9d9e8720">
+            <child xsi:type="archimate:DiagramObject" id="8da558b0" textAlignment="2" targetConnections="e2b75ab9 321f1adf" archimateElement="9d9e8720">
               <bounds x="24" y="90"/>
               <sourceConnection xsi:type="archimate:Connection" id="53912c86" source="8da558b0" target="d759ea34" relationship="a893be9a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="014377d1" targetConnections="7ff923b7 7aca542f" archimateElement="4b027005">
+            <child xsi:type="archimate:DiagramObject" id="014377d1" textAlignment="2" targetConnections="7ff923b7 7aca542f" archimateElement="4b027005">
               <bounds x="24" y="156"/>
               <sourceConnection xsi:type="archimate:Connection" id="89981011" source="014377d1" target="cd3c0bbd" relationship="a04301c4"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="468bceb0" targetConnections="d6438816 86ea4ebd" archimateElement="54c46059">
+            <child xsi:type="archimate:DiagramObject" id="468bceb0" textAlignment="2" targetConnections="d6438816 86ea4ebd" archimateElement="54c46059">
               <bounds x="24" y="24"/>
               <sourceConnection xsi:type="archimate:Connection" id="e9a61e96" source="468bceb0" target="af5a1294" relationship="f16ec2a9"/>
             </child>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="99063aba" archimateElement="d21f3e47">
+          <child xsi:type="archimate:DiagramObject" id="99063aba" textAlignment="2" archimateElement="d21f3e47">
             <bounds x="192" y="336"/>
             <sourceConnection xsi:type="archimate:Connection" id="321f1adf" source="99063aba" target="8da558b0" relationship="1ac9bcac"/>
             <sourceConnection xsi:type="archimate:Connection" id="86ea4ebd" source="99063aba" target="468bceb0" relationship="18197e36"/>
             <sourceConnection xsi:type="archimate:Connection" id="7aca542f" source="99063aba" target="014377d1" relationship="0f21c77c"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="61acf71d" targetConnections="4eb4fd4f 57ae7a9c" archimateElement="9f9acbbf">
+          <child xsi:type="archimate:DiagramObject" id="61acf71d" textAlignment="2" targetConnections="4eb4fd4f 57ae7a9c" archimateElement="9f9acbbf">
             <bounds x="612" y="171"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="4b5ad6ed" archimateElement="dbeb1455">
+          <child xsi:type="archimate:DiagramObject" id="4b5ad6ed" textAlignment="2" archimateElement="dbeb1455">
             <bounds x="204" y="72" width="373" height="253"/>
-            <child xsi:type="archimate:DiagramObject" id="d759ea34" targetConnections="53912c86" archimateElement="28574436">
+            <child xsi:type="archimate:DiagramObject" id="d759ea34" textAlignment="2" targetConnections="53912c86 e0d020ab" archimateElement="28574436">
               <bounds x="204" y="156"/>
               <sourceConnection xsi:type="archimate:Connection" id="57ae7a9c" source="d759ea34" target="61acf71d" relationship="79c37a8a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="af5a1294" targetConnections="e9a61e96 fed61699 52ba221a" archimateElement="d1e86fa1">
+            <child xsi:type="archimate:DiagramObject" id="af5a1294" textAlignment="2" targetConnections="e9a61e96 fed61699 52ba221a" archimateElement="d1e86fa1">
               <bounds x="204" y="48"/>
               <sourceConnection xsi:type="archimate:Connection" id="4eb4fd4f" source="af5a1294" target="61acf71d" relationship="318ab1bd"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="cd3c0bbd" targetConnections="89981011" archimateElement="d9379bc5">
+            <child xsi:type="archimate:DiagramObject" id="cd3c0bbd" textAlignment="2" targetConnections="89981011" archimateElement="d9379bc5">
               <bounds x="24" y="108"/>
               <sourceConnection xsi:type="archimate:Connection" id="52ba221a" source="cd3c0bbd" target="af5a1294" relationship="4c9e48c6"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="bcac8b10" archimateElement="a1a62c11">
+            <child xsi:type="archimate:DiagramObject" id="bcac8b10" textAlignment="2" archimateElement="a1a62c11">
               <bounds x="24" y="24"/>
               <sourceConnection xsi:type="archimate:Connection" id="fed61699" source="bcac8b10" target="af5a1294" relationship="4ba7d77e"/>
             </child>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="491d66f8" textAlignment="2" archimateElement="97a51643">
+            <bounds x="628" y="264"/>
+            <sourceConnection xsi:type="archimate:Connection" id="e0d020ab" source="491d66f8" target="d759ea34" relationship="bc504d82"/>
           </child>
         </element>
         <element xsi:type="archimate:BusinessProcess" id="d9379bc5" name="Checkout the provided styles">
@@ -235,34 +239,34 @@ You can use one of the provided styles as a starting point.
 </documentation>
         </element>
       </folder>
-      <folder name="2. Create a report" id="16d81164">
+      <folder name="3. Create a report" id="16d81164">
         <element xsi:type="archimate:ArchimateDiagramModel" id="3f087392" name="Create a report">
-          <child xsi:type="archimate:DiagramObject" id="da905d6c" targetConnections="9bcfcd63 67f2c7ad 0bcda955" archimateElement="9f9acbbf">
+          <child xsi:type="archimate:DiagramObject" id="da905d6c" textAlignment="2" targetConnections="9bcfcd63 67f2c7ad 0bcda955" archimateElement="9f9acbbf">
             <bounds x="180" y="84"/>
             <sourceConnection xsi:type="archimate:Connection" id="8dc7a739" source="da905d6c" target="289d1181" relationship="ea1a904a"/>
             <sourceConnection xsi:type="archimate:Connection" id="93747ff4" source="da905d6c" target="1253f4ef" relationship="c1985841"/>
             <sourceConnection xsi:type="archimate:Connection" id="0a7bfb69" source="da905d6c" target="a17ac0e9" relationship="1784843d"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="9d25fad3" targetConnections="bc61127a 5256e15a" archimateElement="87d27326">
+          <child xsi:type="archimate:DiagramObject" id="9d25fad3" textAlignment="2" targetConnections="bc61127a 5256e15a" archimateElement="87d27326">
             <bounds x="10" y="86"/>
             <sourceConnection xsi:type="archimate:Connection" id="0bcda955" source="9d25fad3" target="da905d6c" relationship="c88df80f"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="c9a4dee6" archimateElement="48a2a5b4">
+          <child xsi:type="archimate:DiagramObject" id="c9a4dee6" textAlignment="2" archimateElement="48a2a5b4">
             <bounds x="132" y="204"/>
             <sourceConnection xsi:type="archimate:Connection" id="9bcfcd63" source="c9a4dee6" target="da905d6c" relationship="06ab106c"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="30ad29e2" archimateElement="d21f3e47">
+          <child xsi:type="archimate:DiagramObject" id="30ad29e2" textAlignment="2" archimateElement="d21f3e47">
             <bounds x="264" y="204"/>
             <sourceConnection xsi:type="archimate:Connection" id="67f2c7ad" source="30ad29e2" target="da905d6c" relationship="8c719a6b"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="2956408f" archimateElement="9b4d2892">
+          <child xsi:type="archimate:DiagramObject" id="2956408f" textAlignment="2" archimateElement="9b4d2892">
             <bounds x="408" y="204"/>
             <sourceConnection xsi:type="archimate:Connection" id="924d81e8" source="2956408f" target="289d1181" relationship="5f929eb8"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="289d1181" targetConnections="8dc7a739 924d81e8" archimateElement="e4b300fb">
+          <child xsi:type="archimate:DiagramObject" id="289d1181" textAlignment="2" targetConnections="8dc7a739 924d81e8" archimateElement="e4b300fb">
             <bounds x="312" y="140"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="1253f4ef" targetConnections="93747ff4 84bb7dcf" archimateElement="b764bde9">
+          <child xsi:type="archimate:DiagramObject" id="1253f4ef" textAlignment="2" targetConnections="93747ff4 84bb7dcf" archimateElement="b764bde9">
             <bounds x="540" y="84"/>
             <sourceConnection xsi:type="archimate:Connection" id="5256e15a" source="1253f4ef" target="9d25fad3" relationship="19ffaeda">
               <bendpoint startX="94" startY="-2" endX="624" endY="-4"/>
@@ -270,7 +274,7 @@ You can use one of the provided styles as a starting point.
               <bendpoint startX="-486" startY="-46" endX="20" endY="-46"/>
             </sourceConnection>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a17ac0e9" targetConnections="0a7bfb69 f4278d73" archimateElement="a2276966">
+          <child xsi:type="archimate:DiagramObject" id="a17ac0e9" textAlignment="2" targetConnections="0a7bfb69 f4278d73" archimateElement="a2276966">
             <bounds x="372"/>
             <sourceConnection xsi:type="archimate:Connection" id="bc61127a" source="a17ac0e9" target="9d25fad3" relationship="e265fca2">
               <bendpoint startX="93" startY="-2" endX="455" endY="-88"/>
@@ -278,7 +282,7 @@ You can use one of the provided styles as a starting point.
               <bendpoint startX="-363" startY="-44" endX="-1" endY="-130"/>
             </sourceConnection>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="75af6543" archimateElement="61cdef08">
+          <child xsi:type="archimate:DiagramObject" id="75af6543" textAlignment="2" archimateElement="61cdef08">
             <bounds x="540" y="204"/>
             <sourceConnection xsi:type="archimate:Connection" id="84bb7dcf" source="75af6543" target="1253f4ef" relationship="1d4f117f"/>
             <sourceConnection xsi:type="archimate:Connection" id="f4278d73" source="75af6543" target="a17ac0e9" relationship="909597d0"/>
@@ -311,37 +315,37 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
 </documentation>
         </element>
       </folder>
-      <folder name="3. Troubleshooting" id="8666b00c">
+      <folder name="4. Troubleshooting" id="8666b00c">
         <element xsi:type="archimate:ArchimateDiagramModel" id="12cc0a0a" name="Troubleshooting">
-          <child xsi:type="archimate:DiagramObject" id="567edf05" targetConnections="93a6c213" archimateElement="e4b300fb">
+          <child xsi:type="archimate:DiagramObject" id="567edf05" textAlignment="2" targetConnections="93a6c213" archimateElement="e4b300fb">
             <bounds x="48" y="112"/>
             <sourceConnection xsi:type="archimate:Connection" id="1debd499" source="567edf05" target="ae046620" relationship="5c74e971"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="ae453883" archimateElement="9b4d2892">
+          <child xsi:type="archimate:DiagramObject" id="ae453883" textAlignment="2" archimateElement="9b4d2892">
             <bounds x="37" y="228"/>
             <sourceConnection xsi:type="archimate:Connection" id="93a6c213" source="ae453883" target="567edf05" relationship="5f929eb8"/>
             <sourceConnection xsi:type="archimate:Connection" id="07e86f05" source="ae453883" target="19d7d71c" relationship="5f5275e3"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="d5d17116" targetConnections="843d7337" archimateElement="d0800141">
+          <child xsi:type="archimate:DiagramObject" id="d5d17116" textAlignment="2" targetConnections="843d7337" archimateElement="d0800141">
             <bounds x="132" y="300"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="ae046620" targetConnections="1debd499" archimateElement="37ae8baf">
+          <child xsi:type="archimate:DiagramObject" id="ae046620" textAlignment="2" targetConnections="1debd499" archimateElement="37ae8baf">
             <bounds x="216" y="12" width="205" height="255"/>
             <sourceConnection xsi:type="archimate:Connection" id="412a3249" source="ae046620" target="cb5e6725" relationship="c9f9dac1"/>
-            <child xsi:type="archimate:DiagramObject" id="19d7d71c" targetConnections="07e86f05" archimateElement="88c3be26">
+            <child xsi:type="archimate:DiagramObject" id="19d7d71c" textAlignment="2" targetConnections="07e86f05" archimateElement="88c3be26">
               <bounds x="48" y="168"/>
               <sourceConnection xsi:type="archimate:Connection" id="9421aef1" source="19d7d71c" target="73ba54bd" relationship="2bd8b515"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="73ba54bd" targetConnections="9421aef1" archimateElement="92473e34">
+            <child xsi:type="archimate:DiagramObject" id="73ba54bd" textAlignment="2" targetConnections="9421aef1" archimateElement="92473e34">
               <bounds x="48" y="96"/>
               <sourceConnection xsi:type="archimate:Connection" id="843d7337" source="73ba54bd" target="d5d17116" relationship="ad84bffe"/>
               <sourceConnection xsi:type="archimate:Connection" id="42fae15b" source="73ba54bd" target="9246321b" relationship="8c2d4422"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="9246321b" targetConnections="42fae15b" archimateElement="c4f191cb">
+            <child xsi:type="archimate:DiagramObject" id="9246321b" textAlignment="2" targetConnections="42fae15b" archimateElement="c4f191cb">
               <bounds x="48" y="24"/>
             </child>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="5dc15a73" targetConnections="20af9756" archimateElement="89e82cde">
+          <child xsi:type="archimate:DiagramObject" id="5dc15a73" textAlignment="2" targetConnections="20af9756" archimateElement="89e82cde">
             <bounds x="504" y="48"/>
             <sourceConnection xsi:type="archimate:Connection" id="74554f1d" source="5dc15a73" target="5edbbbe8" relationship="3a1dadfa"/>
           </child>
@@ -350,16 +354,16 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
             <sourceConnection xsi:type="archimate:Connection" id="20af9756" source="cb5e6725" target="5dc15a73" relationship="ea1e9d6a"/>
             <sourceConnection xsi:type="archimate:Connection" id="ef80f5fa" source="cb5e6725" target="9b8e7503" relationship="2cf4bca6"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="9b8e7503" targetConnections="ef80f5fa 50065feb" archimateElement="b50d0d06">
+          <child xsi:type="archimate:DiagramObject" id="9b8e7503" textAlignment="2" targetConnections="ef80f5fa 50065feb" archimateElement="b50d0d06">
             <bounds x="720" y="132"/>
             <sourceConnection xsi:type="archimate:Connection" id="1947c540" source="9b8e7503" target="ca61c0ca" relationship="24c2a7ad"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a8f50e47" targetConnections="2b1d60d0" archimateElement="62e86c50">
+          <child xsi:type="archimate:DiagramObject" id="a8f50e47" textAlignment="2" targetConnections="2b1d60d0" archimateElement="62e86c50">
             <bounds x="720" y="48"/>
             <sourceConnection xsi:type="archimate:Connection" id="2f1b2ccc" source="a8f50e47" target="abf4328f" relationship="1f297e2c"/>
             <sourceConnection xsi:type="archimate:Connection" id="f69f1594" source="a8f50e47" target="420c0fde" relationship="eb6529f4"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="ca61c0ca" targetConnections="1947c540 9b4feb57" archimateElement="7dac06bd">
+          <child xsi:type="archimate:DiagramObject" id="ca61c0ca" textAlignment="2" targetConnections="1947c540 9b4feb57" archimateElement="7dac06bd">
             <bounds x="888" y="132"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="5edbbbe8" targetConnections="74554f1d" archimateElement="f82f963f">
@@ -371,7 +375,7 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
             <bounds x="874" y="88"/>
             <sourceConnection xsi:type="archimate:Connection" id="9b4feb57" source="abf4328f" target="ca61c0ca" relationship="8e131e64"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="420c0fde" targetConnections="f69f1594" archimateElement="b424ea38">
+          <child xsi:type="archimate:DiagramObject" id="420c0fde" textAlignment="2" targetConnections="f69f1594" archimateElement="b424ea38">
             <bounds x="912" y="48"/>
           </child>
         </element>
@@ -434,6 +438,468 @@ If the fix needs something more (it is an unknown bug, or needs a yet unknown fi
           <documentation>Problem solved, congratulation.
 </documentation>
         </element>
+      </folder>
+      <folder name="2. Modeling" id="6d818d18">
+        <folder name="1. Simple uses" id="32b4e79c">
+          <folder name="Creating docbook (and html) documentation" id="29a564f4">
+            <folder name="model properties for docbook" id="fcbb2a61">
+              <element xsi:type="archimate:Meaning" id="afaaeacc" name="report:part">
+                <documentation>This property tells us which part of the model to gerenate.
+There is a corresponding stylesheet parameter named &lt;b>part&lt;/b>.
+
+The documentation by default will recursively contain all elements in folders below the marked model/folder (see also the noroot stylesheet parameter).
+</documentation>
+              </element>
+              <element xsi:type="archimate:Meaning" id="2299ccbc" name="report:role">
+                <documentation>This parameter is to restrict the visibility of some parts of the model, based on the target audience.
+There is a corresponding stylesheet parameter named &lt;b>role&lt;/b>.
+
+The objects and/or folders marked with report:role will be generated only if the stylesheet parameter's value is the same as the property's value.
+
+It is not possible to use more than one role neither as a property nor as a stylesheet parameter. If you would need this, please file a bug report.
+
+If you also want to handle diagrams properly, you have to utilize the split xml stylesheet.
+
+There is a corresponding xml tag to mark parts of the element documentation named &lt;b>only&lt;/b>, with the &lt;b>role&lt;/b> attribute, used in the obvious way.</documentation>
+              </element>
+              <element xsi:type="archimate:Meaning" id="b6f6c99f" name="from-folder">
+                <documentation>This property holds the id of a folder, and folders can be marked with it.
+All elements from the referenced folder will be added to the documentation of the referring folder, but diagrams, sketches and folders.
+
+Yes, it is the id of the model element which is a bit complicated to figure out (you should look at the model's xml). It does not change if you change the name of the element, and it is not ambigous. If you can come up with a better way, and you actually need it then file a bug report.</documentation>
+              </element>
+              <element xsi:type="archimate:Meaning" id="d8cc38f9" name="copy-image">
+                <documentation>inserts a diagram to where it is referenced</documentation>
+              </element>
+            </folder>
+            <folder name="stylesheet properties for docbook" id="4694d0e6">
+              <element xsi:type="archimate:Meaning" id="6b785ba9" name="part">
+                <documentation>See the report:part model property.</documentation>
+              </element>
+              <element xsi:type="archimate:Meaning" id="a7fb8276" name="noroot">
+                <documentation>If this parameter is set, then the folders &lt;i>below&lt;/i> the one marked with the &lt;b>report:part&lt;/b> property will be documented.</documentation>
+              </element>
+              <element xsi:type="archimate:Meaning" id="9eb5059d" name="role">
+                <documentation>Please see the report:role property.</documentation>
+              </element>
+            </folder>
+            <folder name="tuning the html output" id="5d4bb4f0">
+              <documentation>At the moment you should edit xslt/docbook2html.xslt don't be afraid, it is short and easy.
+This step uses the docbook-xsl stylesheets, for which you can see the parameter reference here:
+http://docbook.sourceforge.net/release/xsl/1.75.2/doc/html/
+</documentation>
+            </folder>
+            <documentation>In some cases you just want to create a documentation which contains all, or some parts of the model.
+The docbook style - which is the successor of the structured style - does just that for you.
+There are actually two style files shipped: docbook.style creates index.docbook and docbookandhtml.style creates index.docbook and index.html.
+
+The documentation will contain the directories as docbook sections, with the diagrams first, then all the contained elements in a table as rows. The element documentation contains the element properties, except the ones known by the style and objectClass.
+
+The style is able to convert a very limited subset of html markup in the documentation to docbook (and then html). Beware that anything looking like html and not in that subset is silently omitted from the output. As too much element documentation means too few modeling, I won't go into more details, see unescape.xslt. If you really need more, please submit a working github pull request with a test case and I might include it.
+
+
+The style is customizable in two ways:
+&lt;ul>
+&lt;li>model properties: there are properties which define which parts of the model will be actually generated. With the unmodified style, you should set the &lt;b>report:part&lt;/b> property to &lt;b>all&lt;/b> for the model or a directory. &lt;/li>
+&lt;li>stylesheet properties: if you open the style file with a text editor, you will see a line containing the name of the xml stylesheet (docbook.xslt) doing the bulk of the work, and some parameters passed to the stylesheet. These are customizable using any text editor. I recommend saving the style file in another name in the same directory before that.&lt;/li>
+&lt;/ul>
+
+If you would need any more customisation of the style, please file a bug report.</documentation>
+          </folder>
+          <folder name="Quick report of NGT sessions" id="3e667109">
+            <element xsi:type="archimate:Gap" id="7b1cec77" name="sketchtotable">
+              <documentation>the sketchtotable style should be brought back to shape and documented</documentation>
+            </element>
+          </folder>
+          <documentation>For simple uses you don't even need a metamodel.</documentation>
+        </folder>
+        <folder name="2. Metamodels" id="3cc6bf17">
+          <folder name="1. Defining a metamodel" id="0de2ac2e">
+            <folder name="1. Ways to define the objectClass" id="a2fa70f4">
+              <element xsi:type="archimate:BusinessProcess" id="dd43710e" name="define the objectClass by direct property">
+                <documentation>An objectClass can be directly defined for an element by setting an &lt;b>objectClass&lt;/b> property with the value as the objectClass name</documentation>
+              </element>
+              <element xsi:type="archimate:BusinessProcess" id="c104622c" name="define the objectClass by indirect property">
+                <documentation>Any property having a &lt;b>:&lt;/b> in its name implies that the string before the &lt;b>:&lt;/b> is the objectClass of the containing element.
+For example by setting &lt;b>report:part&lt;/b> to &lt;b>all&lt;/b> on a folder, we actually telling that the folder have a &lt;b>report&lt;/b> objectClass, and a report specific attribute named &lt;b>part&lt;/b> with the value &lt;b>all&lt;/b>.</documentation>
+              </element>
+              <element xsi:type="archimate:BusinessProcess" id="98087399" name="define the objectClass with a Group or Folder">
+                <documentation>By setting the associatedObjectClass property of a Group or a Folder, we declare that all elements in it are belonging to the objectClass named by the value of the property.</documentation>
+              </element>
+              <element xsi:type="archimate:BusinessProcess" id="c71b91e1" name="define the objectClass by specialisation">
+                <documentation>this does not work yet.
+If object A is of the objectClass &lt;b>Template&lt;/b> then all objects which specialisation of A will have the objectClass named after the name of A.</documentation>
+              </element>
+            </folder>
+            <folder name="2. policy related objectClasses" id="f7ef44a8">
+              <folder name="objectClass" id="c4c7ece3">
+                <documentation>This objectClass describes an objectClass. Recursion rulez.
+
+</documentation>
+                <element xsi:type="archimate:DataObject" id="5834034d" name="objectClass">
+                  <documentation>The primary abstraction of the policy is the objectClass element.
+An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.
+
+We can define the objectClass of an archimate element in one of the following ways:
+
+- add a property where the name is &quot;objectClass&quot; and the value is the name of the objectclass
+- add a property where the name is in the form &lt;class>:&lt;property>, where &lt;class> is the name of the objectclass, and &lt;property> is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.
+- create a Group in a view, with the property named &quot;associatedObjectClass&quot;. The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClass
+
+The policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.
+One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)
+</documentation>
+                </element>
+                <element xsi:type="archimate:DataObject" id="72b37366" name="parent">
+                  <documentation>The ancestor of the objectClass.
+The objectclass have all the properties of its non-builtin ancestors.
+
+The ancestor is represented by a tag named 'ancestor' having an attribute named 'class' with the value of the ancestor class name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:structural" value="true"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="81c4876a" name="there is a specialisation relationship from the ancestor to the objectClass">
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name"/>
+                  <property key="default:multi" value="true"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="c496f50f" name="abstract">
+                  <documentation>If &quot;true&quot;, the objectClass is merely used for the purpose of instantiating properties for other objectclasses. It should not be directly instantiated in a model.
+
+The property is represented by the attribute with the same name in the policy file.
+
+FIXME: check for this is not implemented yet.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="80c1003b" name="attrib">
+                  <documentation>The id of an attribute belonging to the objectClass</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:structural" value="true"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="d07f34b8" name="A composition relationship points from here to the attribute">
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"/>
+                  <property key="default:multi" value="true"/>
+                </element>
+              </folder>
+              <folder name="property" id="5eb97cc7">
+                <element xsi:type="archimate:DataObject" id="6ab69c29" name="attribute">
+                  <documentation>The attribute is used to describe a attribute of an objectClass.
+You can define a attribute value either by giving the value to a property named &lt;b>classname&lt;/b>:&lt;b>attributename&lt;/b> to an object, or by using a model structure defined by the defaults of the given attribute.
+
+</documentation>
+                </element>
+                <element xsi:type="archimate:DataObject" id="8d960b3e" name="type">
+                  <documentation>The type of the property.
+It will be used when an xsd is generated from the policy.
+The xsd in turn will be used to check the values given.
+
+The property is represented by the attribute named 'type' in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="3b4e5bbc" name="minOccurs">
+                  <documentation>How much time the property should be occur minimally in the objectClass.
+If no such property, then the value is deemed to be 1.
+It will be used when an xsd is generated from the policy.
+The xsd in turn will be used to check the values given.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="974790c3" name="maxOccurs">
+                  <documentation>How much time the property should be occur maximally in the objectClass.
+If no such property, then there is no limit.
+It will be used when an xsd is generated from the policy.
+The xsd in turn will be used to check the values given.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="378950dd" name="structural">
+                  <documentation>If the value of this property is &quot;true&quot;, then the property is structural:
+The value will be generated by a default associated to it, and it is an error to enter the value into the model through some properties.
+
+FIXME: this check is not implemented yet.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="972588ae" name="def">
+                  <documentation>The id of a default related to the attribute.
+
+The property is represented by a tag named 'type' in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="1c076398" name="A composition relation points to the default from the attribute">
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"/>
+                  <property key="default:multi" value="true"/>
+                </element>
+              </folder>
+              <folder name="default" id="eb7e06ad">
+                <element xsi:type="archimate:DataObject" id="7aba69d1" name="default">
+                  <documentation>The default is used to describe how a property will get its default value if we have not given anything.
+It is useful to
+- describe and enforce structural relationships within the model
+- give default value to a property
+
+This attribute should be entered as a property.
+</documentation>
+                </element>
+                <element xsi:type="archimate:DataObject" id="0dff4259" name="description">
+                  <documentation>The description of the default.
+
+Ideally it describes how to give a value to the property through model structure, or what is the default value of the property, and why it is so.
+
+
+The description is represented by the tag named 'description' in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="36fbd768" name="name of the parent node + the documentation of the parent node">
+                  <documentation>By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.</documentation>
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="../@name | ../documentation"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="77f11989" name="order">
+                  <documentation>The order in which the defaults are evaluated.
+The default evaluation goes in the following way:
+1. i:=0
+2. if there is a default with order i, then try it. else stop.
+3. if the default gave back a value, then stop.
+4. i:= i+1
+5. continue from 2.
+
+Beware: if defaults are not numbered sequentially from zero, then some of them might not be tried.
+The reason of this behaviour that the sequence of getting the attributes from the policy programatically is not guaranteed to be the same as they are described there.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:nonnegativeinteger"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="cdc8f974" name="select">
+                  <documentation>The xpath expression to be evaluated to get the value of the property.
+If multi=&quot;true&quot;, then the result should be a nodeset, else a string.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="547c517e" name="multi">
+                  <documentation>Whether the select will return multiple values.
+If set to &quot;true&quot;, then for each item in the nodelist returned by the select, a different property will be generated.
+
+The property is represented by the attribute with the same name in the policy file.
+FIXME: there should be a &quot;type&quot; attribute instead, defaulting to string, with the following possible values:
+string: default functionality
+multi: multi=&quot;true&quot;
+structured: works like xsl:copy-of
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="34b7b9da" name="always">
+                  <documentation>Whether to try to always apply the default, even when there is already such a property.
+
+The property is represented by the attribute with the same name in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:minOccurs" value="0"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+              </folder>
+              <folder name="archimateObjectClass" id="22be0ed0">
+                <element xsi:type="archimate:DataObject" id="07ee5607" name="ArchimateObjectClass">
+                  <documentation>An objectclass predefined by Archi.
+This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
+</documentation>
+                </element>
+              </folder>
+              <folder name="abstractNamed" id="d8a257cd">
+                <element xsi:type="archimate:DataObject" id="d2886808" name="abstractNamed">
+                  <documentation>This is an abstract class, so we don't need to define the name and description property for all objectClasses.
+</documentation>
+                  <property key="objectClass:abstract" value="true"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="a99529e2" name="description">
+                  <documentation>The description of the objectClass.
+
+The description is represented by the tag named 'description' in the policy file.
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="139f9bab" name="documentation of the parent node">
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="../documentation"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="9bdf194e" name="name">
+                  <documentation>name of the objectClass
+
+The name is represented by an attribute named 'name' of the objectClass in the policy file.
+
+</documentation>
+                  <property key="attribute:type" value="xs:string"/>
+                  <property key="attribute:maxOccurs" value="1"/>
+                </element>
+                <element xsi:type="archimate:DataObject" id="47ca6523" name="name of the parent node">
+                  <property key="default:order" value="0"/>
+                  <property key="default:select" value="../@name"/>
+                </element>
+              </folder>
+              <documentation>The metamodel below tells us exactly how to define what attributes an object belonging to an objectClass may and must have, and how can the value of an attribute be computed if it is not directly given (as we have seen above).
+Also there are plenty of examples of objectClass and attribute value definitions.</documentation>
+              <element xsi:type="archimate:ArchimateDiagramModel" id="36318202" name="Policy related objectClasses">
+                <child xsi:type="archimate:DiagramObject" id="99034da2" textAlignment="2" targetConnections="e0bbdac0" archimateElement="9bdf194e">
+                  <bounds x="264" y="300"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="2a86e800" source="99034da2" target="dbc90353" relationship="44d03440"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="dbc90353" textAlignment="2" targetConnections="2a86e800" archimateElement="47ca6523">
+                  <bounds x="253" y="492"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="512bbdc8" textAlignment="2" targetConnections="511b7757" archimateElement="72b37366">
+                  <bounds x="12" y="240"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="4eb3e35b" source="512bbdc8" target="06db6f28" relationship="ec5bc064"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="06db6f28" textAlignment="2" targetConnections="4eb3e35b" archimateElement="81c4876a">
+                  <bounds x="5" y="612" width="133" height="79"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="a6921b96" textAlignment="2" targetConnections="925a202c" archimateElement="a99529e2">
+                  <bounds x="324" y="228"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="8c3a0b9e" source="a6921b96" target="6c8a2ee5" relationship="e6e96650"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="6c8a2ee5" textAlignment="2" targetConnections="8c3a0b9e" archimateElement="139f9bab">
+                  <bounds x="383" y="464" width="120" height="77"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="300a7246" textAlignment="2" targetConnections="ea60c02a" archimateElement="5834034d">
+                  <bounds x="36" y="96"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="511b7757" source="300a7246" target="512bbdc8" relationship="551f0dbd"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="c63f2ea8" source="300a7246" target="420a63b2" relationship="a2dc9886"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="d8838e6a" source="300a7246" target="4b1199d3" relationship="75ac11df"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="ae4a4670" textAlignment="2" archimateElement="38feb060">
+                  <bounds x="504" y="-96" width="192" height="55"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="a5baa3c4" source="ae4a4670" target="21dbb488" relationship="6f7dcc7d"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="6ac9eb0f" source="ae4a4670" target="344b7382" relationship="d5e804a1"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="0b79db88" source="ae4a4670" target="bab22404" relationship="c2859fb2"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="300f9d18" textAlignment="2" targetConnections="25e2ec4f" archimateElement="6ab69c29">
+                  <bounds x="504" y="96"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="a80d9f9e" source="300f9d18" target="ee879985" relationship="949af28a"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="113b041b" source="300f9d18" target="b580e858" relationship="92ab92fc"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="5a4f68fc" source="300f9d18" target="d8945421" relationship="31d92b7f"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="53c9e528" source="300f9d18" target="b09e7f83" relationship="30bd4a8c"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="4f6f5df0" source="300f9d18" target="a3f90e42" relationship="ed258b49"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="21dbb488" textAlignment="2" targetConnections="a5baa3c4" archimateElement="7aba69d1">
+                  <bounds x="912" y="96"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="89775e43" source="21dbb488" target="80cc7cdd" relationship="18038aad"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="556fba81" source="21dbb488" target="ce455bcf" relationship="9b6ed989"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="8c46799b" source="21dbb488" target="d4c0219e" relationship="b1b36355"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="2041003c" source="21dbb488" target="9f443352" relationship="0771a031"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="ee879985" textAlignment="2" targetConnections="a80d9f9e" archimateElement="8d960b3e">
+                  <bounds x="504" y="228"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="b580e858" textAlignment="2" targetConnections="113b041b" archimateElement="3b4e5bbc">
+                  <bounds x="648" y="228"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="d8945421" textAlignment="2" targetConnections="5a4f68fc" archimateElement="974790c3">
+                  <bounds x="708" y="294"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="b09e7f83" textAlignment="2" targetConnections="53c9e528" archimateElement="378950dd">
+                  <bounds x="576" y="294"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="80cc7cdd" textAlignment="2" targetConnections="89775e43" archimateElement="0dff4259">
+                  <bounds x="888" y="300"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="7516caf0" source="80cc7cdd" target="e62582d5" relationship="1c326b6c"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="e62582d5" textAlignment="2" targetConnections="7516caf0" archimateElement="36fbd768">
+                  <bounds x="864" y="540" width="157" height="115"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="ce455bcf" textAlignment="2" targetConnections="556fba81" archimateElement="77f11989">
+                  <bounds x="840" y="240"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="d4c0219e" textAlignment="2" targetConnections="8c46799b" archimateElement="cdc8f974">
+                  <bounds x="972" y="240"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="9f443352" textAlignment="2" targetConnections="2041003c" archimateElement="547c517e">
+                  <bounds x="1020" y="300"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="bab22404" textAlignment="2" targetConnections="0b79db88" archimateElement="07ee5607">
+                  <bounds x="672" y="96" width="181" height="55"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="344b7382" textAlignment="2" targetConnections="6ac9eb0f" archimateElement="d2886808">
+                  <bounds x="239" y="-48" width="134" height="55"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="ea60c02a" source="344b7382" target="300a7246" relationship="b2a96cda"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="925a202c" source="344b7382" target="a6921b96" relationship="397fbc46"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="e0bbdac0" source="344b7382" target="99034da2" relationship="b3ed2271"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="25e2ec4f" source="344b7382" target="300f9d18" relationship="176f0c4a"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="420a63b2" textAlignment="2" targetConnections="c63f2ea8" archimateElement="c496f50f">
+                  <bounds x="137" y="240"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="4b1199d3" textAlignment="2" targetConnections="d8838e6a" archimateElement="80c1003b">
+                  <bounds x="131" y="300"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="351df2e3" source="4b1199d3" target="a02470df" relationship="25eb7eb0"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="a02470df" textAlignment="2" targetConnections="351df2e3" archimateElement="d07f34b8">
+                  <bounds x="99" y="504" width="120" height="97"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="a3f90e42" textAlignment="2" targetConnections="4f6f5df0" archimateElement="972588ae">
+                  <bounds x="448" y="302"/>
+                  <sourceConnection xsi:type="archimate:Connection" id="471849e6" source="a3f90e42" target="b27f7e56" relationship="4d9f244b"/>
+                </child>
+                <child xsi:type="archimate:DiagramObject" id="b27f7e56" textAlignment="2" targetConnections="471849e6" archimateElement="1c076398">
+                  <bounds x="589" y="452" width="120" height="102"/>
+                </child>
+              </element>
+            </folder>
+            <documentation>The current way to define the metamodel is not considered to be the final one, however most probably I will keep this method as well. In the future metamodels will be defined by template diagrams, where the relations of a template object will define its attributes and the way the attributes obtain their value. Also the extension methods defined by Archimate 2.0 will be fully taken into account. The concepts are already very similar (maybe v2.0 was partly modeled by the Extended Archimate concept, see the history section), but I yet to check that the standard is actually followed.
+The core concept of the metamodel is objectClass. The objectClass tells us that we are facing a specialisation of an Archimate object (or any object defined by Archi, like Folder or model). As an example, we can have an Application Service with the objectClass &lt;b>WebService&lt;/b>. In the metamodel level an objectclass have a parent (a built-in objectclass or a descendant thereof), and maybe some attributes. The attributes themselves have various properties, which may have default values.
+In the next sections we figure out how to define the objectClass for an Archimate object, and we learn how to define a metamodel.</documentation>
+          </folder>
+          <folder name="2. Creating a policy, checking policy conformance, quick export for xml-aware tools" id="90cc4b63">
+            <documentation>You need policy.style for that. It uses the &quot;built-in&quot; policy (generated from this model) to generate a policy named &quot;policy.xml&quot; in the target directory, then uses the generated policy on the model, exporting &quot;archirich.xml&quot; in the target directory.
+Any policy violation is logged as an error. As an example running policy.style in this model should result in exactly one error in both rounds; there is a deliberate omission in the model to show this feature. You can click on the log and it navigates you to the offending element.
+The file &quot;archirich.xml&quot; will contain elements for each instances of extended archimate objects. These elements are named after the objectClass's name, and contain one element for each of the attributes: the informations are already assembled (maybe from parts of the model far away from each other) for use by xml-aware tools.
+At the moment there is no customisation possibilities foreseen beyond the usual things you can always do with a style. You can add your own xslt to the processing chain to generate code and/or configuration in the form you need it.
+
+If you need anything more (for example harsher error handling) just drop a bug report.
+</documentation>
+          </folder>
+          <documentation>Every model have some ontology as a background. In a lot of cases it is implicit, but there are cases when it is better to define it exactly. For example a well defined ontology is the basis for any model driven code/configuration generation.
+Another case is when you want to check your or others' work for mistakes and omissions.
+These cases need a well-defined set of rules about the subject matter. The ontology is captured in Archi as a metamodel, and based on it a policy is generated. The policy is then used by the rich export functionality to emit warnings about nonconformances, and to export the model in a way which is easily used by stylesheets to generate the necessary data.
+
+</documentation>
+        </folder>
+        <documentation>In the modeling phase, you describe something (the thing which is modeled) based on some ontology (the metamodel), resulting in a model.
+The Archimate methodology gives us a metamodel, which is directly useable with Archi. However often you need a metamodel more detailed than that.
+</documentation>
       </folder>
     </folder>
     <folder name="4. Document Control" id="be0e739f">
@@ -774,11 +1240,28 @@ This means that archimate as it is would not be able to support a design beyond 
 With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </documentation>
       </folder>
     </folder>
+    <property key="report:part" value="all"/>
     <element xsi:type="archimate:Folder" name="1. Introduction" id="0c1fd16c">
+      <folder name="1. Quick howto" id="0c84e006">
+        <documentation>This introduction is for the impatient, who just wants to generate documentation from an already existing Archi model.
+&lt;ul>
+	&lt;li>Download the Archi Styledhtml distribution from http://sourceforge.net/projects/archistyledhtml/files/&lt;/li>
+    &lt;li>Extract it to a directory, as you would do with a vanilla Archi.&lt;/li>
+	&lt;li>Start the Archi executable in the extracted folder.&lt;/li>
+    &lt;li>Set a property for the model named &lt;b>report:part&lt;/b> with the value &lt;b>all&lt;/b>. &lt;/li>
+    &lt;li>Go to Edit/Preferences/Styled Export&lt;/li>
+   &lt;li>Push the &quot;Install provided styles&quot; button. Choose a folder to install the styles to.&lt;/li>
+		&lt;li>For stylesheet location, choose docbookandhtml.style from the folder where you have put the styles to.&lt;/li>
+         &lt;li>For output dir, choose a folder where you want the generated documentation to go. You might also want to check the &quot;don't ask for location&quot; checkbox&quot;&lt;/li>
+	&lt;li>Choose file/Export/model to Styled HTML....&lt;/li>
+    &lt;li>Congratulations, you have a documentation generated! It is called index.html in the folder you have choosen. Take a look at it with your web browser.&lt;/li>
+   &lt;li>Now you can continue to explore other possibilities of the module. There are plenty of them&lt;/li>
+&lt;/ul></documentation>
+      </folder>
       <documentation>This module is mainly about two things.
 One is to create reports from your Archimate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.
 
-The other thing is an enhancement of the Archimate methodology itself, Extended Archimate. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
+The other thing is to implement Archimate Extensions. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
 
 To see some of the possible avenues it would open, see &quot;Possible enhancements&quot;</documentation>
     </element>
@@ -786,26 +1269,37 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
   <folder name="Application" id="4bd8be88" type="application">
     <folder name="Application overview" id="f26c5f63">
       <element xsi:type="archimate:ArchimateDiagramModel" id="40b121a8" name="Application overview">
-        <child xsi:type="archimate:DiagramObject" id="ac93f087" archimateElement="4173c76a">
+        <child xsi:type="archimate:DiagramObject" id="ac93f087" textAlignment="2" targetConnections="ae00382f 0b2f9c53" archimateElement="4173c76a">
           <bounds x="312" y="84" width="193" height="169"/>
-          <child xsi:type="archimate:DiagramObject" id="9cc39d7c" archimateElement="72b003ce">
-            <bounds x="26" y="80"/>
-          </child>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="12661ad2" archimateElement="bd2e073d">
+        <child xsi:type="archimate:DiagramObject" id="12661ad2" textAlignment="2" targetConnections="8c4cec9b" archimateElement="bd2e073d">
           <bounds x="516" y="84"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="bedbf2e0" archimateElement="609f7882">
+        <child xsi:type="archimate:DiagramObject" id="bedbf2e0" textAlignment="2" targetConnections="6dd5528d" archimateElement="609f7882">
           <bounds x="-12" y="84" width="241" height="217"/>
-          <child xsi:type="archimate:DiagramObject" id="a601615c" archimateElement="1be308a1">
+          <child xsi:type="archimate:DiagramObject" id="a601615c" textAlignment="2" archimateElement="1be308a1">
             <bounds x="60" y="144" width="133" height="61"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="579e89b0" archimateElement="d7177a48">
+          <child xsi:type="archimate:DiagramObject" id="579e89b0" textAlignment="2" archimateElement="d7177a48">
             <bounds x="24" y="24" width="181" height="109"/>
-            <child xsi:type="archimate:DiagramObject" id="7589db91" archimateElement="d3bfc49d">
+            <child xsi:type="archimate:DiagramObject" id="7589db91" textAlignment="2" archimateElement="d3bfc49d">
               <bounds x="24" y="24"/>
             </child>
           </child>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="cd80cdec" textAlignment="2" archimateElement="05cb6a4f">
+          <bounds x="672" y="165"/>
+          <sourceConnection xsi:type="archimate:Connection" id="8c4cec9b" source="cd80cdec" target="12661ad2" relationship="01546bf3"/>
+          <sourceConnection xsi:type="archimate:Connection" id="536d7453" source="cd80cdec" target="1f2b0205" relationship="6d8f0420"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="e13b2a07" textAlignment="2" archimateElement="f10d54c7">
+          <bounds x="630" y="270"/>
+          <sourceConnection xsi:type="archimate:Connection" id="ae00382f" source="e13b2a07" target="ac93f087" relationship="8862f574"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="1f2b0205" textAlignment="2" targetConnections="536d7453" archimateElement="80816c1d">
+          <bounds x="258" y="294"/>
+          <sourceConnection xsi:type="archimate:Connection" id="0b2f9c53" source="1f2b0205" target="ac93f087" relationship="e1b3879d"/>
+          <sourceConnection xsi:type="archimate:Connection" id="6dd5528d" source="1f2b0205" target="bedbf2e0" relationship="068e8d03"/>
         </child>
       </element>
       <element xsi:type="archimate:ApplicationComponent" id="4173c76a" name="Archi"/>
@@ -818,18 +1312,18 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
       <documentation>The report styles shipped with the styledhtml module
 </documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="2f63a7d9" name="overview of styles">
-        <child xsi:type="archimate:DiagramObject" id="b216e0ba" archimateElement="d3bfc49d">
+        <child xsi:type="archimate:DiagramObject" id="b216e0ba" textAlignment="2" archimateElement="d3bfc49d">
           <bounds x="48" y="72" width="661" height="213"/>
-          <child xsi:type="archimate:DiagramObject" id="e1936bca" archimateElement="17ba5f53">
+          <child xsi:type="archimate:DiagramObject" id="e1936bca" textAlignment="2" archimateElement="17ba5f53">
             <bounds x="24" y="72"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a1b04f10" archimateElement="ceee856a">
+          <child xsi:type="archimate:DiagramObject" id="a1b04f10" textAlignment="2" archimateElement="ceee856a">
             <bounds x="192" y="72"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a0f8322f" archimateElement="a1656467">
+          <child xsi:type="archimate:DiagramObject" id="a0f8322f" textAlignment="2" archimateElement="a1656467">
             <bounds x="360" y="72"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="19b7c869" archimateElement="e60c5446">
+          <child xsi:type="archimate:DiagramObject" id="19b7c869" textAlignment="2" archimateElement="e60c5446">
             <bounds x="504" y="72"/>
           </child>
         </child>
@@ -905,58 +1399,6 @@ See http://archistyledhtml.sourceforge.net/documentcontrol.html for an example.
 </documentation>
       </element>
     </folder>
-    <folder name="Enhancement requests against Archi" id="ac7a16c8">
-      <element xsi:type="archimate:ArchimateDiagramModel" id="76d1a6e9" name="Archi feature requests">
-        <child xsi:type="archimate:Group" id="f42d7194" name="Supported functionality">
-          <bounds x="60" y="36" width="397" height="140"/>
-          <child xsi:type="archimate:DiagramObject" id="361bb42f" targetConnections="f90771ef" archimateElement="ceee856a">
-            <bounds x="37" y="31"/>
-          </child>
-          <child xsi:type="archimate:DiagramObject" id="14226c06" targetConnections="d98b0bf1" archimateElement="bd2e073d">
-            <bounds x="204" y="31"/>
-          </child>
-        </child>
-        <child xsi:type="archimate:DiagramObject" id="19c936f4" archimateElement="72b003ce">
-          <bounds x="61" y="252" width="396" height="143"/>
-          <child xsi:type="archimate:DiagramObject" id="e7118199" archimateElement="6ac7925c">
-            <bounds x="216" y="36"/>
-            <sourceConnection xsi:type="archimate:Connection" id="d98b0bf1" source="e7118199" target="14226c06" relationship="c24f7f2a"/>
-          </child>
-          <child xsi:type="archimate:DiagramObject" id="4ef82143" archimateElement="b253e41d">
-            <bounds x="36" y="36"/>
-            <sourceConnection xsi:type="archimate:Connection" id="f90771ef" source="4ef82143" target="361bb42f" relationship="fecb10e6"/>
-          </child>
-        </child>
-      </element>
-      <element xsi:type="archimate:ApplicationFunction" id="b253e41d" name="Move around">
-        <documentation>The ability to move objects freely in the model's hierarchy.
-This supports the structured display of views and objects belonging to that view.
-It is used by not just the structured style, which is a base for the majority of report styles used in real life.
-A patch is already submitted
-</documentation>
-      </element>
-      <element xsi:type="archimate:ApplicationFunction" id="6ac7925c" name="Enterprise repository">
-        <documentation>The idea is to have a tag in xml, like &lt;modellibrary
-ref=&quot;https://archimate.myenterprise/modellib.archimate&quot; />
-This tag would reference an archimate xml. When my model is loading, and
-a modellibrary tag is encountered, the referenced model would be loaded,
-and marked as a modellibrary. One could use and copy the entities
-defined there in the local model, but the library would only be
-referenced in report and when the model is saved.
-The access to the model repository would be simple and REST based: a
-load would be GET, a save would be a POST and &quot;save as&quot; would try POST
-first, and PUT if it doesn't succeed. The underlying http library would
-be choosen such that it handles whatever authentication is necessary,
-and access control of the models would be handled on server side so it
-is SEP.
-
-See also:
-http://groups.google.com/group/archi-dev/browse_thread/thread/3eb2d0e315127a3e
-Feature request issued at:
-https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976&amp;atid=1241930</documentation>
-      </element>
-      <element xsi:type="archimate:ApplicationFunction" id="72b003ce" name="Features to be added"/>
-    </folder>
     <folder name="styledhtml anatomy" id="5ac09ca0">
       <folder name="Java classes" id="cc9b4c13">
         <documentation>In a real-world scenario, this low level is often designed in</documentation>
@@ -971,19 +1413,19 @@ https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976
         <element xsi:type="archimate:ApplicationComponent" id="4e5276d5" name="Widgets"/>
       </folder>
       <element xsi:type="archimate:ArchimateDiagramModel" id="1bd96a69" name="styledhtml anatomy">
-        <child xsi:type="archimate:DiagramObject" id="c60e80d1" archimateElement="d7177a48">
+        <child xsi:type="archimate:DiagramObject" id="c60e80d1" textAlignment="2" archimateElement="d7177a48">
           <bounds x="123" y="77" width="682" height="332"/>
           <sourceConnection xsi:type="archimate:Connection" id="89c0894f" source="c60e80d1" target="3f0eb57c" relationship="a9c981e1"/>
-          <child xsi:type="archimate:DiagramObject" id="3f0eb57c" targetConnections="89c0894f" archimateElement="d3bfc49d">
+          <child xsi:type="archimate:DiagramObject" id="3f0eb57c" textAlignment="2" targetConnections="89c0894f" archimateElement="d3bfc49d">
             <bounds x="24" y="144"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="dcb53f6a" archimateElement="b882dd33">
+          <child xsi:type="archimate:DiagramObject" id="dcb53f6a" textAlignment="2" archimateElement="b882dd33">
             <bounds x="216" y="52"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="69fddc87" archimateElement="aee68911">
+          <child xsi:type="archimate:DiagramObject" id="69fddc87" textAlignment="2" archimateElement="aee68911">
             <bounds x="492" y="52"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="e41b0906" archimateElement="549b978f">
+          <child xsi:type="archimate:DiagramObject" id="e41b0906" textAlignment="2" archimateElement="549b978f">
             <bounds x="54" y="55"/>
           </child>
         </child>
@@ -994,351 +1436,6 @@ https://sourceforge.net/tracker/?func=detail&amp;aid=3288370&amp;group_id=293976
     </folder>
     <folder name="Sample policy" id="10b66e07">
       <folder name="objectClasses" id="66763c45">
-        <folder name="policy related objectClasses" id="f7ef44a8">
-          <folder name="objectClass" id="c4c7ece3">
-            <documentation>This objectClass describes an objectClass. Recursion rulez.
-
-</documentation>
-            <element xsi:type="archimate:DataObject" id="5834034d" name="objectClass">
-              <documentation>The primary abstraction of the policy is the objectClass element.
-An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.
-
-We can define the objectClass of an archimate element in one of the following ways:
-
-- add a property where the name is &quot;objectClass&quot; and the value is the name of the objectclass
-- add a property where the name is in the form &lt;class>:&lt;property>, where &lt;class> is the name of the objectclass, and &lt;property> is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.
-- create a Group in a view, with the property named &quot;associatedObjectClass&quot;. The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClass
-
-The policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.
-One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)
-</documentation>
-            </element>
-            <element xsi:type="archimate:DataObject" id="72b37366" name="parent">
-              <documentation>The ancestor of the objectClass.
-The objectclass have all the properties of its non-builtin ancestors.
-
-The ancestor is represented by a tag named 'ancestor' having an attribute named 'class' with the value of the ancestor class name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:structural" value="true"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="81c4876a" name="there is a specialisation relationship from the ancestor to the objectClass">
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name"/>
-              <property key="default:multi" value="true"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="c496f50f" name="abstract">
-              <documentation>If &quot;true&quot;, the objectClass is merely used for the purpose of instantiating properties for other objectclasses. It should not be directly instantiated in a model.
-
-The property is represented by the attribute with the same name in the policy file.
-
-FIXME: check for this is not implemented yet.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="80c1003b" name="attrib">
-              <documentation>The id of an attribute belonging to the objectClass</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:structural" value="true"/>
-              <property key="attribute:minOccurs" value="0"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="d07f34b8" name="A composition relationship points from here to the attribute">
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"/>
-              <property key="default:multi" value="true"/>
-            </element>
-          </folder>
-          <folder name="property" id="5eb97cc7">
-            <element xsi:type="archimate:DataObject" id="6ab69c29" name="attribute">
-              <documentation>The attribute is used to describe a attribute of an objectClass.
-You can define a attribute value either by giving the value to a property named &lt;classname>:&lt;attributename> to an object, or by using a model structure defined by the defaults of the given attribute.
-
-</documentation>
-            </element>
-            <element xsi:type="archimate:DataObject" id="8d960b3e" name="type">
-              <documentation>The type of the property.
-It will be used when an xsd is generated from the policy.
-The xsd in turn will be used to check the values given.
-
-The property is represented by the attribute named 'type' in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="3b4e5bbc" name="minOccurs">
-              <documentation>How much time the property should be occur minimally in the objectClass.
-If no such property, then the value is deemed to be 1.
-It will be used when an xsd is generated from the policy.
-The xsd in turn will be used to check the values given.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="974790c3" name="maxOccurs">
-              <documentation>How much time the property should be occur maximally in the objectClass.
-If no such property, then there is no limit.
-It will be used when an xsd is generated from the policy.
-The xsd in turn will be used to check the values given.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="378950dd" name="structural">
-              <documentation>If the value of this property is &quot;true&quot;, then the property is structural:
-The value will be generated by a default associated to it, and it is an error to enter the value into the model through some properties.
-
-FIXME: this check is not implemented yet.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="972588ae" name="def">
-              <documentation>The id of a default related to the attribute.
-
-The property is represented by a tag named 'type' in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="1c076398" name="A composition relation points to the default from the attribute">
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"/>
-              <property key="default:multi" value="true"/>
-            </element>
-          </folder>
-          <folder name="default" id="eb7e06ad">
-            <element xsi:type="archimate:DataObject" id="7aba69d1" name="default">
-              <documentation>The default is used to describe how a property will get its default value if we have not given anything.
-It is useful to
-- describe and enforce structural relationships within the model
-- give default value to a property
-
-This attribute should be entered as a property.
-</documentation>
-            </element>
-            <element xsi:type="archimate:DataObject" id="0dff4259" name="description">
-              <documentation>The description of the default.
-
-Ideally it describes how to give a value to the property through model structure, or what is the default value of the property, and why it is so.
-
-
-The description is represented by the tag named 'description' in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="36fbd768" name="name of the parent node + the documentation of the parent node">
-              <documentation>By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.</documentation>
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="../@name | ../documentation"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="77f11989" name="order">
-              <documentation>The order in which the defaults are evaluated.
-The default evaluation goes in the following way:
-1. i:=0
-2. if there is a default with order i, then try it. else stop.
-3. if the default gave back a value, then stop.
-4. i:= i+1
-5. continue from 2.
-
-Beware: if defaults are not numbered sequentially from zero, then some of them might not be tried.
-The reason of this behaviour that the sequence of getting the attributes from the policy programatically is not guaranteed to be the same as they are described there.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:nonnegativeinteger"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="cdc8f974" name="select">
-              <documentation>The xpath expression to be evaluated to get the value of the property.
-If multi=&quot;true&quot;, then the result should be a nodeset, else a string.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="547c517e" name="multi">
-              <documentation>Whether the select will return multiple values.
-If set to &quot;true&quot;, then for each item in the nodelist returned by the select, a different property will be generated.
-
-The property is represented by the attribute with the same name in the policy file.
-FIXME: there should be a &quot;type&quot; attribute instead, defaulting to string, with the following possible values:
-string: default functionality
-multi: multi=&quot;true&quot;
-structured: works like xsl:copy-of
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="34b7b9da" name="always">
-              <documentation>Whether to try to always apply the default, even when there is already such a property.
-
-The property is represented by the attribute with the same name in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:minOccurs" value="0"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-          </folder>
-          <folder name="archimateObjectClass" id="22be0ed0">
-            <element xsi:type="archimate:DataObject" id="07ee5607" name="ArchimateObjectClass">
-              <documentation>An objectclass predefined by Archi.
-This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
-</documentation>
-            </element>
-          </folder>
-          <folder name="abstractNamed" id="d8a257cd">
-            <element xsi:type="archimate:DataObject" id="d2886808" name="abstractNamed">
-              <documentation>This is an abstract class, so we don't need to define the name and description property for all objectClasses.
-</documentation>
-              <property key="objectClass:abstract" value="true"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="a99529e2" name="description">
-              <documentation>The description of the objectClass.
-
-The description is represented by the tag named 'description' in the policy file.
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="139f9bab" name="documentation of the parent node">
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="../documentation"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="9bdf194e" name="name">
-              <documentation>name of the objectClass
-
-The name is represented by an attribute named 'name' of the objectClass in the policy file.
-
-</documentation>
-              <property key="attribute:type" value="xs:string"/>
-              <property key="attribute:maxOccurs" value="1"/>
-            </element>
-            <element xsi:type="archimate:DataObject" id="47ca6523" name="name of the parent node">
-              <property key="default:order" value="0"/>
-              <property key="default:select" value="../@name"/>
-            </element>
-          </folder>
-          <element xsi:type="archimate:ArchimateDiagramModel" id="36318202" name="Policy related objectClasses">
-            <child xsi:type="archimate:DiagramObject" id="99034da2" targetConnections="e0bbdac0" archimateElement="9bdf194e">
-              <bounds x="264" y="300"/>
-              <sourceConnection xsi:type="archimate:Connection" id="2a86e800" source="99034da2" target="dbc90353" relationship="44d03440"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="dbc90353" targetConnections="2a86e800" archimateElement="47ca6523">
-              <bounds x="253" y="492"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="512bbdc8" targetConnections="511b7757" archimateElement="72b37366">
-              <bounds x="12" y="240"/>
-              <sourceConnection xsi:type="archimate:Connection" id="4eb3e35b" source="512bbdc8" target="06db6f28" relationship="ec5bc064"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="06db6f28" targetConnections="4eb3e35b" archimateElement="81c4876a">
-              <bounds x="5" y="612" width="133" height="79"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="a6921b96" targetConnections="925a202c" archimateElement="a99529e2">
-              <bounds x="324" y="228"/>
-              <sourceConnection xsi:type="archimate:Connection" id="8c3a0b9e" source="a6921b96" target="6c8a2ee5" relationship="e6e96650"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="6c8a2ee5" targetConnections="8c3a0b9e" archimateElement="139f9bab">
-              <bounds x="383" y="464" width="120" height="77"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="300a7246" targetConnections="ea60c02a" archimateElement="5834034d">
-              <bounds x="36" y="96"/>
-              <sourceConnection xsi:type="archimate:Connection" id="511b7757" source="300a7246" target="512bbdc8" relationship="551f0dbd"/>
-              <sourceConnection xsi:type="archimate:Connection" id="c63f2ea8" source="300a7246" target="420a63b2" relationship="a2dc9886"/>
-              <sourceConnection xsi:type="archimate:Connection" id="d8838e6a" source="300a7246" target="4b1199d3" relationship="75ac11df"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="ae4a4670" archimateElement="38feb060">
-              <bounds x="504" y="-96" width="192" height="55"/>
-              <sourceConnection xsi:type="archimate:Connection" id="a5baa3c4" source="ae4a4670" target="21dbb488" relationship="6f7dcc7d"/>
-              <sourceConnection xsi:type="archimate:Connection" id="6ac9eb0f" source="ae4a4670" target="344b7382" relationship="d5e804a1"/>
-              <sourceConnection xsi:type="archimate:Connection" id="0b79db88" source="ae4a4670" target="bab22404" relationship="c2859fb2"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="300f9d18" targetConnections="25e2ec4f" archimateElement="6ab69c29">
-              <bounds x="504" y="96"/>
-              <sourceConnection xsi:type="archimate:Connection" id="a80d9f9e" source="300f9d18" target="ee879985" relationship="949af28a"/>
-              <sourceConnection xsi:type="archimate:Connection" id="113b041b" source="300f9d18" target="b580e858" relationship="92ab92fc"/>
-              <sourceConnection xsi:type="archimate:Connection" id="5a4f68fc" source="300f9d18" target="d8945421" relationship="31d92b7f"/>
-              <sourceConnection xsi:type="archimate:Connection" id="53c9e528" source="300f9d18" target="b09e7f83" relationship="30bd4a8c"/>
-              <sourceConnection xsi:type="archimate:Connection" id="4f6f5df0" source="300f9d18" target="a3f90e42" relationship="ed258b49"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="21dbb488" targetConnections="a5baa3c4" archimateElement="7aba69d1">
-              <bounds x="912" y="96"/>
-              <sourceConnection xsi:type="archimate:Connection" id="89775e43" source="21dbb488" target="80cc7cdd" relationship="18038aad"/>
-              <sourceConnection xsi:type="archimate:Connection" id="556fba81" source="21dbb488" target="ce455bcf" relationship="9b6ed989"/>
-              <sourceConnection xsi:type="archimate:Connection" id="8c46799b" source="21dbb488" target="d4c0219e" relationship="b1b36355"/>
-              <sourceConnection xsi:type="archimate:Connection" id="2041003c" source="21dbb488" target="9f443352" relationship="0771a031"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="ee879985" targetConnections="a80d9f9e" archimateElement="8d960b3e">
-              <bounds x="504" y="228"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="b580e858" targetConnections="113b041b" archimateElement="3b4e5bbc">
-              <bounds x="648" y="228"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="d8945421" targetConnections="5a4f68fc" archimateElement="974790c3">
-              <bounds x="708" y="294"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="b09e7f83" targetConnections="53c9e528" archimateElement="378950dd">
-              <bounds x="576" y="294"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="80cc7cdd" targetConnections="89775e43" archimateElement="0dff4259">
-              <bounds x="888" y="300"/>
-              <sourceConnection xsi:type="archimate:Connection" id="7516caf0" source="80cc7cdd" target="e62582d5" relationship="1c326b6c"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="e62582d5" targetConnections="7516caf0" archimateElement="36fbd768">
-              <bounds x="864" y="540" width="120" height="115"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="ce455bcf" targetConnections="556fba81" archimateElement="77f11989">
-              <bounds x="840" y="240"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="d4c0219e" targetConnections="8c46799b" archimateElement="cdc8f974">
-              <bounds x="972" y="240"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="9f443352" targetConnections="2041003c" archimateElement="547c517e">
-              <bounds x="1020" y="300"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="bab22404" targetConnections="0b79db88" archimateElement="07ee5607">
-              <bounds x="672" y="96" width="181" height="55"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="344b7382" targetConnections="6ac9eb0f" archimateElement="d2886808">
-              <bounds x="239" y="-48" width="134" height="55"/>
-              <sourceConnection xsi:type="archimate:Connection" id="ea60c02a" source="344b7382" target="300a7246" relationship="b2a96cda"/>
-              <sourceConnection xsi:type="archimate:Connection" id="925a202c" source="344b7382" target="a6921b96" relationship="397fbc46"/>
-              <sourceConnection xsi:type="archimate:Connection" id="e0bbdac0" source="344b7382" target="99034da2" relationship="b3ed2271"/>
-              <sourceConnection xsi:type="archimate:Connection" id="25e2ec4f" source="344b7382" target="300f9d18" relationship="176f0c4a"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="420a63b2" targetConnections="c63f2ea8" archimateElement="c496f50f">
-              <bounds x="137" y="240"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="4b1199d3" targetConnections="d8838e6a" archimateElement="80c1003b">
-              <bounds x="131" y="300"/>
-              <sourceConnection xsi:type="archimate:Connection" id="351df2e3" source="4b1199d3" target="a02470df" relationship="25eb7eb0"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="a02470df" targetConnections="351df2e3" archimateElement="d07f34b8">
-              <bounds x="99" y="504" width="120" height="97"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="a3f90e42" targetConnections="4f6f5df0" archimateElement="972588ae">
-              <bounds x="448" y="302"/>
-              <sourceConnection xsi:type="archimate:Connection" id="471849e6" source="a3f90e42" target="b27f7e56" relationship="4d9f244b"/>
-            </child>
-            <child xsi:type="archimate:DiagramObject" id="b27f7e56" targetConnections="471849e6" archimateElement="1c076398">
-              <bounds x="589" y="452" width="120" height="102"/>
-            </child>
-          </element>
-        </folder>
         <folder name="document control related classes" id="0a9f1efb">
           <folder name="report" id="cb05f2ef">
             <element xsi:type="archimate:DataObject" id="c73e22bc" name="report">
@@ -1408,69 +1505,69 @@ It is used to describe the related actors by the documentcontrol style.
             </element>
           </folder>
           <element xsi:type="archimate:ArchimateDiagramModel" id="cd90109a" name="Document Control related classes">
-            <child xsi:type="archimate:DiagramObject" id="038fc57e" targetConnections="731d170f" archimateElement="c73e22bc">
+            <child xsi:type="archimate:DiagramObject" id="038fc57e" textAlignment="2" targetConnections="731d170f" archimateElement="c73e22bc">
               <bounds x="76" y="192"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="1fc8db02" archimateElement="2a8bae66">
+            <child xsi:type="archimate:DiagramObject" id="1fc8db02" textAlignment="2" archimateElement="2a8bae66">
               <bounds x="76" y="28"/>
               <sourceConnection xsi:type="archimate:Connection" id="731d170f" source="1fc8db02" target="038fc57e" relationship="c017ee74"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="f8660d83" targetConnections="401f5887" archimateElement="e2ac9f22">
+            <child xsi:type="archimate:DiagramObject" id="f8660d83" textAlignment="2" targetConnections="401f5887" archimateElement="e2ac9f22">
               <bounds x="238" y="192" width="162" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="e4667830" source="f8660d83" target="d4c74aa7" relationship="421cc1a2"/>
               <sourceConnection xsi:type="archimate:Connection" id="5955a5a4" source="f8660d83" target="4ca6da34" relationship="11dea7b2"/>
               <sourceConnection xsi:type="archimate:Connection" id="24298a1a" source="f8660d83" target="c71e02c2" relationship="8783603b"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="388a5690" archimateElement="14a5901d">
+            <child xsi:type="archimate:DiagramObject" id="388a5690" textAlignment="2" archimateElement="14a5901d">
               <bounds x="240" y="28" width="157" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="401f5887" source="388a5690" target="f8660d83" relationship="460e525a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="d4c74aa7" targetConnections="e4667830" archimateElement="6f01bf3a">
+            <child xsi:type="archimate:DiagramObject" id="d4c74aa7" textAlignment="2" targetConnections="e4667830" archimateElement="6f01bf3a">
               <bounds x="195" y="293"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="4ca6da34" targetConnections="5955a5a4" archimateElement="ed7baa8b">
+            <child xsi:type="archimate:DiagramObject" id="4ca6da34" textAlignment="2" targetConnections="5955a5a4" archimateElement="ed7baa8b">
               <bounds x="337" y="293"/>
               <sourceConnection xsi:type="archimate:Connection" id="1f857f7d" source="4ca6da34" target="1743c029" relationship="35554867"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="1743c029" targetConnections="1f857f7d" archimateElement="50b2059e">
+            <child xsi:type="archimate:DiagramObject" id="1743c029" textAlignment="2" targetConnections="1f857f7d" archimateElement="50b2059e">
               <bounds x="337" y="408"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="c71e02c2" targetConnections="24298a1a" archimateElement="4ef928e8">
+            <child xsi:type="archimate:DiagramObject" id="c71e02c2" textAlignment="2" targetConnections="24298a1a" archimateElement="4ef928e8">
               <bounds x="492" y="293"/>
               <sourceConnection xsi:type="archimate:Connection" id="2332067f" source="c71e02c2" target="70b51132" relationship="23e3500a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="70b51132" targetConnections="2332067f" archimateElement="f6a7fd9f">
+            <child xsi:type="archimate:DiagramObject" id="70b51132" textAlignment="2" targetConnections="2332067f" archimateElement="f6a7fd9f">
               <bounds x="473" y="393" width="157" height="85"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="b594547d" targetConnections="318799e3 7bf878ca a9a78013" archimateElement="dfaa4387">
+            <child xsi:type="archimate:DiagramObject" id="b594547d" textAlignment="2" targetConnections="318799e3 7bf878ca a9a78013" archimateElement="dfaa4387">
               <bounds x="624" y="192" width="173" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="64e5a4a9" source="b594547d" target="1f503010" relationship="d0737f98"/>
               <sourceConnection xsi:type="archimate:Connection" id="a0fa8935" source="b594547d" target="8367a667" relationship="4bb9c8c8"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="382f346b" archimateElement="26cbd61e">
+            <child xsi:type="archimate:DiagramObject" id="382f346b" textAlignment="2" archimateElement="26cbd61e">
               <bounds x="432" y="28" width="193" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="318799e3" source="382f346b" target="b594547d" relationship="85b98263"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="dea46195" archimateElement="093d55e2">
+            <child xsi:type="archimate:DiagramObject" id="dea46195" textAlignment="2" archimateElement="093d55e2">
               <bounds x="636" y="28" width="209" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="7bf878ca" source="dea46195" target="b594547d" relationship="47fcaa26"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="1f503010" targetConnections="64e5a4a9" archimateElement="e314799d">
+            <child xsi:type="archimate:DiagramObject" id="1f503010" textAlignment="2" targetConnections="64e5a4a9" archimateElement="e314799d">
               <bounds x="791" y="308"/>
               <sourceConnection xsi:type="archimate:Connection" id="0dcd1d22" source="1f503010" target="bdf9a804" relationship="cac1f033"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="bdf9a804" targetConnections="0dcd1d22" archimateElement="94d50d97">
+            <child xsi:type="archimate:DiagramObject" id="bdf9a804" textAlignment="2" targetConnections="0dcd1d22" archimateElement="94d50d97">
               <bounds x="798" y="406" width="120" height="72"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="567e2177" archimateElement="d2886808">
+            <child xsi:type="archimate:DiagramObject" id="567e2177" textAlignment="2" archimateElement="d2886808">
               <bounds x="876" y="28" width="157" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a9a78013" source="567e2177" target="b594547d" relationship="34a38d41"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="8367a667" targetConnections="a0fa8935" archimateElement="3352c46b">
+            <child xsi:type="archimate:DiagramObject" id="8367a667" textAlignment="2" targetConnections="a0fa8935" archimateElement="3352c46b">
               <bounds x="653" y="306"/>
               <sourceConnection xsi:type="archimate:Connection" id="06080331" source="8367a667" target="c9c67f66" relationship="48a220fd"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="c9c67f66" targetConnections="06080331" archimateElement="4b847644">
+            <child xsi:type="archimate:DiagramObject" id="c9c67f66" textAlignment="2" targetConnections="06080331" archimateElement="4b847644">
               <bounds x="655" y="401" width="120" height="92"/>
             </child>
           </element>
@@ -1535,61 +1632,62 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
             </element>
           </folder>
           <element xsi:type="archimate:ArchimateDiagramModel" id="0a510e6e" name="Organisation related classes">
-            <child xsi:type="archimate:DiagramObject" id="c90e8f1f" targetConnections="a13cb047" archimateElement="229a7d9f">
+            <child xsi:type="archimate:DiagramObject" id="c90e8f1f" textAlignment="2" targetConnections="a13cb047" archimateElement="229a7d9f">
               <bounds x="62" y="96" width="187" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a4853be9" source="c90e8f1f" target="72739109" relationship="a72fd6f2"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="728fcd30" archimateElement="61091710">
+            <child xsi:type="archimate:DiagramObject" id="728fcd30" textAlignment="2" archimateElement="61091710">
               <bounds x="35" y="-12" width="241" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a13cb047" source="728fcd30" target="c90e8f1f" relationship="ce822551"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="862e85a4" targetConnections="30bce67b" archimateElement="e7aa271c">
+            <child xsi:type="archimate:DiagramObject" id="862e85a4" textAlignment="2" targetConnections="30bce67b" archimateElement="e7aa271c">
               <bounds x="552" y="72" width="190" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="437dd552" source="862e85a4" target="b2ba3e47" relationship="978a73fc"/>
               <sourceConnection xsi:type="archimate:Connection" id="ac45a3b4" source="862e85a4" target="1e9eee9a" relationship="60e12cc0"/>
               <sourceConnection xsi:type="archimate:Connection" id="026605a7" source="862e85a4" target="c28f1fab" relationship="28a022b8"/>
               <sourceConnection xsi:type="archimate:Connection" id="f46e29b1" source="862e85a4" target="cf141026" relationship="9b7f8ab9"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="4db6b25d" archimateElement="87ea8b49">
+            <child xsi:type="archimate:DiagramObject" id="4db6b25d" textAlignment="2" archimateElement="87ea8b49">
               <bounds x="538" y="-12" width="217" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="30bce67b" source="4db6b25d" target="862e85a4" relationship="55aa4f44"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="b2ba3e47" targetConnections="437dd552" archimateElement="694b17c2">
+            <child xsi:type="archimate:DiagramObject" id="b2ba3e47" textAlignment="2" targetConnections="437dd552" archimateElement="694b17c2">
               <bounds x="480" y="185"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="cf7192d7" targetConnections="842bede1" archimateElement="8c50cc08">
+            <child xsi:type="archimate:DiagramObject" id="cf7192d7" textAlignment="2" targetConnections="842bede1" archimateElement="8c50cc08">
               <bounds x="492" y="288" width="156" height="131"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="4cc56bf3" targetConnections="44bf2a05" archimateElement="4983c1c8">
+            <child xsi:type="archimate:DiagramObject" id="4cc56bf3" textAlignment="2" targetConnections="44bf2a05" archimateElement="4983c1c8">
               <bounds x="672" y="300" width="120" height="108"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="1e9eee9a" targetConnections="ac45a3b4" archimateElement="2d7a05b4">
+            <child xsi:type="archimate:DiagramObject" id="1e9eee9a" textAlignment="2" targetConnections="ac45a3b4" archimateElement="2d7a05b4">
               <bounds x="660" y="185"/>
               <sourceConnection xsi:type="archimate:Connection" id="44bf2a05" source="1e9eee9a" target="4cc56bf3" relationship="7f0d830b"/>
               <sourceConnection xsi:type="archimate:Connection" id="842bede1" source="1e9eee9a" target="cf7192d7" relationship="04724ef4"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="c28f1fab" targetConnections="026605a7" archimateElement="523d0f25">
+            <child xsi:type="archimate:DiagramObject" id="c28f1fab" textAlignment="2" targetConnections="026605a7" archimateElement="523d0f25">
               <bounds x="816" y="185"/>
               <sourceConnection xsi:type="archimate:Connection" id="61edeae4" source="c28f1fab" target="f985579a" relationship="3f664d0a"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="f985579a" targetConnections="61edeae4" archimateElement="590f7495">
+            <child xsi:type="archimate:DiagramObject" id="f985579a" textAlignment="2" targetConnections="61edeae4" archimateElement="590f7495">
               <bounds x="816" y="299" width="120" height="109"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="5a88e75d" archimateElement="d2886808">
+            <child xsi:type="archimate:DiagramObject" id="5a88e75d" textAlignment="2" archimateElement="d2886808">
               <bounds x="336" y="-12" width="157" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="23d7ab55" source="5a88e75d" target="72739109" relationship="397fbc46"/>
               <sourceConnection xsi:type="archimate:Connection" id="74feb846" source="5a88e75d" target="cf141026" relationship="b3ed2271"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="72739109" targetConnections="23d7ab55 a4853be9" archimateElement="a99529e2">
+            <child xsi:type="archimate:DiagramObject" id="72739109" textAlignment="2" targetConnections="23d7ab55 a4853be9" archimateElement="a99529e2">
               <bounds x="162" y="215"/>
             </child>
-            <child xsi:type="archimate:DiagramObject" id="cf141026" targetConnections="74feb846 f46e29b1" archimateElement="9bdf194e">
+            <child xsi:type="archimate:DiagramObject" id="cf141026" textAlignment="2" targetConnections="74feb846 f46e29b1" archimateElement="9bdf194e">
               <bounds x="264" y="288"/>
             </child>
           </element>
         </folder>
       </folder>
       <folder name="builtin object classes" id="1362d86c">
+        <documentation>These are the object classes defined by the archimate standard. Only the one which are actually used in the metamodel are documented.</documentation>
         <element xsi:type="archimate:DataObject" id="61091710" name="archimate:BusinessCollaboration">
           <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
 </documentation>
@@ -1617,77 +1715,91 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
           <documentation>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/
 </documentation>
         </element>
+        <element xsi:type="archimate:DataObject" id="3ecd2e2a" name="archimate:Plateau">
+          <documentation>A plateau
+</documentation>
+        </element>
+        <element xsi:type="archimate:DataObject" id="b42ede3c" name="archimate:model">
+          <documentation>The archimate model.</documentation>
+        </element>
       </folder>
       <documentation>There is a sample policy associated with some shipped report styles.
-
 We describe the objectclasses used in them here.
 
 </documentation>
       <element xsi:type="archimate:ArchimateDiagramModel" id="5fafcc8d" name="objectClass hierarchy">
         <child xsi:type="archimate:Group" id="bafdc27c" name="Builtin elements">
           <bounds x="72" y="36" width="997" height="241"/>
-          <child xsi:type="archimate:DiagramObject" id="798de39b" archimateElement="61091710">
+          <child xsi:type="archimate:DiagramObject" id="798de39b" textAlignment="2" archimateElement="61091710">
             <bounds x="24" y="18" width="253" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="5841f4ae" source="798de39b" target="cb46bef4" relationship="ce822551"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="bd769e36" archimateElement="2a8bae66">
+          <child xsi:type="archimate:DiagramObject" id="bd769e36" textAlignment="2" archimateElement="2a8bae66">
             <bounds x="336" y="18"/>
             <sourceConnection xsi:type="archimate:Connection" id="f92af5d6" source="bd769e36" target="d9660965" relationship="c017ee74"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="5f1d88c4" archimateElement="87ea8b49">
+          <child xsi:type="archimate:DiagramObject" id="5f1d88c4" textAlignment="2" archimateElement="87ea8b49">
             <bounds x="732" y="18" width="199" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="a2284fef" source="5f1d88c4" target="9ff7c3fc" relationship="55aa4f44"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="19880b91" archimateElement="14a5901d">
-            <bounds x="157" y="114" width="180" height="55"/>
+          <child xsi:type="archimate:DiagramObject" id="19880b91" textAlignment="2" archimateElement="14a5901d">
+            <bounds x="157" y="145" width="180" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="01f81c39" source="19880b91" target="107dacf0" relationship="460e525a"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="349ab155" archimateElement="26cbd61e">
+          <child xsi:type="archimate:DiagramObject" id="349ab155" textAlignment="2" archimateElement="26cbd61e">
             <bounds x="372" y="114" width="193" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="9cdc88db" source="349ab155" target="ba26c61e" relationship="85b98263"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="7f913a9f" archimateElement="093d55e2">
+          <child xsi:type="archimate:DiagramObject" id="7f913a9f" textAlignment="2" archimateElement="093d55e2">
             <bounds x="613" y="114" width="204" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="71de9159" source="7f913a9f" target="ba26c61e" relationship="47fcaa26"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="4f54584a" archimateElement="38feb060">
+          <child xsi:type="archimate:DiagramObject" id="4f54584a" textAlignment="2" archimateElement="38feb060">
             <bounds x="504" y="30" width="177" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="392d659c" source="4f54584a" target="7cecfbb0" relationship="6f7dcc7d"/>
             <sourceConnection xsi:type="archimate:Connection" id="2efe5c60" source="4f54584a" target="666cfad1" relationship="d5e804a1"/>
             <sourceConnection xsi:type="archimate:Connection" id="3b116cbc" source="4f54584a" target="3b871c5f" relationship="c2859fb2"/>
           </child>
+          <child xsi:type="archimate:DiagramObject" id="1c0a3dda" textAlignment="2" archimateElement="3ecd2e2a">
+            <bounds x="22" y="91" width="159" height="36"/>
+            <sourceConnection xsi:type="archimate:Connection" id="d5fc83c6" source="1c0a3dda" target="107dacf0" relationship="cdfc27f5"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="d26c46f9" textAlignment="2" archimateElement="b42ede3c">
+            <bounds x="192" y="84" width="156" height="33"/>
+            <sourceConnection xsi:type="archimate:Connection" id="a1b8eedb" source="d26c46f9" target="d9660965" relationship="fdc419be"/>
+          </child>
           <property key="associatedObjectClass" value="ArchimateObjectClass"/>
         </child>
         <child xsi:type="archimate:Group" id="149b4421" name="objectClasses">
           <bounds x="78" y="336" width="985" height="337"/>
-          <child xsi:type="archimate:DiagramObject" id="cb46bef4" targetConnections="5841f4ae" archimateElement="229a7d9f">
+          <child xsi:type="archimate:DiagramObject" id="cb46bef4" textAlignment="2" targetConnections="5841f4ae" archimateElement="229a7d9f">
             <bounds x="72" y="222" width="181" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="d9660965" targetConnections="f92af5d6" archimateElement="c73e22bc">
+          <child xsi:type="archimate:DiagramObject" id="d9660965" textAlignment="2" targetConnections="f92af5d6 a1b8eedb" archimateElement="c73e22bc">
             <bounds x="216" y="42"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="07c1aaa9" targetConnections="63251318" archimateElement="5834034d">
+          <child xsi:type="archimate:DiagramObject" id="07c1aaa9" textAlignment="2" targetConnections="63251318" archimateElement="5834034d">
             <bounds x="360" y="222"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a43ffc05" targetConnections="41388900" archimateElement="6ab69c29">
+          <child xsi:type="archimate:DiagramObject" id="a43ffc05" textAlignment="2" targetConnections="41388900" archimateElement="6ab69c29">
             <bounds x="539" y="222"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="7cecfbb0" targetConnections="392d659c" archimateElement="7aba69d1">
+          <child xsi:type="archimate:DiagramObject" id="7cecfbb0" textAlignment="2" targetConnections="392d659c" archimateElement="7aba69d1">
             <bounds x="576" y="42"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="9ff7c3fc" targetConnections="a2284fef" archimateElement="e7aa271c">
+          <child xsi:type="archimate:DiagramObject" id="9ff7c3fc" textAlignment="2" targetConnections="a2284fef" archimateElement="e7aa271c">
             <bounds x="744" y="222" width="181" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="107dacf0" targetConnections="01f81c39" archimateElement="e2ac9f22">
+          <child xsi:type="archimate:DiagramObject" id="107dacf0" textAlignment="2" targetConnections="01f81c39 d5fc83c6" archimateElement="e2ac9f22">
             <bounds x="36" y="42" width="145" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="ba26c61e" targetConnections="9cdc88db 71de9159 5321aa75" archimateElement="dfaa4387">
+          <child xsi:type="archimate:DiagramObject" id="ba26c61e" textAlignment="2" targetConnections="9cdc88db 71de9159 5321aa75" archimateElement="dfaa4387">
             <bounds x="660" y="129" width="169" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="3b871c5f" targetConnections="2882656c 3b116cbc" archimateElement="07ee5607">
+          <child xsi:type="archimate:DiagramObject" id="3b871c5f" textAlignment="2" targetConnections="2882656c 3b116cbc" archimateElement="07ee5607">
             <bounds x="324" y="150" width="169" height="55"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="666cfad1" targetConnections="2efe5c60" archimateElement="d2886808">
+          <child xsi:type="archimate:DiagramObject" id="666cfad1" textAlignment="2" targetConnections="2efe5c60" archimateElement="d2886808">
             <bounds x="384" y="42" width="133" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="63251318" source="666cfad1" target="07c1aaa9" relationship="b2a96cda"/>
             <sourceConnection xsi:type="archimate:Connection" id="41388900" source="666cfad1" target="a43ffc05" relationship="176f0c4a"/>
@@ -1700,31 +1812,31 @@ We describe the objectclasses used in them here.
     </folder>
     <folder name="GUI" id="43255a7d">
       <element xsi:type="archimate:ArchimateDiagramModel" id="f179ca7d" name="GUI">
-        <child xsi:type="archimate:DiagramObject" id="b882b7a0" archimateElement="e18c6fa0">
+        <child xsi:type="archimate:DiagramObject" id="b882b7a0" textAlignment="2" archimateElement="e18c6fa0">
           <bounds x="36" y="84" width="181" height="253"/>
-          <child xsi:type="archimate:DiagramObject" id="16393a81" targetConnections="8dd2950d" archimateElement="54c46059">
+          <child xsi:type="archimate:DiagramObject" id="16393a81" textAlignment="2" targetConnections="8dd2950d" archimateElement="54c46059">
             <bounds x="25" y="42"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="4c80849c" targetConnections="779093fe" archimateElement="9d9e8720">
+          <child xsi:type="archimate:DiagramObject" id="4c80849c" textAlignment="2" targetConnections="779093fe" archimateElement="9d9e8720">
             <bounds x="25" y="108"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="833adba7" targetConnections="35db8779" archimateElement="4b027005">
+          <child xsi:type="archimate:DiagramObject" id="833adba7" textAlignment="2" targetConnections="35db8779" archimateElement="4b027005">
             <bounds x="25" y="180"/>
           </child>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="a29d71d4" archimateElement="9b4d2892">
+        <child xsi:type="archimate:DiagramObject" id="a29d71d4" textAlignment="2" archimateElement="9b4d2892">
           <bounds x="432" y="180"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="5985c6f0" archimateElement="61cdef08">
+        <child xsi:type="archimate:DiagramObject" id="5985c6f0" textAlignment="2" archimateElement="61cdef08">
           <bounds x="576" y="180"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="b0e2b95d" archimateElement="a458af17">
+        <child xsi:type="archimate:DiagramObject" id="b0e2b95d" textAlignment="2" archimateElement="a458af17">
           <bounds x="408" y="252"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="fe2da172" archimateElement="48a2a5b4">
+        <child xsi:type="archimate:DiagramObject" id="fe2da172" textAlignment="2" archimateElement="48a2a5b4">
           <bounds x="324" y="120"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="f25ef4cd" archimateElement="d21f3e47">
+        <child xsi:type="archimate:DiagramObject" id="f25ef4cd" textAlignment="2" archimateElement="d21f3e47">
           <bounds x="228" y="192"/>
           <sourceConnection xsi:type="archimate:Connection" id="8dd2950d" source="f25ef4cd" target="16393a81" relationship="18197e36"/>
           <sourceConnection xsi:type="archimate:Connection" id="779093fe" source="f25ef4cd" target="4c80849c" relationship="1ac9bcac"/>
@@ -1757,21 +1869,21 @@ See troubleshooting for details.
     </folder>
     <folder name="dbexport" id="8b99c89d">
       <element xsi:type="archimate:ArchimateDiagramModel" id="fdd2ec44" name="data structure">
-        <child xsi:type="archimate:DiagramObject" id="baab114b" archimateElement="33f4221f">
+        <child xsi:type="archimate:DiagramObject" id="baab114b" textAlignment="2" archimateElement="33f4221f">
           <bounds x="48" y="35" width="781" height="122"/>
-          <child xsi:type="archimate:DiagramObject" id="4b55c485" archimateElement="46a217b3">
+          <child xsi:type="archimate:DiagramObject" id="4b55c485" textAlignment="2" archimateElement="46a217b3">
             <bounds x="12" y="36"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="6c511f8a" archimateElement="22516748">
+          <child xsi:type="archimate:DiagramObject" id="6c511f8a" textAlignment="2" archimateElement="22516748">
             <bounds x="180" y="36"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="a48fa53f" archimateElement="359391c5">
+          <child xsi:type="archimate:DiagramObject" id="a48fa53f" textAlignment="2" archimateElement="359391c5">
             <bounds x="636" y="35"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="cd03d010" archimateElement="6e87982f">
+          <child xsi:type="archimate:DiagramObject" id="cd03d010" textAlignment="2" archimateElement="6e87982f">
             <bounds x="485" y="36"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="34baf1d7" archimateElement="f95d7b28">
+          <child xsi:type="archimate:DiagramObject" id="34baf1d7" textAlignment="2" archimateElement="f95d7b28">
             <bounds x="334" y="35"/>
           </child>
         </child>
@@ -1779,7 +1891,6 @@ See troubleshooting for details.
       <element xsi:type="archimate:DataObject" id="33f4221f" name="xmlitem">
         <documentation>An xml item describes a model, entity or attribute.
 </documentation>
-        <property key="objectClass" value="objectClass"/>
       </element>
       <element xsi:type="archimate:DataObject" id="46a217b3" name="parent">
         <documentation>the parent of the item</documentation>
@@ -1805,7 +1916,34 @@ reference</documentation>
   </folder>
   <folder name="Technology" id="cb60e879" type="technology"/>
   <folder name="Motivation" id="6bf74e42" type="motivation"/>
-  <folder name="Implementation &amp; Migration" id="5d79b1be" type="implementation_migration"/>
+  <folder name="Implementation &amp; Migration" id="5d79b1be" type="implementation_migration">
+    <folder name="Bugs &amp; missing features" id="f26cbcc2">
+      <folder name="Bugs" id="7af20231">
+        <element xsi:type="archimate:Gap" id="97a51643" name="Silly question">
+          <documentation>After the folder is choosen, Archi asks whether you want to delete this directory.
+It a bug, ignore it</documentation>
+        </element>
+      </folder>
+      <folder name="Missing features" id="eacbe39e">
+        <element xsi:type="archimate:Gap" id="f10d54c7" name="Move around">
+          <documentation>The ability to move objects freely in the model's hierarchy.
+This supports the structured display of views and objects belonging to that view.
+It is used by not just the structured style, which is a base for the majority of report styles used in real life.
+A patch is already submitted
+</documentation>
+        </element>
+        <element xsi:type="archimate:Gap" id="05cb6a4f" name="Enterprise repository">
+          <documentation>An enterprise repository would be very nice.
+It could be done using CDO. There is already a proof of concept code, but a major restructure would be needed.</documentation>
+        </element>
+        <element xsi:type="archimate:Gap" id="80816c1d" name="Persistence layer">
+          <documentation>Currently the whole code mixes business logic and GUI.
+It should be sorted out to be able to correctly support batch report generation and enterprise repository.
+</documentation>
+        </element>
+      </folder>
+    </folder>
+  </folder>
   <folder name="Connectors" id="5dd8c9be" type="connectors">
     <property key="report:part" value="structured:hide"/>
     <element xsi:type="archimate:OrJunction" id="f780d28c" name="is there anything you can add?"/>
@@ -1818,11 +1956,6 @@ reference</documentation>
     <element xsi:type="archimate:CompositionRelationship" id="94e189ed" source="d3bfc49d" target="ceee856a"/>
     <element xsi:type="archimate:CompositionRelationship" id="8aab1343" source="d3bfc49d" target="a1656467"/>
     <element xsi:type="archimate:CompositionRelationship" id="a9c981e1" source="d7177a48" target="d3bfc49d"/>
-    <element xsi:type="archimate:UsedByRelationship" id="fecb10e6" source="b253e41d" target="ceee856a"/>
-    <element xsi:type="archimate:UsedByRelationship" id="c24f7f2a" source="6ac7925c" target="bd2e073d"/>
-    <element xsi:type="archimate:CompositionRelationship" id="b90ab107" source="72b003ce" target="6ac7925c"/>
-    <element xsi:type="archimate:CompositionRelationship" id="9fe00125" source="72b003ce" target="b253e41d"/>
-    <element xsi:type="archimate:AssignmentRelationship" id="31d07f81" source="4173c76a" target="72b003ce"/>
     <element xsi:type="archimate:CompositionRelationship" id="bea6a05d" source="d7177a48" target="b882dd33"/>
     <element xsi:type="archimate:CompositionRelationship" id="43ed1d38" source="d7177a48" target="aee68911"/>
     <element xsi:type="archimate:CompositionRelationship" id="fb5e5288" source="d7177a48" target="549b978f"/>
@@ -1970,22 +2103,31 @@ reference</documentation>
     <element xsi:type="archimate:CompositionRelationship" id="cadb0f11" source="33f4221f" target="6e87982f"/>
     <element xsi:type="archimate:CompositionRelationship" id="843013a4" source="33f4221f" target="f95d7b28"/>
     <element xsi:type="archimate:AssociationRelationship" id="03fb04e4" source="91d6a6a9" target="d3da8982"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="cdfc27f5" source="3ecd2e2a" target="e2ac9f22"/>
+    <element xsi:type="archimate:AssociationRelationship" id="bc504d82" source="97a51643" target="28574436"/>
+    <element xsi:type="archimate:AssociationRelationship" id="01546bf3" source="05cb6a4f" target="bd2e073d"/>
+    <element xsi:type="archimate:AssociationRelationship" id="8862f574" source="f10d54c7" target="4173c76a"/>
+    <element xsi:type="archimate:AssociationRelationship" id="e1b3879d" source="80816c1d" target="4173c76a"/>
+    <element xsi:type="archimate:CompositionRelationship" id="6d8f0420" source="05cb6a4f" target="80816c1d"/>
+    <element xsi:type="archimate:AssociationRelationship" id="068e8d03" source="80816c1d" target="609f7882"/>
+    <element xsi:type="archimate:SpecialisationRelationship" id="fdc419be" source="b42ede3c" target="c73e22bc"/>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>
   </folder>
-  <purpose>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.
-You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.
-You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.
-You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.
-
+  <purpose>&lt;ul>&lt;li>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.&lt;/li>
+&lt;li>You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.&lt;/li>
+&lt;li>You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.&lt;/li>
+&lt;li>You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.&lt;/li>
+&lt;/ul>
 If any of the above happens, this module and the underlying concepts are developed for you.
 
-This module makes possible to 
-- define and document enterprise architecture policies
-- check architecture models against those policies
-- define documentation styles for various stakeholders, and generate those documentations from the model
-- generate configuration and code directly from the model
+This module makes possible to &lt;ul>
+&lt;li> define and document enterprise architecture policies&lt;/li>
+&lt;li>check architecture models against those policies&lt;/li>
+&lt;li>define documentation styles for various stakeholders, and generate those documentations from the model&lt;/li>
+&lt;li>generate configuration and code directly from the model&lt;/li>
+&lt;/ul>
 
 This model tries to fulfill multiple purposes:
 - Show how Archimate can be used in the goovernance of IT
