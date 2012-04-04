@@ -57,7 +57,7 @@
    </objectClass>
    <objectClass name="attribute" abstract="">
       <description>
-         <documentation>The attribute is used to describe a attribute of an objectClass.<br/>You can define a attribute value either by giving the value to a property named &lt;classname&gt;:&lt;attributename&gt; to an object, or by using a model structure defined by the defaults of the given attribute.<br/>
+         <documentation>The attribute is used to describe a attribute of an objectClass.<br/>You can define a attribute value either by giving the value to a property named &lt;b&gt;classname&lt;/b&gt;:&lt;b&gt;attributename&lt;/b&gt; to an object, or by using a model structure defined by the defaults of the given attribute.<br/>
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
@@ -422,6 +422,268 @@
                   multi="true">
             <description>
                <documentation>All the organisational units which contain the person.<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="Application" abstract="">
+      <description>
+         <documentation>An application or system.<br/>
+         </documentation>
+      </description>
+      <ancestor class="abstractNamed"/>
+      <ancestor class="archimate:ApplicationComponent"/>
+      <property name="admContact"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>Name of person<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/name"
+                  multi="true">
+            <description>
+               <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="technicalContact"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>Name of person<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/name"
+                  multi="true">
+            <description>
+               <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="shortName"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The name of the stuff.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="true">
+            <description>
+               <documentation>Name<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="ApplicationCollection" abstract="">
+      <description>
+         <documentation>A collection of applications/systems that belong together eg. Salary payment.<br/>
+         </documentation>
+      </description>
+      <ancestor class="abstractNamed"/>
+      <ancestor class="archimate:ApplicationComponent"/>
+      <property name="admContact"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>Name of person<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/name"
+                  multi="true">
+            <description>
+               <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="shortName"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The name of the stuff.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="true">
+            <description>
+               <documentation>Name<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="Server" abstract="">
+      <description>
+         <documentation>A server with an operating system, running on a physical or virtual hardware.<br/>
+         </documentation>
+      </description>
+      <ancestor class="abstractNamed"/>
+      <ancestor class="archimate:Node"/>
+      <property name="ipAddress"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The IP address.<br/>
+            </documentation>
+         </description>
+      </property>
+      <property name="lifeCycleStatus"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>one of In preparation, In Test, In production, Under liquidation, Liquidated<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:Plateau[@id=//archimate:AggregationRelationship[@target=$id]/@source]/@name"
+                  multi="true">
+            <description>
+               <documentation>A Plateau which aggregates the server<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="location"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>where the PhysicalHardware is placed<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:Location[@id=//archimate:AssignmentRelationship[@target=$id]/@source]/@name"
+                  multi="true">
+            <description>
+               <documentation>A Location assigned to the application<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="networkZone"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>what network zone the server is placed in?<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name"
+                  multi="true">
+            <description>
+               <documentation>A Network this Server is associated to<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="operatingSystem"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>what OS it runs?<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:SystemSoftware[@id=//archimate:CompositionRelationship[@source=$id]/@target]/@name"
+                  multi="true">
+            <description>
+               <documentation>A System Software which have a composition from this Server<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="physicalHardware"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>eg the physical server<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:Node[@id=//archimate:CompositionRelationship[@target=$id]/@source]/@name"
+                  multi="true">
+            <description>
+               <documentation>Another Server which is composed of this one<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="serverRole"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>e.g. Application server, File Server…<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:ApplicationFunction[@id=//archimate:RealisationRelationship[@source=$id]/@target]/@name"
+                  multi="true">
+            <description>
+               <documentation>An application function this server realizes<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="technicalContact"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>Name of person<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/name"
+                  multi="true">
+            <description>
+               <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="shortName"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The name of the stuff.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="true">
+            <description>
+               <documentation>Name<br/>
                </documentation>
             </description>
          </default>
