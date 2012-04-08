@@ -3,9 +3,13 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:archimate="http://www.bolton.ac.uk/archimate"
+	xmlns:canvas="http://namespaces.local/canvas"
 	xmlns:report="http://magwas.rulez.org/my"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<!--FIXME:
+	xmlns:canvas="http://www.bolton.ac.uk/archimate/canvas"
+-->
 
 	<xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
 
@@ -90,7 +94,11 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel">
+	<xsl:template match="*" >
+		<xsl:message>no match for <xsl:copy-of select="."/></xsl:message>
+	</xsl:template>
+
+	<xsl:template match="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
 			<tr><td colspan="2">
 				<figure>
@@ -146,16 +154,16 @@
 					<xsl:apply-templates select="./documentation"/>
 				</para>
 				<xsl:call-template name="proptable"/>
-				<xsl:if test="archimate:* except archimate:Folder or property[@key='from-folder']">
+				<xsl:if test="(archimate:*|canvas:*) except archimate:Folder or property[@key='from-folder']">
 					<table class="elementtable">
-						<xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel">
+						<xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
-						<xsl:apply-templates select="archimate:* except (archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder)">
+						<xsl:apply-templates select="archimate:* except (archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder|canvas:CanvasModel)">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
 						<xsl:if test="'false'=$flat">
-							<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//archimate:ArchimateDiagramModel|//archimate:DiagramModel|//archimate:SketchModel|//archimate:Folder)">
+							<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//archimate:ArchimateDiagramModel|//archimate:DiagramModel|//archimate:SketchModel|//archimate:Folder|//canvas:CanvasModel)">
 								<xsl:sort select="./@name"/>
 								<xsl:apply-templates select=".">
 								</xsl:apply-templates>
