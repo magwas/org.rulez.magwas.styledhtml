@@ -22,7 +22,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name"
+                  select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name"
                   multi="true">
             <description/>
          </default>
@@ -51,6 +51,34 @@
          <default order="0"
                   select="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"
                   multi="true">
+            <description/>
+         </default>
+      </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
             <description/>
          </default>
       </property>
@@ -119,6 +147,34 @@
          <default order="0"
                   select="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"
                   multi="true">
+            <description/>
+         </default>
+      </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
             <description/>
          </default>
       </property>
@@ -191,6 +247,34 @@
       </description>
       <ancestor class="abstractNamed"/>
       <ancestor class="archimate:DataObject"/>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
    </objectClass>
    <objectClass name="abstractNamed" abstract="true">
       <description>
@@ -228,205 +312,6 @@
          </default>
       </property>
    </objectClass>
-   <objectClass name="report" abstract="">
-      <description>
-         <documentation>folder properties to parameterize reports<br/>
-         </documentation>
-      </description>
-      <ancestor class="archimate:Folder"/>
-      <ancestor class="archimate:model"/>
-      <property name="part"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The name of the report part for which this folder should be displayed<br/>
-            </documentation>
-         </description>
-      </property>
-   </objectClass>
-   <objectClass name="DocumentVersion" abstract="">
-      <description>
-         <documentation>A Document version.<br/>
-         </documentation>
-      </description>
-      <ancestor class="archimate:Product"/>
-      <ancestor class="archimate:Plateau"/>
-      <property name="releasedate"
-                type="xs:string"
-                minOccurs="0"
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The release date of the document version<br/>
-            </documentation>
-         </description>
-      </property>
-      <property name="versionnumber"
-                type="xs:string"
-                minOccurs="0"
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The version number of the document version<br/>
-            </documentation>
-         </description>
-         <default order="0" select="../@name" multi="">
-            <description/>
-         </default>
-      </property>
-      <property name="authorid"
-                type="xs:string"
-                minOccurs="0"
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The id of the author<br/>
-            </documentation>
-         </description>
-         <default order="0"
-                  select="//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid"
-                  multi="">
-            <description/>
-         </default>
-      </property>
-   </objectClass>
-   <objectClass name="GovernanceStep" abstract="">
-      <description>
-         <documentation>A governance process step.<br/>It is used to describe the related actors by the documentcontrol style.<br/>
-         </documentation>
-      </description>
-      <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:BusinessEvent"/>
-      <ancestor class="archimate:BusinessProcess"/>
-      <property name="state"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The state of the step<br/>
-            </documentation>
-         </description>
-         <default order="0" select="'not started'" multi="">
-            <description/>
-         </default>
-      </property>
-      <property name="actor"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>An actor involved in the step.<br/>
-            </documentation>
-         </description>
-         <default order="0"
-                  select="//archimate:UsedByRelationship[@target=$id]/@source"
-                  multi="true">
-            <description/>
-         </default>
-      </property>
-   </objectClass>
-   <objectClass name="OrganisationalUnit" abstract="">
-      <description>
-         <documentation>An organisational unit.<br/>
-         </documentation>
-      </description>
-      <ancestor class="archimate:BusinessCollaboration"/>
-      <property name="description"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs="1"
-                structural="">
-         <description>
-            <documentation>The description of the objectClass.<br/>
-               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
-            </documentation>
-         </description>
-         <default order="0" select="../documentation" multi="">
-            <description/>
-         </default>
-      </property>
-   </objectClass>
-   <objectClass name="OrganisationalPerson" abstract="">
-      <description>
-         <documentation>A person belonging to an organisation<br/>
-         </documentation>
-      </description>
-      <ancestor class="archimate:BusinessActor"/>
-      <property name="name"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs="1"
-                structural="">
-         <description>
-            <documentation>name of the objectClass<br/>
-               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
-            </documentation>
-         </description>
-         <default order="0" select="../@name" multi="">
-            <description/>
-         </default>
-      </property>
-      <property name="position"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs="1"
-                structural="">
-         <description>
-            <documentation>position of the person<br/>
-               <br/>FIXME: should have a default which computes it by the composition relation with the organisation (property or line text), because it should actually change by organisation for the same person.<br/>
-            </documentation>
-         </description>
-      </property>
-      <property name="organisation"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs="1"
-                structural="">
-         <description>
-            <documentation>The (primary) organisation of the person.<br/>
-            </documentation>
-         </description>
-         <default order="0"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"
-                  multi="">
-            <description>
-               <documentation>When the person belongs to more organisational units, one of them should be the primary one.<br/>It is designated by a property added to the composition relationship.<br/>
-               </documentation>
-            </description>
-         </default>
-         <default order="1"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
-                  multi="true">
-            <description>
-               <documentation>When the person belongs to one organisational unit, then this organisational unit is its primary organisation.<br/>
-               </documentation>
-            </description>
-         </default>
-      </property>
-      <property name="memberOf"
-                type="xs:string"
-                minOccurs=""
-                maxOccurs=""
-                structural="">
-         <description>
-            <documentation>The organisations of the person.<br/>
-               <br/>FIXME: all Business Collaborations and Business Roles should have been listed here<br/>
-            </documentation>
-         </description>
-         <default order="0"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
-                  multi="true">
-            <description>
-               <documentation>All the organisational units which contain the person.<br/>
-               </documentation>
-            </description>
-         </default>
-      </property>
-   </objectClass>
    <objectClass name="Application" abstract="">
       <description>
          <documentation>An application or system.<br/>
@@ -444,7 +329,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/name"
+                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
@@ -462,7 +347,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/name"
+                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
@@ -486,6 +371,34 @@
             </description>
          </default>
       </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
    </objectClass>
    <objectClass name="ApplicationCollection" abstract="">
       <description>
@@ -504,7 +417,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/name"
+                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
@@ -526,6 +439,34 @@
                <documentation>Name<br/>
                </documentation>
             </description>
+         </default>
+      </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
          </default>
       </property>
    </objectClass>
@@ -664,7 +605,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalPerson[@parentid=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/name"
+                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
@@ -684,6 +625,276 @@
          <default order="0" select="../@name" multi="true">
             <description>
                <documentation>Name<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="report" abstract="">
+      <description>
+         <documentation>folder properties to parameterize reports<br/>
+         </documentation>
+      </description>
+      <ancestor class="archimate:Folder"/>
+      <ancestor class="archimate:model"/>
+      <property name="part"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The name of the report part for which this folder should be displayed<br/>
+            </documentation>
+         </description>
+      </property>
+   </objectClass>
+   <objectClass name="DocumentVersion" abstract="">
+      <description>
+         <documentation>A Document version.<br/>
+         </documentation>
+      </description>
+      <ancestor class="archimate:Product"/>
+      <ancestor class="archimate:Plateau"/>
+      <property name="releasedate"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The release date of the document version<br/>
+            </documentation>
+         </description>
+      </property>
+      <property name="versionnumber"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The version number of the document version<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="authorid"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The id of the author<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid"
+                  multi="">
+            <description/>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="GovernanceStep" abstract="">
+      <description>
+         <documentation>A governance process step.<br/>It is used to describe the related actors by the documentcontrol style.<br/>
+         </documentation>
+      </description>
+      <ancestor class="abstractNamed"/>
+      <ancestor class="archimate:BusinessEvent"/>
+      <ancestor class="archimate:BusinessProcess"/>
+      <property name="state"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The state of the step<br/>
+            </documentation>
+         </description>
+         <default order="0" select="'not started'" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="actor"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>An actor involved in the step.<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//archimate:UsedByRelationship[@target=$id]/@source"
+                  multi="true">
+            <description/>
+         </default>
+      </property>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="OrganisationalUnit" abstract="">
+      <description>
+         <documentation>An organisational unit.<br/>
+         </documentation>
+      </description>
+      <ancestor class="abstractNamed"/>
+      <ancestor class="archimate:BusinessCollaboration"/>
+      <property name="description"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The description of the objectClass.<br/>
+               <br/>The description is represented by the tag named 'description' in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../documentation" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
+   </objectClass>
+   <objectClass name="OrganisationalPerson" abstract="">
+      <description>
+         <documentation>A person belonging to an organisation<br/>
+         </documentation>
+      </description>
+      <ancestor class="archimate:BusinessActor"/>
+      <property name="name"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>name of the objectClass<br/>
+               <br/>The name is represented by an attribute named 'name' of the objectClass in the policy file.<br/>
+            </documentation>
+         </description>
+         <default order="0" select="../@name" multi="">
+            <description/>
+         </default>
+      </property>
+      <property name="position"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>position of the person<br/>
+               <br/>FIXME: should have a default which computes it by the composition relation with the organisation (property or line text), because it should actually change by organisation for the same person.<br/>
+            </documentation>
+         </description>
+      </property>
+      <property name="organisation"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs="1"
+                structural="">
+         <description>
+            <documentation>The (primary) organisation of the person.<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"
+                  multi="">
+            <description>
+               <documentation>When the person belongs to more organisational units, one of them should be the primary one.<br/>It is designated by a property added to the composition relationship.<br/>
+               </documentation>
+            </description>
+         </default>
+         <default order="1"
+                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
+                  multi="true">
+            <description>
+               <documentation>When the person belongs to one organisational unit, then this organisational unit is its primary organisation.<br/>
+               </documentation>
+            </description>
+         </default>
+      </property>
+      <property name="memberOf"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description>
+            <documentation>The organisations of the person.<br/>
+               <br/>FIXME: all Business Collaborations and Business Roles should have been listed here<br/>
+            </documentation>
+         </description>
+         <default order="0"
+                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
+                  multi="true">
+            <description>
+               <documentation>All the organisational units which contain the person.<br/>
                </documentation>
             </description>
          </default>

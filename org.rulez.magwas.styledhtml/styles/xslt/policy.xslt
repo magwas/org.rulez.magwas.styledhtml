@@ -24,21 +24,30 @@
  					<p>This is an abstract class, do not instantiate it in a model</p>
  				</xsl:if>
 			</description>
-			<xsl:for-each select="//archimate:*[@id=//archimate:SpecialisationRelationship[@target=current()/@parentid]/@source]/@name">
+			<xsl:for-each select="//archimate:*[@id=//archimate:SpecialisationRelationship[@source=current()/@parentid]/@target]/@name">
 				<ancestor class="{.}"/>
 			</xsl:for-each>
-			<xsl:apply-templates select="//archimate:*[@id=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]/attribute" mode="policy"/>
+			<xsl:apply-templates select="." mode="policy_attributes"/>
 		</objectClass>
 	</xsl:template>
 
-	<xsl:template match="attribute" mode="policy">
+	<xsl:template match="objectClass" mode="policy_attributes">
+			<xsl:apply-templates select="//archimate:*[@id=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]/attribute" mode="policy_attributes"/>
+			<xsl:apply-templates mode="policy_attributes" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=current()/@parentid]/@target]"/>
+	</xsl:template>
+
+	<xsl:template match="*" mode="policy_attributes">
+		<xsl:message>No match for<xsl:copy-of select="."/></xsl:message>
+	</xsl:template>
+
+	<xsl:template match="attribute" mode="policy_attributes">
 			<property name="{../@name}" type="{type}" minOccurs="{minOccurs}" maxOccurs="{maxOccurs}" structural="{structural}" >
 				<description><xsl:copy-of select="../documentation"/></description>
-				<xsl:apply-templates select="//default[@parentid=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]" mode="policy"/>
+				<xsl:apply-templates select="//default[@parentid=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]" mode="policy_attributes"/>
 			</property>
 	</xsl:template>
 
-	<xsl:template match="default" mode="policy">
+	<xsl:template match="default" mode="policy_attributes">
 			<default order="{order}" select="{select}" multi="{multi}">
 			<description><xsl:copy-of select="../documentation"/></description>
 			</default>

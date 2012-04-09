@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style>
 	<copy source="emptydir" target="pics"/>
-	<copy source="structured.css" target="structured.css"/>
+	<copy source="static/structured.css" target="structured.css"/>
 	<diagrams target="pics"/>
 	<export target="archirich.xml" policy="policy.xml" keep="false">
 		<transform language="xslt" script="xslt/docbook.xslt" target="index.docbook" noroot="yes" keep="true" flat="false" part="all">
