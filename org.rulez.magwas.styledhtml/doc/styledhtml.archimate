@@ -1160,6 +1160,7 @@ With extended archimate the whole development cycle would be traceable in one mo
               <sourceConnection xsi:type="archimate:Connection" id="5888f87b" source="911c73e8" target="4868e57a" relationship="f62624fa"/>
               <sourceConnection xsi:type="archimate:Connection" id="8a0ea133" source="911c73e8" target="584c5bb4" relationship="1b99ad77"/>
               <sourceConnection xsi:type="archimate:Connection" id="84cc3b85" source="911c73e8" target="aa4d7011" relationship="97da8929"/>
+              <sourceConnection xsi:type="archimate:Connection" id="df97e552" source="911c73e8" target="ad3d96b6" relationship="34f6395b"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="4868e57a" textAlignment="2" targetConnections="5888f87b 415e53ca" archimateElement="4666bdc0">
               <bounds x="564" y="351" width="145" height="42"/>
@@ -1204,6 +1205,13 @@ With extended archimate the whole development cycle would be traceable in one mo
             <child xsi:type="archimate:DiagramObject" id="584c5bb4" textAlignment="2" targetConnections="e26870f7 8a0ea133 263c6f53" archimateElement="05ec65d6">
               <bounds x="564" y="187" width="145" height="42"/>
               <sourceConnection xsi:type="archimate:Connection" id="693c2b3a" source="584c5bb4" target="5df36279" relationship="431b6571"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="ad3d96b6" textAlignment="2" targetConnections="df97e552" archimateElement="c012a502">
+              <bounds x="564" y="392" width="145" height="41"/>
+              <sourceConnection xsi:type="archimate:Connection" id="14fae34f" source="ad3d96b6" target="4f2cf9d6" relationship="89e1904d"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="4f2cf9d6" textAlignment="2" targetConnections="14fae34f" archimateElement="94ef9402">
+              <bounds x="780" y="394" width="433" height="37"/>
             </child>
           </element>
           <element xsi:type="archimate:DataObject" id="05aed334" name="serverRole">
@@ -1275,6 +1283,16 @@ With extended archimate the whole development cycle would be traceable in one mo
             <property key="attribute:type" value="xs:string"/>
             <property key="attribute:maxOccurs" value="1"/>
           </element>
+          <element xsi:type="archimate:DataObject" id="c012a502" name="server">
+            <documentation>The server(s) the application runs on</documentation>
+            <property key="attribute:type" value="xs:string"/>
+          </element>
+          <element xsi:type="archimate:DataObject" id="94ef9402" name="The server which realizes the application">
+            <documentation>A Server with a realisation relationship to the application</documentation>
+            <property key="default:order" value="0"/>
+            <property key="default:select" value="//archimate:Node[@id=//archimate:RealisationRelationship[@target=$id]/@source]/@name"/>
+            <property key="default:multi" value="true"/>
+          </element>
         </folder>
         <folder name="models" id="20f46d77">
           <element xsi:type="archimate:ArchimateDiagramModel" id="b2fca780" name="Salary">
@@ -1311,6 +1329,7 @@ With extended archimate the whole development cycle would be traceable in one mo
                 <sourceConnection xsi:type="archimate:Connection" id="37468bf4" source="519c2ad7" target="cc8534ee" relationship="14ee726d"/>
                 <sourceConnection xsi:type="archimate:Connection" id="c08c9c09" source="519c2ad7" target="92e4e43c" relationship="adf6d4d8"/>
                 <sourceConnection xsi:type="archimate:Connection" id="39ae0262" source="519c2ad7" target="658ffef6" relationship="d4cb0f86"/>
+                <sourceConnection xsi:type="archimate:Connection" id="2297c09e" source="519c2ad7" target="b69f57eb" relationship="de417761"/>
               </child>
               <child xsi:type="archimate:DiagramObject" id="3e03dbc5" textAlignment="2" targetConnections="577a93d6 aa71423b" archimateElement="88d277df">
                 <bounds x="216" y="30"/>
@@ -1320,6 +1339,8 @@ With extended archimate the whole development cycle would be traceable in one mo
                 <sourceConnection xsi:type="archimate:Connection" id="d6d698b2" source="3e03dbc5" target="92e4e43c" relationship="55b13812"/>
                 <sourceConnection xsi:type="archimate:Connection" id="cfcf9209" source="3e03dbc5" target="1e4ce117" relationship="e8077e74"/>
                 <sourceConnection xsi:type="archimate:Connection" id="ab20c954" source="3e03dbc5" target="4ca70682" relationship="9981edc1"/>
+                <sourceConnection xsi:type="archimate:Connection" id="157c2662" source="3e03dbc5" target="7e4d17ef" relationship="9dc95b34"/>
+                <sourceConnection xsi:type="archimate:Connection" id="8f755c04" source="3e03dbc5" target="b69f57eb" relationship="46c6ea7f"/>
               </child>
               <property key="associatedObjectClass" value="Server"/>
             </child>
@@ -1335,12 +1356,12 @@ With extended archimate the whole development cycle would be traceable in one mo
             </child>
             <child xsi:type="archimate:Group" id="a38768e4" name="Applications">
               <bounds x="288" y="84"/>
-              <child xsi:type="archimate:DiagramObject" id="b69f57eb" textAlignment="2" targetConnections="219eb60b" archimateElement="e128b98a">
+              <child xsi:type="archimate:DiagramObject" id="b69f57eb" textAlignment="2" targetConnections="219eb60b 2297c09e 8f755c04" archimateElement="e128b98a">
                 <bounds x="36" y="30"/>
                 <sourceConnection xsi:type="archimate:Connection" id="559950b7" source="b69f57eb" target="92e4e43c" relationship="42ea704e"/>
                 <sourceConnection xsi:type="archimate:Connection" id="d044f93a" source="b69f57eb" target="92e4e43c" relationship="02b49599"/>
               </child>
-              <child xsi:type="archimate:DiagramObject" id="7e4d17ef" textAlignment="2" archimateElement="1b8ab55e">
+              <child xsi:type="archimate:DiagramObject" id="7e4d17ef" textAlignment="2" targetConnections="157c2662" archimateElement="1b8ab55e">
                 <bounds x="207" y="22" width="154" height="45"/>
                 <sourceConnection xsi:type="archimate:Connection" id="fc001372" source="7e4d17ef" target="658ffef6" relationship="97cc03c6"/>
                 <sourceConnection xsi:type="archimate:Connection" id="f405218d" source="7e4d17ef" target="658ffef6" relationship="9fc84170"/>
@@ -2561,6 +2582,11 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:CompositionRelationship" id="1b99ad77" source="b6b62bd4" target="05ec65d6"/>
     <element xsi:type="archimate:CompositionRelationship" id="c10145d0" source="0a4a1c24" target="05ec65d6"/>
     <element xsi:type="archimate:SpecialisationRelationship" id="72d3156f" source="229a7d9f" target="d2886808"/>
+    <element xsi:type="archimate:RealisationRelationship" id="de417761" source="221f9269" target="e128b98a"/>
+    <element xsi:type="archimate:RealisationRelationship" id="9dc95b34" source="88d277df" target="1b8ab55e"/>
+    <element xsi:type="archimate:RealisationRelationship" id="46c6ea7f" source="88d277df" target="e128b98a"/>
+    <element xsi:type="archimate:CompositionRelationship" id="34f6395b" source="b6b62bd4" target="c012a502"/>
+    <element xsi:type="archimate:CompositionRelationship" id="89e1904d" source="c012a502" target="94ef9402"/>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>
