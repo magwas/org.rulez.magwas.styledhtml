@@ -12,7 +12,13 @@ do
 	$binary -data $dir/.archi -load $PWD/../../doc/styledhtml.archimate -targetdir $PWD/out/$stylename -runstyle $PWD/$i -exit
 done
 rm -rf .archi
-if diff -ru baseline out
+for i in `find out -name '*.html' -o -name '*.docbook' |xargs grep -l pubdate`
+do
+	grep -v pubdate $i >$i.nopub
+	mv $i.nopub $i
+done
+
+if diff -x '*.png' -ru baseline out
 then
 	echo "tests SUCCEEDED."
 	exit 1
@@ -20,4 +26,4 @@ else
 	echo "tests FAILED."
 	exit 1
 fi
-rm -rf internal
+rm -rf internal out
