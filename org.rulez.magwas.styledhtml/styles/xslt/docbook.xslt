@@ -148,7 +148,7 @@
 
 	<xsl:template match="archimate:Folder">
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
-			<section>
+			<section id="{@name}">
 				<title><xsl:value-of select="./@name"/></title>
 				<para>
 					<xsl:apply-templates select="./documentation"/>
