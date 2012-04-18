@@ -14,7 +14,7 @@
             <bounds x="180" y="49" width="241" height="192"/>
             <sourceConnection xsi:type="archimate:Connection" id="0ef0c949" source="6ed38775" target="e83ccd71" relationship="a2731bcd"/>
             <child xsi:type="archimate:DiagramObject" id="4c021515" textAlignment="2" archimateElement="91d6a6a9">
-              <bounds x="35" y="126"/>
+              <bounds x="36" y="120"/>
             </child>
             <child xsi:type="archimate:DiagramObject" id="e83ccd71" textAlignment="2" targetConnections="0ef0c949" archimateElement="16abaafb">
               <bounds x="48" y="36"/>
@@ -875,7 +875,7 @@ The core concept of the metamodel is objectClass. The objectClass tells us that 
 In the next sections we figure out how to define the objectClass for an Archimate object, and we learn how to define a metamodel.</documentation>
           </folder>
           <folder name="2. Creating a policy, checking policy conformance, quick export for xml-aware tools" id="90cc4b63">
-            <documentation>You need policy.style for that. It uses the &quot;built-in&quot; policy (generated from this model) to generate a policy named &quot;policy.xml&quot; in the target directory, then uses the generated policy on the model, exporting &quot;archirich.xml&quot; &lt;a href=&quot;objectlist.html&quot;>an object list&lt;/a> in html and docbook format, and a couple of cvs files in the target directory.
+            <documentation>You need policy.style for that. It uses the &quot;built-in&quot; policy (generated from this model) to generate a policy named &quot;policy.xml&quot; in the target directory, then uses the generated policy on the model, exporting &quot;archirich.xml&quot; &lt;a href=&quot;objectlist.html&quot;>an object list&lt;/a> in html and docbook format, and a couple of cvs files in the csvdir directory.
 Any policy violation is logged as an error. As an example running policy.style in this model should result in exactly one error in both rounds; there is a deliberate omission in the model to show this feature. You can click on the log and it navigates you to the offending element.
 The file &quot;archirich.xml&quot; will contain elements for each instances of extended archimate objects. These elements are named after the objectClass's name, and contain one element for each of the attributes: the informations are already assembled (maybe from parts of the model far away from each other) for use by xml-aware tools.
 An example of such xml-aware tools is the xslts running in the next step, creating the objectlist docbook and html files contain the list of objects, as well as csv files for each objectClass.
