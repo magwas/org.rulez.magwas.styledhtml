@@ -77,7 +77,6 @@
                 <itemizedlist>
                   <xsl:for-each select="$cur/*[local-name()=current()]">
                     <listitem>
-                      <cc><xsl:copy-of select=".."/></cc>
 								      <xsl:value-of select="current()"/>
                     </listitem>
                   </xsl:for-each>
