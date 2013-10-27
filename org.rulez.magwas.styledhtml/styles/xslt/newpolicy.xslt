@@ -6,6 +6,7 @@
 
 	<xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
 
+	<xsl:param name="targetdir"/>
 <!--
 //archimate:*[@id=//archimate:ArchimateDiagramModel[property[@key='Template']]//archimate:Connection/@relationship]
 //archimate:*[@id=//archimate:ArchimateDiagramModel[property[@key='Template']]//archimate:DiagramObject/@archimateElement]
@@ -17,6 +18,9 @@
 	<xsl:variable name="directions" select="tokenize('source target source',' ')"/>
 
 	<xsl:template match="/">
+			<xsl:result-document href="{$targetdir}/templates"><xsl:copy-of select="$templates"/></xsl:result-document>
+			<xsl:result-document href="{$targetdir}/objects"><xsl:copy-of select="$objects"/></xsl:result-document>
+			<xsl:result-document href="{$targetdir}/conns"><xsl:copy-of select="$conns"/></xsl:result-document>
 			<policy name="Generated Policy (new style)">
 				<xsl:apply-templates select="$objects" mode="newpolicy"/>
 			</policy>
@@ -41,15 +45,18 @@
 				</xsl:otherwise>
 			</xsl:choose>
 			<xsl:apply-templates select="$conns[@source = current()/@id]" mode="newpolicy">
+				<xsl:with-param name="objectClass" select="@name"/>
 				<xsl:with-param name="direction" select="1"/><!-- 1=source -->
 			</xsl:apply-templates>
 			<xsl:apply-templates select="$conns[@target = current()/@id]" mode="newpolicy">
+				<xsl:with-param name="objectClass" select="@name"/>
 				<xsl:with-param name="direction" select="2"/><!-- 2=target -->
 			</xsl:apply-templates>
 		</objectClass>
 	</xsl:template>
 
 	<xsl:template match="archimate:*[@id=$conns/@id]" mode="newpolicy">
+			<xsl:param name="objectClass"/>
 			<xsl:param name="direction"/>
 			<xsl:variable name="targetobj">
 				<xsl:choose>
@@ -66,8 +73,11 @@
 			</xsl:variable>
 			<xsl:variable name="attname">
 				<xsl:choose>
-					<xsl:when test="attributes/name">
-						<xsl:value-of select="tokenize(attributes/name,'/')[$direction]"/>
+					<xsl:when test="@name">
+						<xsl:value-of select="@name"/>
+					</xsl:when>
+					<xsl:when test="property[@key='name']">
+						<xsl:value-of select="tokenize(property[@key='name']/@value,'/')[$direction]"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:value-of select="$targetobj/*/@name"/>
@@ -76,26 +86,32 @@
 			</xsl:variable>
 			<xsl:variable name="type">
 				<xsl:choose>
-					<xsl:when test="attributes/type">
-						<xsl:value-of select="tokenize(attributes/type,'/')[$direction]"/>
+					<xsl:when test="property[@key='type']">
+						<xsl:value-of select="tokenize(property[@key='type']/@value,'/')[$direction]"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:value-of select="'xs:string'"/>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
-			<xsl:variable name="structural" select="tokenize(attributes/structural,'/')[$direction]"/>
-			<xsl:variable name="cardinality" select="tokenize(attributes/cardinality,'/')[$direction]"/>
+			<xsl:variable name="structural" select="tokenize(property[@key='structural']/@value,'/')[$direction]"/>
+			<xsl:variable name="cardinality" select="tokenize(property[@key='cardinality']/@value,'/')[$direction]"/>
 			<xsl:variable name="minOccurs" select="tokenize($cardinality,',')[1]"/>
 			<xsl:variable name="maxOccurs" select="tokenize($cardinality,',')[2]"/>
 
 
 			<property name="{$attname}" type="{$type}" minOccurs="{$minOccurs}" maxOccurs="{$maxOccurs}" structural="{$structural}" >
 				<description><xsl:copy-of select="documentation"/></description>
+				<xsl:variable name="propname" select="concat($objectClass,':',$attname)"/>
 				<default order="0"
+					select="property['key'='{$propname}']/@value"
+					multi="true">
+					<description>A property for the object named <xsl:value-of select="$propname"/></description>
+				</default>
+				<default order="1"
 					select="//{$targetobj/*/name()}[@id=//{name()}[@{$directions[$direction]}=$id]/@{$directions[$direction+1]}]/@name"
-				multi="true">
-					<description/>
+					multi="true">
+					<description/><!-- FIXME: the select should be more specific -->
 				</default>
 
 			</property>

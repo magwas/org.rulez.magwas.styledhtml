@@ -18,6 +18,7 @@
 	<xsl:param name="flat" >true</xsl:param>
 	<xsl:param name="lang" />
 	<xsl:param name="title" />
+	<xsl:param name="repolink" />
 	<xsl:param name="part" />
 	<xsl:param name="noroot" select="false()"/>
 	<xsl:param name="target"/>
@@ -49,6 +50,11 @@
 				<pubdate><xsl:value-of select="substring-before(string(fn:current-date()),'+')"/></pubdate>
 				<abstract>
 							<xsl:apply-templates select="$unescaped/archimate:model/purpose/node()"/>
+              <xsl:if test="$repolink='true'">
+              <para>
+                <link xlink:href="objectlist.html" xrefstyle="what?">Object list</link>
+              </para>
+              </xsl:if>
 				</abstract>
 			</info>
 			<xsl:variable name="documentable" select="$unescaped//archimate:Folder[property[@key='report:part' and @value=$part]]|$unescaped//archimate:model[property[@key='report:part' and @value=$part]]"/>
@@ -125,7 +131,7 @@
 	<xsl:template match="archimate:*" >
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
 			<tr>
-				<td class="starter"  valign="top"><xsl:value-of select="./@name" />
+				<td class="starter"  valign="top"><anchor id="{@id}"/><xsl:value-of select="./@name" />
 				</td>
 				<td class="starter" valign="top"><xsl:apply-templates select="./documentation" /></td>
 			</tr>
