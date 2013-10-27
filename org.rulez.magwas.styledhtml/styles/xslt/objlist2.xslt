@@ -73,6 +73,8 @@
             </link>
 						</td>
 						<xsl:for-each select="$proplist">
+            <cc><xsl:copy-of select="$cur"/></cc>
+            <dd><xsl:copy-of select="./.."/></dd>
 							<td>
                 <itemizedlist>
                   <xsl:for-each select="$cur/*[local-name()=current()]">
