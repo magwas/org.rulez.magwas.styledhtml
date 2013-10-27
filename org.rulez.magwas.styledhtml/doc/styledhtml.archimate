@@ -1361,7 +1361,7 @@ With extended archimate the whole development cycle would be traceable in one mo
                 <sourceConnection xsi:type="archimate:Connection" id="559950b7" source="b69f57eb" target="92e4e43c" relationship="42ea704e"/>
                 <sourceConnection xsi:type="archimate:Connection" id="d044f93a" source="b69f57eb" target="92e4e43c" relationship="02b49599"/>
               </child>
-              <child xsi:type="archimate:DiagramObject" id="7e4d17ef" textAlignment="2" targetConnections="157c2662" archimateElement="1b8ab55e">
+              <child xsi:type="archimate:DiagramObject" id="7e4d17ef" textAlignment="2" targetConnections="157c2662 d34909b6" archimateElement="1b8ab55e">
                 <bounds x="207" y="22" width="154" height="45"/>
                 <sourceConnection xsi:type="archimate:Connection" id="fc001372" source="7e4d17ef" target="658ffef6" relationship="97cc03c6"/>
                 <sourceConnection xsi:type="archimate:Connection" id="f405218d" source="7e4d17ef" target="658ffef6" relationship="9fc84170"/>
@@ -1374,6 +1374,7 @@ With extended archimate the whole development cycle would be traceable in one mo
                 <bounds x="27" y="25"/>
                 <sourceConnection xsi:type="archimate:Connection" id="29ade567" source="add91002" target="658ffef6" relationship="6de3a583"/>
                 <sourceConnection xsi:type="archimate:Connection" id="219eb60b" source="add91002" target="b69f57eb" relationship="6c2f8573"/>
+                <sourceConnection xsi:type="archimate:Connection" id="d34909b6" source="add91002" target="7e4d17ef" relationship="a851dfdb"/>
               </child>
               <property key="associatedObjectClass" value="ApplicationCollection"/>
             </child>
@@ -1381,7 +1382,9 @@ With extended archimate the whole development cycle would be traceable in one mo
           <element xsi:type="archimate:ApplicationComponent" id="e128b98a" name="Salary app">
             <documentation>The salary application</documentation>
           </element>
-          <element xsi:type="archimate:Location" id="2da4ddd4" name="Infirmary"/>
+          <element xsi:type="archimate:Location" id="2da4ddd4" name="Infirmary">
+            <property key="objectClass" value="Location"/>
+          </element>
           <element xsi:type="archimate:Node" id="221f9269" name="salary1.infirmary">
             <documentation>The salary1 server</documentation>
             <property key="Server:ipAddress" value="10.1.1.3"/>
@@ -1409,6 +1412,68 @@ There is a trick here: a composition relation points from this to this. (dragged
           <element xsi:type="archimate:Plateau" id="d99d40ed" name="in test"/>
           <element xsi:type="archimate:Plateau" id="fde629f6" name="liquidated"/>
           <element xsi:type="archimate:Plateau" id="5e780ae3" name="under liquidation"/>
+        </folder>
+        <folder name="metamodel2" id="4e33d5c1">
+          <element xsi:type="archimate:ArchimateDiagramModel" id="c21a5652" name="metamodel v2" connectionRouterType="1">
+            <child xsi:type="archimate:DiagramObject" id="ac543711" textAlignment="2" targetConnections="22c25f2b 66171446" archimateElement="c1164ece">
+              <bounds x="120" y="275"/>
+              <sourceConnection xsi:type="archimate:Connection" id="2682336b" source="ac543711" target="beaa8412" relationship="44e21017"/>
+              <sourceConnection xsi:type="archimate:Connection" id="909ff387" source="ac543711" target="beaa8412" relationship="7871b762">
+                <bendpoint startX="157" startY="21" endX="-156" endY="-63"/>
+              </sourceConnection>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="737bc86b" textAlignment="2" targetConnections="e8c8967c e9d7c8b1 c5959982" archimateElement="ee68b27d">
+              <bounds x="132" y="156"/>
+              <sourceConnection xsi:type="archimate:Connection" id="0bc18976" source="737bc86b" target="d66c1fa5" relationship="b2648e75"/>
+              <sourceConnection xsi:type="archimate:Connection" id="a503823a" source="737bc86b" target="2866358e" relationship="4c6a6f40"/>
+              <sourceConnection xsi:type="archimate:Connection" id="105cd391" source="737bc86b" target="0ef79d86" relationship="af42e899"/>
+              <sourceConnection xsi:type="archimate:Connection" id="360ee749" source="737bc86b" target="1ff0adc8" relationship="fdf02722"/>
+              <sourceConnection xsi:type="archimate:Connection" id="9825520d" source="737bc86b" target="beaa8412" relationship="afc46c36"/>
+              <sourceConnection xsi:type="archimate:Connection" id="22c25f2b" source="737bc86b" target="ac543711" relationship="9415eac1"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="d66c1fa5" textAlignment="2" targetConnections="0bc18976" archimateElement="b5b72aa9">
+              <bounds x="540" y="156"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="2866358e" textAlignment="2" targetConnections="a503823a" archimateElement="4704c7c8">
+              <bounds x="537" y="221"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="2206d5d0" textAlignment="2" archimateElement="ee68b27d">
+              <bounds x="-12" y="60"/>
+              <sourceConnection xsi:type="archimate:Connection" id="e8c8967c" source="2206d5d0" target="737bc86b" relationship="47bb1f76"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="0ef79d86" textAlignment="2" targetConnections="105cd391" archimateElement="25df4f32">
+              <bounds x="572" y="95"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="016ec447" textAlignment="2" archimateElement="588de21e">
+              <bounds x="537" y="31" width="160" height="55"/>
+              <sourceConnection xsi:type="archimate:Connection" id="e9d7c8b1" source="016ec447" target="737bc86b" relationship="c8f79991"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="1ff0adc8" textAlignment="2" targetConnections="360ee749" archimateElement="200ad530">
+              <bounds x="696" y="156"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="9e553018" textAlignment="2" archimateElement="7378d9ce">
+              <bounds x="547" y="302" width="198" height="55"/>
+              <sourceConnection xsi:type="archimate:Connection" id="c5959982" source="9e553018" target="737bc86b" relationship="0230dd26"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="beaa8412" textAlignment="2" targetConnections="9825520d 2682336b 909ff387" archimateElement="f1911570">
+              <bounds x="396" y="372" width="194" height="29"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="0dec2265" textAlignment="2" archimateElement="df11e1b5">
+              <bounds x="12" y="367" width="163" height="34"/>
+              <sourceConnection xsi:type="archimate:Connection" id="66171446" source="0dec2265" target="ac543711" relationship="cb77baae"/>
+            </child>
+            <property key="Template"/>
+          </element>
+          <element xsi:type="archimate:ApplicationComponent" id="c1164ece" name="Application"/>
+          <element xsi:type="archimate:Node" id="ee68b27d" name="Server"/>
+          <element xsi:type="archimate:Value" id="b5b72aa9" name="IPAddress"/>
+          <element xsi:type="archimate:Location" id="4704c7c8" name="Location"/>
+          <element xsi:type="archimate:Network" id="25df4f32" name="NetworkZone"/>
+          <element xsi:type="archimate:SystemSoftware" id="588de21e" name="OperatingSystem"/>
+          <element xsi:type="archimate:Plateau" id="7378d9ce" name="LifeCycleStatus"/>
+          <element xsi:type="archimate:ApplicationFunction" id="200ad530" name="ServerRole"/>
+          <element xsi:type="archimate:BusinessActor" id="f1911570" name="OrganisationalPerson"/>
+          <element xsi:type="archimate:ApplicationComponent" id="df11e1b5" name="ApplicationCollection"/>
         </folder>
         <documentation>See &lt;a href=&quot;objectlist.html#Server&quot;>the Server list&lt;/a>, the &lt;a href=&quot;objectlist.html#Application&quot;>the Application list&lt;/a>, and the &lt;a href=&quot;objectlist.html#ApplicationCollection&quot;>The ApplicationCollection list&lt;/a>.
 For the details, see the section about metamodels. 
@@ -2331,6 +2396,7 @@ reference</documentation>
 </documentation>
       </element>
     </folder>
+    <folder name="0. puffer" id="0e346598"/>
   </folder>
   <folder name="Technology" id="cb60e879" type="technology"/>
   <folder name="Motivation" id="6bf74e42" type="motivation"/>
@@ -2587,6 +2653,19 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:RealisationRelationship" id="46c6ea7f" source="88d277df" target="e128b98a"/>
     <element xsi:type="archimate:CompositionRelationship" id="34f6395b" source="b6b62bd4" target="c012a502"/>
     <element xsi:type="archimate:CompositionRelationship" id="89e1904d" source="c012a502" target="94ef9402"/>
+    <element xsi:type="archimate:AssociationRelationship" id="b2648e75" source="ee68b27d" target="b5b72aa9"/>
+    <element xsi:type="archimate:AssociationRelationship" id="4c6a6f40" source="ee68b27d" target="4704c7c8"/>
+    <element xsi:type="archimate:AggregationRelationship" id="47bb1f76" name="phisicalHardware" source="ee68b27d" target="ee68b27d"/>
+    <element xsi:type="archimate:AssociationRelationship" id="af42e899" source="ee68b27d" target="25df4f32"/>
+    <element xsi:type="archimate:UsedByRelationship" id="c8f79991" source="588de21e" target="ee68b27d"/>
+    <element xsi:type="archimate:RealisationRelationship" id="fdf02722" source="ee68b27d" target="200ad530"/>
+    <element xsi:type="archimate:AggregationRelationship" id="0230dd26" source="7378d9ce" target="ee68b27d"/>
+    <element xsi:type="archimate:UsedByRelationship" id="afc46c36" name="operates" source="ee68b27d" target="f1911570"/>
+    <element xsi:type="archimate:UsedByRelationship" id="44e21017" name="operates" source="c1164ece" target="f1911570"/>
+    <element xsi:type="archimate:RealisationRelationship" id="9415eac1" source="ee68b27d" target="c1164ece"/>
+    <element xsi:type="archimate:UsedByRelationship" id="7871b762" name="manages" source="c1164ece" target="f1911570"/>
+    <element xsi:type="archimate:CompositionRelationship" id="cb77baae" source="df11e1b5" target="c1164ece"/>
+    <element xsi:type="archimate:CompositionRelationship" id="a851dfdb" source="561685a8" target="1b8ab55e"/>
   </folder>
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>
