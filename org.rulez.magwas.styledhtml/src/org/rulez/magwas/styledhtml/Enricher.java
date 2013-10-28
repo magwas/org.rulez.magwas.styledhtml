@@ -181,12 +181,28 @@ public class Enricher {
         return out;
     }
     
-    private void applyPolicyForElements(NodeList nl, Element objectclass,
-            NodeMassager massager) {
-        int k = nl.getLength();
-        for (int j = 0; j < k; j++) {
-            Element node = (Element) nl.item(j);
-            applyPolicyForElement(node, objectclass, null, massager);
+    private void applyPolicyForElements(NodeList ol, NodeMassager massager) {
+        int l = ol.getLength();
+        for (int i = 0; i < l; i++) {
+            Element objectclass = (Element) ol.item(i);
+            // NodeList nl = xml.getElementsByTagName(objectclass
+            // .getAttribute("name")); // FIXME only ones with @parentid
+            NodeList nl;
+            try {
+                nl = (NodeList) xpath
+                        .evaluate("//" + objectclass.getAttribute("name")
+                                + "[@parentid]", xml, XPathConstants.NODESET);
+            } catch (XPathExpressionException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return;
+            }
+            
+            int k = nl.getLength();
+            for (int j = 0; j < k; j++) {
+                Element node = (Element) nl.item(j);
+                applyPolicyForElement(node, objectclass, null, massager);
+            }
         }
     }
     
@@ -256,17 +272,9 @@ public class Enricher {
             Widgets.tellProblem("policy problem", "no objectClass");
             return;
         }
-        int l = ol.getLength();
-        for (int i = 0; i < l; i++) {
-            Element objectclass = (Element) ol.item(i);
-            NodeList nl = xml.getElementsByTagName(objectclass
-                    .getAttribute("name"));
-            applyPolicyForElements(nl, objectclass, new PropertyAdder(xpath,
-                    vars, log));
-            applyPolicyForElements(nl, objectclass, new IndirectChildrenAdder());
-            applyPolicyForElements(nl, objectclass, new CardinalityChecker(
-                    xpath, log, model));
-        }
+        applyPolicyForElements(ol, new PropertyAdder(xpath, vars, log));
+        applyPolicyForElements(ol, new IndirectChildrenAdder(xpath, log));
+        applyPolicyForElements(ol, new CardinalityChecker(xpath, log, model));
     }
     
     private Element getorCreateObjectClass(Element m, String ocname) {

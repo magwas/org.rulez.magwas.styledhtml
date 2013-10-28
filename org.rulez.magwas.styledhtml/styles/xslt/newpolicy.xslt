@@ -111,10 +111,14 @@
         <xsl:choose>
           <xsl:when test="property[@key='indirect']">
             <default order="1"
-              select="/nothing"
               multi="true">
-              <xsl:attribute name="indirect" select="property[@key='indirect']/@value"/>
-              <description>The data indirectly mined through <xsl:value-of select="property[@key='indirect']/@value"/></description><!-- FIXME: the select should be more specific -->
+              <xsl:variable name="indirect" select="
+                    tokenize(
+                      property[@key='indirect']/@value,
+                      ';')[$direction]
+              "/>
+              <xsl:attribute name="indirect" select="$indirect"/>
+              <description>The data indirectly mined through <xsl:value-of select="$indirect"/></description><!-- FIXME: the select should be more specific -->
             </default>
           </xsl:when>
           <xsl:otherwise>
