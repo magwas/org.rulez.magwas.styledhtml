@@ -69,17 +69,18 @@
             </xsl:if>
 						<td>
 				    <link xlink:href="index.html#{@parentid}" xrefstyle="what?">
+            <anchor id="{@parentid}"/>
 						<xsl:value-of select="../@name"/>
             </link>
 						</td>
 						<xsl:for-each select="$proplist">
-            <cc><xsl:copy-of select="$cur"/></cc>
-            <dd><xsl:copy-of select="./.."/></dd>
 							<td>
                 <itemizedlist>
                   <xsl:for-each select="$cur/*[local-name()=current()]">
                     <listitem>
-								      <xsl:value-of select="current()"/>
+                      <link xlink:href="#{current()/@originid}" xrefstyle="what?">
+								        <xsl:value-of select="current()"/>
+                      </link>
                     </listitem>
                   </xsl:for-each>
                 </itemizedlist>

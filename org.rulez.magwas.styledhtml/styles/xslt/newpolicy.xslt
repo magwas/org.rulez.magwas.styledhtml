@@ -119,7 +119,7 @@
           </xsl:when>
           <xsl:otherwise>
             <default order="1"
-              select="//{$targetobj/*/name()}[@id=//{name()}[@{$directions[$direction]}=$id]/@{$directions[$direction+1]}]/@name"
+              select="//{$targetobj/*/name()}[@id=//{name()}[@{$directions[$direction]}=$id]/@{$directions[$direction+1]}]"
               multi="true">
               <description/><!-- FIXME: the select should be more specific -->
             </default>

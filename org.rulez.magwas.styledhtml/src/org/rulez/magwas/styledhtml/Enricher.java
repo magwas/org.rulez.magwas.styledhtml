@@ -181,8 +181,17 @@ public class Enricher {
         return out;
     }
     
+    private void applyPolicyForElements(NodeList nl, Element objectclass,
+            NodeMassager massager) {
+        int k = nl.getLength();
+        for (int j = 0; j < k; j++) {
+            Element node = (Element) nl.item(j);
+            applyPolicyForElement(node, objectclass, null, massager);
+        }
+    }
+    
     private void applyPolicyForElement(Element node, Element objectclass,
-            String ancestor) {
+            String ancestor, NodeMassager massager) {
         /*
          * applyPolicyForElement(node,objectclass) - for all ancestors for the
          * objectclass recursively add all properties of the ancestor: - for all
@@ -207,7 +216,7 @@ public class Enricher {
                                     + objectclass.getAttribute("name"));
                     return;
                 }
-                applyPolicyForElement(node, occ, ancestorname);
+                applyPolicyForElement(node, occ, ancestorname, massager);
             }
         }
         NodeList pl = objectclass.getElementsByTagName("property");
@@ -216,174 +225,8 @@ public class Enricher {
             Element property = (Element) pl.item(i);
             String propname = property.getAttribute("name");
             // System.out.println(" looking at "+propname);
-            addPropertyToElement(node, property, propname, ancestor);
+            massager.function(node, property, propname, ancestor);
         }
-    }
-    
-    private Element defaultItem(NodeList dl, int n) {
-        int l = dl.getLength();
-        for (int i = 0; i < l; i++) {
-            Element d = (Element) dl.item(i);
-            if (Integer.parseInt(d.getAttribute("order")) == n) {
-                return d;
-            }
-        }
-        return null;
-    }
-    
-    private void addPropertyToElement(Element node, Element property,
-            String propname, String ancestor) {
-        if (null != ancestor) {
-            /*
-             * try to copy ../[ancestor]/[propname] here
-             */
-            // System.out.println("  copying "+propname+" from "+ancestor);
-            String path = "../" + ancestor + "/" + propname;
-            NodeList defaults;
-            try {
-                defaults = (NodeList) xpath.evaluate(path, node,
-                        XPathConstants.NODESET);
-            } catch (XPathExpressionException e) {
-                log.printStackTrace(e);
-                throw new RuntimeException("bad path" + path);
-            }
-            int k = defaults.getLength();
-            // System.out.println("  path='"+path+"' items:"+k);
-            for (int j = 0; j < k; j++) {
-                String v = ((Element) defaults.item(j)).getTextContent();
-                // System.out.println("  inserting to "+node.getNodeName()+"."+node.getAttribute("parentid")+"("+propname+") from "+ancestor+":"+v);
-                Element e = xml.createElement(propname);
-                e.setTextContent(v);
-                node.appendChild(e);
-            }
-            // return;
-        }
-        NodeList pl = property.getElementsByTagName("default");
-        int i = 0;
-        Element defitem;
-        do {
-            defitem = defaultItem(pl, i);
-            // System.out.println(" defitem=" + defitem);
-            if (null != defitem) {
-                // System.out.println("trying it out");
-                tryDefaultForProperty(node, propname, defitem);
-            }
-            i++;
-        } while (null != defitem);
-        int len = node.getElementsByTagName(propname).getLength();
-        String mo = property.getAttribute("minOccurs");
-        int minOccurs;
-        if ("".equals(mo)) {
-            minOccurs = 1;
-        } else {
-            minOccurs = Integer.parseInt(mo);
-        }
-        if (len < minOccurs) {
-            log.issueError(model, (Element) node.getParentNode(), "Too few ("
-                    + len + "<" + minOccurs + ") occurence of " + propname
-                    + " in " + node.getTagName(), helpForProperty(property));
-        }
-        String Mo = property.getAttribute("maxOccurs");
-        if (!"".equals(Mo)) {
-            int maxOccurs = Integer.parseInt(Mo);
-            if (maxOccurs < len) {
-                log.issueError(
-                        model,
-                        (Element) node.getParentNode(),
-                        "Too much (" + len + ">" + maxOccurs
-                                + ") occurence of " + propname + " in "
-                                + node.getTagName(), helpForProperty(property));
-            }
-        }
-    }
-    
-    private String helpForProperty(Element property) {
-        try {
-            String propdesc = xpath.evaluate("./description", property);
-            NodeList defaults = (NodeList) xpath.evaluate(
-                    "./default/description", property, XPathConstants.NODESET);
-            int l = defaults.getLength();
-            for (int i = 0; i < l; i++) {
-                Element d = (Element) defaults.item(i);
-                propdesc += "\n" + d.getTextContent() + " ("
-                        + ((Element) d.getParentNode()).getAttribute("select")
-                        + ")";
-            }
-            return propdesc;
-        } catch (XPathExpressionException e) {
-            log.printStackTrace(e);
-            throw new RuntimeException("problem with xpath");
-        }
-    }
-    
-    private boolean tryDefaultForProperty(Element node, String propname,
-            Element defitem) {
-        int definedproperties = node.getElementsByTagName(propname).getLength();
-        if ((definedproperties > 0)
-                && (!"true".equals(defitem.getAttribute("always")))) {
-            // System.out.println("already have this");
-            return true;
-        }
-        String path = defitem.getAttribute("select");
-        boolean multi = false;
-        if ("true".equals(defitem.getAttribute("multi"))) {
-            multi = true;
-        }
-        vars.put("id", node.getAttribute("parentid"));
-        
-        // System.out.println("propname="+propname);
-        // System.out.println("id="+vars.get("id"));
-        // System.out.println("select="+path+", multi="+multi);
-        try {
-            if (multi) {
-                NodeList result = (NodeList) xpath.evaluate(path, node,
-                        XPathConstants.NODESET);
-                int l = result.getLength();
-                if (l == 0) {
-                    // System.out.println("empty nodelist");
-                    return false;
-                }
-                for (int i = 0; i < l; i++) {
-                    // System.out.println("inserting "+propname+" using path "+path);
-                    Node n = result.item(i);
-                    String val = n.getTextContent();
-                    if (null == val) {
-                        // System.out.println("empty nodevalue");
-                        return false;
-                    }
-                    // System.out.println(" value="+val);
-                    Element prop = xml.createElement(propname);
-                    node.appendChild(prop);
-                    prop.setTextContent(val);
-                    String id;
-                    Element parent = (Element) n.getParentNode();
-                    if (parent != null) {
-                        id = parent.getAttribute("id");
-                    } else {
-                        id = "parentnull";
-                    }
-                    if (null != id) {
-                        prop.setAttribute("originid", id);
-                    }
-                }
-                return true;
-            } else {
-                String result = (String) xpath.evaluate(path, node,
-                        XPathConstants.STRING);
-                // System.out.println("result="+result);
-                if ("".equals(result)) {
-                    return false;
-                }
-                Element prop = xml.createElement(propname);
-                node.appendChild(prop);
-                prop.setTextContent(result);
-                return true;
-            }
-        } catch (XPathExpressionException e) {
-            // issue warning, with error message compiled from policy
-            log.printStackTrace(e);
-        }
-        return false;
     }
     
     private void addDefaultSubelements() {
@@ -418,12 +261,11 @@ public class Enricher {
             Element objectclass = (Element) ol.item(i);
             NodeList nl = xml.getElementsByTagName(objectclass
                     .getAttribute("name"));
-            int k = nl.getLength();
-            for (int j = 0; j < k; j++) {
-                Element node = (Element) nl.item(j);
-                applyPolicyForElement(node, objectclass, null);
-            }
-            
+            applyPolicyForElements(nl, objectclass, new PropertyAdder(xpath,
+                    vars, log));
+            applyPolicyForElements(nl, objectclass, new IndirectChildrenAdder());
+            applyPolicyForElements(nl, objectclass, new CardinalityChecker(
+                    xpath, log, model));
         }
     }
     
