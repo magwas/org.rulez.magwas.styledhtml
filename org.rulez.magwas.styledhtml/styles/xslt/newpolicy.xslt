@@ -103,32 +103,52 @@
       <property name="{$attname}" type="{$type}" minOccurs="{$minOccurs}" maxOccurs="{$maxOccurs}" structural="{$structural}" >
         <description><xsl:copy-of select="documentation"/></description>
         <xsl:variable name="propname" select="concat($objectClass,':',$attname)"/>
-        <default order="0"
+        <default 
           select="property['key'='{$propname}']/@value"
           multi="true">
           <description>A property for the object named <xsl:value-of select="$propname"/></description>
         </default>
-        <xsl:choose>
-          <xsl:when test="property[@key='indirect']">
-            <default order="1"
-              multi="true">
-              <xsl:variable name="indirect" select="
-                    tokenize(
-                      property[@key='indirect']/@value,
-                      ';')[$direction]
-              "/>
-              <xsl:attribute name="indirect" select="$indirect"/>
-              <description>The data indirectly mined through <xsl:value-of select="$indirect"/></description><!-- FIXME: the select should be more specific -->
-            </default>
-          </xsl:when>
-          <xsl:otherwise>
-            <default order="1"
+          <xsl:if test="not(property[@key='nodirect'])">
+            <default
               select="//{$targetobj/*/name()}[@id=//{name()}[@{$directions[$direction]}=$id]/@{$directions[$direction+1]}]"
               multi="true">
               <description/><!-- FIXME: the select should be more specific -->
             </default>
-          </xsl:otherwise>
-        </xsl:choose>
+          </xsl:if>
+          <xsl:if test="property[@key='recursive']">
+            <xsl:variable name="orpattern" select="'//CLASS[@id=//CLASS[@SDIRECTION=$id]/@DIRECTION]'"/>
+            <xsl:variable name="onerecursion" select="concat(
+              '//',
+              $targetobj/*/name(),
+              '[@id=//',
+              name(),
+              '[@',
+              $directions[$direction],
+              '=$id]/@',
+              $directions[$direction+1],
+              ']'
+            )
+            "/>
+
+            <default
+              onerecursion="{$onerecursion}"
+              select="//{$targetobj/*/name()}[@id=//{name()}[@{$directions[$direction]}=$id]/@{$directions[$direction+1]}]"
+              multi="true">
+              <description/><!-- FIXME: the select should be more specific -->
+            </default>
+          </xsl:if>
+          <xsl:for-each select="property[@key='indirect']">
+            <default 
+              multi="true">
+              <xsl:variable name="indirect" select="tokenize(
+                      @value,
+                      ';'
+                   )[$direction]
+              "/>
+              <xsl:attribute name="indirect" select="$indirect"/>
+              <description>The data indirectly mined through <xsl:value-of select="$indirect"/></description><!-- FIXME: the select should be more specific -->
+            </default>
+          </xsl:for-each>
 
       </property>
   </xsl:template>

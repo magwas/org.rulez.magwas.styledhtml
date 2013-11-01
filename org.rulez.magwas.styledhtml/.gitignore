@@ -3,4 +3,4 @@ styles/pylib/*.class
 styles/pylib/*/*.class
 styles/pylib/*/*/*.class
 styles/pylib/*/*/*/*.class
-doc/styledhtml.archimate.bak
+doc/*.archimate.bak
