@@ -128,9 +128,6 @@ public class Transform extends Step {
     		StreamSource ss = new StreamSource(source);
     		FileOutputStream os = new FileOutputStream(output);
     		StreamResult sr = new StreamResult( os );
-    		System.out.println("ss="+ss);
-    		System.out.println("sr="+sr);
-    		System.out.println("tf="+tf);    		
     		for(int i = 0;i<atts.getLength();i++) {
     			String name = atts.item(i).getNodeName();
     			String value = atts.item(i).getNodeValue();

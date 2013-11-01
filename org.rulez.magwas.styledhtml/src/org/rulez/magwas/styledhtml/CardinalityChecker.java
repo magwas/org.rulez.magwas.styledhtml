@@ -7,17 +7,15 @@ import javax.xml.xpath.XPathExpressionException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import uk.ac.bolton.archimate.model.IArchimateModel;
-
 class CardinalityChecker implements NodeMassager {
-    private XPath           xpath;
-    private EventLog        log;
-    private IArchimateModel model;
+    private XPath     xpath;
+    private IEventLog log;
+    private String    modelid;
     
-    CardinalityChecker(XPath xpath, EventLog log, IArchimateModel model) {
+    CardinalityChecker(XPath xpath, IEventLog log, String modelid) {
         this.xpath = xpath;
         this.log = log;
-        this.model = model;
+        this.modelid = modelid;
     }
     
     @Override
@@ -32,7 +30,7 @@ class CardinalityChecker implements NodeMassager {
             minOccurs = Integer.parseInt(mo);
         }
         if (len < minOccurs) {
-            log.issueError(model, (Element) node.getParentNode(), "Too few ("
+            log.issueError(modelid, (Element) node.getParentNode(), "Too few ("
                     + len + "<" + minOccurs + ") occurence of " + propname
                     + " in " + node.getTagName(), helpForProperty(property));
         }
@@ -41,7 +39,7 @@ class CardinalityChecker implements NodeMassager {
             int maxOccurs = Integer.parseInt(Mo);
             if (maxOccurs < len) {
                 log.issueError(
-                        model,
+                        modelid,
                         (Element) node.getParentNode(),
                         "Too much (" + len + ">" + maxOccurs
                                 + ") occurence of " + propname + " in "

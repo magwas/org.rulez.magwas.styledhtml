@@ -13,6 +13,9 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.Map;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.Document;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
@@ -81,7 +84,27 @@ public class RichExport implements IModelExporter {
             Map<Object, Object> saveoptions = resource.getDefaultSaveOptions();
             Document xml = resource.save(null, saveoptions, null);
             resource.getContents().remove(model);
-            Enricher.enrichXML(model, xml, policyfile, log);
+            
+            Document policy = null;
+            // FIXME we use the same xpath for both the policy and the archi
+            // file:
+            // if namespace clashing occurs, they should be separated
+            if ((null != policyfile) && policyfile.exists()) {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory
+                        .newInstance();
+                DocumentBuilder db;
+                try {
+                    db = dbf.newDocumentBuilder();
+                    policy = db.parse(policyfile);
+                } catch (Exception e) {
+                    Widgets.tellProblem("Problem loading policy file",
+                            e.toString());
+                    log.printStackTrace(e);
+                }
+            }
+            
+            Enricher enricher = new Enricher(model.getId(), xml, policy, log);
+            enricher.enrichXML();
             
             // save the xml
             DOMConfiguration docConfig = xml.getDomConfig();

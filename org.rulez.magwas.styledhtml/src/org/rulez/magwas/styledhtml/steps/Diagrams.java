@@ -39,6 +39,7 @@ public class Diagrams extends Step {
 		if("false".equals(keep)) {
 			factory.dontkeep.add(tdir);
 		}
+    //FIXME: log
 		System.out.println("saving diagrams to "+ tdir.getAbsolutePath());
     	saveDiagrams(factory.model,tdir);
 		return doSubSteps(arg0, tdir);
