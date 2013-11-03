@@ -53,28 +53,28 @@
 			</xsl:result-document>
 			<table id="{@name}.table">
 				<tr>
-					<xsl:if test="$showid"><td>id</td></xsl:if>
-					<td>name</td>
+					<xsl:if test="$showid"><td class="starter">id</td></xsl:if>
+					<td class="starter">name</td>
 					<xsl:for-each select="$proplist">
-						<td><xsl:value-of select="."/></td>
+						<td class="starter"><xsl:value-of select="."/></td>
 					</xsl:for-each>
 				</tr>
 				<xsl:for-each select="$classlist">
 					<xsl:variable name="cur" select="."/>
 					<tr>
             <xsl:if test="$showid">
-						<td>
+						<td class="starter">
 						<xsl:value-of select="@parentid"/>
 						</td>
             </xsl:if>
-						<td>
+						<td class="starter">
 				    <link xlink:href="index.html#{@parentid}" xrefstyle="what?">
             <anchor id="{@parentid}"/>
 						<xsl:value-of select="../@name"/>
             </link>
 						</td>
 						<xsl:for-each select="$proplist">
-							<td>
+							<td class="starter">
                 <itemizedlist>
                   <xsl:for-each select="$cur/*[local-name()=current()]">
                     <listitem>

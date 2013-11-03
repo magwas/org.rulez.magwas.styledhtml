@@ -10,6 +10,13 @@
     border-collapse: collapse;
     -moz-border-radius: 0px 0px 0px 0px;
 }
+.starter {
+    border-width: 1px;
+    border-style: outset;
+    border-color: gray;
+    border-collapse: collapse;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
 .doctable {
     border-width: 1px;
     border-spacing: 2px;

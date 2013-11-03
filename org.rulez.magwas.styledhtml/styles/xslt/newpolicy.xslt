@@ -138,16 +138,17 @@
             </default>
           </xsl:if>
           <xsl:for-each select="property[@key='indirect']">
-            <default 
-              multi="true">
-              <xsl:variable name="indirect" select="tokenize(
-                      @value,
-                      ';'
-                   )[$direction]
-              "/>
-              <xsl:attribute name="indirect" select="$indirect"/>
-              <description>The data indirectly mined through <xsl:value-of select="$indirect"/></description><!-- FIXME: the select should be more specific -->
-            </default>
+            <xsl:variable name="indirect" select="tokenize(
+                    @value,
+                    ';'
+                 )[$direction]
+            "/>
+            <xsl:if test="$indirect">
+              <default>
+                <xsl:attribute name="indirect" select="$indirect"/>
+                <description>The data indirectly mined through <xsl:value-of select="$indirect"/></description><!-- FIXME: the select should be more specific -->
+              </default>
+            </xsl:if>
           </xsl:for-each>
 
       </property>
