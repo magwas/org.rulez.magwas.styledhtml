@@ -79,6 +79,9 @@
 			<xsl:choose>
 				<xsl:when test="@key='copy-image'">
 					<xsl:message>copy-image <xsl:value-of select="./@name" /></xsl:message>
+          <row>
+          <entry>
+          <para>
 					<figure>
 						<title><xsl:value-of select="./@name" /></title>
 						<remark><xsl:apply-templates select="./documentation" /></remark>
@@ -88,13 +91,16 @@
 							</imageobject>
 						</mediaobject>
 					</figure>
+          </para>
+          </entry>
+          </row>
 				</xsl:when>
 				<xsl:otherwise>
-					<tr><td>
+					<row><entry>
 						<xsl:value-of select="./@key" />
-					</td><td>
+					</entry><entry>
 						<xsl:value-of select="./@value" />
-					</td></tr>
+					</entry></row>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
@@ -106,7 +112,8 @@
 
 	<xsl:template match="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
-			<tr><td colspan="2">
+			<row><entry namest="c1" nameend="c2">
+      <para>
 				<figure>
 					<title><xsl:value-of select="./@name" /></title>
 					<remark><xsl:apply-templates select="./documentation" /></remark>
@@ -116,7 +123,8 @@
 						</imageobject>
 					</mediaobject>
 				</figure>
-			</td></tr>
+        </para>
+			</entry></row>
 			<xsl:apply-templates select="property"/>
 		</xsl:if>
 	</xsl:template>
@@ -130,14 +138,16 @@
 
 	<xsl:template match="archimate:*" >
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
-			<tr>
-				<td class="starter"  valign="top"><anchor id="{@id}"/><xsl:value-of select="./@name" />
-				</td>
-				<td class="starter" valign="top"><xsl:apply-templates select="./documentation" /></td>
-			</tr>
-			<tr> <td><!--Properties--><xsl:text> </xsl:text></td><td >
-				<xsl:call-template name="proptable"/>
-			</td></tr>
+			<row>
+				<entry class="starter"  valign="top"><anchor id="{@id}"/><xsl:value-of select="./@name" />
+				</entry>
+				<entry class="starter" valign="top"><xsl:apply-templates select="./documentation" /></entry>
+			</row>
+      <xsl:if test="@property"> <!-- FIXME test should be more exact -->
+			  <row> <entry><!--Properties--><xsl:text> </xsl:text></entry><entry >
+				  <xsl:call-template name="proptable"/>
+			  </entry></row>
+      </xsl:if>
 		</xsl:if>
 	</xsl:template>
 
@@ -147,7 +157,11 @@
 		</xsl:variable>
 		<xsl:if test="string($props)">
 			<table class="propertytable">
+        <tgroup cols="2">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
 				<xsl:copy-of select="$props"/>
+        </tgroup>
 			</table>
 		</xsl:if>
 	</xsl:template>
@@ -162,6 +176,9 @@
 				<xsl:call-template name="proptable"/>
 				<xsl:if test="(archimate:*|canvas:*) except archimate:Folder or property[@key='from-folder']">
 					<table class="elementtable">
+            <tgroup cols="2">
+            <colspec colname="c1"/>
+            <colspec colname="c2"/>
 						<xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
@@ -175,6 +192,7 @@
 								</xsl:apply-templates>
 							</xsl:for-each>
 						</xsl:if>
+            </tgroup>
 					</table>
 				</xsl:if>
 				<xsl:apply-templates select="archimate:Folder">
