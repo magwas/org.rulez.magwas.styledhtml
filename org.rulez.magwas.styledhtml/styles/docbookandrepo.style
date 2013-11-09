@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style>
 	<copy source="emptydir" target="pics"/>
+  <copy source="static/structured.css" target="structured.css"/>
 	<diagrams target="pics"/>
 	<export target="archirich.xml" keep="true" policy="none">
 		<transform language="xslt" script="xslt/newpolicy.xslt" target="policy.xml" keep="true"/>
