@@ -160,7 +160,9 @@
         <tgroup cols="2">
         <colspec colname="c1"/>
         <colspec colname="c2"/>
+        <tbody>
 				<xsl:copy-of select="$props"/>
+        </tbody>
         </tgroup>
 			</table>
 		</xsl:if>
@@ -179,6 +181,7 @@
             <tgroup cols="2">
             <colspec colname="c1"/>
             <colspec colname="c2"/>
+            <tbody>
 						<xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
@@ -192,6 +195,7 @@
 								</xsl:apply-templates>
 							</xsl:for-each>
 						</xsl:if>
+            </tbody>
             </tgroup>
 					</table>
 				</xsl:if>
