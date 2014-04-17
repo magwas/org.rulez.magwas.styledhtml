@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList;
@@ -25,18 +26,19 @@ import org.eclipse.ui.IViewPart;
 import org.rulez.magwas.styledhtml.IPreferenceConstants;
 import org.rulez.magwas.styledhtml.Widgets;
 
-import uk.ac.bolton.archimate.model.IArchimateFactory;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.IArchimateModelElement;
-import uk.ac.bolton.archimate.model.IDiagramModel;
-import uk.ac.bolton.archimate.model.IFolder;
-import uk.ac.bolton.archimate.model.IFolderContainer;
-import uk.ac.bolton.archimate.model.IIdentifier;
-import uk.ac.bolton.archimate.model.INameable;
-import uk.ac.bolton.archimate.model.impl.ArchimateModel;
-import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
-import uk.ac.bolton.archimate.model.util.ArchimateResource;
-import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
+import com.archimatetool.model.IArchimateFactory;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.IArchimateModelElement;
+import com.archimatetool.model.IDiagramModel;
+import com.archimatetool.model.IFolder;
+import com.archimatetool.model.IFolderContainer;
+import com.archimatetool.model.IIdentifier;
+import com.archimatetool.model.INameable;
+import com.archimatetool.model.impl.ArchimateModel;
+import com.archimatetool.model.util.ArchimateModelUtils;
+import com.archimatetool.model.util.ArchimateResource;
+import com.archimatetool.model.util.ArchimateResourceFactory;
+
 
 
 public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
@@ -161,11 +163,11 @@ public class ExportPart implements IEditorActionDelegate, IViewActionDelegate {
     	if(null == target) {
     		return;
     	}
-      	ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory.createResource(target);
+      	ArchimateResource resource = (ArchimateResource) new ArchimateResourceFactory().createResource(URI.createFileURI(target.getAbsolutePath()));
         IArchimateModel model = IArchimateFactory.eINSTANCE.createArchimateModel();
         model.setDefaults();
         EObject newob = copyEobj(selectedObj,model, true);
-        model.setName(((INameable)selectedObj).getName()+" from "+ ((IArchimateModelElement)selectedObj).getArchimateModel().getName());
+        model.setName(((INameable)selectedObj).getName()+" from "+ ((IArchimateModelElement) selectedObj).getArchimateModel().getName());
        
         addwithparents(newob,selectedObj,model);
         copyDependencies(newob,model);

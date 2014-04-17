@@ -2,7 +2,6 @@ package org.rulez.magwas.enterprise.repository;
 
 
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.jface.dialogs.Dialog;

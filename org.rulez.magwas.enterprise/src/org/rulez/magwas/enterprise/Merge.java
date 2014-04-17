@@ -14,7 +14,7 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.rulez.magwas.styledhtml.EventLog;
 
-import uk.ac.bolton.archimate.model.IArchimateElement;
+import com.archimatetool.model.IArchimateElement;
 
 public class Merge implements IEditorActionDelegate, IViewActionDelegate {
 

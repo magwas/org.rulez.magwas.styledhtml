@@ -9,9 +9,9 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.w3c.dom.Element;
 
-import uk.ac.bolton.archimate.editor.diagram.util.DiagramUtils;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.IDiagramModel;
+import com.archimatetool.editor.diagram.util.DiagramUtils;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.IDiagramModel;
 
 /**
  * Responsible for exporting diagrams from the model.
@@ -55,7 +55,7 @@ public class Diagrams extends Step {
     private void saveDiagrams(IArchimateModel model,File targetdir) {
     	List<IDiagramModel> dias = model.getDiagramModels();
     	for (IDiagramModel dia : dias) {
-    		Image image = DiagramUtils.createImage(dia);
+    		Image image = DiagramUtils.createImage(dia,1,0);
     		String diagramID = dia.getId();
     		File file = new File(targetdir,diagramID+".png");
             ImageLoader loader = new ImageLoader();

@@ -1,5 +1,9 @@
 package org.rulez.magwas.styledhtml;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -61,14 +65,34 @@ public class Util {
             throws UnsupportedEncodingException, IOException,
             URISyntaxException {
         java.net.URL url = instance.getClass().getResource(filename);
-        if (url == null) {
-            throw new IOException();
-        }
-        java.nio.file.Path resPath = java.nio.file.Paths.get(url.toURI());
-        
-        String xml = new String(java.nio.file.Files.readAllBytes(resPath),
-                "UTF8");
+        if(null == url)
+        	throw new IOException(String.format("no such resource: %s",filename));
+        String fname = url.getFile();
+		String xml = readFileAsString(new File(fname));
         return xml;
+    }
+
+    public static String readFileAsString(File file) throws IOException {
+        byte[] buffer = new byte[(int) file.length()];
+        BufferedInputStream inputStream = null;
+        try {
+            inputStream = new BufferedInputStream(new FileInputStream(file));
+            inputStream.read(buffer);
+        }
+        finally {
+            if(inputStream != null) {
+                inputStream.close();
+            }
+        }
+        return new String(buffer);
+    }
+
+    public static void writeStringToFile(String str, File file) throws IOException {
+    	byte[] buffer = new byte[str.length()];
+    	buffer = str.getBytes();
+    	FileOutputStream outputStream = new FileOutputStream(file);
+    	outputStream.write(buffer);
+    	outputStream.close();
     }
     
     public static Document createXmlDocumentFromString(String xmlString)

@@ -3,12 +3,13 @@ package org.rulez.magwas.styledhtml.steps;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.styledhtml.RichExport;
 import org.rulez.magwas.styledhtml.Util;
 import org.w3c.dom.Element;
 
-import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
+import com.archimatetool.model.util.ArchimateResourceFactory;
 
 /**
  * The Exports the model either to archimate or rich format (default is rich).
@@ -44,7 +45,7 @@ public class Export extends Step {
         if ("".equals(style) || "rich".equals(style)) {
             RichExport.export(factory.model, tfile, policyfile, factory.log);
         } else if ("archi".equals(style)) {
-            Resource resource = ArchimateResourceFactory.createResource(tfile);
+            Resource resource = new ArchimateResourceFactory().createResource(URI.createFileURI(tfile.getAbsolutePath()));
             resource.getContents().add(factory.model);
             try {
                 resource.save(null);

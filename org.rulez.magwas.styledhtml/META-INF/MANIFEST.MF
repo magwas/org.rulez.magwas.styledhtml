@@ -7,9 +7,8 @@ Bundle-Vendor: Árpád Magosányi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
  org.eclipse.core.runtime;bundle-version="3.5.0",
- uk.ac.bolton.archimate.editor,
+ com.archimatetool.editor,
  org.rulez.magwas.archimate.editor.browser;bundle-version="1.0.0",
- org.rulez.demokracia.liquidgame;bundle-version="1.0.0",
  org.junit;bundle-version="4.8.2";resolution:=optional
 Export-Package: org.rulez.magwas.styledhtml;
   uses:="org.eclipse.jface.preference,

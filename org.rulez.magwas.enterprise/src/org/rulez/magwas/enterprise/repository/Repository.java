@@ -11,8 +11,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.swt.widgets.Shell;
 
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.IProperty;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.IProperty;
 
 public class Repository {
 

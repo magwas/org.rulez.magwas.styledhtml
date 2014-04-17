@@ -12,10 +12,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 
-import uk.ac.bolton.archimate.model.IArchimateElement;
-import uk.ac.bolton.archimate.model.IArchimatePackage;
-import uk.ac.bolton.archimate.model.impl.ArchimateElement;
-import uk.ac.bolton.archimate.editor.views.tree.TreeModelView;
+import com.archimatetool.editor.views.tree.TreeModelView;
+import com.archimatetool.model.IArchimateElement;
+import com.archimatetool.model.IArchimatePackage;
+import com.archimatetool.model.impl.ArchimateElement;
+
 
 public class ChangeType implements IEditorActionDelegate, IViewActionDelegate {
 

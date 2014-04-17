@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="uk.ac.bolton.archimate.editor.exportHandler">
+         point="com.archimatetool.editor.exportHandler">
       <exportHandler
             class="org.rulez.magwas.styledhtml.StyledHtml"
             id="org.rulez.magwas.styledhtml.StyledHtml"
@@ -21,7 +21,7 @@
       </page>
    </extension>
    <extension
-         point="uk.ac.bolton.archimate.editor.exportHandler">
+         point="com.archimatetool.editor.exportHandler">
       <exportHandler
             class="org.rulez.magwas.styledhtml.RichExport"
             id="org.rulez.magwas.styledhtml.RichExport"

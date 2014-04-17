@@ -7,9 +7,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.editor.Logger;
+import com.archimatetool.editor.model.IEditorModelManager;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.util.Logger;
 
 /**
  * The activator class controls the plug-in life cycle

@@ -1,7 +1,5 @@
 package org.rulez.magwas.enterprise.repository;
 
-import static org.junit.Assert.*;
-
 import org.eclipse.swt.widgets.Shell;
 import org.junit.Test;
 

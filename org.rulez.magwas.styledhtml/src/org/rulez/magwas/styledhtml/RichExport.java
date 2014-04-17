@@ -16,16 +16,17 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.Document;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
 
-import uk.ac.bolton.archimate.editor.model.IModelExporter;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.util.ArchimateResource;
-import uk.ac.bolton.archimate.model.util.ArchimateResourceFactory;
+import com.archimatetool.editor.model.IModelExporter;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.util.ArchimateResource;
+import com.archimatetool.model.util.ArchimateResourceFactory;
 
 /**
  * Rich Exporter of Archimate model
@@ -77,8 +78,8 @@ public class RichExport implements IModelExporter {
     public static void export(IArchimateModel model, File target,
             File policyfile, EventLog log) {
         try {
-            ArchimateResource resource = (ArchimateResource) ArchimateResourceFactory
-                    .createResource(target);
+            ArchimateResource resource = (ArchimateResource) new ArchimateResourceFactory()
+                    .createResource(URI.createFileURI(target.getAbsolutePath()));
             resource.getContents().add(model);
             // we get it in xml
             Map<Object, Object> saveoptions = resource.getDefaultSaveOptions();

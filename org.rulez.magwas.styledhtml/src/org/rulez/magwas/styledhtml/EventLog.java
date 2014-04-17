@@ -27,14 +27,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
-import uk.ac.bolton.archimate.editor.ui.services.EditorManager;
-import uk.ac.bolton.archimate.editor.ui.services.UIRequestManager;
-import uk.ac.bolton.archimate.editor.views.tree.TreeSelectionRequest;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.IIdentifier;
-import uk.ac.bolton.archimate.model.INameable;
-import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
+import com.archimatetool.editor.model.IEditorModelManager;
+import com.archimatetool.editor.ui.services.EditorManager;
+import com.archimatetool.editor.ui.services.UIRequestManager;
+import com.archimatetool.editor.views.tree.TreeSelectionRequest;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.IIdentifier;
+import com.archimatetool.model.INameable;
+import com.archimatetool.model.util.ArchimateModelUtils;
 
 public class EventLog implements IEventLog {
     

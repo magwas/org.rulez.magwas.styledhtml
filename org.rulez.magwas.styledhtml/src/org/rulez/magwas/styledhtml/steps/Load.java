@@ -7,8 +7,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
-import uk.ac.bolton.archimate.model.IArchimateModel;
+import com.archimatetool.editor.model.IEditorModelManager;
+import com.archimatetool.model.IArchimateModel;
 
 /**
  * This step loads an archimate model, so the steps under it pertain the newly loaded one

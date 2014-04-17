@@ -5,12 +5,11 @@ import static org.junit.Assert.*;
 
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uk.ac.bolton.archimate.model.IArchimateFactory;
-import uk.ac.bolton.archimate.model.IArchimateModel;
-import uk.ac.bolton.archimate.model.IProperty;
+import com.archimatetool.model.IArchimateFactory;
+import com.archimatetool.model.IArchimateModel;
+import com.archimatetool.model.IProperty;
 
 import java.sql.SQLException;
 import java.util.List;

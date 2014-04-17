@@ -16,8 +16,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import uk.ac.bolton.archimate.editor.model.IModelExporter;
-import uk.ac.bolton.archimate.model.IArchimateModel;
+import com.archimatetool.editor.model.IModelExporter;
+import com.archimatetool.model.IArchimateModel;
 
 /**
  * Styled HTML Exporter of Archimate model

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.rulez.magwas.styledhtml.EventLog;
 
-import uk.ac.bolton.archimate.model.IArchimateModel;
+import com.archimatetool.model.IArchimateModel;
 
 /**
  * A factory for creating and executing Step objects.
